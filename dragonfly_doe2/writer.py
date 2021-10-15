@@ -11,7 +11,19 @@ def room2d_to_doe2(room2d):
         A INP text string which can be written into an .inp file.
     """
     # TODO: Add some more code here to generate the .inp file string
-    return ''
+    # Create Room Polygon strings
+    header = '"{} Plg" = POLYGON\n   '.format(room2d.display_name)
+    
+    vert_strs = []
+    for obj in room2d.Room2DDOE2Properties.poly_verts:
+        vstr = 'V{}'.format(obj[0])+(' '*15)+'= ( {} , {} )\n   '.format(obj[1],obj[2])
+        vert_strs.append(vstr)
+        
+    for obj in vert_strs:
+        header = header + obj
+        
+    
+    pass
 
 
 def story_to_doe2(story):

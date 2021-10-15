@@ -1,6 +1,10 @@
 # coding=utf-8
 """Room2D DOE2 Properties."""
+from dragonfly.room2d import Room2D
+from dragonfly.windowparameter import SimpleWindowRatio
+from ladybug_geometry.geometry3d.pointvector import Point3D
 
+#from ..doe_geometry import DoeVertsFromLBT as doe_verts
 
 class Room2DDOE2Properties(object):
     """DOE2 Properties for Dragonfly Room2D.
@@ -10,6 +14,7 @@ class Room2DDOE2Properties(object):
 
     Properties:
         * host
+        * poly_verts
     """
 
     __slots__ = ('_host',)
@@ -22,6 +27,27 @@ class Room2DDOE2Properties(object):
     def host(self):
         """Get the Room2D object hosting these properties."""
         return self._host
+    
+    @property
+    def poly_verts(self):
+        """Get the Room2D Polygon Vertices."""
+        return self._get_doe_verts(self.host)
+
+    @staticmethod
+    def _get_doe_verts(host):
+        flr_geom = host.floor_geometry
+        flr_verts = flr_geom.upper_left_counter_clockwise_vertices
+        
+        doe_verts = []
+        for i, vert in enumerate(flr_verts):
+            doe_verts.append((i+1, vert.x, vert.y))
+        obj = doe_verts
+        return(obj)
+            
+        
+        
+        
+        
 
     @classmethod
     def from_dict(cls, data, host):
