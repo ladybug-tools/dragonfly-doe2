@@ -16,6 +16,7 @@ class Room2DDOE2Properties(object):
     Properties:
         * host
         * poly_verts
+        * doe_space_poly
     """
 
     __slots__ = ('_host',)
@@ -48,7 +49,7 @@ class Room2DDOE2Properties(object):
     @property
     def doe_space_poly(self):
         """ DOE2 Formatted Zone Polygon Object """
-        return(_make_doe_spc_ply(self.host))
+        return(_make_doe_spc_ply(self.poly_verts))
 
     @staticmethod
     def _make_doe_spc_ply(_obj):

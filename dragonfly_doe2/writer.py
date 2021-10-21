@@ -12,9 +12,11 @@ def room2d_to_doe2(room2d):
 
     Returns:
         A INP text string which can be written into an .inp file.
+
+
+        May move away from this due to doe2 file 'block' obj organization
     """
     # TODO: Add some more code here to generate the .inp file string
-    # Create Room Polygon strings
     pass
 
 
