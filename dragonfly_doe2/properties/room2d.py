@@ -6,6 +6,7 @@ from ladybug_geometry.geometry3d.pointvector import Point3D
 
 #from ..doe_geometry import DoeVertsFromLBT as doe_verts
 
+
 class Room2DDOE2Properties(object):
     """DOE2 Properties for Dragonfly Room2D.
 
@@ -27,27 +28,40 @@ class Room2DDOE2Properties(object):
     def host(self):
         """Get the Room2D object hosting these properties."""
         return self._host
-    
+
     @property
     def poly_verts(self):
         """Get the Room2D Polygon Vertices."""
-        return self._get_doe_verts(self.host)
+        return(self._get_doe_verts(self.host))
 
     @staticmethod
     def _get_doe_verts(host):
         flr_geom = host.floor_geometry
         flr_verts = flr_geom.upper_left_counter_clockwise_vertices
-        
+
         doe_verts = []
         for i, vert in enumerate(flr_verts):
             doe_verts.append((i+1, vert.x, vert.y))
         obj = doe_verts
         return(obj)
-            
-        
-        
-        
-        
+
+    @property
+    def doe_space_poly(self):
+        """ DOE2 Formatted Zone Polygon Object """
+        return(_make_doe_spc_ply(self.host))
+
+    @staticmethod
+    def _make_doe_spc_ply(_obj):
+        header = '"{} Plg" = POLYGON\n   '.format(room2d.display_name)
+        vert_strs = []
+
+        for obj in room2d.Room2DDOE2Properties.poly_verts:
+            vstr = 'V{}'.format(obj[0])+(' '*15) + \
+                '= ( {} , {} )\n   '.format(obj[1], obj[2])
+            vert_strs.append(vstr)
+
+        for obj in vert_strs:
+            header = header + obj
 
     @classmethod
     def from_dict(cls, data, host):

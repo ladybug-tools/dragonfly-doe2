@@ -1,5 +1,8 @@
 """Methods to write files for DOE-2 simulation."""
 
+# TODO:   Make a 'main file def' to pass as an arg\
+# TODO: into the objs to then add in correct loc blocks
+
 
 def room2d_to_doe2(room2d):
     """Generate a DOE-2 INP string for a Room2D.
@@ -12,17 +15,6 @@ def room2d_to_doe2(room2d):
     """
     # TODO: Add some more code here to generate the .inp file string
     # Create Room Polygon strings
-    header = '"{} Plg" = POLYGON\n   '.format(room2d.display_name)
-    
-    vert_strs = []
-    for obj in room2d.Room2DDOE2Properties.poly_verts:
-        vstr = 'V{}'.format(obj[0])+(' '*15)+'= ( {} , {} )\n   '.format(obj[1],obj[2])
-        vert_strs.append(vstr)
-        
-    for obj in vert_strs:
-        header = header + obj
-        
-    
     pass
 
 
