@@ -46,6 +46,7 @@ class Room2DDOE2Properties(object):
             doe_verts.append((i+1, vert.x, vert.y))
         obj = doe_verts
         return(obj)
+# ---------------------------- From here -----------------------
 
     @property
     def doe_space_poly(self):
@@ -77,6 +78,7 @@ class Room2DDOE2Properties(object):
             'C-ACTIVITY-DESC  = *{}*'.format(
                 _obj.properties.energy.program_type.display_name)
         return(header)
+# ----------------------------- To here:    This needs to go in the writer.py
 
     @classmethod
     def from_dict(cls, data, host):
