@@ -13,4 +13,3 @@ tox.ini
 .eggs
 *.code-workspace
 .env
-tstspc.ipynb

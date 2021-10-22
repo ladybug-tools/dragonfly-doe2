@@ -73,7 +73,7 @@ class Room2DDOE2Properties(object):
     def _doe_space_geom(_obj):
         header = '"{}" = SPACE\n   SHAPE'.format(_obj.display_name) +\
             ' '*12+'= POLYGON\n   '+'POLYGON'+' '*10 + \
-            '= "{} Plg"\n  '.format(_obj.display_name) + \
+            '= "{} Plg"\n   '.format(_obj.display_name) + \
             'C-ACTIVITY-DESC  = *{}*'.format(
                 _obj.properties.energy.program_type.display_name)
         return(header)
