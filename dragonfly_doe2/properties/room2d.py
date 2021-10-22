@@ -2,6 +2,7 @@
 """Room2D DOE2 Properties."""
 from dragonfly.room2d import Room2D
 from dragonfly.windowparameter import SimpleWindowRatio
+from dragonfly_energy.properties.room2d import *
 from ladybug_geometry.geometry3d.pointvector import Point3D
 
 #from ..doe_geometry import DoeVertsFromLBT as doe_verts
@@ -48,21 +49,34 @@ class Room2DDOE2Properties(object):
 
     @property
     def doe_space_poly(self):
-        """ DOE2 Formatted Zone Polygon Object """
-        return(_make_doe_spc_ply(self.poly_verts))
+        """ DOE2 Formatted Space Polygon Object """
+        return(self._make_doe_ply(self.poly_verts, self.host))
 
     @staticmethod
-    def _make_doe_spc_ply(_obj):
-        header = '"{} Plg" = POLYGON\n   '.format(room2d.display_name)
+    def _make_doe_ply(_obj, _hst):
+        header = '"{} Plg" = POLYGON\n   '.format(_hst.display_name)
         vert_strs = []
-
-        for obj in room2d.Room2DDOE2Properties.poly_verts:
+        for obj in _obj:
             vstr = 'V{}'.format(obj[0])+(' '*15) + \
                 '= ( {} , {} )\n   '.format(obj[1], obj[2])
             vert_strs.append(vstr)
 
         for obj in vert_strs:
             header = header + obj
+        return(header)
+
+    @property
+    def doe_space_geom(self):
+        return(self._doe_space_geom(self.host))
+
+    @staticmethod
+    def _doe_space_geom(_obj):
+        header = '"{}" = SPACE\n   SHAPE'.format(_obj.display_name) +\
+            ' '*12+'= POLYGON\n   '+'POLYGON'+' '*10 + \
+            '= "{} Plg"\n  '.format(_obj.display_name) + \
+            'C-ACTIVITY-DESC  = *{}*'.format(
+                _obj.properties.energy.program_type.display_name)
+        return(header)
 
     @classmethod
     def from_dict(cls, data, host):
