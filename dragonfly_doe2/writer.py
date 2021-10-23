@@ -2,7 +2,7 @@
 
 # TODO:   Make a 'main file def' to pass as an arg\
 # TODO: into the objs to then add in correct loc blocks
-from dragonfly import room2d, story
+import dragonfly
 
 
 def room2d_to_doe2(room2d):
@@ -20,9 +20,13 @@ def room2d_to_doe2(room2d):
     # TODO: Add some more code here to generate the .inp file string
     # Prolly use more touples tbh for each room tbh and in the building to doe2:
     # Sort by story for each *.inp block obj and not have to do oopyness
-
     # so this would return  a touple for each room based *.inp block in a list
-    pass
+    rm_poly_str = poly_str(room2d)
+    rm_space_str = doe_spc(room2d)
+
+    return((rm_poly_str, rm_space_str))  # need add HVAC Bloclk
+
+    # pass
 
 
 def story_to_doe2(story):
@@ -99,24 +103,39 @@ def model_to_doe2(model):
 
 
 def poly_str(_df_obj):
-    if isinstance(_df_obj, room2D):
-        header = '"{} Plg" = POLYGON\n   '.format(_hst.display_name)
+    if isinstance(_df_obj, dragonfly.room2d.Room2D):
+        header = '"{} Plg" = POLYGON\n   '.format(_df_obj.display_name)
         vert_strs = []
-        for obj in _obj:
+        for obj in _df_obj.properties.doe2.poly_verts:
             vstr = 'V{}'.format(obj[0])+(' '*15) + \
                 '= ( {} , {} )\n   '.format(obj[1], obj[2])
             vert_strs.append(vstr)
 
         for obj in vert_strs:
             header = header + obj
-    elif isinstance(_df_obj, story):
-        header = '"{} Plg" = POLYGON\n   '.format(_hst.display_name)
+        return(header)
+    elif isinstance(_df_obj, dragonfly.story.Story):
+        header = '"{} Plg" = POLYGON\n   '.format(_df_obj.display_name)
         vert_strs = []
-        for obj in _obj:
+        for obj in _df_obj.poly_verts:
             vstr = 'V{}'.format(obj[0])+(' '*15) + \
                 '= ( {} , {} )\n   '.format(obj[1], obj[2])
             vert_strs.append(vstr)
 
         for obj in vert_strs:
             header = header + obj
-    return(header)
+        return(header)
+
+
+def doe_spc(_df_obj):
+    if isinstance(_df_obj, dragonfly.room2d.Room2D):
+        header = '"{}" = SPACE\n   SHAPE'.format(_df_obj.display_name) +\
+            ' '*12+'= POLYGON\n   '+'POLYGON'+' '*10 + \
+            '= "{} Plg"\n   '.format(_df_obj.display_name) + \
+            'C-ACTIVITY-DESC  = *{}*'.format(
+                _df_obj.properties.energy.program_type.display_name)
+        return(header)
+
+    elif isinstance(_df_obj, dragonfly.story.Story):
+
+        pass

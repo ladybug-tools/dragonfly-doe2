@@ -34,10 +34,10 @@ class Room2DDOE2Properties(object):
     @property
     def poly_verts(self):
         """Get the Room2D Polygon Vertices."""
-        return(self._get_doe_verts(self.host))
+        return(self._poly_verts(self.host))
 
     @staticmethod
-    def _get_doe_verts(host):
+    def _poly_verts(host):
         flr_geom = host.floor_geometry
         flr_verts = flr_geom.upper_left_counter_clockwise_vertices
 
@@ -46,39 +46,6 @@ class Room2DDOE2Properties(object):
             doe_verts.append((i+1, vert.x, vert.y))
         obj = doe_verts
         return(obj)
-# ---------------------------- From here -----------------------
-
-    @property
-    def doe_space_poly(self):
-        """ DOE2 Formatted Space Polygon Object """
-        return(self._make_doe_ply(self.poly_verts, self.host))
-
-    @staticmethod
-    def _make_doe_ply(_obj, _hst):
-        header = '"{} Plg" = POLYGON\n   '.format(_hst.display_name)
-        vert_strs = []
-        for obj in _obj:
-            vstr = 'V{}'.format(obj[0])+(' '*15) + \
-                '= ( {} , {} )\n   '.format(obj[1], obj[2])
-            vert_strs.append(vstr)
-
-        for obj in vert_strs:
-            header = header + obj
-        return(header)
-
-    @property
-    def doe_space_geom(self):
-        return(self._doe_space_geom(self.host))
-
-    @staticmethod
-    def _doe_space_geom(_obj):
-        header = '"{}" = SPACE\n   SHAPE'.format(_obj.display_name) +\
-            ' '*12+'= POLYGON\n   '+'POLYGON'+' '*10 + \
-            '= "{} Plg"\n   '.format(_obj.display_name) + \
-            'C-ACTIVITY-DESC  = *{}*'.format(
-                _obj.properties.energy.program_type.display_name)
-        return(header)
-# ----------------------------- To here:    This needs to go in the writer.py?
 
     @classmethod
     def from_dict(cls, data, host):
