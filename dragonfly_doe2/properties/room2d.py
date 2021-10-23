@@ -78,7 +78,7 @@ class Room2DDOE2Properties(object):
             'C-ACTIVITY-DESC  = *{}*'.format(
                 _obj.properties.energy.program_type.display_name)
         return(header)
-# ----------------------------- To here:    This needs to go in the writer.py
+# ----------------------------- To here:    This needs to go in the writer.py?
 
     @classmethod
     def from_dict(cls, data, host):

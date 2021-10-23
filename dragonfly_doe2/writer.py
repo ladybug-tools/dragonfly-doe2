@@ -2,6 +2,7 @@
 
 # TODO:   Make a 'main file def' to pass as an arg\
 # TODO: into the objs to then add in correct loc blocks
+from dragonfly import room2d, story
 
 
 def room2d_to_doe2(room2d):
@@ -17,6 +18,7 @@ def room2d_to_doe2(room2d):
         May move away from this due to doe2 file 'block' obj organization
     """
     # TODO: Add some more code here to generate the .inp file string
+
     pass
 
 
@@ -91,3 +93,27 @@ def model_to_doe2(model):
     for bldg_str in building_strs:
         inp_strs.append('\n\n'.join((bldg_str, shd_str)))
     return inp_strs
+
+
+def poly_str(_df_obj):
+    if isinstance(_df_obj, room2D):
+        header = '"{} Plg" = POLYGON\n   '.format(_hst.display_name)
+        vert_strs = []
+        for obj in _obj:
+            vstr = 'V{}'.format(obj[0])+(' '*15) + \
+                '= ( {} , {} )\n   '.format(obj[1], obj[2])
+            vert_strs.append(vstr)
+
+        for obj in vert_strs:
+            header = header + obj
+    elif isinstance(_df_obj, story):
+        header = '"{} Plg" = POLYGON\n   '.format(_hst.display_name)
+        vert_strs = []
+        for obj in _obj:
+            vstr = 'V{}'.format(obj[0])+(' '*15) + \
+                '= ( {} , {} )\n   '.format(obj[1], obj[2])
+            vert_strs.append(vstr)
+
+        for obj in vert_strs:
+            header = header + obj
+    return(header)

@@ -5,7 +5,6 @@ from dragonfly_energy.properties.room2d import ProgramType
 from honeybee.boundarycondition import boundary_conditions as bcs
 from ladybug_geometry.geometry3d.pointvector import Point3D
 from ladybug_geometry.geometry3d.face import Face3D
-
 from dragonfly_doe2.properties.room2d import Room2DDOE2Properties
 
 
