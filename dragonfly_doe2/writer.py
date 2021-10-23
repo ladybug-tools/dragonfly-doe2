@@ -18,7 +18,10 @@ def room2d_to_doe2(room2d):
         May move away from this due to doe2 file 'block' obj organization
     """
     # TODO: Add some more code here to generate the .inp file string
+    # Prolly use more touples tbh for each room tbh and in the building to doe2:
+    # Sort by story for each *.inp block obj and not have to do oopyness
 
+    # so this would return  a touple for each room based *.inp block in a list
     pass
 
 
