@@ -103,6 +103,20 @@ def model_to_doe2(model):
 
 
 def poly_str(_df_obj):
+    """ Takes a Dragonfly Object and creates a
+        DOE2 *.inp input 'polygon object
+
+        Args:
+            _df_obj: df_room2d or df_story objects
+        Returns:
+        *inp string:
+
+            "Ground_Office1 Plg" = POLYGON
+                V1               = ( 0.0 , 0.0 )
+                V2               = ( 10.0 , 0.0 )
+                V3               = ( 10.0 , 10.0 )
+                V4               = ( 0.0 , 10.0 )
+    """
     if isinstance(_df_obj, dragonfly.room2d.Room2D):
         header = '"{} Plg" = POLYGON\n   '.format(_df_obj.display_name)
         vert_strs = []
