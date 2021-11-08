@@ -128,16 +128,18 @@ def poly_str(_df_obj):
         for obj in vert_strs:
             header = header + obj
         return(header)
+
     elif isinstance(_df_obj, dragonfly.story.Story):
-        header = '"{} Plg" = POLYGON\n   '.format(_df_obj.display_name)
+        header = '"{} Floor Plg" = POLYGON\n   '.format(_df_obj.display_name)
         vert_strs = []
-        for obj in _df_obj.poly_verts:
+        for obj in _df_obj.properties.doe2.story_poly_verts:
             vstr = 'V{}'.format(obj[0])+(' '*15) + \
                 '= ( {} , {} )\n   '.format(obj[1], obj[2])
             vert_strs.append(vstr)
 
         for obj in vert_strs:
             header = header + obj
+
         return(header)
 
 
@@ -146,10 +148,18 @@ def doe_spc(_df_obj):
         header = '"{}" = SPACE\n   SHAPE'.format(_df_obj.display_name) +\
             ' '*12+'= POLYGON\n   '+'POLYGON'+' '*10 + \
             '= "{} Plg"\n   '.format(_df_obj.display_name) + \
-            'C-ACTIVITY-DESC  = *{}*'.format(
+            'C-ACTIVITY-DESC  = *{}*\n   ..'.format(
                 _df_obj.properties.energy.program_type.display_name)
+
         return(header)
 
     elif isinstance(_df_obj, dragonfly.story.Story):
+        header = '"{}" = FLOOR\n   Z'.format(_df_obj.display_name) + \
+            ' '*16+'= {}\n   '.format(_df_obj.floor_height) + \
+            'POLYGON'+' '*12+'"= {} Floor Plg"\n   '.format(_df_obj.display_name) + \
+            'SHAPE'+' '*12+'= POLYGON\n   ' + \
+            'FLOOR-HEIGHT     = {}\n   '.format(_df_obj.floor_to_floor_height) + \
+            'C-DIAGRAM-DATA  = *{} UI DiagData*\n   ..'.format(
+                _df_obj.display_name)
 
-        pass
+        return(header)
