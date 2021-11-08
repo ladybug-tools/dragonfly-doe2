@@ -1,5 +1,7 @@
 # coding=utf-8
 """Story DOE2 Properties."""
+from dragonfly.story import Story
+from ladybug_geometry.geometry3d.pointvector import Point3D
 
 
 class StoryDOE2Properties(object):
@@ -22,6 +24,24 @@ class StoryDOE2Properties(object):
     def host(self):
         """Get the Story object hosting these properties."""
         return self._host
+
+    @property
+    def story_poly_verts(self):
+        """Process the story geometry and clean co-linear vertices to return
+        DOE2 vertices for the DOE2 'floor'
+        """
+        return self._make_story_poly(self.host)
+
+    @staticmethod
+    def _make_story_poly(host):
+        temp_geom = host.duplicate().footprint()
+        doe_verts = []
+        for face in temp_geom:
+            cleanface = face.remove_colinear_vertices(0.01)
+            for i, vert in enumerate(cleanface.upper_left_counter_clockwise_vertices):
+                doe_verts.append((i+1, vert.x, vert.y))
+        obj = doe_verts
+        return(obj)
 
     @classmethod
     def from_dict(cls, data, host):
