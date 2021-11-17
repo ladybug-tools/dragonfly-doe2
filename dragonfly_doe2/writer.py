@@ -38,6 +38,9 @@ def story_to_doe2(story):
     Returns:
         A INP text string which can be written into an .inp file.
     """
+    story_poly_str = poly_str(story)
+    story_space_str = doe_spc(story)
+    return((story_poly_str, story_space_str))
     # TODO: Add some more code here to generate the .inp file string
     return ''
 
