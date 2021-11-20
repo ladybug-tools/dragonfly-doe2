@@ -2,7 +2,11 @@
 
 # TODO:   Make a 'main file def' to pass as an arg\
 # TODO: into the objs to then add in correct loc blocks
+# TODO: objs to dicts
 import dragonfly
+import dragonfly_energy
+import dragonfly_doe2
+from .inp_file_blocks.fileblocks import *
 
 
 def room2d_to_doe2(room2d):
@@ -42,7 +46,6 @@ def story_to_doe2(story):
     story_space_str = doe_spc(story)
     return((story_poly_str, story_space_str))
     # TODO: Add some more code here to generate the .inp file string
-    return ''
 
 
 def building_to_doe2(building):
@@ -166,3 +169,9 @@ def doe_spc(_df_obj):
                 _df_obj.display_name)
 
         return(header)
+
+############
+
+
+def to_inp_file(_df_model):
+    pass
