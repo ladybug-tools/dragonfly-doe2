@@ -116,49 +116,55 @@ PROJECT-DATA
   Example file in reference_inp uses basic assignment of walls and loads, see privately provided *.inp for switch statement assignment (switch statements are basically naming convention dependant: was the pri for me when this proj was started and focused on the company it was for).
   - example file in reference_inp uses 'wizzard schema' for wall assignment facilitated by the 'template building shapes' in eQuest, otherwise would be assigned (in our application) as follow:<br>
   *Maintaining upper_left_counter_clockwise_vertices* convention: (see privately provided *.inp for detailed reference)<br>
-```
-  "Exterior Wall 116" = EXTERIOR-WALL   
-   LOCATION         = SPACE-V13
+    ```f#
+    "Breakroom-1_L1_SP" = SPACE           
+   SHAPE            = POLYGON
+   SOURCE-SCHEDULE  = {#L("PEOPLE-SCHEDULE")}
+   SOURCE-TYPE      = PROCESS
+   SOURCE-POWER     = {#L("AREA")/#L("AREA/PERSON")*(450-350)}
+   NUMBER-OF-PEOPLE = 0
+   POLYGON          = "Breakroom-1_L1 Plg"
+   C-ACTIVITY-DESC  = *brkm*
    ..
-"Window 13" = WINDOW          
-   X                = 0.5
-   HEIGHT           = {13.5*#pa("WWR_adj")}
-   WIDTH            = 4
-   ..
-"Exterior Wall 117" = EXTERIOR-WALL   
-   LOCATION         = SPACE-V14
-   ..
-"Window 14" = WINDOW          
-   X                = 7.25
-   HEIGHT           = {13.5*#pa("WWR_adj")}
-   WIDTH            = 4
-   ..
-"Exterior Wall 118" = EXTERIOR-WALL   
-   LOCATION         = SPACE-V15
-   ..
-"Window 15" = WINDOW          
-   X                = 0.5
-   HEIGHT           = {13.5*#pa("WWR_adj")}
-   WIDTH            = 4
-   ..
-"Exterior Wall 119" = EXTERIOR-WALL   
-   LOCATION         = SPACE-V16
-   ..
-"Window 16" = WINDOW          
-   X                = 7.25
-   HEIGHT           = {13.5*#pa("WWR_adj")}
-   WIDTH            = 4
-   ..
-"Exterior Wall 120" = EXTERIOR-WALL   
-   LOCATION         = SPACE-V17
-   ..
-"Window 17" = WINDOW          
-   X                = 0.5
-   HEIGHT           = {13.5*#pa("WWR_adj")}
-   WIDTH            = 4
-   ..
-"Exterior Wall 121" = EXTERIOR-WALL   
-   LOCATION         = SPACE-V18
-   ..
-```
+  "Exterior Wall 104" = EXTERIOR-WALL   
+     LOCATION         = SPACE-V1
+     ..
+  "Window 1" = WINDOW          
+     X                = 0.5
+     HEIGHT           = {13.5*#pa("WWR_adj")}
+     WIDTH            = 4
+     ..
+  "Exterior Wall 105" = EXTERIOR-WALL   
+     LOCATION         = SPACE-V2
+     ..
+  "Window 2" = WINDOW          
+     X                = 7.25
+     HEIGHT           = {13.5*#pa("WWR_adj")}
+     WIDTH            = 4
+     ..
+  "Exterior Wall 106" = EXTERIOR-WALL   
+     LOCATION         = SPACE-V3
+     ..
+  "Window 3" = WINDOW          
+     X                = 0.5
+     HEIGHT           = {13.5*#pa("WWR_adj")}
+     WIDTH            = 4
+     ..
+  "Exterior Wall 107" = EXTERIOR-WALL   
+     LOCATION         = SPACE-V4
+     ..
+  "Window 4" = WINDOW          
+     X                = 7.25
+     HEIGHT           = {13.5*#pa("WWR_adj")}
+     WIDTH            = 4
+     ..
+  "Exterior Wall 108" = EXTERIOR-WALL   
+     LOCATION         = SPACE-V5
+     ..
+  "Window 5" = WINDOW          
+     X                = 0.5
+     HEIGHT           = {13.5*#pa("WWR_adj")}
+     WIDTH            = 4
+     ..
+    ```
             
