@@ -24,7 +24,7 @@ $ ---------------------------------------------------------
 ***
 ## File Blocks, block by block in order **if** input required: as above if no input, or no input required: block header still required.
 1. file header 
-   ```
+   ```f#
    INPUT ..
    ```
 2. Title, Run Periods, Design Days, Holidays:
@@ -108,7 +108,7 @@ PROJECT-DATA
    V4               = ( 0, 31.6 )
    ..
   ```
-1. Floors / Spaces / Walls / Windows / Doors
+9. Floors / Spaces / Walls / Windows / Doors
 - Same schema in terms of:<br>
   ```
   floor1/f1-rm1/f1-rm2 etc
@@ -167,4 +167,33 @@ PROJECT-DATA
      WIDTH            = 4
      ..
   ```
-            
+- Note:  
+  ```f#
+    HEIGHT = {13.5*#pa("WWR_adj")}
+  ```
+  is a 'eQuest meta' input:<br>
+  can be assigned with just 13.5 for instance; no braces
+10. Finally! HVAC Systems / Zones<br>
+  ```f#
+  "Sys1 (SUM)" = SYSTEM          
+     TYPE             = SUM
+     HEAT-SOURCE      = NONE
+     SYSTEM-REPORTS   = NO
+   ..
+  "Zn (G.1)" = ZONE            
+     TYPE             = UNCONDITIONED
+     DESIGN-HEAT-T    = 72
+     DESIGN-COOL-T    = 75
+     SIZING-OPTION    = ADJUST-LOADS
+     SPACE            = "Spc (G.1)"
+   ..
+  "Pl Zn (G.2)" = ZONE            
+     TYPE             = UNCONDITIONED
+     DESIGN-HEAT-T    = 72
+     DESIGN-COOL-T    = 75
+     SIZING-OPTION    = ADJUST-LOADS
+     SPACE            = "Plnm (G.2)"
+   ..
+  ```
+***
+## State of affairs:
