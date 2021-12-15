@@ -2,6 +2,7 @@
 ***
 ## eQuest is broken up into what I like to call 'Blocks'
 ## Each block has it's own formatting
+## eQuest confuses the crap out of me sooo... that's part of why so little progress has been made
 ***
   ```
 refer to reference_inp/simple_example.inp
@@ -252,4 +253,4 @@ next steps were to be:<br>
 >  refactor to map wall verts with polyverts<br>
 >  get windows going<br>
 >  likely refactor to make everything properly DF formatted class wise<br>
->  fill in the rest
+>  fill in the rest; as that kinda covers most of the important ORMish items
