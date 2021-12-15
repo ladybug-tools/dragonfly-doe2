@@ -5,7 +5,7 @@
 # TODO: objs to dicts
 import dragonfly
 import dragonfly_energy
-import dragonfly_doe2
+#import dragonfly_doe2
 from .inp_file_blocks.fileblocks import *
 
 
@@ -163,10 +163,10 @@ def doe_spc(_df_obj):
     elif isinstance(_df_obj, dragonfly.story.Story):
         header = '"{}" = FLOOR\n   Z'.format(_df_obj.display_name) + \
             ' '*16+'= {}\n   '.format(_df_obj.floor_height) + \
-            'POLYGON'+' '*12+'"= {} Floor Plg"\n   '.format(_df_obj.display_name) + \
+            'POLYGON'+' '*10+'= "{} Floor Plg"\n   '.format(_df_obj.display_name) + \
             'SHAPE'+' '*12+'= POLYGON\n   ' + \
             'FLOOR-HEIGHT     = {}\n   '.format(_df_obj.floor_to_floor_height) + \
-            'C-DIAGRAM-DATA  = *{} UI DiagData*\n   ..'.format(
+            'C-DIAGRAM-DATA   = *{} UI DiagData*\n   ..'.format(
                 _df_obj.display_name)
 
         return(header)
