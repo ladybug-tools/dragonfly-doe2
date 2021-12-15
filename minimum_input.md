@@ -10,7 +10,7 @@ Preface:<br>
 - Nomenclature:
 - -  I refer to the 'sections' of the *.inp as 'blocks'<br>
 - i.e 'block called 'Title-RP-DD-H' the *header* as I call it seen here:<br>
-```
+```f#
 $ ---------------------------------------------------------
 $              Title, Run Periods, Design Days, Holidays
 $ ---------------------------------------------------------
@@ -29,7 +29,7 @@ $ ---------------------------------------------------------
    ```
 2. Title, Run Periods, Design Days, Holidays:
    - Analysis period required: typical USA users use annual, standard US holidays, library-entry US
-```
+```f#
 TITLE           
    LINE-1           = *simple_example*
    ..
@@ -49,7 +49,7 @@ TITLE
    ..
 ```
 3. Compliance Data
-```
+```f#
 "Compliance Data" = COMPLIANCE      
    C-PERMIT-SCOPE   = 0
    C-PROJ-NAME      = *simple_example*
@@ -62,7 +62,7 @@ TITLE
    ..
 ```
 4. Site and Building Data
-```
+```f#
 "Site Data" = SITE-PARAMETERS 
    ALTITUDE         = 150
    C-STATE          = 21
