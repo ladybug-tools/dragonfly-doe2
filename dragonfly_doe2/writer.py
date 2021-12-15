@@ -116,6 +116,7 @@ def poly_str(_df_obj):
             _df_obj: df_room2d or df_story objects
         Returns:
         *inp string:
+        .. code-block:: f#
 
             "Ground_Office1 Plg" = POLYGON
                 V1               = ( 0.0 , 0.0 )
