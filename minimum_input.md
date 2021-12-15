@@ -91,7 +91,7 @@ PROJECT-DATA
     "floor poly obj"
             |
             V
-    "Room1 (starting from upper_left_counter_clockwise_vertice)
+    "Room1"
         ..
     "Room2"
         ..
@@ -100,7 +100,7 @@ PROJECT-DATA
     *continue*
     ```
 - Verts: MUST be: upper_left_counter_clockwise_vertices in poly obj:
-  ```
+  ```f#
   "Floor Polygon" = POLYGON         
    V1               = ( 0, 0 )
    V2               = ( 31.6, 0 )
@@ -108,7 +108,7 @@ PROJECT-DATA
    V4               = ( 0, 31.6 )
    ..
   ```
-9. Floors / Spaces / Walls / Windows / Doors
+1. Floors / Spaces / Walls / Windows / Doors
 - Same schema in terms of:<br>
   ```
   floor1/f1-rm1/f1-rm2 etc
@@ -117,15 +117,16 @@ PROJECT-DATA
   - example file in reference_inp uses 'wizzard schema' for wall assignment facilitated by the 'template building shapes' in eQuest, otherwise would be assigned (in our application) as follow:<br>
   *Maintaining upper_left_counter_clockwise_vertices* convention: (see privately provided *.inp for detailed reference)<br>
     ```f#
-    "Breakroom-1_L1_SP" = SPACE           
-   SHAPE            = POLYGON
-   SOURCE-SCHEDULE  = {#L("PEOPLE-SCHEDULE")}
-   SOURCE-TYPE      = PROCESS
-   SOURCE-POWER     = {#L("AREA")/#L("AREA/PERSON")*(450-350)}
-   NUMBER-OF-PEOPLE = 0
-   POLYGON          = "Breakroom-1_L1 Plg"
-   C-ACTIVITY-DESC  = *brkm*
-   ..
+    {
+  "Breakroom-1_L1_SP" = SPACE           
+     SHAPE            = POLYGON
+     SOURCE-SCHEDULE  = {#L("PEOPLE-SCHEDULE")}
+     SOURCE-TYPE      = PROCESS
+     SOURCE-POWER     = {#L("AREA")/#L("AREA/PERSON")*(450-350)}
+     NUMBER-OF-PEOPLE = 0
+     POLYGON          = "Breakroom-1_L1 Plg"
+     C-ACTIVITY-DESC  = *brkm*
+     ..
   "Exterior Wall 104" = EXTERIOR-WALL   
      LOCATION         = SPACE-V1
      ..
@@ -166,5 +167,6 @@ PROJECT-DATA
      HEIGHT           = {13.5*#pa("WWR_adj")}
      WIDTH            = 4
      ..
+    }
     ```
             
