@@ -59,4 +59,4 @@
             LOCATION         = TOP
             ..
    ```
-<img src=".reference_inp/rsrcs/abv_grd_clg.jpg">
+<img src="rsrcs/abv_grd_clg.jpg">
