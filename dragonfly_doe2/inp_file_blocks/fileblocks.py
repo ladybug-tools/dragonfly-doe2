@@ -5,6 +5,7 @@ spacer = '\n\n'
 sd_brk = '$ ---------------------------------------------------------\n'
 abortDiag = sd_brk+'$              Abort, Diagnostics\n'+sd_brk+spacer
 globalParam = sd_brk+'$              Global Parameters\n'+sd_brk+spacer
+ttrpddh = sd_brk+'$              Title, Run Periods, Design Days, Holidays\n'+sd_brk+spacer
 comply = sd_brk+'$              Compliance Data\n'+sd_brk+spacer
 siteBldg = sd_brk+'$              Site and Building Data\n'+sd_brk+spacer
 matslayers = sd_brk+'$              Materials / Layers / Constructions\n'+sd_brk+spacer
