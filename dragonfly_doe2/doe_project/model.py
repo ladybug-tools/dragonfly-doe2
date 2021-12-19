@@ -1,50 +1,47 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
 import dragonfly_energy
-from hvac import DoeHVAC
+from .hvac import DoeHVAC
+from dragonfly.room2d import Room2D
+import dragonfly
+
+# class Model(Story):
+#__slots__ = ()
 
 
-class Model(Story):
-    __slots__ = ()
+# class Story(Room):
+#  __slots__ = ('_host')
+#
+#   def __init__(self, host):
+#        self.host = host
+#
+#    @property
+#    def host(self):
+#        return self._host
+#
+#    @host.setter
+#    def host(self, hst):
+#        self._host = hst
 
 
-class Story(Room):
-    __slots__ = ('_host')
+class Room():
+    __slots__ = ('_host_room', '_space_data', '_hvac_zone_data')
 
-    def __init__(self, host):
-        self.host = host
+    def __init__(self, host_room):
+        self._host_room = host_room
 
     @property
     def host(self):
-        return self._host
-
-    @host.setter
-    def host(self, hst):
-        self._host = hst
-
-
-class Room(object):
-    __slots__ = ('_host', '_poly_data', '_space_data', '_hvac_zone_data')
-
-    def __init__(self, host):
-        self.host = host
-
-    @property
-    def host(self):
-        return self._host
-
-    @host.setter
-    def host(self, hst):
-        self._host = hst
+        return self._host_room
 
     @property
     def poly_data(self):
-        return self._poly_data
+        return self._poly_data(self.host)
 
-    @poly_data.setter
-    def poly_data(self, ply_hst):
+    @staticmethod
+    def _poly_data(ply_hst):
         if ply_hst is not None:
-            flr_geom = host.floor_geometry
+            flr_geom = ply_hst.floor_geometry
             flr_verts = flr_geom.upper_left_counter_clockwise_vertices
 
             doe_verts = []
@@ -63,7 +60,7 @@ class Room(object):
 
             for obj in vert_strs:
                 header = header + obj
-        self._poly_data = header
+        return(header)
 
     @property
     def space_data(self):

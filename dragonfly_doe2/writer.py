@@ -5,7 +5,7 @@
 # TODO: objs to dicts
 import dragonfly
 import dragonfly_energy
-from inp_file.inpfile import InpFile as eqf
+#from .inp_file.inpfile import InpFile as eqf
 
 
 def room2d_to_doe2(room2d):
