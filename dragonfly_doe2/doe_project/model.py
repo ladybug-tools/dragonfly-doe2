@@ -1,6 +1,7 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
 import dragonfly_energy
+from hvac import DoeHVAC
 
 
 class Model(Story):
@@ -8,7 +9,18 @@ class Model(Story):
 
 
 class Story(Room):
-    __slots__ = ()
+    __slots__ = ('_host')
+
+    def __init__(self, host):
+        self.host = host
+
+    @property
+    def host(self):
+        return self._host
+
+    @host.setter
+    def host(self, hst):
+        self._host = hst
 
 
 class Room(object):
@@ -16,6 +28,14 @@ class Room(object):
 
     def __init__(self, host):
         self.host = host
+
+    @property
+    def host(self):
+        return self._host
+
+    @host.setter
+    def host(self, hst):
+        self._host = hst
 
     @property
     def poly_data(self):
@@ -43,7 +63,7 @@ class Room(object):
 
             for obj in vert_strs:
                 header = header + obj
-        return(header)
+        self._poly_data = header
 
     @property
     def space_data(self):
@@ -61,7 +81,24 @@ class Room(object):
                 'C-ACTIVITY-DESC  = *{}*\n   ..'.format(
                 spc_hst.properties.energy.program_type.display_name)
 
-        return(header)
+        self._space_data = header
+# TODO: Need to factor in walls
+
+    @property
+    def hvac_zone_data(self):
+        return self._hvac_zone_data
+
+    @hvac_zone_data.setter
+    def hvac_zone_data(self, hvc_hst):
+        if hvc_hst is not None:
+            assert isinstance(hvc_hst, dragonfly.room2d.Room2D), 'Expected DF Room2D' \
+                'Got: {}'.format(type(hvc_hst))
+            spc_hvac = '"Zn ({})" = ZONE\n   '.format(hvc_hst.display_name) + \
+                'TYPE           = UNCONDITIONED\n   ' \
+                'DESIGN-HEAT-T  = 72\n   '\
+                'DESIGN-COOL-T  = 75\n   '\
+                'SPACE          ="Spc {}"'.format(hvc_hst.display_name)
+            self._hvac_zone_data = spc_hvac
 
 
 def poly_str(_df_obj):
@@ -69,7 +106,8 @@ def poly_str(_df_obj):
         DOE2 *.inp input 'polygon object
 
         Args:
-            _df_obj: df_room2d or df_story objects
+            _df_obj: df_room2d or df_story objects.
+
         Returns:
         *inp string:
         .. code-block:: f#
