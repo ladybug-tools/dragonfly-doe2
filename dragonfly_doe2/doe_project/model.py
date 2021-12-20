@@ -80,6 +80,12 @@ class Room():
                 'C-ACTIVITY-DESC  = *{}*\n   ..'.format(
                 spc_hst.properties.energy.program_type.display_name)
 
+            wall_find = []
+            for i, bc in spc_hst.boundary_conditions:
+                if bc == 'Outdoors':
+                    wall_str = '"{} Wall_{}" = EXTERIOR-WALL\n  '.format(
+                        spc_hst.display_name, i + 1)
+
         return(header)
 # TODO: Need to factor in walls
 
@@ -130,10 +136,16 @@ class Story():
     def _poly_data(ply_hst):
         assert isinstance(ply_hst, dragonfly.story.Story), 'Expected DF Story' \
             'Got: {}'.format(type(ply_hst))
+        temp_geom = ply_hst.duplicate().footprint()
+        doe_verts = []
+        for face in temp_geom:
+            cleanface = face.remove_colinear_vertices(0.01)
+            for i, vert in enumerate(cleanface.upper_left_counter_clockwise_vertices):
+                doe_verts.append((i+1, vert.x, vert.y))
 
         header = '"{} Floor Plg" = POLYGON\n   '.format(ply_hst.display_name)
         vert_strs = []
-        for obj in ply_hst.properties.doe2.story_poly_verts:
+        for obj in doe_verts:
             vstr = 'V{}'.format(obj[0])+(' '*15) + \
                 '= ( {} , {} )\n   '.format(obj[1], obj[2])
             vert_strs.append(vstr)
@@ -163,11 +175,22 @@ class Story():
     def _space_data(spc_hst):
         assert isinstance(spc_hst, dragonfly.story.Story), 'Expected DF Story' \
             'Got: {}'.format(type(spc_hst))
-        header = '"{}" = FLOOR\n   Z'.format(_df_obj.display_name) + \
-            ' '*16+'= {}\n   '.format(_df_obj.floor_height) + \
-            'POLYGON'+' '*10+'= "{} Floor Plg"\n   '.format(_df_obj.display_name) + \
+        header = '"{}" = FLOOR\n   Z'.format(spc_hst.display_name) + \
+            ' '*16+'= {}\n   '.format(spc_hst.floor_height) + \
+            'POLYGON'+' '*10+'= "{} Floor Plg"\n   '.format(spc_hst.display_name) + \
             'SHAPE'+' '*12+'= POLYGON\n   ' + \
-            'FLOOR-HEIGHT     = {}\n   '.format(_df_obj.floor_to_floor_height) + \
-            'C-DIAGRAM-DATA   = *{} UI DiagData*\n   ..'.format(
-                _df_obj.display_name)
+            'FLOOR-HEIGHT     = {}\n   '.format(spc_hst.floor_to_floor_height) + \
+            'C-DIAGRAM-DATA   = *{} UI DiagData*\n   ..\n'.format(
+                spc_hst.display_name)
         return(header)
+
+    @property
+    def space_block(self):
+        return self._space_block(self.rooms_doe2, self.space_data)
+
+    @staticmethod
+    def _space_block(doe_rms, spcdta):
+        story_spc_block = spcdta
+        roomstrs = '\n'.join(rm.space_data for rm in doe_rms[0:])
+        spc_block = story_spc_block + roomstrs
+        return(spc_block)
