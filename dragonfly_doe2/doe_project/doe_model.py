@@ -5,9 +5,7 @@ import dragonfly_energy
 from .hvac import DoeHVAC
 from dragonfly.room2d import Room2D
 import dragonfly
-
-# class INPModel(Story):
-#__slots__ = ()
+import inp_file.fileblocks as fb
 
 
 class INPRoom():
@@ -131,7 +129,7 @@ class INPStory():
     def _make_doe_rooms(obj):
         doe_rms = []
         for room in obj.room_2ds:
-            doe_rm = Room(room)
+            doe_rm = INPRoom(room)
             doe_rms.append(doe_rm)
         return(doe_rms)
 
@@ -201,3 +199,49 @@ class INPStory():
         roomstrs = '\n'.join(rm.space_data for rm in doe_rms[0:])
         spc_block = story_spc_block + roomstrs
         return(spc_block)
+
+
+class INPModel():
+    __slots__ = ('_host_model')
+
+    def __init__(self, host_model):
+        self._host_model = host_model
+
+    @property
+    def host(self):
+        return self._host_model
+
+    @property
+    def file_start(self):
+        return self._make_file_start()
+
+    @staticmethod
+    def _make_file_start(_objs=None):
+        # TODO:  Make this not hard coded
+        block = fb.topLevel+fb.abortDiag+fb.globalParam+fb.ttrpddh + \
+            'TITLE\n   LINE-1          = *simple_example*\n   ..\n\n' + \
+            '"Entire Year" = RUN-PERIOD-PD\n  ' + \
+            'BEGIN-MONTH     = 1\n  ' + \
+            'BEGIN-DAY      = 1\n  ' + \
+            'BEGIN-YEAR     = 2021\n  ' + \
+            'END-MONTH      = 12\n  ' + \
+            'END-DAY        = 31\n  ' + \
+            'END-YEAR       = 2021\n  ..\n\n' + \
+            '"Standard US Holidays" = HOLIDAYS\n  ' + \
+            'LIBRARY-ENTRY "US"\n  ..\n\n'
+
+    @property
+    def compliance_2_site(self):
+        return self._make_comply()
+
+    @staticmethod
+    def _make_comply(_objs=None):
+        block = fb.comply + \
+            '\n"Compliance Data" = COMPLIANCE\n  ' + \
+            'C-PERMIT-SCOPE  = 0\n  ' +\
+            'C-PROJ-NAME     = *{}*\n  '.format(self.host.display_name) +\
+            'C-BUILDING-TYPE = 0\n  '
+
+    def to_inp(self):
+
+        inp_file = self.file_start +
