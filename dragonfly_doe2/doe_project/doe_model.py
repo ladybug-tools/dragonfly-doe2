@@ -229,9 +229,10 @@ class INPModel():
             'END-YEAR       = 2021\n  ..\n\n' + \
             '"Standard US Holidays" = HOLIDAYS\n  ' + \
             'LIBRARY-ENTRY "US"\n  ..\n\n'
+        return(block)
 
     @property
-    def compliance_2_site(self):
+    def compliance_data(self):
         return self._make_comply()
 
     @staticmethod
@@ -240,8 +241,33 @@ class INPModel():
             '\n"Compliance Data" = COMPLIANCE\n  ' + \
             'C-PERMIT-SCOPE  = 0\n  ' +\
             'C-PROJ-NAME     = *{}*\n  '.format(self.host.display_name) +\
-            'C-BUILDING-TYPE = 0\n  '
+            'C-BUILDING-TYPE = 0\n  ' +\
+            'C-CONS-PHASE    = 0\n  ' +\
+            'C-NR-DHW-INCL   = 0\n  ' +\
+            'C-CODE-VERSION  = 1\n  ' +\
+            'C-901-NUM-FLRS  = 1\n  ' +\
+            'C-901-BLDG-TYPE = 32\n  ..\n\n'
+        return(block)
+
+    @property
+    def site_bldg_data(self):
+        return self._make_site_bldg()
+
+    @staticmethod
+    def _make_site_bldg(_objs=None):
+        block = fb.siteBldg +\
+            '"Site Data" = SITE-PARAMETERS\n  ' +\
+            'ALTITUDE          = 150\n  ' +\
+            'C-STATE           = 21\n  ' +\
+            'C-WEATHER-FILE    = *TMY2\HARTFOCT.bin*\n  ' +\
+            'C-COUNTRY         = 1\n  ' +\
+            'C-901-LOCATION    = 1092\n  ..\n' +\
+            '"Building Data" = BUILD-PARAMETERS\n  ' +\
+            'HOLIDAYS        = "Standard US Holidays"\n  ..\n\n\n' +\
+            'PROJECT-DATA\n  ..\n\n'
+        return(block)
 
     def to_inp(self):
 
-        inp_file = self.file_start +
+        # inp_file = self.file_start +
+        pass
