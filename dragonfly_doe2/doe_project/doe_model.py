@@ -2,10 +2,11 @@ from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
 from honeybee.boundarycondition import Outdoors
 import dragonfly_energy
-from .hvac import DoeHVAC
+from dragonfly.model import Model
+from dragonfly.story import Story
 from dragonfly.room2d import Room2D
 import dragonfly
-import inp_file.fileblocks as fb
+import dragonfly_doe2.inp_file.fileblocks as fb
 
 
 class INPRoom():
@@ -219,7 +220,7 @@ class INPModel():
     def _make_file_start(_objs=None):
         # TODO:  Make this not hard coded
         block = fb.topLevel+fb.abortDiag+fb.globalParam+fb.ttrpddh + \
-            'TITLE\n   LINE-1          = *simple_example*\n   ..\n\n' + \
+            'TITLE\n  LINE-1          = *simple_example*\n  ..\n\n' + \
             '"Entire Year" = RUN-PERIOD-PD\n  ' + \
             'BEGIN-MONTH     = 1\n  ' + \
             'BEGIN-DAY      = 1\n  ' + \
@@ -233,14 +234,14 @@ class INPModel():
 
     @property
     def compliance_data(self):
-        return self._make_comply()
+        return self._make_comply(self.host)
 
     @staticmethod
-    def _make_comply(_objs=None):
+    def _make_comply(host, _objs=None):
         block = fb.comply + \
             '\n"Compliance Data" = COMPLIANCE\n  ' + \
             'C-PERMIT-SCOPE  = 0\n  ' +\
-            'C-PROJ-NAME     = *{}*\n  '.format(self.host.display_name) +\
+            'C-PROJ-NAME     = *{}*\n  '.format(host.display_name) +\
             'C-BUILDING-TYPE = 0\n  ' +\
             'C-CONS-PHASE    = 0\n  ' +\
             'C-NR-DHW-INCL   = 0\n  ' +\
@@ -267,7 +268,56 @@ class INPModel():
             'PROJECT-DATA\n  ..\n\n'
         return(block)
 
-    def to_inp(self):
+    @property
+    def mat_layer_const(self):
+        # TODO MLC converion in general needs to be attended to
+        return self._mcl_make()
 
-        # inp_file = self.file_start +
-        pass
+    @staticmethod
+    def _mcl_make(_objs=None):
+        block = fb.matslayers + \
+            '"EWall Cons Mat 2 (5.5)" = MATERIAL\n  ' +\
+            'TYPE             = RESISTANCE\n  ..\n' +\
+            '"EWall Cons Layers" = LAYERS\n  ' +\
+            'MATERIAL          = ("Plywd 5/8in (PW04)", "Insul Bd 1/2in (IN61)",\n  ' +\
+            '                     "EWall Cons Mat 2 (5.5)", "GypBd 1/2in (GP01)" )\n  ..\n' +\
+            '"EWall Construction" = CONSTRUCTION\n  ' +\
+            'TYPE             = LAYERS\n  ' +\
+            'ABSORPTANCE      = 0.6\n  ' +\
+            'ROUGHNESS        = 4\n  ' +\
+            'LAYERS           = "EWall Cons Layers"\n  ..'
+        return(block)
+
+    @property
+    def poly_block_data(self):
+        return self._make_poly_block_data(self.host)
+
+    @staticmethod
+    def _make_poly_block_data(_hst_model):
+        ply_strs = []
+        for story in _hst_model.stories:
+            to_parse = INPStory(story)
+            ply_strs.append(to_parse.poly_block)
+        block = '\n'.join(obj for obj in ply_strs[0:])
+        return(block)
+
+    @property
+    def space_block_data(self):
+        return self._make_space_block_data(self.host)
+
+    @staticmethod
+    def _make_space_block_data(_hst_model):
+        spc_strs = []
+        for building in _hst_model:
+            for story in building.stories:
+                to_parse = INPStory(story)
+                spc_strs.append(to_parse.space_block)
+        block = '\n'.join(obj for obj in spc_strs[0:])
+        return(block)
+
+    def to_inp(self):
+        # TODO: Dont forget glass
+        inp_file = self.file_start + self.compliance_data + self.site_bldg_data + \
+            self.mat_layer_const
+
+        return(inp_file)
