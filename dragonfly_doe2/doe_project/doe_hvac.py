@@ -10,7 +10,7 @@ class DoeHVAC(object):
         inp_str = '"Sys1 (SUM)" = SYSTEM\n  ' \
             'TYPE             = SUM\n  ' \
             'HEAT-SOURCE      = NONE\n  ' \
-            'SYSTEM-REPORTS   = NO'
+            'SYSTEM-REPORTS   = NO\n  ..\n'
         return(inp_str)
 
     def __repr__(self):

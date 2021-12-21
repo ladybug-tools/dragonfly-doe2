@@ -7,6 +7,7 @@ from dragonfly.story import Story
 from dragonfly.room2d import Room2D
 import dragonfly
 import dragonfly_doe2.inp_file.fileblocks as fb
+from .doe_hvac import DoeHVAC
 
 
 class INPRoom():
@@ -97,19 +98,17 @@ class INPRoom():
 
     @property
     def hvac_zone_data(self):
-        return self._hvac_zone_data
+        return self._hvac_zone_data(self.host)
 
     @staticmethod
-    def hvac_zone_data(hvc_hst):
-        if hvc_hst is not None:
-            assert isinstance(hvc_hst, dragonfly.room2d.Room2D), 'Expected DF Room2D' \
-                'Got: {}'.format(type(hvc_hst))
-            spc_hvac = '"Zn ({})" = ZONE\n   '.format(hvc_hst.display_name) + \
-                'TYPE           = UNCONDITIONED\n   ' \
-                'DESIGN-HEAT-T  = 72\n   '\
-                'DESIGN-COOL-T  = 75\n   '\
-                'SPACE          ="Spc {}"'.format(hvc_hst.display_name)
-            return(spc_hvac)
+    def _hvac_zone_data(hvc_hst):
+
+        spc_hvac = '"Zn ({})" = ZONE\n   '.format(hvc_hst.display_name) + \
+            'TYPE           = UNCONDITIONED\n   ' \
+            'DESIGN-HEAT-T  = 72\n   '\
+            'DESIGN-COOL-T  = 75\n   '\
+            'SPACE          ="Spc {}"\n  ..\n'.format(hvc_hst.display_name)
+        return(spc_hvac)
 
 
 class INPStory():
@@ -200,6 +199,15 @@ class INPStory():
         roomstrs = '\n'.join(rm.space_data for rm in doe_rms[0:])
         spc_block = story_spc_block + roomstrs
         return(spc_block)
+
+    @property
+    def hvac_block(self):
+        return self._get_hvac_block(self.rooms_doe2)
+
+    @staticmethod
+    def _get_hvac_block(doe_rms):
+        hvac_data = '\n'.join(rm.hvac_zone_data for rm in doe_rms)
+        return(hvac_data)
 
 
 class INPModel():
@@ -316,6 +324,21 @@ class INPModel():
         header = fb.floorNspace + block
         return(header)
 
+    @property
+    def hvac_block_data(self):
+        return self._make_hvac(self.host)
+
+    @staticmethod
+    def _make_hvac(hvc_hst):
+        hvc_block = fb.hvacSysNzone + DoeHVAC().to_inp_string()
+        zn_strs = []
+        for story in hvc_hst.stories:
+            to_parse = INPStory(story)
+            zn_strs.append(to_parse.hvac_block)
+        block = '\n'.join(obj for obj in zn_strs[0:])
+        header = hvc_block+block
+        return(header)
+
     def to_inp(self):
         # TODO: Dont forget glass
         inp_file = self.file_start + self.compliance_data + self.site_bldg_data + \
@@ -323,6 +346,11 @@ class INPModel():
             fb.daySch + fb.weekSch + fb.annualSch + self.poly_block_data + fb.wallParams + \
             fb.fixBldgShade + fb.miscCost + fb.perfCurve + self.space_block_data + \
             fb.elecFuelMeter + fb.elecMeter + fb.fuelMeter + fb.masterMeter + fb.hvacCircLoop + \
-            fb.pumps + fb.heatExch
+            fb.pumps + fb.heatExch + fb.circLoop + fb.chillyboi + fb.boilyboi + fb.dwh + \
+            fb.heatReject + fb.towerFree + fb.pvmod + fb.elecgen + fb.thermalStore + \
+            fb.groundLoopHx + fb.compDhwRes + fb.steamAndcldMtr + fb.steamMtr + \
+            fb.chillMeter + self.hvac_block_data + fb.miscNmeterHvac + fb.equipControls + \
+            fb.loadManage + fb.UtilRate + fb.ratchets + fb.blockCharge + fb.utilRate + fb.outputReporting + \
+            fb.loadsNonHr + fb.sysNonHr + fb.plntNonHr + fb.econNonHr + fb.hourlyRep + fb.theEnd
 
         return(inp_file)
