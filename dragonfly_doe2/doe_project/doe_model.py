@@ -285,7 +285,7 @@ class INPModel():
             'TYPE             = LAYERS\n  ' +\
             'ABSORPTANCE      = 0.6\n  ' +\
             'ROUGHNESS        = 4\n  ' +\
-            'LAYERS           = "EWall Cons Layers"\n  ..'
+            'LAYERS           = "EWall Cons Layers"\n  ..\n\n'
         return(block)
 
     @property
@@ -299,7 +299,8 @@ class INPModel():
             to_parse = INPStory(story)
             ply_strs.append(to_parse.poly_block)
         block = '\n'.join(obj for obj in ply_strs[0:])
-        return(block)
+        header = fb.polygons + block
+        return(header)
 
     @property
     def space_block_data(self):
@@ -308,16 +309,20 @@ class INPModel():
     @staticmethod
     def _make_space_block_data(_hst_model):
         spc_strs = []
-        for building in _hst_model:
-            for story in building.stories:
-                to_parse = INPStory(story)
-                spc_strs.append(to_parse.space_block)
+        for story in _hst_model.stories:
+            to_parse = INPStory(story)
+            spc_strs.append(to_parse.space_block)
         block = '\n'.join(obj for obj in spc_strs[0:])
-        return(block)
+        header = fb.floorNspace + block
+        return(header)
 
     def to_inp(self):
         # TODO: Dont forget glass
         inp_file = self.file_start + self.compliance_data + self.site_bldg_data + \
-            self.mat_layer_const
+            self.mat_layer_const + fb.glzCode + fb.glzTyp + fb.WindowLayers + fb.iLikeLamp + \
+            fb.daySch + fb.weekSch + fb.annualSch + self.poly_block_data + fb.wallParams + \
+            fb.fixBldgShade + fb.miscCost + fb.perfCurve + self.space_block_data + \
+            fb.elecFuelMeter + fb.elecMeter + fb.fuelMeter + fb.masterMeter + fb.hvacCircLoop + \
+            fb.pumps + fb.heatExch
 
         return(inp_file)

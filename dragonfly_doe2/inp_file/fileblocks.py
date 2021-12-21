@@ -17,7 +17,7 @@ daySch = sd_brk+'$              Day Schedules\n'+sd_brk+spacer
 weekSch = sd_brk+'$              Week Schedules\n'+sd_brk+spacer
 annualSch = sd_brk+'$              Annual Schedules\n'+sd_brk+spacer
 polygons = sd_brk+'$              Polygons\n'+sd_brk+spacer
-wallParams = sd_brk+'$              Wall Parameters\n'+sd_brk+spacer
+wallParams = spacer+sd_brk+'$              Wall Parameters\n'+sd_brk+spacer
 fixBldgShade = sd_brk+'$              Fixed and Building Shades\n'+sd_brk+spacer
 miscCost = sd_brk+'$              Misc Cost Related Objects\n'+sd_brk+spacer
 
@@ -28,8 +28,8 @@ perfCurve = star_brk+star_blnk+'$ **                Performance Curves          
     + star_blnk+star_brk+spacer
 floorNspace = star_brk+star_blnk+'$ **      Floors / Spaces / Walls / Windows / Doors      **\n'\
     + star_blnk+star_brk+spacer
-elecFuelMeter = star_brk+star_blnk+'$ **              Electric & Fuel Meters                 **\n'\
-    + star_blnk+star_brk+spacer
+elecFuelMeter = spacer+star_brk+star_blnk + \
+    '$ **              Electric & Fuel Meters                 **\n' + star_blnk+star_brk+spacer
 
 elecMeter = sd_brk+'$              Electric Meters\n'+sd_brk+spacer
 fuelMeter = sd_brk+'$              Fuel Meters\n'+sd_brk+spacer
