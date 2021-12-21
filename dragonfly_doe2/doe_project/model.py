@@ -1,15 +1,16 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
+from honeybee.boundarycondition import Outdoors
 import dragonfly_energy
 from .hvac import DoeHVAC
 from dragonfly.room2d import Room2D
 import dragonfly
 
-# class Model(Story):
+# class INPModel(Story):
 #__slots__ = ()
 
 
-class Room():
+class INPRoom():
     __slots__ = ('_host_room')
 
     def __init__(self, host_room):
@@ -77,17 +78,23 @@ class Room():
             header = '"{}" = SPACE\n   SHAPE'.format(spc_hst.display_name) +\
                 ' '*12+'= POLYGON\n   '+'POLYGON'+' '*10 + \
                 '= "{} Plg"\n   '.format(spc_hst.display_name) + \
-                'C-ACTIVITY-DESC  = *{}*\n   ..'.format(
+                'C-ACTIVITY-DESC  = *{}*\n   ..\n'.format(
                 spc_hst.properties.energy.program_type.display_name)
 
             wall_find = []
-            for i, bc in spc_hst.boundary_conditions:
+            bcs = [str(bc) for bc in spc_hst.boundary_conditions]
+            for i, bc in enumerate(bcs):
                 if bc == 'Outdoors':
                     wall_str = '"{} Wall_{}" = EXTERIOR-WALL\n  '.format(
-                        spc_hst.display_name, i + 1)
+                        spc_hst.display_name, i + 1) + \
+                        'CONSTRUCTION    = "EWall Construction"\n  ' + \
+                        'LOCATION        = SPACE-V{}\n   ..'.format(i+1)
+                    wall_find.append(wall_str)
+
+            wall_data = '\n'.join(obj for obj in wall_find[0:])
+            header = header + wall_data
 
         return(header)
-# TODO: Need to factor in walls
 
     @property
     def hvac_zone_data(self):
@@ -106,7 +113,7 @@ class Room():
             return(spc_hvac)
 
 
-class Story():
+class INPStory():
     __slots__ = ('_host_story')
 
     def __init__(self, host_story):
