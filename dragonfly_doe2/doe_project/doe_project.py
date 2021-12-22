@@ -3,6 +3,7 @@ from dragonfly.model import Model as DFModel
 from dragonfly_doe2.inp_file import fileblocks as fb
 from .doe_templates.polygon_template import DOEPoly
 from .doe_templates.compliance_template import ComplianceData
+from .doe_templates.sitebldg_template import SiteBldgData
 
 
 class DOEModelFile:
@@ -54,6 +55,16 @@ class DOEModelFile:
             value = ComplianceData()
         self._compliance_data = value
 
+    @property
+    def site_bldg_data(self):
+        return self._site_bldg_data
+
+    @site_bldg_data.setter
+    def site_bldg_data(self, value):
+        if not value:
+            value = SiteBldgData()
+        self._site_bldg_data = value
+
     def to_inp(self):
 
         polyblock = [fb.polygons]
@@ -67,7 +78,7 @@ class DOEModelFile:
 
         data_objs = [
             self.file_start, self.compliance_data,
-
+            self.site_bldg_data,
 
         ]
         data = tuple(data_objs)
