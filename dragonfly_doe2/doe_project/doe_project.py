@@ -10,7 +10,6 @@ class DOEModelFile:
     """A DOE *.inp Model File Object"""
 
     def __init__(self) -> None:
-        """Quick n Dirty kwargs: will be replaced with args if needed"""
         self.df_model = None
         self.file_start = None
         self.compliance_data = None

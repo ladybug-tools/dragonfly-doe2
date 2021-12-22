@@ -13,5 +13,5 @@ class OpaqueConstrConvert:
     @classmethod
     def from_df_model(cls, df_model):
         cls_ = cls()
-        for const in df_model.properties.dragonfly_energy.properties:
+        for const in df_model.properties.energy.constructions:
             pass
