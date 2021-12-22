@@ -39,7 +39,7 @@ class StoryPolyInput:
 
     def to_inp(self) -> str:
         """Return Space/Room Polygons block input"""
-        return '"{self.df_obj.display_name} Floor Plg" = POLYGON\n  ' +\
+        return f'"{self.df_obj.display_name} Floor Plg" = POLYGON\n  ' +\
                self.get_verts(self.df_obj)
 
     def __repr__(self) -> str:
