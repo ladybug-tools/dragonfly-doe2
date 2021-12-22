@@ -75,6 +75,8 @@ class DOEModelFile:
 
         polyblock = '\n\n'.join(tuple(polyblock))
 
+        # Poly Block and others will be added below if created here.
+        # if not: will be a self.whatever
         data_objs = [
             self.file_start, self.compliance_data,
             self.site_bldg_data,

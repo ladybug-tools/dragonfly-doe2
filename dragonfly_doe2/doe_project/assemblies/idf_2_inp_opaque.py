@@ -27,6 +27,7 @@ class OpaqueAssyConvert:
 
 @dataclass()
 class OpaqueConstr:
+    """Data Class for OpaqueConstr, currently just u-value type"""
     cons_name: str = None
     cons_type: str = 'U-VALUE'
     u_value: float = None
