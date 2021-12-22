@@ -22,7 +22,8 @@ class OpaqueAssyConvert:
             cls_.constructions.append(cons_obj)
 
         for mat in df_model.properties.energy.materials:
-            pass
+            pass  # TODO: Make builder, check docs to see what the input types are
+            # TODO: do check for e-mat or e-mat-no-mass
 
 
 @dataclass()
