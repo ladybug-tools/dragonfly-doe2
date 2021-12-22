@@ -8,7 +8,7 @@ from dragonfly.room2d import Room2D as df_room
 from dragonfly.story import Story as df_story
 
 
-@dataclass
+@dataclass()
 class RoomPolyInput:
     df_obj: df_room = None
 
@@ -27,7 +27,7 @@ class RoomPolyInput:
         return self.to_inp()
 
 
-@dataclass
+@dataclass()
 class StoryPolyInput:
     df_obj: df_story = None
 

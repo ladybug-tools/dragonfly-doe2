@@ -8,34 +8,40 @@ from .doe_templates.compliance_template import ComplianceData
 class DOEModelFile:
     """A DOE *.inp Model File Object"""
 
-    def __init__(self, df_model, **kwargs) -> None:
+    def __init__(self) -> None:
         """Quick n Dirty kwargs: will be replaced with args if needed"""
-        self.df_model = df_model
+        self.df_model = None
+        self.file_start = None
         self.compliance_data = None
 
-        for k, v in kwargs.items():
-            setattr(self, k, v)
+    @classmethod
+    def from_df_model(cls, df_model: DFModel):
+        cls_ = cls()
+        cls_.df_model = df_model
+        cls_.compliance_data.proj_name = df_model.identifier
+        return cls_
 
     @property
     def file_start(self):
-        return self._make_file_start()
+        return self._file_start
 
-    @staticmethod
-    def _make_file_start(_objs=None):
-        # TODO:  Make this not hard coded
-        # TODO:  Add this into doe_templates and make a class that takes an LB analysis period
-        block = fb.topLevel+fb.abortDiag+fb.globalParam+fb.ttrpddh + \
-            'TITLE\n  LINE-1          = *simple_example*\n  ..\n\n' + \
-            '"Entire Year" = RUN-PERIOD-PD\n  ' + \
-            'BEGIN-MONTH     = 1\n  ' + \
-            'BEGIN-DAY      = 1\n  ' + \
-            'BEGIN-YEAR     = 2021\n  ' + \
-            'END-MONTH      = 12\n  ' + \
-            'END-DAY        = 31\n  ' + \
-            'END-YEAR       = 2021\n  ..\n\n' + \
-            '"Standard US Holidays" = HOLIDAYS\n  ' + \
-            'LIBRARY-ENTRY "US"\n  ..\n\n'
-        return(block)
+    @file_start.setter
+    def _make_file_start(self, value):
+        if not value:
+            # TODO:  Make this not hard coded
+            # TODO:  Add this into doe_templates and make a class that takes an LB analysis period
+            value = fb.topLevel+fb.abortDiag+fb.globalParam+fb.ttrpddh + \
+                'TITLE\n  LINE-1          = *simple_example*\n  ..\n\n' + \
+                '"Entire Year" = RUN-PERIOD-PD\n  ' + \
+                'BEGIN-MONTH     = 1\n  ' + \
+                'BEGIN-DAY      = 1\n  ' + \
+                'BEGIN-YEAR     = 2021\n  ' + \
+                'END-MONTH      = 12\n  ' + \
+                'END-DAY        = 31\n  ' + \
+                'END-YEAR       = 2021\n  ..\n\n' + \
+                '"Standard US Holidays" = HOLIDAYS\n  ' + \
+                'LIBRARY-ENTRY "US"\n  ..\n\n'
+        self._file_start = value
 
     @property
     def compliance_data(self):
