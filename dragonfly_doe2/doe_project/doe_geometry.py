@@ -24,5 +24,19 @@ class DoeVerts(object):
         obj = doe2_vert_objs
         return(obj)
 
+    @classmethod
+    def from_story(cls, _stry):
+        obj = cls
+
+        flr_geom = _stry.duplicate().footprint()
+        doe2_vert_objs = []
+
+        for face in flr_geom:
+            cleanface = face.remove_colinear_vertices(0.01)
+            for i, vert in enumerate(cleanface.upper_left_counter_clockwise_vertices):
+                doe2_vert_objs.append((i+1, vert.x, vert.y))
+        obj = doe2_vert_objs
+        return(obj)
+
     def __repr__(self):
         return(obj)

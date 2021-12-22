@@ -9,6 +9,10 @@ import dragonfly
 import dragonfly_doe2.inp_file.fileblocks as fb
 from .doe_hvac import DoeHVAC
 
+###############       ###########
+# To Be Replaced Soon ###########
+###############       ###########
+
 
 class INPRoom():
     __slots__ = ('_host_room')

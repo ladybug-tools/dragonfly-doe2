@@ -8,7 +8,7 @@ class DOEModelFile:
     """A DOE *.inp Model File Object"""
 
     def __init__(self, df_model, **kwargs) -> None:
-        """Quick n Dirty kwargs: will be replaced with args"""
+        """Quick n Dirty kwargs: will be replaced with args if needed"""
         self.df_model = df_model
 
         for k, v in kwargs.items():
