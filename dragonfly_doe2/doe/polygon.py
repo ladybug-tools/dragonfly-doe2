@@ -8,7 +8,7 @@ import dragonfly
 import dragonfly_doe2.inp_blocks as fb
 from .hvac import HVAC
 from .geometry import Vertices
-from .templates import RoomPolyInput
+# from .templates import RoomPolyInput
 
 
 class Polygon(object):
