@@ -1,7 +1,6 @@
-from .data_classing import IpyDataClass as ipydata
+"""Compliance Data."""
 
-
-class ComplianceData(ipydata):
+class ComplianceData(object):
 
     permit_scope = 0
     proj_name = 'sample_project'
@@ -20,7 +19,7 @@ class ComplianceData(ipydata):
         return '"Compliance Data" = COMPLIANCE\n' \
             '   C-PERMIT-SCOPE   = {permit_scope}\n'.format(permit_scope=self.permit_scope) + \
             '   C-PROJ-NAME      = *{proj_name}*\n'.format(proj_name=self.proj_name) + \
-            '   C-BUILDING-TYPE  = {bldg_type_901}\n'.format(bldg_type=self.bldg_type) + \
+            '   C-BUILDING-TYPE  = {bldg_type}\n'.format(bldg_type=self.bldg_type) + \
             '   C-CONS-PHASE     = {cons_phase}\n'.format(cons_phase=self.cons_phase) + \
             '   C-NR-DHW-INCL    = {nr_dhw_incl}\n'.format(nr_dhw_incl=self.nr_dhw_incl) + \
             '   C-CODE-VERSION   = {code_version}\n'.format(code_version=self.code_version) + \

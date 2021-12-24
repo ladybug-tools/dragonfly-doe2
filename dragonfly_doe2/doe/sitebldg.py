@@ -1,7 +1,4 @@
-from .data_classing import IpyDataClass as ipydata
-
-
-class SiteBldgData(ipydata):
+class SiteBldgData(object):
     def __init__(self):
         super(SiteBldgData, self).__init__()
 

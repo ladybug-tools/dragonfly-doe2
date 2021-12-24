@@ -3,13 +3,13 @@ from dragonfly.model import Model as DFModel
 
 from ladybug.analysisperiod import AnalysisPeriod
 
-from .templates.polygon_template import Polygon
-from .templates.compliance_template import ComplianceData
-from .templates.sitebldg_template import SiteBldgData
-from .templates.title import Title
-from .templates.run_period import RunPeriod
+from .polygon import Polygon
+from .compliance import ComplianceData
+from .sitebldg import SiteBldgData
+from .title import Title
+from .run_period import RunPeriod
 
-from .. import inp_blocks as fb
+from . import blocks as fb
 
 
 class Model:
@@ -116,5 +116,4 @@ class Model:
         return '\n\n'.join(data)
 
     def __repr__(self) -> str:
-        # Returns the whole file to be written to output.inp
-        return self.to_inp()
+        return 'Doe2 Model:\n%s' % self.title.to_inp()

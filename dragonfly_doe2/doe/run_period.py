@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from ladybug.analysisperiod import AnalysisPeriod
 
 
-@dataclass()
+@dataclass
 class RunPeriod:
 
     begin_month: int = 1

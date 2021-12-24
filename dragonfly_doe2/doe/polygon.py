@@ -1,44 +1,48 @@
-from honeybee.model import Model as HBModel
-from dragonfly.model import Model as DFModel
-from honeybee.boundarycondition import Outdoors
-import dragonfly_energy
+""" Templates for 'Block Inputs' that are of relative
+    Redundance between rooms and story objects
+"""
 from dragonfly.room2d import Room2D
 from dragonfly.story import Story
-import dragonfly
-import dragonfly_doe2.inp_blocks as fb
-from .hvac import HVAC
-from .geometry import Vertices
-# from .templates import RoomPolyInput
 
 
 class Polygon(object):
-    """ An agnostic DOE poly block Object for rooms and stories """
+    "A Doe2 Polygon."
+    def __init__(self, name, vertices):
+        self.name = name
+        self.vertice = vertices
 
-    def __init__(self, _host_obj):
-        self.host_obj = _host_obj
+    @classmethod
+    def from_room(cls, room: Room2D, tolerace=0.01):
+        """
+        Note: Shouldn't we ensure the points are in 2D. I'm not sure how it works.
+        """
+        cf = room.floor_geometry.remove_colinear_vertices(tolerance=tolerace)
+        vertices = cf.upper_left_counter_clockwise_vertices
+        return cls(room.display_name, vertices)
+    
+    @classmethod
+    def from_story(cls, story: Story, tolerace=0.01):
+        """
+        Note: I'm not sure if this is correct - shouldn't we create a polygon per face?
+        This is based on the initial code by Trevor so I didn't change it.
+        """
+        geo = story.footprint(tolerance=tolerace)
+        vertices = []
+        for face in geo:
+            cf = face.remove_colinear_vertices(tolerance=tolerace)
+            vertices.extend(cf.upper_left_counter_clockwise_vertices)
+        return cls(story.display_name, vertices)
 
-    @property
-    def host(self):
-        return self.host_obj
-
-    @property
-    def object_type(self):
-        return self._object_type(self.host)
-
-    @staticmethod
-    def _object_type(obj_to_type):
-        if obj_type:
-            if type(obj_to_type) == 'dragonfly.story.Story':
-                rtrn_type = 'Story'
-            elif type(obj_to_type) == 'dragonfly.room2d.Room2D':
-                rtrn_type = 'Room'
-        return(rtrn_type)
-
-    def to_inp_string(self, host_obj):
-        if self.object_type == 'Room':
-            return(RoomPolyInput(host_obj))
-        elif self.object_type == 'Story':
-            return(StoryPolyInput(host_obj))
+    def to_inp(self) -> str:
+        """Return Room Polygons block input"""
+        vertices_template = '   V%d\t\t= ( %f, %f )'.replace('\t', '    ')
+        vertices = '\n'.join([
+            vertices_template % (i + 1, ver.x, ver.y)
+            for i, ver in enumerate(self.vertice)
+        ])
+        return f'"{self.name} Polygon" = POLYGON\n' \
+               f'{vertices}\n' + \
+               '   ..'
 
     def __repr__(self):
-        return self.to_inp_string(self.host)
+        return self.to_inp()
