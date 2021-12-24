@@ -2,7 +2,7 @@
 from ladybug_geometry.geometry3d.face import upper_left_counter_clockwise_vertices as cc_verts
 
 
-class DoeVerts(object):
+class Vertices(object):
     """ DOE vertices Object """
 
     def __init__(self):
@@ -22,7 +22,7 @@ class DoeVerts(object):
             doe2_vert_objs.append((i+1, vert.x, vert.y))
 
         obj = doe2_vert_objs
-        return(obj)
+        return obj
 
     @classmethod
     def from_story(cls, _stry):

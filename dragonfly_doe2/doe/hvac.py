@@ -1,7 +1,7 @@
 import dragonfly_energy
 
 
-class DoeHVAC(object):
+class HVAC(object):
     """Placeholder HVAC class.
        Currently will just return no hvac
     """

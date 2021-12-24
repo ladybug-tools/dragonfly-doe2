@@ -1,12 +1,12 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
 from dragonfly_doe2. import inp_blocks as fb
-from .templates.polygon_template import DOEPoly
+from .templates.polygon_template import Polygon
 from .templates.compliance_template import ComplianceData
 from .templates.sitebldg_template import SiteBldgData
 
 
-class DOEModelFile:
+class DOEModel:
     """A DOE *.inp Model File Object"""
 
     def __init__(self) -> None:
@@ -69,9 +69,9 @@ class DOEModelFile:
         polyblock = [fb.polygons]
 
         for story in self.df_model.stories:
-            polyblock.append(DOEPoly(story))
+            polyblock.append(Polygon(story))
             for room in story:
-                polyblock.append(DOEPoly(room))
+                polyblock.append(Polygon(room))
 
         polyblock = '\n\n'.join(tuple(polyblock))
 

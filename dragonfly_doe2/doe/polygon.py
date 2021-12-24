@@ -6,12 +6,12 @@ from dragonfly.room2d import Room2D
 from dragonfly.story import Story
 import dragonfly
 import dragonfly_doe2.inp_blocks as fb
-from .hvac import DoeHVAC
-from .geometry import DoeVerts
+from .hvac import HVAC
+from .geometry import Vertices
 from .templates import RoomPolyInput
 
 
-class DOEPoly(object):
+class Polygon(object):
     """ An agnostic DOE poly block Object for rooms and stories """
 
     def __init__(self, _host_obj):

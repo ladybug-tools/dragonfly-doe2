@@ -6,8 +6,8 @@ from dragonfly.model import Model
 from dragonfly.story import Story
 from dragonfly.room2d import Room2D
 import dragonfly
-import dragonfly_doe2..inp_blocks as fb
-from .hvac import DoeHVAC
+import dragonfly_doe2.inp_blocks as fb
+from .hvac import HVAC
 
 ###############       ###########
 # To Be Replaced Soon ###########
@@ -334,7 +334,7 @@ class INPModel():
 
     @staticmethod
     def _make_hvac(hvc_hst):
-        hvc_block = fb.hvacSysNzone + DoeHVAC().to_inp_string()
+        hvc_block = fb.hvacSysNzone + HVAC().to_inp_string()
         zn_strs = []
         for story in hvc_hst.stories:
             to_parse = INPStory(story)

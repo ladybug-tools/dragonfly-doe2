@@ -5,7 +5,7 @@ from dragonfly.windowparameter import SimpleWindowRatio
 from dragonfly_energy.properties.room2d import *
 from ladybug_geometry.geometry3d.pointvector import Point3D
 
-#from ..doe_geometry import DoeVertsFromLBT as doe_verts
+#from ..doe_geometry import VerticesFromLBT as doe_verts
 
 
 class Room2DDOE2Properties(object):

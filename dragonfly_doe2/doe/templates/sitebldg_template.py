@@ -6,9 +6,9 @@ class SiteBldgData:
 
     def to_inp(self) -> str:
         """Return Site and Building Data as an inp string"""
-        return '$'+('-'*57)+'\n' \
+        return '$' + ('-'*57) + '\n' \
                '$              Site and Building Data\n' \
-               '$'+('-'*57)+'\n\n' \
+               '$' + ('-'*57) + '\n\n' \
                '"Site Data" = SITE-PARAMETERS\n  ' \
                'ALTITUDE          = 150\n  ' \
                'C-STATE           = 21\n  ' \
