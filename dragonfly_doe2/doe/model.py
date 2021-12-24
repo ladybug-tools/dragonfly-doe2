@@ -1,12 +1,12 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
-from dragonfly_doe2.inp_file import fileblocks as fb
-from .doe_templates.polygon_template import DOEPoly
-from .doe_templates.compliance_template import ComplianceData
-from .doe_templates.sitebldg_template import SiteBldgData
+from dragonfly_doe2. import inp_blocks as fb
+from .templates.polygon_template import Polygon
+from .templates.compliance_template import ComplianceData
+from .templates.sitebldg_template import SiteBldgData
 
 
-class DOEModelFile:
+class DOEModel:
     """A DOE *.inp Model File Object"""
 
     def __init__(self) -> None:
@@ -29,7 +29,7 @@ class DOEModelFile:
     def _make_file_start(self, value):
         if not value:
             # TODO:  Make this not hard coded
-            # TODO:  Add this into doe_templates and make a class that takes an LB analysis period
+            # TODO:  Add this into templates and make a class that takes an LB analysis period
             value = fb.topLevel+fb.abortDiag+fb.globalParam+fb.ttrpddh + \
                 'TITLE\n  LINE-1          = *simple_example*\n  ..\n\n' + \
                 '"Entire Year" = RUN-PERIOD-PD\n  ' + \
@@ -69,9 +69,9 @@ class DOEModelFile:
         polyblock = [fb.polygons]
 
         for story in self.df_model.stories:
-            polyblock.append(DOEPoly(story))
+            polyblock.append(Polygon(story))
             for room in story:
-                polyblock.append(DOEPoly(room))
+                polyblock.append(Polygon(room))
 
         polyblock = '\n\n'.join(tuple(polyblock))
 
