@@ -1,29 +1,31 @@
-from dataclasses import dataclass
+from .data_classing import IpyDataClass as ipydata
 
 
-@dataclass()
-class ComplianceData:
+class ComplianceData(ipydata):
 
-    permit_scope: int = 0
-    proj_name: str = 'sample_project'
-    bldg_type: int = 32
-    cons_phase: int = 0
-    nr_dhw_incl: int = 1
-    code_version: int = 1
-    num_floors: int = 1
-    bldg_type_901: int = 32
+    permit_scope = 0
+    proj_name = 'sample_project'
+    bldg_type = 32
+    cons_phase = 0
+    nr_dhw_incl = 1
+    code_version = 1
+    num_floors = 1
+    bldg_type_901 = 32
+
+    def __init__(self):
+        super(ComplianceData, self).__init__()
 
     def to_inp(self) -> str:
         """Return compliance data as an inp string."""
         return '"Compliance Data" = COMPLIANCE\n' \
-            f'   C-PERMIT-SCOPE   = {self.permit_scope}\n' \
-            f'   C-PROJ-NAME      = *{self.proj_name}*\n' \
-            f'   C-BUILDING-TYPE  = {self.bldg_type_901}\n' \
-            f'   C-CONS-PHASE     = {self.cons_phase}\n' \
-            f'   C-NR-DHW-INCL    = {self.nr_dhw_incl}\n' \
-            f'   C-CODE-VERSION   = {self.code_version}\n' \
-            f'   C-901-NUM-FLRS   = {self.num_floors}\n' \
-            f'   C-901-BLDG-TYPE  = {self.bldg_type_901}\n' \
+            '   C-PERMIT-SCOPE   = {permit_scope}\n'.format(permit_scope=self.permit_scope) + \
+            '   C-PROJ-NAME      = *{proj_name}*\n'.format(proj_name=self.proj_name) + \
+            '   C-BUILDING-TYPE  = {bldg_type_901}\n'.format(bldg_type=self.bldg_type) + \
+            '   C-CONS-PHASE     = {cons_phase}\n'.format(cons_phase=self.cons_phase) + \
+            '   C-NR-DHW-INCL    = {nr_dhw_incl}\n'.format(nr_dhw_incl=self.nr_dhw_incl) + \
+            '   C-CODE-VERSION   = {code_version}\n'.format(code_version=self.code_version) + \
+            '   C-901-NUM-FLRS   = {num_floors}\n'.format(num_floors=self.num_floors) + \
+            '   C-901-BLDG-TYPE  = {bldg_type_901}\n'.format(bldg_type_901=self.bldg_type_901) + \
             '..'
 
     def __repr__(self) -> str:

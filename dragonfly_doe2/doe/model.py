@@ -1,6 +1,6 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
-from dragonfly_doe2. import inp_blocks as fb
+from dragonfly_doe2 import inp_blocks as fb
 from .templates.polygon_template import Polygon
 from .templates.compliance_template import ComplianceData
 from .templates.sitebldg_template import SiteBldgData
