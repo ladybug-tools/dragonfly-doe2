@@ -3,8 +3,8 @@
 topLevel = 'INPUT ..\n\n\n\n'
 spacer = '\n\n'
 sd_brk = '$ ---------------------------------------------------------\n'
-abortDiag = sd_brk+'$              Abort, Diagnostics\n'+sd_brk+spacer
-globalParam = sd_brk+'$              Global Parameters\n'+sd_brk+spacer
+abortDiag = sd_brk + '$              Abort, Diagnostics\n' + sd_brk + spacer
+globalParam = sd_brk + '$              Global Parameters\n'+sd_brk+spacer
 ttrpddh = sd_brk+'$              Title, Run Periods, Design Days, Holidays\n'+sd_brk+spacer
 comply = sd_brk+'$              Compliance Data\n'+sd_brk+spacer
 siteBldg = sd_brk+'$              Site and Building Data\n'+sd_brk+spacer
@@ -29,7 +29,8 @@ perfCurve = star_brk+star_blnk+'$ **                Performance Curves          
 floorNspace = star_brk+star_blnk+'$ **      Floors / Spaces / Walls / Windows / Doors      **\n'\
     + star_blnk+star_brk+spacer
 elecFuelMeter = spacer+star_brk+star_blnk + \
-    '$ **              Electric & Fuel Meters                 **\n' + star_blnk+star_brk+spacer
+    '$ **              Electric & Fuel Meters                 **\n' + \
+    star_blnk+star_brk+spacer
 
 elecMeter = sd_brk+'$              Electric Meters\n'+sd_brk+spacer
 fuelMeter = sd_brk+'$              Fuel Meters\n'+sd_brk+spacer

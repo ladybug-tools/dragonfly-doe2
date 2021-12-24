@@ -5,10 +5,10 @@ import dragonfly_energy
 from dragonfly.room2d import Room2D
 from dragonfly.story import Story
 import dragonfly
-import dragonfly_doe2.inp_file.fileblocks as fb
-from .doe_hvac import DoeHVAC
-from .doe_geometry import DoeVerts
-from .doe_templates import RoomPolyInput
+import dragonfly_doe2.inp_blocks as fb
+from .hvac import DoeHVAC
+from .geometry import DoeVerts
+from .templates import RoomPolyInput
 
 
 class DOEPoly(object):

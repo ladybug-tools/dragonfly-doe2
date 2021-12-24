@@ -2,7 +2,7 @@
     Redundance between rooms and story objects
 """
 from dataclasses import dataclass
-from .doe_geometry import DoeVerts
+from ..geometry import DoeVerts
 import dragonfly
 from dragonfly.room2d import Room2D as df_room
 from dragonfly.story import Story as df_story

@@ -5,7 +5,7 @@
 # TODO: objs to dicts
 import dragonfly
 import dragonfly_energy
-#from .inp_file.inpfile import InpFile as eqf
+#from ..inp import inp as eqf
 
 
 def room2d_to_doe2(room2d):
@@ -173,5 +173,5 @@ def doe_spc(_df_obj):
 ############
 
 
-def to_inp_file(_df_model):
+def to_(_df_model):
     pass

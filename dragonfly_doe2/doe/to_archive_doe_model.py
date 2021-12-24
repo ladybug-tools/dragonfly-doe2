@@ -6,8 +6,8 @@ from dragonfly.model import Model
 from dragonfly.story import Story
 from dragonfly.room2d import Room2D
 import dragonfly
-import dragonfly_doe2.inp_file.fileblocks as fb
-from .doe_hvac import DoeHVAC
+import dragonfly_doe2..inp_blocks as fb
+from .hvac import DoeHVAC
 
 ###############       ###########
 # To Be Replaced Soon ###########
@@ -345,7 +345,7 @@ class INPModel():
 
     def to_inp(self):
         # TODO: Dont forget glass
-        inp_file = self.file_start + self.compliance_data + self.site_bldg_data + \
+         = self.file_start + self.compliance_data + self.site_bldg_data + \
             self.mat_layer_const + fb.glzCode + fb.glzTyp + fb.WindowLayers + fb.iLikeLamp + \
             fb.daySch + fb.weekSch + fb.annualSch + self.poly_block_data + fb.wallParams + \
             fb.fixBldgShade + fb.miscCost + fb.perfCurve + self.space_block_data + \
@@ -357,4 +357,4 @@ class INPModel():
             fb.loadManage + fb.UtilRate + fb.ratchets + fb.blockCharge + fb.utilRate + fb.outputReporting + \
             fb.loadsNonHr + fb.sysNonHr + fb.plntNonHr + fb.econNonHr + fb.hourlyRep + fb.theEnd
 
-        return(inp_file)
+        return()
