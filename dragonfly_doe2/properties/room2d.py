@@ -6,6 +6,7 @@ from dragonfly_energy.properties.room2d import *
 from ladybug_geometry.geometry3d.pointvector import Point3D
 
 #from ..doe_geometry import VerticesFromLBT as doe_verts
+# I'm not sure if we need the properties dir anymore?
 
 
 class Room2DDOE2Properties(object):
