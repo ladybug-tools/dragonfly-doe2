@@ -15,7 +15,7 @@ class ComplianceData(ipydata):
     def __init__(self):
         super(ComplianceData, self).__init__()
 
-    def to_inp(self) -> str:
+    def to_inp(self):
         """Return compliance data as an inp string."""
         return '"Compliance Data" = COMPLIANCE\n' \
             '   C-PERMIT-SCOPE   = {permit_scope}\n'.format(permit_scope=self.permit_scope) + \
@@ -28,5 +28,5 @@ class ComplianceData(ipydata):
             '   C-901-BLDG-TYPE  = {bldg_type_901}\n'.format(bldg_type_901=self.bldg_type_901) + \
             '..'
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return self.to_inp()
