@@ -1,10 +1,11 @@
-from dataclasses import dataclass
+from .data_classing import IpyDataClass as ipydata
 
 
-@dataclass()
-class SiteBldgData:
+class SiteBldgData(ipydata):
+    def __init__(self):
+        super(SiteBldgData, self).__init__()
 
-    def to_inp(self) -> str:
+    def to_inp(self):
         """Return Site and Building Data as an inp string"""
         return '$' + ('-'*57) + '\n' \
                '$              Site and Building Data\n' \
@@ -19,5 +20,5 @@ class SiteBldgData:
                'HOLIDAYS        = "Standard US Holidays"\n  ..\n\n\n' \
                'PROJECT-DATA\n  ..\n\n'
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return self.to_inp()

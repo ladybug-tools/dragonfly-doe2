@@ -1,9 +1,9 @@
-from dataclasses import dataclass
 from honeybee_energy.construction.opaque import OpaqueConstruction as op_cons
 from honeybee_energy.material.opaque import EnergyMaterial, EnergyMaterialNoMass
 from honeybee_energy.constructionset import ConstructionSet
 from dragonfly.model import Model as DFModel
 from dragonfly_energy.properties import *
+from ..templates.data_classing import IpyDataClass as ipydata
 
 
 class OpaqueAssyConvert:
@@ -26,18 +26,18 @@ class OpaqueAssyConvert:
             # TODO: do check for e-mat or e-mat-no-mass
 
 
-@dataclass()
-class OpaqueConstr:
+class OpaqueConstr(ipydata):
     """Data Class for OpaqueConstr, currently just u-value type"""
-    cons_name: str = None
-    cons_type: str = 'U-VALUE'
-    u_value: float = None
+    cons_name = None
+    cons_type = 'U-VALUE'
+    u_value = None
 
-    def to_inp(self) -> str:
+    def to_inp(self):
         """Return Opaque Construction as inp string."""
-        return f'"{self.cons_name} Construction" = CONSTRUCTION\n  ' \
-               f'TYPE              = {self.cons_type}\n  ' \
-               f'U-VALUE           = {self.u_value}\n  ..'
+        return '"{cons_name} Construction" = CONSTRUCTION\n  '.format(
+            cons_name=self.cons_name) + 'TYPE              = {cons_type}\n  '.format(
+            cons_type=self.cons_type) + 'U-VALUE           = {u_value}\n  ..'.format(
+            u_value=self.u_value)
 
     def __repr__(self) -> str:
         return self.to_inp()

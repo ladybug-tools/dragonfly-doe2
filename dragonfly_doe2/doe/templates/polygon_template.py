@@ -20,7 +20,9 @@ class PolyInput(ipydata):
         elif type(obj) == df_story:
             flr_vrt_objs = Vertices().from_story(obj)
         for obj in flr_vrt_objs:
-            data = '\n  '.join(f'V{obj[0]}               = ( {obj[1]}, {obj[2]}')
+            data = '\n  '.join('V{obji}               = ( {objx}, {objy} )'.format(
+                obji=obj[0], objx=obj[1], objy=obj[2]
+            ))
         return data
 
     def to_inp(self):
