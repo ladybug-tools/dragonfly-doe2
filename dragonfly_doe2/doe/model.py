@@ -1,47 +1,76 @@
 from honeybee.model import Model as HBModel
 from dragonfly.model import Model as DFModel
-from dragonfly_doe2 import inp_blocks as fb
-from .templates.polygon_template import Polygon
-from .templates.compliance_template import ComplianceData
-from .templates.sitebldg_template import SiteBldgData
+
+from ladybug.analysisperiod import AnalysisPeriod
+
+from .polygon import Polygon
+from .compliance import ComplianceData
+from .sitebldg import SiteBldgData
+from .title import Title
+from .run_period import RunPeriod
+
+from . import blocks as fb
 
 
-class DOEModel:
-    """A DOE *.inp Model File Object"""
+class Model:
+    """A DOE *.inp Model File Object."""
 
-    def __init__(self) -> None:
-        self.df_model = None
-        self.file_start = None
-        self.compliance_data = None
+    def __init__(
+            self, title, run_period=None, compliance_data=None, site_building_data=None,
+            polygons=None
+            ) -> None:
+        self.title = title
+        self.run_period = run_period
+        self.compliance_data = compliance_data
+        self.site_bldg_data = site_building_data
+        self.polygons = polygons
 
     @classmethod
-    def from_df_model(cls, df_model: DFModel):
-        cls_ = cls()
-        cls_.df_model = df_model
-        cls_.compliance_data.proj_name = df_model.identifier
-        return cls_
+    def from_df_model(cls, df_model: DFModel, run_period=None):
+        polygons = []
+        for story in df_model.stories:
+            polygons.append(Polygon.from_story(story))
+            for room in story:
+                polygons.append(Polygon.from_room(room))
+
+        return cls(df_model.display_name, run_period, polygons=polygons)
+
+    @classmethod
+    def from_dfjson(cls, dfjson_file, run_period=None):
+        model = DFModel.from_dfjson(dfjson_file)
+        return cls.from_df_model(model, run_period)
 
     @property
-    def file_start(self):
-        return self._file_start
+    def _header(self):
+        """File header.
+        
+        NOTE: The header is currently read-only
+        """
+        return fb.topLevel + fb.abortDiag
 
-    @file_start.setter
-    def _make_file_start(self, value):
-        if not value:
-            # TODO:  Make this not hard coded
-            # TODO:  Add this into templates and make a class that takes an LB analysis period
-            value = fb.topLevel+fb.abortDiag+fb.globalParam+fb.ttrpddh + \
-                'TITLE\n  LINE-1          = *simple_example*\n  ..\n\n' + \
-                '"Entire Year" = RUN-PERIOD-PD\n  ' + \
-                'BEGIN-MONTH     = 1\n  ' + \
-                'BEGIN-DAY      = 1\n  ' + \
-                'BEGIN-YEAR     = 2021\n  ' + \
-                'END-MONTH      = 12\n  ' + \
-                'END-DAY        = 31\n  ' + \
-                'END-YEAR       = 2021\n  ..\n\n' + \
-                '"Standard US Holidays" = HOLIDAYS\n  ' + \
-                'LIBRARY-ENTRY "US"\n  ..\n\n'
-        self._file_start = value
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, value):
+        self._title = Title(value)
+        # update the title in complinace data
+        try:
+            self.compliance_data.proj_name = value
+        except AttributeError:
+            # this happens on initiation since compliance data is not set yet
+            # we can ignore it
+            pass
+
+    @property
+    def run_period(self):
+        """Model run period."""
+        return self._run_period
+    
+    @run_period.setter
+    def run_period(self, value: AnalysisPeriod):
+        self._run_period = RunPeriod.from_analysis_period(value)
 
     @property
     def compliance_data(self):
@@ -52,6 +81,8 @@ class DOEModel:
     def compliance_data(self, value):
         if not value:
             value = ComplianceData()
+        # make sure the project name is set to model title
+        value.proj_name = self.title.title
         self._compliance_data = value
 
     @property
@@ -64,28 +95,25 @@ class DOEModel:
             value = SiteBldgData()
         self._site_bldg_data = value
 
+    @property
+    def polygons(self):
+        return self._polygons
+
+    @polygons.setter
+    def polygons(self, value):
+        self._polygons = value
+
     def to_inp(self):
 
-        polyblock = [fb.polygons]
-
-        for story in self.df_model.stories:
-            polyblock.append(Polygon(story))
-            for room in story:
-                polyblock.append(Polygon(room))
-
-        polyblock = '\n\n'.join(tuple(polyblock))
-
-        # Poly Block and others will be added below if created here.
-        # if not: will be a self.whatever
-        data_objs = [
-            self.file_start, self.compliance_data,
-            self.site_bldg_data,
-
+        data = [
+            self._header,
+            fb.ttrpddh, self.title.to_inp(),
+            self.compliance_data.to_inp(),
+            self.site_bldg_data.to_inp(),
+            fb.polygons,
+            '\n'.join(pl.to_inp() for pl in self.polygons)
         ]
-        data = tuple(data_objs)
-
         return '\n\n'.join(data)
 
     def __repr__(self) -> str:
-        # Returns the whole file to be written to output.inp
-        return self.to_inp()
+        return 'Doe2 Model:\n%s' % self.title.to_inp()
