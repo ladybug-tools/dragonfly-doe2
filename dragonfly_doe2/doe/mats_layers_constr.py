@@ -1,76 +1,107 @@
+from dataclasses import dataclass
+from enum import Enum
+from typing import Union
+
 from honeybee_energy.construction.opaque import OpaqueConstruction as OpConstr
 from honeybee_energy.material.opaque import EnergyMaterial, EnergyMaterialNoMass
-import ladybug.datatype
-from ladybug.datatype import UNITS as lbt_units
-from ladybug.datatype import TYPESDICT as lbt_td
-from dataclasses import dataclass
+from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
+
 from . import blocks as fb
 
 
-class Material(object):
-    """Material Obj
+class MaterialType(Enum):
+    """Doe2 material types."""
+    mass = 'PROPERTIES'
+    no_mass = 'RESISTANCE'
+
+
+def _unit_convertor(value, to_, from_):
+    """Helper function to convert values from one unit to another."""
+    for key in lbt_units:
+        if from_ in lbt_units[key]:
+            base_type = lbt_td[key]()
+            break
+    else:
+        raise ValueError(f'Invalid type: {from_}')
+
+    value = base_type.to_unit(value, to_, from_)
+    return value
+
+
+@dataclass
+class NoMassMaterial:
+
+    name: str
+    resistance: float
+
+    @classmethod
+    def from_hb_material(cls, material: EnergyMaterialNoMass):
+        resistance = _unit_convertor([material.r_value], 'h-ft2-F/Btu', 'm2-K/W')
+        return cls(material.display_name, resistance)
+
+    def to_inp(self):
+        return f'"{self.name}" = MATERIAL\n' \
+            f'   TYPE           = {MaterialType.no_mass}\n' \
+            f'   RESISTANCE     = {self.resistance}\n' \
+            '   ..'
+
+@dataclass
+class MassMaterial:
+
+    name: str
+    thickness: float
+    conductivity: str
+    density: float
+    specific_heat: float
+
+
+    @classmethod
+    def from_hb_material(cls, material: EnergyMaterial):
+        name = material.display_name
+        thickness = _unit_convertor([material.thickness], 'ft', 'm')
+        conductivity = _unit_convertor([material.conductivity], 'Btu/h-ft2', 'W/m2')
+        density = _unit_convertor(material.density/16.018)
+        specific_heat = _unit_convertor([material.specific_heat], 'Btu/lb', 'J/kg')
+        return cls(
+                name, thickness, conductivity, density, specific_heat
+        )
+
+    def to_inp(self):
+        return f'"{self.name}" = MATERIAL\n' \
+            f'   TYPE            = {MaterialType.mass}\n' \
+            f'   THICKNESS       = {self.thickness}\n' \
+            f'   CONDUCTIVITY    = {self.conductivity}\n' \
+            f'   DENSITY         = {self.density}\n' \
+            f'   SPECIFIC-HEAT   = {self.specific_heat}\n' \
+            '   ..'
+
+
+@dataclass
+class Material:
+    """Do2 Material object.
+
     refer to:
-        assets\\DOE22Vol2-Dictionary_48r.pdf pg: 97
+        assets/DOE22Vol2-Dictionary_48r.pdf pg: 97
     """
+    material: Union[NoMassMaterial, MassMaterial]
 
-    def __init__(self, _hbmat):
-        self._hbmat = _hbmat
-
-    @property
-    def hbmat(self):
-        return self._hbmat
-
-    @property
-    def mat_type(self):
-        return self.check_mat(self.hbmat)
-
-    @staticmethod
-    def check_mat(_hbmat_mat):
-        if type(_hbmat_mat) == EnergyMaterial:
-            return 'PROPERTIES'
-        elif type(_hbmat_mat) == EnergyMaterialNoMass:
-            return 'RESISTANCE'
-
-    def lbt_to_ip(self, _val, _to, _from):
-        """Have a little LBT 4 :: Extra: with your class too!
-        Thought: adhearing to utilizing LBT SDK as much as possible,
-        significantly reduces probability of human(trevor) error
-        """
-        base_type = None
-        for key in lbt_units:
-            if _from in lbt_units[key]:
-                base_type = lbt_td[key]()
-                break
-        value = base_type.to_unit(_val, _to, _from)
-        return(value)
+    @classmethod
+    def from_hb_material(cls, material: Union[EnergyMaterial, EnergyMaterialNoMass]):
+        if isinstance(material, EnergyMaterial):
+            return MassMaterial.from_hb_material(material)
+        elif isinstance(material, EnergyMaterialNoMass):
+            return NoMassMaterial.from_hb_material(material)
+        else:
+            raise ValueError(f'{type(material)} type is not supported for materials.')
 
     def to_inp(self) -> str:
-        # TODO: for sake of OCD: revert to 3.x f'strings'
-        if self.mat_type == 'PROPERTIES':
-
-            return'\n"{display_name}" = MATERIAL\n'.format(
-                display_name=self.hbmat.display_name) + \
-                '   TYPE            = {mat_type}\n'.format(mat_type=self.mat_type) + \
-                '   THICKNESS       = {thickness}\n'.format(
-                    thickness=self.lbt_to_ip([self.hbmat.thickness], 'ft', 'm')) + \
-                '   CONDUCTIVITY    = {cond}\n'.format(
-                    cond=self.lbt_to_ip([self.hbmat.conductivity], 'Btu/h-ft2', 'W/m2')) + \
-                '   DENSITY         = {dens}\n'.format(dens=self.hbmat.density/16.018) + \
-                '   SPECIFIC-HEAT   = {spech}\n'.format(
-                    spech=self.lbt_to_ip([self.hbmat.specific_heat], 'Btu/lb', 'J/kg')) + \
-                '   ..'
-        elif self.mat_type == 'RESISTANCE':
-            return '"{display_name}" = MATERIAL\n'.format(
-                display_name=self.hbmat.display_name) + \
-                '   TYPE           = {mat_type}\n'.format(mat_type=self.mat_type) + \
-                '   RESISTANCE     = {r_val}\n   ..\n'.format(
-                    r_val=self.lbt_to_ip([self.hbmat.r_value], 'h-ft2-F/Btu', 'm2-K/W'))
+        return self.material.to_inp()
 
     def __repr__(self):
         return self.to_inp()
 
 
-@dataclass()
+@dataclass
 class MatsLayersConstructions(object):
     """Construction object. Contains, materials and layers for *.inp file.
     Intent: Pass list of constrs in dfm to this class.
