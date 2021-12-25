@@ -16,3 +16,4 @@ tox.ini
 NERB.inp
 !dfjson.ipynb
 reffiles
+assets/sample_out/
