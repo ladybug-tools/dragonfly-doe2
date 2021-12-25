@@ -30,6 +30,10 @@ class Material(object):
             return 'RESISTANCE'
 
     def lbt_to_ip(self, _val, _to, _from):
+        """Have a little LBT 4 :: Extra: with your class too!
+        Thought: adhearing to utilizing LBT SDK as much as possible,
+        significantly reduces probability of human(trevor) error
+        """
         base_type = None
         for key in lbt_units:
             if _from in lbt_units[key]:
@@ -62,15 +66,19 @@ class Material(object):
         return self.to_inp()
 
 
-class Layers(object):
-    """Layers object"""
-
-    def __init__(self):
-        pass
-
-
 class Construction(object):
-    """Construction object"""
+    """Construction object. Contains, materials and layers for *.inp file.
+    Intent: Pass list of constrs in dfm to this class.
+    Should return enum of mats, 'layers' (stupid f'n eQuest obj imo..), Constr objs
+    via __repr__
+    TODO: make it happen! easy day! tomorrow.
+    """
 
-    def __init__(self):
-        pass
+    def __init__(self, hb_constructions: list):
+        self._hb_constructions = hb_constructions
+
+    @property
+    def hb_constructions(self):
+        return self._hb_constructions
+
+    # ...STATICMETHOD!! noo... nooo... ...maybe. unitl tomoz!
