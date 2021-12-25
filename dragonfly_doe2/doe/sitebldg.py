@@ -10,7 +10,7 @@ class SiteBldgData(object):
                '"Site Data" = SITE-PARAMETERS\n  ' \
                'ALTITUDE          = 150\n  ' \
                'C-STATE           = 21\n  ' \
-               'C-WEATHER-FILE    = *TMY2\HARTFOCT.bin*\n  ' \
+               'C-WEATHER-FILE    = *TMY2\HARTFOCT.bin* \n  ' \
                'C-COUNTRY         = 1\n  ' \
                'C-901-LOCATION    = 1092\n  ..\n' \
                '"Building Data" = BUILD-PARAMETERS\n  ' \

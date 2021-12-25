@@ -18,7 +18,7 @@ class Model:
     def __init__(
             self, title, run_period=None, compliance_data=None, site_building_data=None,
             polygons=None
-            ) -> None:
+    ) -> None:
         self.title = title
         self.run_period = run_period
         self.compliance_data = compliance_data
@@ -43,7 +43,7 @@ class Model:
     @property
     def _header(self):
         """File header.
-        
+
         NOTE: The header is currently read-only
         """
         return fb.topLevel + fb.abortDiag
@@ -67,14 +67,14 @@ class Model:
     def run_period(self):
         """Model run period."""
         return self._run_period
-    
+
     @run_period.setter
     def run_period(self, value: AnalysisPeriod):
         self._run_period = RunPeriod.from_analysis_period(value)
 
     @property
     def compliance_data(self):
-        """Get or set the model DOE2 Compliance Data"""
+        """Model DOE2 Compliance Data"""
         return self._compliance_data
 
     @compliance_data.setter

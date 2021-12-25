@@ -7,6 +7,7 @@ from dragonfly.story import Story
 
 class Polygon(object):
     "A Doe2 Polygon."
+
     def __init__(self, name, vertices):
         self.name = name
         self.vertice = vertices
@@ -15,11 +16,15 @@ class Polygon(object):
     def from_room(cls, room: Room2D, tolerace=0.01):
         """
         Note: Shouldn't we ensure the points are in 2D. I'm not sure how it works.
+        #TF: ooohhhhhhhhhh good catch!! Though is there not already built into DF somthhing
+            of the sort for room.floor_geom? was operating off the *assumption* that obj.prop
+            would be good to go as is? or am I misunderstanding the specifics in which should
+            do check: raise exeption if issue?
         """
         cf = room.floor_geometry.remove_colinear_vertices(tolerance=tolerace)
         vertices = cf.upper_left_counter_clockwise_vertices
         return cls(room.display_name, vertices)
-    
+
     @classmethod
     def from_story(cls, story: Story, tolerace=0.01):
         """
