@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/ladybug-tools/dragonfly-doe2/workflows/CI/badge.svg)](https://github.com/ladybug-tools/dragonfly-doe2/actions)
 [![Coverage Status](https://coveralls.io/repos/github/ladybug-tools/dragonfly-doe2/badge.svg?branch=master)](https://coveralls.io/github/ladybug-tools/dragonfly-doe2)
 
-[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-360/) [![Python 2.7](https://img.shields.io/badge/python-2.7-green.svg)](https://www.python.org/downloads/release/python-270/) [![IronPython](https://img.shields.io/badge/ironpython-2.7-red.svg)](https://github.com/IronLanguages/ironpython2/releases/tag/ipy-2.7.8/)
+[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 
 # dragonfly-doe2
 
