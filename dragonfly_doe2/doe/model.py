@@ -1,4 +1,5 @@
-from honeybee.model import Model as HBModel
+from typing import List
+
 from dragonfly.model import Model as DFModel
 
 from ladybug.analysisperiod import AnalysisPeriod
@@ -8,6 +9,7 @@ from .compliance import ComplianceData
 from .sitebldg import SiteBldgData
 from .title import Title
 from .run_period import RunPeriod
+from .construction import Construction, ConstructionCollection
 
 from . import blocks as fb
 
@@ -17,23 +19,29 @@ class Model:
 
     def __init__(
             self, title, run_period=None, compliance_data=None, site_building_data=None,
-            polygons=None
+            polygons=None, constructions=None
     ) -> None:
         self.title = title
         self.run_period = run_period
         self.compliance_data = compliance_data
         self.site_bldg_data = site_building_data
         self.polygons = polygons
+        self.constructions = constructions
 
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
         polygons = []
+
         for story in df_model.stories:
             polygons.append(Polygon.from_story(story))
             for room in story:
                 polygons.append(Polygon.from_room(room))
 
-        return cls(df_model.display_name, run_period, polygons=polygons)
+        constructions = ConstructionCollection.from_hb_constructions(
+            df_model.properties.energy.constructions)
+
+        return cls(df_model.display_name, run_period, polygons=polygons,
+                   constructions=constructions)
 
     @classmethod
     def from_dfjson(cls, dfjson_file, run_period=None):
@@ -96,12 +104,20 @@ class Model:
         self._site_bldg_data = value
 
     @property
-    def polygons(self):
+    def polygons(self) -> List[Polygon]:
         return self._polygons
 
     @polygons.setter
     def polygons(self, value):
         self._polygons = value
+
+    @property
+    def constructions(self) -> ConstructionCollection:
+        return self._constructions
+
+    @constructions.setter
+    def constructions(self, value):
+        self._constructions = value
 
     def to_inp(self):
 
@@ -110,6 +126,7 @@ class Model:
             fb.ttrpddh, self.title.to_inp(),
             self.compliance_data.to_inp(),
             self.site_bldg_data.to_inp(),
+            self.constructions.to_inp(),
             fb.polygons,
             '\n'.join(pl.to_inp() for pl in self.polygons)
         ]
