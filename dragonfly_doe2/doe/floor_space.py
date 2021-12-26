@@ -15,9 +15,9 @@ class Wall:
                LOCATION        = SPACE-V1
                ..
     """
-    name: str = None
-    location_index: int = None
-    wall_con_name: str = None
+    name: str = ''
+    location_index: int = 0
+    wall_con_name: str = ''
 
     @classmethod
     def from_room_seg(cls, _name: str, _bc_id: int, _wall_con_name: str):
@@ -54,8 +54,8 @@ class Space:
                 LOCATION        = SPACE-V2
                 ..
     """
-    name: str = None
-    activity: str = None
+    name: str = ''
+    activity: str = ''
     walls: List[Wall] = None
 
     @classmethod
@@ -118,9 +118,9 @@ class Floor:
                 LOCATION        = SPACE-V1
                 ..
     """
-    name: str = None
-    floor_z: float = None
-    floor_height: float = None
+    name: str = ''
+    floor_z: float = 0.0
+    floor_height: float = 3.0
     spaces: List[Space] = None
 
     @classmethod
