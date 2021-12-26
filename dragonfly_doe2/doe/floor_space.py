@@ -105,7 +105,7 @@ class Space:
                       f'   SHAPE           = POLYGON\n' \
                       f'   POLYGON         = "{self.name} Plg"\n' \
                       f'   C-ACTIVITY-DESC = *{self.activity}*\n   ..\n'
-        return space_block + space_walls
+        return '\n'.join(space_block, space_walls)
 
     def __repr__(self):
         return self.to_inp()
@@ -164,7 +164,7 @@ class Floor:
             f'   FLOOR-HEIGHT     = {self.floor_height}\n' \
             f'   C-DIAGRAM-DATA   = *{self.name} UI DiagData*\n   ..\n'
         flr_spcs = '\n'.join(spc.to_inp() for spc in self.spaces)
-        return flr_str + flr_spcs + '\n'
+        return '\n'.join(flr_str, flr_spcs)
 
     def __repr__(self):
         return self.to_inp()
