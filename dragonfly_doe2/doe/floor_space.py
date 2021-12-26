@@ -16,18 +16,18 @@ class Wall:
                ..
     """
     name: str = ''
-    location_index: int = 0
-    wall_con_name: str = ''
+    location: int = 0
+    construction: str = ''
 
     @classmethod
-    def from_room_seg(cls, _name: str, _bc_id: int, _wall_con_name: str):
-        indexed_id = _bc_id+1
-        return cls(str(_name+f'_Wall_{indexed_id}'), indexed_id, _wall_con_name)
+    def from_room_seg(cls, name: str, location: int, construction: str):
+        indexed_id = location+1
+        return cls(str(name+f'_Wall_{indexed_id}'), indexed_id, construction)
 
     def to_inp(self):
         return f'"{self.name}" = EXTERIOR-WALL\n' \
-            f'   CONSTRUCTION   = "{self.wall_con_name}"\n' \
-            f'   LOCATION       = SPACE-V{self.location_index}\n   ..'
+            f'   CONSTRUCTION   = "{self.construction}"\n' \
+            f'   LOCATION       = SPACE-V{self.location}\n   ..'
 
     def __repr__(self) -> str:
         return self.to_inp()
