@@ -6,21 +6,41 @@ from typing import List
 
 @dataclass
 class Floor:
-    """The *.inp:
-    $ **      Floors / Spaces / Walls / Windows / Doors      **
+    """The *.inp 'Floor' object, contains spaces and space meta-data:
+    .. code-block::f#
+        "simple_example_dfb_Floor1" = FLOOR
+            Z                = 0.0
+            POLYGON          = "simple_example_dfb_Floor1 Floor Plg"
+            SHAPE            = POLYGON
+            FLOOR-HEIGHT     = 10.0
+            C-DIAGRAM-DATA   = *simple_example_dfb_Floor1 UI DiagData*
+            ..
+        "simple_example_dfb_Floor1_Room1" = SPACE
+            SHAPE            = POLYGON
+            POLYGON          = "simple_example_dfb_Floor1_Room1 Plg"
+            C-ACTIVITY-DESC  = *Generic Office Program*
+            ..
+        "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
+            CONSTRUCTION    = "EWall Construction"
+            LOCATION        = SPACE-V1
+            ..
     Object.
     """
     name: str
     floor_z: float
-    floor_heigh: float
+    floor_height: float
     spaces: List[Space]
 
     @classmethod
     def from_story(cls, story: Story):
+        if not isinstance(story, Story):
+            # TODO: Make raise exception instead of print
+            print(f'Unsupported type: {type(story)}\n'
+                  'Expected dragonfy.story.Story')
         cls_ = cls()
         cls_.name = story.display_name
-        cls_.floor_z = story.floor_heigh
-        cls_.floor_heigh = story.floor_to_floor_height
+        cls_.floor_z = story.floor_height
+        cls_.floor_height = story.floor_to_floor_height
         spcs = []
         for room in story.room_2ds:
             spcs.append(Space().from_room(room))
@@ -28,7 +48,17 @@ class Floor:
         return cls_
 
     def to_inp(self):
-        pass
+        flr_str = f'"{self.name}" = FLOOR\n' \
+            f'   Z                = {self.floor_z}\n' \
+            f'   POLYGON          = "{self.name} Plg"\n' \
+            f'   SHAPE            = POLYGON\n' \
+            f'   FLOOR-HEIGHT     = {self.floor_height}\n' \
+            f'   C-DIAGRAM-DATA   = *{self.name} UI DiagData*\n   ..\n'
+        flr_spcs = '\n'.join(spc.to_inp() for spc in self.spaces)
+        return flr_str + flr_spcs
+
+    def __repr__(self):
+        return self.to_inp()
 
 
 @dataclass
@@ -36,6 +66,20 @@ class Space:
     """The Space Object.
     Each Room2D has a Space obj. This obj contains windows, walls, doors
     data.
+    .. code-block::f#
+        "simple_example_dfb_Floor1_Room1" = SPACE
+            SHAPE            = POLYGON
+            POLYGON          = "simple_example_dfb_Floor1_Room1 Plg"
+            C-ACTIVITY-DESC  = *Generic Office Program*
+            ..
+        "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
+            CONSTRUCTION    = "EWall Construction"
+            LOCATION        = SPACE-V1
+            ..
+        "simple_example_dfb_Floor1_Room1 Wall_2" = EXTERIOR-WALL
+            CONSTRUCTION    = "EWall Construction"
+            LOCATION        = SPACE-V2
+            ..
     """
     name: str
     activity: str
@@ -44,7 +88,7 @@ class Space:
     @classmethod
     def from_room(cls, room: Room2D):
         if not isinstance(room, Room2D):
-            # should raise error, for now; print
+            # TODO: Make raise exception rather than print
             print(
                 f'Unsupported Type: {type(room)}.\n'
                 'Expected dragonfly.room2d.Room2D'
