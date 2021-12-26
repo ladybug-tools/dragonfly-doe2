@@ -67,6 +67,7 @@ class Construction:
     def __repr__(self) -> str:
         return self.to_inp()
 
+
 @dataclass
 class ConstructionCollection:
     """Construction object. Contains, materials and layers for *.inp file.
@@ -90,7 +91,7 @@ class ConstructionCollection:
 
     def to_inp(self):
 
-        block = [fb.matslayers]
+        block = [fb.mats_layers]
 
         # collect all the materials and ensure to only include the unique ones
         materials = set(
