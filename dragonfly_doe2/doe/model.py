@@ -57,7 +57,7 @@ class Model:
 
         NOTE: The header is currently read-only
         """
-        return fb.topLevel + fb.abortDiag
+        return '\n'.join([fb.topLevel, fb.abortDiag])
 
     @property
     def title(self):
