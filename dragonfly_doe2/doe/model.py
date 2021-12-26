@@ -20,7 +20,7 @@ class Model:
 
     def __init__(
             self, title, run_period=None, compliance_data=None, site_building_data=None,
-            polygons=None, constructions=None, floor_spaces=None
+            polygons=None, constructions=None, floors=None
     ) -> None:
         self.title = title
         self.run_period = run_period
@@ -28,7 +28,7 @@ class Model:
         self.site_bldg_data = site_building_data
         self.polygons = polygons
         self.constructions = constructions
-        self.floor_spaces = floor_spaces
+        self.floors = floors
 
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
@@ -44,7 +44,7 @@ class Model:
             df_model.properties.energy.constructions)
 
         return cls(df_model.display_name, run_period, polygons=polygons,
-                   constructions=constructions, floor_spaces=flr_spc)
+                   constructions=constructions, floors=flr_spc)
 
     @classmethod
     def from_dfjson(cls, dfjson_file, run_period=None):
@@ -137,7 +137,7 @@ class Model:
             fb.miscCost,
             fb.perfCurve,
             fb.floorNspace,
-            '\n'.join(flr.to_inp() for flr in self.floor_spaces),
+            '\n'.join(flr.to_inp() for flr in self.floors),
             fb.elecFuelMeter,
             fb.elecMeter,
             fb.fuelMeter,
