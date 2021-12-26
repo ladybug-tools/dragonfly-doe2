@@ -143,7 +143,7 @@ class Floor:
             f'   FLOOR-HEIGHT     = {self.floor_height}\n' \
             f'   C-DIAGRAM-DATA   = *{self.name} UI DiagData*\n   ..\n'
         flr_spcs = '\n'.join(spc.to_inp() for spc in self.spaces)
-        return flr_str + flr_spcs
+        return flr_str + flr_spcs + '\n'
 
     def __repr__(self):
         return self.to_inp()

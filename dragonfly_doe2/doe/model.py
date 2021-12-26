@@ -10,6 +10,7 @@ from .sitebldg import SiteBldgData
 from .title import Title
 from .run_period import RunPeriod
 from .construction import Construction, ConstructionCollection
+from .floor_space import Floor
 
 from . import blocks as fb
 
@@ -19,7 +20,7 @@ class Model:
 
     def __init__(
             self, title, run_period=None, compliance_data=None, site_building_data=None,
-            polygons=None, constructions=None
+            polygons=None, constructions=None, floor_spaces=None
     ) -> None:
         self.title = title
         self.run_period = run_period
@@ -27,10 +28,12 @@ class Model:
         self.site_bldg_data = site_building_data
         self.polygons = polygons
         self.constructions = constructions
+        self.floor_spaces = floor_spaces
 
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
         polygons = []
+        flr_spc = [Floor().from_story(story) for story in df_model.stories]
 
         for story in df_model.stories:
             polygons.append(Polygon.from_story(story))
@@ -41,7 +44,7 @@ class Model:
             df_model.properties.energy.constructions)
 
         return cls(df_model.display_name, run_period, polygons=polygons,
-                   constructions=constructions)
+                   constructions=constructions, floor_spaces=flr_spc)
 
     @classmethod
     def from_dfjson(cls, dfjson_file, run_period=None):
@@ -128,7 +131,49 @@ class Model:
             self.site_bldg_data.to_inp(),
             self.constructions.to_inp(),
             fb.polygons,
-            '\n'.join(pl.to_inp() for pl in self.polygons)
+            '\n'.join(pl.to_inp() for pl in self.polygons),
+            fb.wallParams,
+            fb.fixBldgShade,
+            fb.miscCost,
+            fb.perfCurve,
+            fb.floorNspace,
+            '\n'.join(flr.to_inp() for flr in self.floor_spaces),
+            fb.elecFuelMeter,
+            fb.elecMeter,
+            fb.fuelMeter,
+            fb.masterMeter,
+            fb.hvacCircLoop,
+            fb.pumps,
+            fb.heatExch,
+            fb.circLoop,
+            fb.chillyboi,
+            fb.boilyboi,
+            fb.dwh,
+            fb.heatReject,
+            fb.towerFree,
+            fb.pvmod,
+            fb.elecgen,
+            fb.thermalStore,
+            fb.groundLoopHx,
+            fb.compDhwRes,
+            fb.steamAndcldMtr,
+            fb.steamMtr,
+            fb.chillMeter,
+            fb.hvacSysNzone,
+            fb.miscNmeterHvac,
+            fb.equipControls,
+            fb.loadManage,
+            fb.UtilRate,
+            fb.ratchets,
+            fb.blockCharge,
+            fb.utilRate,
+            fb.outputReporting,
+            fb.loadsNonHr,
+            fb.sysNonHr,
+            fb.plntNonHr,
+            fb.econNonHr,
+            fb.hourlyRep,
+            fb.theEnd
         ]
         return '\n\n'.join(data)
 
