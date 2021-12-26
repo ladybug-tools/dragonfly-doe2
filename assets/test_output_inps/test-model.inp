@@ -2,6 +2,7 @@ INPUT ..
 
 
 
+
 $ ---------------------------------------------------------
 $              Abort, Diagnostics
 $ ---------------------------------------------------------
@@ -58,61 +59,17 @@ $ ---------------------------------------------------------
 
 
 
-"Typical Insulation-R3" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 2.9999999999999996
-   ..
-
-"Typical Insulation-R17" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 17.0
-   ..
-
-"8 in. Concrete Block Basement Wall" = MATERIAL
+"8 in. Normalweight Concrete Floor" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.666666688
-   CONDUCTIVITY    = 0.420058681143342
-   DENSITY         = 114.99589285258341
-   SPECIFIC-HEAT   = 0.3918362539156397
+   CONDUCTIVITY    = 0.731776435475957
+   DENSITY         = 144.96224929625302
+   SPECIFIC-HEAT   = 0.35746465269496897
    ..
 
 "Typical Insulation-R31" = MATERIAL
    TYPE           = RESISTANCE
    RESISTANCE     = 31.000000000000004
-   ..
-
-"Typical Insulation-R7" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 7.0
-   ..
-
-"Typical Carpet Pad" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 1.22923037424
-   ..
-
-"5/8 in. Gypsum Board" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.052165356
-   CONDUCTIVITY    = 0.05068581371262013
-   DENSITY         = 49.94392740611665
-   SPECIFIC-HEAT   = 0.4683130666316304
-   ..
-
-"F08 Metal surface" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.0026246720000000006
-   CONDUCTIVITY    = 14.344085280671607
-   DENSITY         = 488.45161003182125
-   SPECIFIC-HEAT   = 0.2148225076291888
-   ..
-
-"Roof Membrane" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.031167979999999994
-   CONDUCTIVITY    = 0.05068581371262059
-   DENSITY         = 70.00203295150581
-   SPECIFIC-HEAT   = 0.627281722277231
    ..
 
 "25mm Stucco" = MATERIAL
@@ -123,22 +80,43 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.36090181281703604
    ..
 
+"Typical Insulation-R17" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 17.0
+   ..
+
 "Typical Insulation-R4" = MATERIAL
    TYPE           = RESISTANCE
    RESISTANCE     = 4.0
    ..
 
-"8 in. Normalweight Concrete Floor" = MATERIAL
+"F08 Metal surface" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.666666688
-   CONDUCTIVITY    = 0.731776435475957
-   DENSITY         = 144.96224929625302
-   SPECIFIC-HEAT   = 0.35746465269496897
+   THICKNESS       = 0.0026246720000000006
+   CONDUCTIVITY    = 14.344085280671607
+   DENSITY         = 488.45161003182125
+   SPECIFIC-HEAT   = 0.2148225076291888
    ..
 
-"Typical Insulation-R24" = MATERIAL
+"Typical Insulation-R7" = MATERIAL
    TYPE           = RESISTANCE
-   RESISTANCE     = 23.999999999999996
+   RESISTANCE     = 7.0
+   ..
+
+"5/8 in. Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.052165356
+   CONDUCTIVITY    = 0.05068581371262013
+   DENSITY         = 49.94392740611665
+   SPECIFIC-HEAT   = 0.4683130666316304
+   ..
+
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031167979999999994
+   CONDUCTIVITY    = 0.05068581371262059
+   DENSITY         = 70.00203295150581
+   SPECIFIC-HEAT   = 0.627281722277231
    ..
 
 "Metal Roof Surface" = MATERIAL
@@ -148,6 +126,30 @@ $ ---------------------------------------------------------
    DENSITY         = 488.45161003182125
    SPECIFIC-HEAT   = 0.214822507629187
    ..
+
+"8 in. Concrete Block Basement Wall" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.666666688
+   CONDUCTIVITY    = 0.420058681143342
+   DENSITY         = 114.99589285258341
+   SPECIFIC-HEAT   = 0.3918362539156397
+   ..
+
+"Typical Insulation-R3" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 2.9999999999999996
+   ..
+
+"Typical Carpet Pad" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 1.22923037424
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 23.999999999999996
+   ..
+
 "Typical Insulated Carpeted 8in Slab Floor-R5 Layers" = LAYERS
    MATERIAL                 = (
       "Typical Insulation-R4",
@@ -161,6 +163,36 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 4
    LAYERS               = "Typical Insulated Carpeted 8in Slab Floor-R5 Layers"
+   ..
+
+
+"Typical Insulated Steel Framed Exterior Wall-R19 Layers" = LAYERS
+   MATERIAL                 = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R17",
+      "5/8 in. Gypsum Board"
+   )
+   ..
+
+"Typical Insulated Steel Framed Exterior Wall-R19" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Steel Framed Exterior Wall-R19 Layers"
+   ..
+
+"Typical Overhead Door-R4 Layers" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R4"
+   )
+   ..
+
+"Typical Overhead Door-R4" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R4 Layers"
    ..
 
 "Typical Insulated Steel Framed Exterior Floor-R27 Layers" = LAYERS
@@ -194,7 +226,6 @@ $ ---------------------------------------------------------
    LAYERS               = "Typical Insulated Metal Door-R3 Layers"
    ..
 
-
 "Typical Insulated Basement Mass Wall-R8 Layers" = LAYERS
    MATERIAL                 = (
       "Typical Insulation-R7",
@@ -207,22 +238,6 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 4
    LAYERS               = "Typical Insulated Basement Mass Wall-R8 Layers"
-   ..
-
-"Typical Insulated Steel Framed Exterior Wall-R19 Layers" = LAYERS
-   MATERIAL                 = (
-      "25mm Stucco",
-      "5/8 in. Gypsum Board",
-      "Typical Insulation-R17",
-      "5/8 in. Gypsum Board"
-   )
-   ..
-
-"Typical Insulated Steel Framed Exterior Wall-R19" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "Typical Insulated Steel Framed Exterior Wall-R19 Layers"
    ..
 
 
@@ -239,20 +254,6 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 1
    LAYERS               = "Typical IEAD Roof-R32 Layers"
-   ..
-
-
-"Typical Overhead Door-R4 Layers" = LAYERS
-   MATERIAL                 = (
-      "Typical Insulation-R4"
-   )
-   ..
-
-"Typical Overhead Door-R4" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Overhead Door-R4 Layers"
    ..
 
 
@@ -384,11 +385,13 @@ $ *********************************************************
    FLOOR-HEIGHT     = 11.475409836065573
    C-DIAGRAM-DATA   = *storyOne UI DiagData*
    ..
+
 "rmOne" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmOne Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::Breakroom*
    ..
+
 "rmOne_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -410,6 +413,7 @@ $ *********************************************************
    POLYGON         = "rmTwo Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::Classroom*
    ..
+
 "rmTwo_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -439,6 +443,7 @@ $ *********************************************************
    POLYGON         = "rmThree Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::Corridor*
    ..
+
 "rmThree_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -464,6 +469,7 @@ $ *********************************************************
    POLYGON         = "rmFour Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::OpenOffice*
    ..
+
 "rmFour_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -491,11 +497,13 @@ $ *********************************************************
    FLOOR-HEIGHT     = 11.475409836065573
    C-DIAGRAM-DATA   = *storyTwo UI DiagData*
    ..
+
 "rmOneL2" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmOneL2 Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::OpenOffice*
    ..
+
 "rmOneL2_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -517,6 +525,7 @@ $ *********************************************************
    POLYGON         = "rmTwoL2 Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::Corridor*
    ..
+
 "rmTwoL2_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -546,6 +555,7 @@ $ *********************************************************
    POLYGON         = "rmThreeL2 Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::Classroom*
    ..
+
 "rmThreeL2_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -571,6 +581,7 @@ $ *********************************************************
    POLYGON         = "rmFourL2 Plg"
    C-ACTIVITY-DESC = *2019::MediumOffice::Breakroom*
    ..
+
 "rmFourL2_Wall_1" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V1
@@ -852,7 +863,8 @@ $ ---------------------------------------------------------
 
 
 
-{sd_brk}$              THE END
+$ ---------------------------------------------------------
+$              THE END
 $ ---------------------------------------------------------
 
 END ..

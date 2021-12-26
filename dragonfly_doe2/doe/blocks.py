@@ -132,5 +132,5 @@ econNonHr = '{sd_brk}$              Economics Non-Hourly Reporting\n{sd_brk}{spa
 hourlyRep = '{sd_brk}$              Hourly Reporting\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
 
-theEnd = '{sd_brk}$              THE END\n' + \
-    sd_brk+'\nEND ..\nCOMPUTE ..\nSTOP ..\n'
+theEnd = '{sd_brk}$              THE END\n{sd_brk}'.format(sd_brk=sd_brk) + \
+    '\nEND ..\nCOMPUTE ..\nSTOP ..\n'
