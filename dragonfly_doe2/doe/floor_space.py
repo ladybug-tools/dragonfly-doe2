@@ -8,7 +8,8 @@ from typing import List
 class Wall:
     """*.inp Wall object.
     Example:
-        .. code-block::f#
+        .. code-block:: f#
+
             "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
                CONSTRUCTION    = "EWall Construction"
                LOCATION        = SPACE-V1
@@ -37,20 +38,21 @@ class Space:
     """The Space Object.
     Each Room2D has a Space obj. This obj contains windows, walls, doors
     data.
-    .. code-block::f#
-        "simple_example_dfb_Floor1_Room1" = SPACE
-            SHAPE            = POLYGON
-            POLYGON          = "simple_example_dfb_Floor1_Room1 Plg"
-            C-ACTIVITY-DESC  = *Generic Office Program*
-            ..
-        "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
-            CONSTRUCTION    = "EWall Construction"
-            LOCATION        = SPACE-V1
-            ..
-        "simple_example_dfb_Floor1_Room1 Wall_2" = EXTERIOR-WALL
-            CONSTRUCTION    = "EWall Construction"
-            LOCATION        = SPACE-V2
-            ..
+        .. code-block:: f#
+
+            "simple_example_dfb_Floor1_Room1" = SPACE
+                SHAPE            = POLYGON
+                POLYGON          = "simple_example_dfb_Floor1_Room1 Plg"
+                C-ACTIVITY-DESC  = *Generic Office Program*
+                ..
+            "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
+                CONSTRUCTION    = "EWall Construction"
+                LOCATION        = SPACE-V1
+                ..
+            "simple_example_dfb_Floor1_Room1 Wall_2" = EXTERIOR-WALL
+                CONSTRUCTION    = "EWall Construction"
+                LOCATION        = SPACE-V2
+                ..
     """
     name: str = None
     activity: str = None
@@ -94,25 +96,27 @@ class Space:
 
 @dataclass()
 class Floor:
-    """The *.inp 'Floor' object, contains spaces and space meta-data:
-    .. code-block::f#
-        "simple_example_dfb_Floor1" = FLOOR
-            Z                = 0.0
-            POLYGON          = "simple_example_dfb_Floor1 Floor Plg"
-            SHAPE            = POLYGON
-            FLOOR-HEIGHT     = 10.0
-            C-DIAGRAM-DATA   = *simple_example_dfb_Floor1 UI DiagData*
-            ..
-        "simple_example_dfb_Floor1_Room1" = SPACE
-            SHAPE            = POLYGON
-            POLYGON          = "simple_example_dfb_Floor1_Room1 Plg"
-            C-ACTIVITY-DESC  = *Generic Office Program*
-            ..
-        "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
-            CONSTRUCTION    = "EWall Construction"
-            LOCATION        = SPACE-V1
-            ..
-    Object.
+    """The *.inp 'Floor' object, contains spaces and space meta-data.
+    Example:
+
+        .. code-block:: f#
+
+            "simple_example_dfb_Floor1" = FLOOR
+                Z                = 0.0
+                POLYGON          = "simple_example_dfb_Floor1 Floor Plg"
+                SHAPE            = POLYGON
+                FLOOR-HEIGHT     = 10.0
+                C-DIAGRAM-DATA   = *simple_example_dfb_Floor1 UI DiagData*
+                ..
+            "simple_example_dfb_Floor1_Room1" = SPACE
+                SHAPE            = POLYGON
+                POLYGON          = "simple_example_dfb_Floor1_Room1 Plg"
+                C-ACTIVITY-DESC  = *Generic Office Program*
+                ..
+            "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
+                CONSTRUCTION    = "EWall Construction"
+                LOCATION        = SPACE-V1
+                ..
     """
     name: str = None
     floor_z: float = None
