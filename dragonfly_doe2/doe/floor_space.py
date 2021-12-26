@@ -23,9 +23,9 @@ class Wall:
                LOCATION        = SPACE-V1
                ..
     """
-    name: str = ''
-    location: int = 0
-    construction: str = ''
+    name: str
+    location: int
+    construction: str
 
     @classmethod
     def from_room_seg(cls, name: str, location: int, construction: str):
@@ -71,9 +71,9 @@ class Space:
                 LOCATION        = SPACE-V2
                 ..
     """
-    name: str = ''
-    activity: str = ''
-    walls: List[Wall] = None
+    name: str
+    activity: str
+    walls: List[Wall]
 
     @classmethod
     def from_room(cls, room: Room2D):
@@ -90,7 +90,7 @@ class Space:
         if 'Outdoors' in bcs:
             for i, bc in enumerate(bcs):
                 if bc == 'Outdoors':
-                    walls.append(Wall().from_room_seg(
+                    walls.append(Wall.from_room_seg(
                         room.display_name, i, wall_constr_name))
         else:
             walls = None
@@ -142,10 +142,10 @@ class Floor:
                 LOCATION        = SPACE-V1
                 ..
     """
-    name: str = ''
-    floor_z: float = 0.0
-    floor_height: float = 3.0
-    spaces: List[Space] = None
+    name: str
+    floor_z: float
+    floor_height: float
+    spaces: List[Space]
 
     @classmethod
     def from_story(cls, story: Story):
@@ -153,15 +153,8 @@ class Floor:
             # TODO: Make raise exception instead of print
             print(f'Unsupported type: {type(story)}\n'
                   'Expected dragonfy.story.Story')
-        cls_ = cls()
-        cls_.name = story.display_name
-        cls_.floor_z = story.floor_height
-        cls_.floor_height = story.floor_to_floor_height
-        spcs = []
-        for room in story.room_2ds:
-            spcs.append(Space().from_room(room))
-        cls_.spaces = spcs
-        return cls_
+        spaces = [Space.from_room(room) for room in story.room_2ds]
+        return cls(story.display_name, story.floor_height, story.floor_to_floor_height, spaces)
 
     def to_inp(self):
         flr_str = f'"{self.name}" = FLOOR\n' \

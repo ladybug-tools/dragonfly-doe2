@@ -33,7 +33,7 @@ class Model:
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
         polygons = []
-        flr_spc = [Floor().from_story(story) for story in df_model.stories]
+        flr_spc = [Floor.from_story(story) for story in df_model.stories]
 
         for story in df_model.stories:
             polygons.append(Polygon.from_story(story))
