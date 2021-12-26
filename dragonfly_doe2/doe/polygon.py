@@ -45,7 +45,7 @@ class Polygon(object):
             vertices_template % (i + 1, ver.x, ver.y)
             for i, ver in enumerate(self.vertice)
         ])
-        return f'"{self.name} Polygon" = POLYGON\n' \
+        return f'"{self.name} Plg" = POLYGON\n' \
                f'{vertices}\n' + \
                '   ..'
 
