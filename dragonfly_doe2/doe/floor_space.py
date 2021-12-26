@@ -7,6 +7,14 @@ from typing import List
 @dataclass
 class Wall:
     """*.inp Wall object.
+
+        Init method(s):
+            1. from_room_seg(name, location, construction)
+
+        Args:
+            name: space name. (is joined with _wall_{n}).
+            location: vertice of space poly anchoring the wall.
+            construction: display_name of construction wall is comprised of.
     Example:
         .. code-block:: f#
 
@@ -38,6 +46,15 @@ class Space:
     """The Space Object.
     Each Room2D has a Space obj. This obj contains windows, walls, doors
     data.
+
+        Init method(s):
+            1. from_room(room: Room2D)
+        Args:
+             name: room.display_name.
+             activity: room program.display_name.
+             walls: List[of Wall(objects)]
+
+    Example:
         .. code-block:: f#
 
             "simple_example_dfb_Floor1_Room1" = SPACE
@@ -94,11 +111,18 @@ class Space:
         return self.to_inp()
 
 
-@dataclass()
+@dataclass
 class Floor:
     """The *.inp 'Floor' object, contains spaces and space meta-data.
-    Example:
 
+        Init method(s):
+            1. from_story(story: Story).
+        Args:
+            name: Story display_name.
+            floor_z: the height of the floor poly centroid from ground level.
+            floor_height: the floor-to-floor height of the rooms within the story.
+                This is a single input for eQuest, all rooms in story share this value.
+    Example:
         .. code-block:: f#
 
             "simple_example_dfb_Floor1" = FLOOR
