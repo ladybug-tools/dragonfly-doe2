@@ -15,13 +15,16 @@ class Wall:
             name: space name. (is joined with _wall_{n}).
             location: vertice of space poly anchoring the wall.
             construction: display_name of construction wall is comprised of.
+
     Example:
+
         .. code-block:: f#
 
             "simple_example_dfb_Floor1_Room1 Wall_1" = EXTERIOR-WALL
                CONSTRUCTION    = "EWall Construction"
                LOCATION        = SPACE-V1
                ..
+
     """
     name: str
     location: int
@@ -29,8 +32,8 @@ class Wall:
 
     @classmethod
     def from_room_seg(cls, name: str, location: int, construction: str):
-        indexed_id = location+1
-        return cls(str(name+f'_Wall_{indexed_id}'), indexed_id, construction)
+        indexed_id = location + 1
+        return cls(f'{name}_Wall_{indexed_id}', indexed_id, construction)
 
     def to_inp(self):
         return f'"{self.name}" = EXTERIOR-WALL\n' \
@@ -55,6 +58,7 @@ class Space:
              walls: List[of Wall(objects)]
 
     Example:
+
         .. code-block:: f#
 
             "simple_example_dfb_Floor1_Room1" = SPACE
@@ -70,6 +74,7 @@ class Space:
                 CONSTRUCTION    = "EWall Construction"
                 LOCATION        = SPACE-V2
                 ..
+
     """
     name: str
     activity: str
@@ -78,22 +83,18 @@ class Space:
     @classmethod
     def from_room(cls, room: Room2D):
         if not isinstance(room, Room2D):
-            # TODO: Make raise exception rather than print
-            print(
+            raise ValueError(
                 f'Unsupported Type: {type(room)}.\n'
                 'Expected dragonfly.room2d.Room2D'
             )
 
         wall_constr_name = room.properties.energy.construction_set.wall_set.exterior_construction.display_name
-        walls = []
-        bcs = [str(bc) for bc in room.boundary_conditions]
-        if 'Outdoors' in bcs:
-            for i, bc in enumerate(bcs):
-                if bc == 'Outdoors':
-                    walls.append(Wall.from_room_seg(
-                        room.display_name, i, wall_constr_name))
-        else:
-            walls = None
+        name = room.display_name
+        walls = [
+            Wall.from_room_seg(name, i, wall_constr_name)
+            for i, bc in enumerate(room.boundary_conditions)
+            if str(bc) == 'Outdoors'
+        ]
 
         return cls(
             name=room.display_name,
@@ -122,7 +123,9 @@ class Floor:
             floor_z: the height of the floor poly centroid from ground level.
             floor_height: the floor-to-floor height of the rooms within the story.
                 This is a single input for eQuest, all rooms in story share this value.
+
     Example:
+
         .. code-block:: f#
 
             "simple_example_dfb_Floor1" = FLOOR
@@ -141,6 +144,7 @@ class Floor:
                 CONSTRUCTION    = "EWall Construction"
                 LOCATION        = SPACE-V1
                 ..
+
     """
     name: str
     floor_z: float
@@ -150,11 +154,15 @@ class Floor:
     @classmethod
     def from_story(cls, story: Story):
         if not isinstance(story, Story):
-            # TODO: Make raise exception instead of print
-            print(f'Unsupported type: {type(story)}\n'
-                  'Expected dragonfy.story.Story')
+            raise ValueError(
+                f'Unsupported type: {type(story)}\n'
+                'Expected dragonfly.story.Story'
+            )
         spaces = [Space.from_room(room) for room in story.room_2ds]
-        return cls(story.display_name, story.floor_height, story.floor_to_floor_height, spaces)
+        return cls(
+            story.display_name, story.floor_height,
+            story.floor_to_floor_height, spaces
+        )
 
     def to_inp(self):
         flr_str = f'"{self.name}" = FLOOR\n' \
