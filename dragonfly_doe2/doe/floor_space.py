@@ -5,6 +5,16 @@ from typing import List
 
 
 @dataclass
+class SpaceFloor:
+    """
+    """
+    name: str
+    construction: str
+    type_adjacency: str
+    next_to: str = None
+
+
+@dataclass
 class RoofCeiling:
     # TODO: Need to add 'what's on the other side' for interior adj ceilings
     """Object for roof/ceiling inputs
@@ -23,6 +33,7 @@ class RoofCeiling:
     Example:
 
         .. code-block:: f#
+
             "Roof (G.2.E9)" = EXTERIOR-WALL   
                 CONSTRUCTION     = "Roof Construction"
                 LOCATION         = TOP
