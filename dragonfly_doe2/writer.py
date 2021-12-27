@@ -17,8 +17,6 @@ def model_to_inp(
     Returns:
         Path to exported inp file.
     """
-    # ensure model is in feet
-    model.convert_to_units(units='Feet')
 
     # TODO: add all the other arguments that one might to pass to the model
     inp_model = Model.from_df_model(model)
