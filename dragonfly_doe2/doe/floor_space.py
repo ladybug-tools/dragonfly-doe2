@@ -5,6 +5,45 @@ from typing import List
 
 
 @dataclass
+class RoofCeiling:
+    # TODO: Need to add 'what's on the other side' for interior adj ceilings
+    """Object for roof/ceiling inputs
+
+        Init method(s):
+            1. from_room(name, construction, location)
+
+        Args:
+            name: space name. (is joind with _roof_{n}).
+            construction: display_name of roof_ceiling's constr.
+            type_adjacency: interior adjacent or exterior adjacent, or sub-grade.
+            Identified via the following convention:
+                    1.Interior adjacent: str(INTERIOR-WALL). *Requires 'NEXT-TO' input*.
+                    2.Exterior adjacent: str(EXTERIOR-WALL).
+
+    Example:
+
+        .. code-block:: f#
+            "Roof (G.2.E9)" = EXTERIOR-WALL   
+                CONSTRUCTION     = "Roof Construction"
+                LOCATION         = TOP
+                ..
+            "Ceiling (G.1.I1)" = INTERIOR-WALL   
+                NEXT-TO          = "Plnm (G.2)"
+                CONSTRUCTION     = "Ceilg Construction"
+                LOCATION         = TOP
+                ..
+    """
+    name: str
+    construction: str
+    type_adjacency: str
+    next_to: str = None
+
+    @classmethod
+    def from_room(cls, room: Room2D):
+        pass
+
+
+@dataclass
 class Wall:
     """*.inp Wall object.
 
