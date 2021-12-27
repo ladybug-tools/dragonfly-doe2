@@ -6,6 +6,7 @@ from typing import List
 
 @dataclass
 class SpaceFloor:
+    # TODO: Need to add "what's on the other side" for interior adj floors.
     """
     """
     name: str
@@ -16,7 +17,7 @@ class SpaceFloor:
 
 @dataclass
 class RoofCeiling:
-    # TODO: Need to add 'what's on the other side' for interior adj ceilings
+    # TODO: Need to add "what's on the other side" for interior adj ceilings.
     """Object for roof/ceiling inputs
 
         Init method(s):
