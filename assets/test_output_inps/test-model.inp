@@ -1,0 +1,872 @@
+INPUT ..
+
+
+
+
+$ ---------------------------------------------------------
+$              Abort, Diagnostics
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Title, Run Periods, Design Days, Holidays
+$ ---------------------------------------------------------
+
+
+
+
+TITLE
+    LINE-1           = *{self.title}*
+    ..
+
+"Compliance Data" = COMPLIANCE
+   C-PERMIT-SCOPE   = 0
+   C-PROJ-NAME      = *ModelName*
+   C-BUILDING-TYPE  = 32
+   C-CONS-PHASE     = 0
+   C-NR-DHW-INCL    = 1
+   C-CODE-VERSION   = 1
+   C-901-NUM-FLRS   = 1
+   C-901-BLDG-TYPE  = 32
+..
+
+$---------------------------------------------------------
+$              Site and Building Data
+$---------------------------------------------------------
+
+"Site Data" = SITE-PARAMETERS
+  ALTITUDE          = 150
+  C-STATE           = 21
+  C-WEATHER-FILE    = *TMY2\HARTFOCT.bin* 
+  C-COUNTRY         = 1
+  C-901-LOCATION    = 1092
+  ..
+"Building Data" = BUILD-PARAMETERS
+  HOLIDAYS        = "Standard US Holidays"
+  ..
+
+
+PROJECT-DATA
+  ..
+
+
+
+$ ---------------------------------------------------------
+$              Materials / Layers / Constructions
+$ ---------------------------------------------------------
+
+
+
+"8 in. Normalweight Concrete Floor" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.666666688
+   CONDUCTIVITY    = 0.731776435475957
+   DENSITY         = 144.96224929625302
+   SPECIFIC-HEAT   = 0.35746465269496897
+   ..
+
+"Typical Insulation-R31" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 31.000000000000004
+   ..
+
+"25mm Stucco" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.083333336
+   CONDUCTIVITY    = 0.22808616170679177
+   DENSITY         = 115.86991158219044
+   SPECIFIC-HEAT   = 0.36090181281703604
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 17.0
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 4.0
+   ..
+
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.0026246720000000006
+   CONDUCTIVITY    = 14.344085280671607
+   DENSITY         = 488.45161003182125
+   SPECIFIC-HEAT   = 0.2148225076291888
+   ..
+
+"Typical Insulation-R7" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 7.0
+   ..
+
+"5/8 in. Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.052165356
+   CONDUCTIVITY    = 0.05068581371262013
+   DENSITY         = 49.94392740611665
+   SPECIFIC-HEAT   = 0.4683130666316304
+   ..
+
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031167979999999994
+   CONDUCTIVITY    = 0.05068581371262059
+   DENSITY         = 70.00203295150581
+   SPECIFIC-HEAT   = 0.627281722277231
+   ..
+
+"Metal Roof Surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.002624671999999993
+   CONDUCTIVITY    = 14.344085280671562
+   DENSITY         = 488.45161003182125
+   SPECIFIC-HEAT   = 0.214822507629187
+   ..
+
+"8 in. Concrete Block Basement Wall" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.666666688
+   CONDUCTIVITY    = 0.420058681143342
+   DENSITY         = 114.99589285258341
+   SPECIFIC-HEAT   = 0.3918362539156397
+   ..
+
+"Typical Insulation-R3" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 2.9999999999999996
+   ..
+
+"Typical Carpet Pad" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 1.22923037424
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 23.999999999999996
+   ..
+
+"Typical Insulated Carpeted 8in Slab Floor-R5 Layers" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R4",
+      "8 in. Normalweight Concrete Floor",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Typical Insulated Carpeted 8in Slab Floor-R5" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Insulated Carpeted 8in Slab Floor-R5 Layers"
+   ..
+
+
+"Typical Insulated Steel Framed Exterior Wall-R19 Layers" = LAYERS
+   MATERIAL                 = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R17",
+      "5/8 in. Gypsum Board"
+   )
+   ..
+
+"Typical Insulated Steel Framed Exterior Wall-R19" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Steel Framed Exterior Wall-R19 Layers"
+   ..
+
+"Typical Overhead Door-R4 Layers" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R4"
+   )
+   ..
+
+"Typical Overhead Door-R4" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R4 Layers"
+   ..
+
+"Typical Insulated Steel Framed Exterior Floor-R27 Layers" = LAYERS
+   MATERIAL                 = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Typical Insulated Steel Framed Exterior Floor-R27" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Steel Framed Exterior Floor-R27 Layers"
+   ..
+
+"Typical Insulated Metal Door-R3 Layers" = LAYERS
+   MATERIAL                 = (
+      "F08 Metal surface",
+      "Typical Insulation-R3"
+   )
+   ..
+
+"Typical Insulated Metal Door-R3" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Metal Door-R3 Layers"
+   ..
+
+"Typical Insulated Basement Mass Wall-R8 Layers" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R7",
+      "8 in. Concrete Block Basement Wall"
+   )
+   ..
+
+"Typical Insulated Basement Mass Wall-R8" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Insulated Basement Mass Wall-R8 Layers"
+   ..
+
+
+"Typical IEAD Roof-R32 Layers" = LAYERS
+   MATERIAL                 = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32 Layers"
+   ..
+
+
+$ ---------------------------------------------------------
+$              Polygons
+$ ---------------------------------------------------------
+
+
+
+
+"storyOne Plg" = POLYGON
+   V1        = ( 65.573770, 49.180328 )
+   V2        = ( 32.786885, 49.180328 )
+   V3        = ( 32.786885, 65.573770 )
+   V4        = ( 0.000000, 65.573770 )
+   V5        = ( 0.000000, 0.000000 )
+   V6        = ( -32.786885, 0.000000 )
+   V7        = ( -32.786885, -32.786885 )
+   V8        = ( 32.786885, -32.786885 )
+   V9        = ( 32.786885, 16.393443 )
+   V10        = ( 65.573770, 16.393443 )
+   ..
+"rmOne Plg" = POLYGON
+   V1        = ( -32.786885, 0.000000 )
+   V2        = ( -32.786885, -32.786885 )
+   V3        = ( 0.000000, -32.786885 )
+   V4        = ( 0.000000, 0.000000 )
+   ..
+"rmTwo Plg" = POLYGON
+   V1        = ( 0.000000, -32.786885 )
+   V2        = ( 32.786885, -32.786885 )
+   V3        = ( 32.786885, 32.786885 )
+   V4        = ( 0.000000, 32.786885 )
+   ..
+"rmThree Plg" = POLYGON
+   V1        = ( 0.000000, 65.573770 )
+   V2        = ( 0.000000, 32.786885 )
+   V3        = ( 32.786885, 32.786885 )
+   V4        = ( 32.786885, 65.573770 )
+   ..
+"rmFour Plg" = POLYGON
+   V1        = ( 32.786885, 16.393443 )
+   V2        = ( 65.573770, 16.393443 )
+   V3        = ( 65.573770, 49.180328 )
+   V4        = ( 32.786885, 49.180328 )
+   ..
+"storyTwo Plg" = POLYGON
+   V1        = ( 65.573770, 49.180328 )
+   V2        = ( 32.786885, 49.180328 )
+   V3        = ( 32.786885, 65.573770 )
+   V4        = ( 0.000000, 65.573770 )
+   V5        = ( 0.000000, 0.000000 )
+   V6        = ( -32.786885, 0.000000 )
+   V7        = ( -32.786885, -32.786885 )
+   V8        = ( 32.786885, -32.786885 )
+   V9        = ( 32.786885, 16.393443 )
+   V10        = ( 65.573770, 16.393443 )
+   ..
+"rmOneL2 Plg" = POLYGON
+   V1        = ( -32.786885, 0.000000 )
+   V2        = ( -32.786885, -32.786885 )
+   V3        = ( 0.000000, -32.786885 )
+   V4        = ( 0.000000, 0.000000 )
+   ..
+"rmTwoL2 Plg" = POLYGON
+   V1        = ( 0.000000, -32.786885 )
+   V2        = ( 32.786885, -32.786885 )
+   V3        = ( 32.786885, 32.786885 )
+   V4        = ( 0.000000, 32.786885 )
+   ..
+"rmThreeL2 Plg" = POLYGON
+   V1        = ( 0.000000, 65.573770 )
+   V2        = ( 0.000000, 32.786885 )
+   V3        = ( 32.786885, 32.786885 )
+   V4        = ( 32.786885, 65.573770 )
+   ..
+"rmFourL2 Plg" = POLYGON
+   V1        = ( 32.786885, 16.393443 )
+   V2        = ( 65.573770, 16.393443 )
+   V3        = ( 65.573770, 49.180328 )
+   V4        = ( 32.786885, 49.180328 )
+   ..
+
+
+
+$ ---------------------------------------------------------
+$              Wall Parameters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Fixed and Building Shades
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Misc Cost Related Objects
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                Performance Curves                   **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **      Floors / Spaces / Walls / Windows / Doors      **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+"storyOne" = FLOOR
+   Z                = 0.0
+   POLYGON          = "storyOne Plg"
+   SHAPE            = POLYGON
+   FLOOR-HEIGHT     = 11.475409836065573
+   C-DIAGRAM-DATA   = *storyOne UI DiagData*
+   ..
+
+"rmOne" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmOne Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::Breakroom*
+   ..
+
+"rmOne_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmOne_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmOne_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmOne_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmTwo" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmTwo Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::Classroom*
+   ..
+
+"rmTwo_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmTwo_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmTwo_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmTwo_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmTwo_Wall_5" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V5
+   ..
+"rmTwo_Wall_6" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V6
+   ..
+"rmThree" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmThree Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::Corridor*
+   ..
+
+"rmThree_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmThree_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmThree_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmThree_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmThree_Wall_5" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V5
+   ..
+"rmFour" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmFour Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::OpenOffice*
+   ..
+
+"rmFour_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmFour_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmFour_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmFour_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmFour_Wall_5" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V5
+   ..
+"storyTwo" = FLOOR
+   Z                = 11.475409836065573
+   POLYGON          = "storyTwo Plg"
+   SHAPE            = POLYGON
+   FLOOR-HEIGHT     = 11.475409836065573
+   C-DIAGRAM-DATA   = *storyTwo UI DiagData*
+   ..
+
+"rmOneL2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmOneL2 Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::OpenOffice*
+   ..
+
+"rmOneL2_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmOneL2_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmOneL2_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmOneL2_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmTwoL2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmTwoL2 Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::Corridor*
+   ..
+
+"rmTwoL2_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmTwoL2_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmTwoL2_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmTwoL2_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmTwoL2_Wall_5" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V5
+   ..
+"rmTwoL2_Wall_6" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V6
+   ..
+"rmThreeL2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmThreeL2 Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::Classroom*
+   ..
+
+"rmThreeL2_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmThreeL2_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmThreeL2_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmThreeL2_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmThreeL2_Wall_5" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V5
+   ..
+"rmFourL2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "rmFourL2 Plg"
+   C-ACTIVITY-DESC = *2019::MediumOffice::Breakroom*
+   ..
+
+"rmFourL2_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V1
+   ..
+"rmFourL2_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V2
+   ..
+"rmFourL2_Wall_3" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V3
+   ..
+"rmFourL2_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V4
+   ..
+"rmFourL2_Wall_5" = EXTERIOR-WALL
+   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   LOCATION       = SPACE-V5
+   ..
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **              Electric & Fuel Meters                 **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Electric Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Fuel Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Master Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **      HVAC Circulation Loops / Plant Equipment       **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Pumps
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Heat Exchangers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Circulation Loops
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Chillers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Boilers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Domestic Water Heaters
+$ ---------------------------------------------------------
+
+
+
+
+{sd_brk}$              Heat Rejection
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Tower Free Cooling
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Photovoltaic Modules
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Electric Generators
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Thermal Storage
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Ground Loop Heat Exchangers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Compliance DHW (residential dwelling units)
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **            Steam & Chilled Water Meters             **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Steam Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Chilled Water Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **               HVAC Systems / Zones                  **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                Metering & Misc HVAC                 **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Equipment Controls
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Load Management
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                    Utility Rates                    **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Ratchets
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Block Charges
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Utility Rates
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                 Output Reporting                    **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Loads Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Systems Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Plant Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Economics Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              THE END
+$ ---------------------------------------------------------
+
+END ..
+COMPUTE ..
+STOP ..
