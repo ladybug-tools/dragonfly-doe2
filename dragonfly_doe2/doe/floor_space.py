@@ -5,7 +5,7 @@ from typing import List
 
 
 @dataclass
-class SpaceFloor:
+class Slab:
     """Object for 'floor' surface.
 
         Init method(s):
@@ -159,6 +159,7 @@ class Space:
     name: str
     activity: str
     walls: List[Wall]
+    slab: Slab = None
 
     @classmethod
     def from_room(cls, room: Room2D):
@@ -175,10 +176,15 @@ class Space:
             for i, bc in enumerate(room.boundary_conditions)
             if str(bc) == 'Outdoors'
         ]
+        slab = None
+        if room.is_ground_contact == True:
+            slab = Slab.from_checked_room(
+                name, room.properties.energy.construction_set.floor_set.ground_construction.display_name)
 
         return cls(
             name=room.display_name,
-            activity=room.properties.energy.program_type.display_name, walls=walls)
+            activity=room.properties.energy.program_type.display_name, walls=walls,
+            slab=slab)
 
     def to_inp(self):
         space_walls = '\n'.join(wall.to_inp() for wall in self.walls)
@@ -186,7 +192,8 @@ class Space:
                       f'   SHAPE           = POLYGON\n' \
                       f'   POLYGON         = "{self.name} Plg"\n' \
                       f'   C-ACTIVITY-DESC = *{self.activity}*\n   ..\n'
-        return '\n'.join([space_block, space_walls])
+        return '\n'.join([space_block, space_walls, self.slab.to_inp()
+                          if self.slab else space_block, space_walls])
 
     def __repr__(self):
         return self.to_inp()
