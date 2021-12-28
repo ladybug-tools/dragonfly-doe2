@@ -6,22 +6,49 @@ from typing import List
 
 @dataclass
 class SpaceFloor:
-    # TODO: Need to add "what's on the other side" for interior adj floors.
-    """
+    """Object for 'floor' surface.
+
+        Init method(s):
+            1. from_checked_room(name, construction, type_adjacency).
+
+        Args:
+            name: space name. (is joined with _floor_{n}). 
+            construction: display_name of the floor's construction
+            type_adjacency: for now 'BOTTOM' only.
+
+    Example:
+        .. code-block:: f#
+
+            "Flr (G.1.U1)" = UNDERGROUND-WALL
+                CONSTRUCTION     = "UFCons (G.1.U2)"
+                LOCATION         = BOTTOM
+                ..
     """
     name: str
     construction: str
-    type_adjacency: str
-    next_to: str = None
+    type_adjacency: str = 'BOTTOM'
+
+    @classmethod
+    def from_checked_room(
+            cls, name: str, construction: str, type_adjacency: str = 'BOTTOM'):
+        return cls(name=name, construction=construction, type_adjacency=type_adjacency)
+
+    def to_inp(self):
+        return f'"{self.name}_grnd_flr" = UNDERGROUND-WALL\n' \
+               f'   CONSTRUCTION      = "{self.construction}"\n' \
+               f'   LOCATION          = {self.type_adjacency}\n   ..'
+
+    def __repr__(self):
+        return self.to_inp()
 
 
 @dataclass
 class RoofCeiling:
     # TODO: Need to add "what's on the other side" for interior adj ceilings.
-    """Object for roof/ceiling inputs
+    """Object for roof/ceiling inputs.
 
         Init method(s):
-            1. from_room(name, construction, location)
+            1. from_room(name, construction, type_adjacency, next_to=None)
 
         Args:
             name: space name. (is joind with _roof_{n}).
