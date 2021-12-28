@@ -2,6 +2,9 @@ from dragonfly.room2d import Room2D
 from dragonfly.story import Story
 from dataclasses import dataclass
 from typing import List
+from .utils import short_name
+# TODO: See if in future can be a 'single place' to process the dfm to
+# TODO: Shorten names, perhaps at the writer.py level
 
 
 @dataclass
@@ -177,7 +180,8 @@ class Space:
                 'Expected dragonfly.room2d.Room2D'
             )
 
-        wall_constr_name = room.properties.energy.construction_set.wall_set.exterior_construction.display_name
+        wall_constr_name = short_name(
+            room.properties.energy.construction_set.wall_set.exterior_construction.display_name, 30)
         name = room.display_name
         walls = [
             Wall.from_room_seg(name, i, wall_constr_name)
@@ -186,8 +190,8 @@ class Space:
         ]
         slab = None
         if room.is_ground_contact == True:
-            slab = Slab.from_checked_room(
-                name, room.properties.energy.construction_set.floor_set.ground_construction.display_name)
+            slab = Slab.from_checked_room(name, short_name(
+                room.properties.energy.construction_set.floor_set.ground_construction.display_name, 30))
         roof = None
         if room.is_top_exposed == True:
             roof = RoofCeiling.from_room(room)

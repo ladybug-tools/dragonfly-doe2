@@ -4,10 +4,10 @@ from typing import Union
 
 from honeybee_energy.material.opaque import EnergyMaterial, EnergyMaterialNoMass
 from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
+from .utils import short_name
 
 
 class MaterialType(Enum):
-    # TODO: Need to add 'name longer than limit' exception
     """Doe2 material types."""
     mass = 'PROPERTIES'
     no_mass = 'RESISTANCE'
@@ -37,7 +37,7 @@ class NoMassMaterial:
         resistance = round(_unit_convertor(
             [material.r_value],
             'h-ft2-F/Btu', 'm2-K/W'), 3)
-        return cls(material.display_name, resistance)
+        return cls(short_name(material.display_name, 32), resistance)
 
     def to_inp(self):
         return f'"{self.name}" = MATERIAL\n' \
@@ -57,7 +57,7 @@ class MassMaterial:
 
     @classmethod
     def from_hb_material(cls, material: EnergyMaterial):
-        name = material.display_name
+        name = short_name(material.display_name, 32)
         thickness = round(_unit_convertor([material.thickness, 3], 'ft', 'm'), 3)
         conductivity = round(_unit_convertor(
             [material.conductivity, 3],
