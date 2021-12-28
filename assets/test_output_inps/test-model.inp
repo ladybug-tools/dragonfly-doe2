@@ -18,7 +18,7 @@ $ ---------------------------------------------------------
 
 
 TITLE
-    LINE-1           = *{self.title}*
+    LINE-1           = *ModelName*
     ..
 
 "Compliance Data" = COMPLIANCE
@@ -59,95 +59,125 @@ $ ---------------------------------------------------------
 
 
 
-"8 in. Normalweight Concrete Floor" = MATERIAL
+"Metal Roof Surface" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.666666688
-   CONDUCTIVITY    = 0.731776435475957
-   DENSITY         = 144.96224929625302
-   SPECIFIC-HEAT   = 0.35746465269496897
-   ..
-
-"Typical Carpet Pad" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 1.22923037424
-   ..
-
-"5/8 in. Gypsum Board" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.052165356
-   CONDUCTIVITY    = 0.05068581371262013
-   DENSITY         = 49.94392740611665
-   SPECIFIC-HEAT   = 0.4683130666316304
-   ..
-
-"Typical Insulation-R7" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 7.0
-   ..
-
-"Typical Insulation-R17" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 17.0
-   ..
-
-"25mm Stucco" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.083333336
-   CONDUCTIVITY    = 0.22808616170679177
-   DENSITY         = 115.86991158219044
-   SPECIFIC-HEAT   = 0.36090181281703604
-   ..
-
-"Typical Insulation-R4" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 4.0
-   ..
-
-"Roof Membrane" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.031167979999999994
-   CONDUCTIVITY    = 0.05068581371262059
-   DENSITY         = 70.00203295150581
-   SPECIFIC-HEAT   = 0.627281722277231
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
    ..
 
 "Typical Insulation-R31" = MATERIAL
    TYPE           = RESISTANCE
-   RESISTANCE     = 31.000000000000004
+   RESISTANCE     = 30.997639556682998
    ..
 
-"F08 Metal surface" = MATERIAL
+"Roof Membrane" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.0026246720000000006
-   CONDUCTIVITY    = 14.344085280671607
-   DENSITY         = 488.45161003182125
-   SPECIFIC-HEAT   = 0.2148225076291888
-   ..
-
-"Typical Insulation-R24" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 23.999999999999996
+   THICKNESS       = 0.031
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 70.002
+   SPECIFIC-HEAT   = 0.627
    ..
 
 "8 in. Concrete Block Basement Wall" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.666666688
-   CONDUCTIVITY    = 0.420058681143342
-   DENSITY         = 114.99589285258341
-   SPECIFIC-HEAT   = 0.3918362539156397
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.42
+   DENSITY         = 114.996
+   SPECIFIC-HEAT   = 0.392
+   ..
+
+"5/8 in. Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.052
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 49.944
+   SPECIFIC-HEAT   = 0.468
+   ..
+
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 3.9974973892479997
+   ..
+
+"Typical Insulation-R7" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 7.001298694521
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 17.000720430978
+   ..
+
+"8 in. Normalweight Concrete Floor" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
    ..
 
 "Typical Insulation-R3" = MATERIAL
    TYPE           = RESISTANCE
-   RESISTANCE     = 2.9999999999999996
+   RESISTANCE     = 2.998123041936
    ..
 
-"Metal Roof Surface" = MATERIAL
+"Typical Insulation-R24" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 24.002019125499
+   ..
+
+"25mm Stucco" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.002624671999999993
-   CONDUCTIVITY    = 14.344085280671562
-   DENSITY         = 488.45161003182125
-   SPECIFIC-HEAT   = 0.214822507629187
+   THICKNESS       = 0.083
+   CONDUCTIVITY    = 0.228
+   DENSITY         = 115.87
+   SPECIFIC-HEAT   = 0.361
+   ..
+
+"Typical Carpet Pad" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 1.226504880792
+   ..
+"Typical Insulated Steel Framed Exterior Floor-R27 Layers" = LAYERS
+   MATERIAL                 = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Typical Insulated Steel Framed Exterior Floor-R27" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Steel Framed Exterior Floor-R27 Layers"
+   ..
+
+"Typical Insulated Metal Door-R3 Layers" = LAYERS
+   MATERIAL                 = (
+      "F08 Metal surface",
+      "Typical Insulation-R3"
+   )
+   ..
+
+"Typical Insulated Metal Door-R3" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Metal Door-R3 Layers"
    ..
 
 "Typical IEAD Roof-R32 Layers" = LAYERS
@@ -165,20 +195,19 @@ $ ---------------------------------------------------------
    LAYERS               = "Typical IEAD Roof-R32 Layers"
    ..
 
-"Typical Insulated Carpeted 8in Slab Floor-R5 Layers" = LAYERS
+"Typical Overhead Door-R4 Layers" = LAYERS
    MATERIAL                 = (
-      "Typical Insulation-R4",
-      "8 in. Normalweight Concrete Floor",
-      "Typical Carpet Pad"
+      "Typical Insulation-R4"
    )
    ..
 
-"Typical Insulated Carpeted 8in Slab Floor-R5" = CONSTRUCTION
+"Typical Overhead Door-R4" = CONSTRUCTION
    TYPE                 = LAYERS
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 4
-   LAYERS               = "Typical Insulated Carpeted 8in Slab Floor-R5 Layers"
+   LAYERS               = "Typical Overhead Door-R4 Layers"
    ..
+
 
 "Typical Insulated Basement Mass Wall-R8 Layers" = LAYERS
    MATERIAL                 = (
@@ -212,48 +241,19 @@ $ ---------------------------------------------------------
    LAYERS               = "Typical Insulated Steel Framed Exterior Wall-R19 Layers"
    ..
 
-"Typical Insulated Metal Door-R3 Layers" = LAYERS
+"Typical Insulated Carpeted 8in Slab Floor-R5 Layers" = LAYERS
    MATERIAL                 = (
-      "F08 Metal surface",
-      "Typical Insulation-R3"
-   )
-   ..
-
-"Typical Insulated Metal Door-R3" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "Typical Insulated Metal Door-R3 Layers"
-   ..
-
-"Typical Overhead Door-R4 Layers" = LAYERS
-   MATERIAL                 = (
-      "Typical Insulation-R4"
-   )
-   ..
-
-"Typical Overhead Door-R4" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Overhead Door-R4 Layers"
-   ..
-
-"Typical Insulated Steel Framed Exterior Floor-R27 Layers" = LAYERS
-   MATERIAL                 = (
-      "25mm Stucco",
-      "5/8 in. Gypsum Board",
-      "Typical Insulation-R24",
-      "5/8 in. Gypsum Board",
+      "Typical Insulation-R4",
+      "8 in. Normalweight Concrete Floor",
       "Typical Carpet Pad"
    )
    ..
 
-"Typical Insulated Steel Framed Exterior Floor-R27" = CONSTRUCTION
+"Typical Insulated Carpeted 8in Slab Floor-R5" = CONSTRUCTION
    TYPE                 = LAYERS
    ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "Typical Insulated Steel Framed Exterior Floor-R27 Layers"
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Insulated Carpeted 8in Slab Floor-R5 Layers"
    ..
 
 

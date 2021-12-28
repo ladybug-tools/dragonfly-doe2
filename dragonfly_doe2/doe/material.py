@@ -33,7 +33,9 @@ class NoMassMaterial:
 
     @classmethod
     def from_hb_material(cls, material: EnergyMaterialNoMass):
-        resistance = _unit_convertor([material.r_value], 'h-ft2-F/Btu', 'm2-K/W')
+        resistance = _unit_convertor(
+            [round(material.r_value, 3)],
+            'h-ft2-F/Btu', 'm2-K/W')
         return cls(material.display_name, resistance)
 
     def to_inp(self):
@@ -41,6 +43,7 @@ class NoMassMaterial:
             f'   TYPE           = {MaterialType.no_mass.value}\n' \
             f'   RESISTANCE     = {self.resistance}\n' \
             '   ..'
+
 
 @dataclass
 class MassMaterial:
@@ -51,16 +54,19 @@ class MassMaterial:
     density: float
     specific_heat: float
 
-
     @classmethod
     def from_hb_material(cls, material: EnergyMaterial):
         name = material.display_name
-        thickness = _unit_convertor([material.thickness], 'ft', 'm')
-        conductivity = _unit_convertor([material.conductivity], 'Btu/h-ft2', 'W/m2')
-        density = material.density / 16.018
-        specific_heat = _unit_convertor([material.specific_heat], 'Btu/lb', 'J/kg')
+        thickness = round(_unit_convertor([material.thickness, 3], 'ft', 'm'), 3)
+        conductivity = round(_unit_convertor(
+            [material.conductivity, 3],
+            'Btu/h-ft2', 'W/m2'), 3)
+        density = round(material.density / 16.018, 3)
+        specific_heat = round(_unit_convertor(
+            [material.specific_heat, 3],
+            'Btu/lb', 'J/kg'), 3)
         return cls(
-                name, thickness, conductivity, density, specific_heat
+            name, thickness, conductivity, density, specific_heat
         )
 
     def to_inp(self):
