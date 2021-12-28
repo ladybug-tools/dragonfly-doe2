@@ -48,13 +48,14 @@ class Construction:
         else:
             block = []
 
-        materials = '\n      '.join(f'"{material.name}",' for material in self.materials)
+        materials = '\n      '.join(f'"{material.name}",'
+                                    for material in self.materials)
 
         layers_name = f'"{self.name} Layers"'
         construction = f'{layers_name} = LAYERS\n' \
             f'   MATERIAL                 = (\n      {materials[:-1]}\n   )\n' \
             '   ..\n\n' \
-            f'"{self.name}" = CONSTRUCTION\n' \
+            f'"{self.name}_constr" = CONSTRUCTION\n' \
             '   TYPE                 = LAYERS\n' \
             f'   ABSORPTANCE          = {self.absorptance}\n' \
             f'   ROUGHNESS            = {self.roughness}\n' \

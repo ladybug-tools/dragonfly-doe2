@@ -71,8 +71,9 @@ boiler_objs = '{sd_brk}$              Boilers\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
 dwh = '{sd_brk}$              Domestic Water Heaters\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
-heat_reject = '{sd_brk}$              Heat Rejection\n' + \
-    sd_brk+spacer  # allAmericanHeatRejects
+heat_reject = '{sd_brk}$              Heat Rejection\n{sd_brk}{spacer}'.format(
+    sd_brk=sd_brk,
+    spacer=spacer)
 tower_free = '{sd_brk}$              Tower Free Cooling\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
 pvmod = '{sd_brk}$              Photovoltaic Modules\n{sd_brk}{spacer}'.format(

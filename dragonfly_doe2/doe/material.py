@@ -33,9 +33,9 @@ class NoMassMaterial:
 
     @classmethod
     def from_hb_material(cls, material: EnergyMaterialNoMass):
-        resistance = _unit_convertor(
-            [round(material.r_value, 3)],
-            'h-ft2-F/Btu', 'm2-K/W')
+        resistance = round(_unit_convertor(
+            [material.r_value],
+            'h-ft2-F/Btu', 'm2-K/W'), 3)
         return cls(material.display_name, resistance)
 
     def to_inp(self):
