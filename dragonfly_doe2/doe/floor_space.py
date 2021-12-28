@@ -47,6 +47,8 @@ class Slab:
 @dataclass
 class RoofCeiling:
     # TODO: Need to add "what's on the other side" for interior adj ceilings.
+    # ! Currently will only provide exterior roof for roofs with no internal adj's
+    # ? if not needed full interior detailing: Need to add to solve adj: story<->story solve adj
     """Object for roof/ceiling inputs.
 
         Init method(s):
@@ -55,11 +57,7 @@ class RoofCeiling:
         Args:
             name: space name. (is joind with _roof_{n}).
             construction: display_name of roof_ceiling's constr.
-            type_adjacency: interior adjacent or exterior adjacent, or sub-grade.
-            Identified via the following convention:
-                    1.Interior adjacent: str(INTERIOR-WALL). *Requires 'NEXT-TO' input*.
-                    2.Exterior adjacent: str(EXTERIOR-WALL).
-
+            next_to: *optional* WIP for interior ceilings adjacent space ID#!WIP
     Example:
 
         .. code-block:: f#
@@ -76,12 +74,21 @@ class RoofCeiling:
     """
     name: str
     construction: str
-    type_adjacency: str
     next_to: str = None
 
     @classmethod
     def from_room(cls, room: Room2D):
-        pass
+        name = room.display_name
+        construction = room.properties.energy.construction_set.roof_ceiling_set.exterior_construction.display_name
+        return cls(name, construction)
+
+    def to_inp(self):
+        return f'"{self.name}_roof" = EXTERIOR-WALL\n' \
+               f'   CONSTRUCTION    = "{self.construction}"\n' \
+               f'   LOCATION        = TOP\n   ..'
+
+    def __repr__(self):
+        return self.to_inp()
 
 
 @dataclass
@@ -160,6 +167,7 @@ class Space:
     activity: str
     walls: List[Wall]
     slab: Slab = None
+    roof: RoofCeiling = None
 
     @classmethod
     def from_room(cls, room: Room2D):
@@ -180,11 +188,14 @@ class Space:
         if room.is_ground_contact == True:
             slab = Slab.from_checked_room(
                 name, room.properties.energy.construction_set.floor_set.ground_construction.display_name)
+        roof = None
+        if room.is_top_exposed == True:
+            roof = RoofCeiling.from_room(room)
 
         return cls(
             name=room.display_name,
             activity=room.properties.energy.program_type.display_name, walls=walls,
-            slab=slab)
+            slab=slab, roof=roof)
 
     def to_inp(self):
         space_walls = '\n'.join(wall.to_inp() for wall in self.walls)
