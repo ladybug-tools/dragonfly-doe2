@@ -131,6 +131,7 @@ class Model:
         data = [
             self._header,
             fb.ttrpddh, self.title.to_inp(),
+            fb.comply,
             self.compliance_data.to_inp(),
             self.site_bldg_data.to_inp(),
             self.constructions.to_inp(),
