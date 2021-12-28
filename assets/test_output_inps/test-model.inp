@@ -66,39 +66,6 @@ $ ---------------------------------------------------------
 
 
 
-"25mm Stucco" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.083
-   CONDUCTIVITY    = 0.228
-   DENSITY         = 115.87
-   SPECIFIC-HEAT   = 0.361
-   ..
-
-"Typical Carpet Pad" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 1.229
-   ..
-
-"Typical Insulation-R17" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 17.0
-   ..
-
-"Typical Insulation-R31" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 31.0
-   ..
-
-"Typical Insulation-R4" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 4.0
-   ..
-
-"Typical Insulation-R3" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 3.0
-   ..
-
 "8 in. Concrete Block Basement Wall" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.667
@@ -107,7 +74,40 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.392
    ..
 
-"Metal Roof Surface" = MATERIAL
+"Typical Carpet Pad" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 1.229
+   ..
+
+"8 in. Normalweight Concrete Floor" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
+   ..
+
+"Typical Insulation-R31" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 31.0
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 24.0
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 17.0
+   ..
+
+"Typical Insulation-R3" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 3.0
+   ..
+
+"F08 Metal surface" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.003
    CONDUCTIVITY    = 14.344
@@ -115,7 +115,25 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.215
    ..
 
-"F08 Metal surface" = MATERIAL
+"Typical Insulation-R7" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 7.0
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 4.0
+   ..
+
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 70.002
+   SPECIFIC-HEAT   = 0.627
+   ..
+
+"Metal Roof Surface" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.003
    CONDUCTIVITY    = 14.344
@@ -131,119 +149,12 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.468
    ..
 
-"Typical Insulation-R24" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 24.0
-   ..
-
-"8 in. Normalweight Concrete Floor" = MATERIAL
+"25mm Stucco" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.667
-   CONDUCTIVITY    = 0.732
-   DENSITY         = 144.962
-   SPECIFIC-HEAT   = 0.357
-   ..
-
-"Roof Membrane" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.031
-   CONDUCTIVITY    = 0.051
-   DENSITY         = 70.002
-   SPECIFIC-HEAT   = 0.627
-   ..
-
-"Typical Insulation-R7" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 7.0
-   ..
-
-"Tpcl Insltd Mtl DrR3_l" = LAYERS
-   MATERIAL                 = (
-      "F08 Metal surface",
-      "Typical Insulation-R3"
-   )
-   ..
-
-"Tpcl Insltd Mtl DrR3_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "Tpcl Insltd Mtl DrR3_l"
-   ..
-
-"Typical IEAD Roof-R32_l" = LAYERS
-   MATERIAL                 = (
-      "Roof Membrane",
-      "Typical Insulation-R31",
-      "Metal Roof Surface"
-   )
-   ..
-
-"Typical IEAD Roof-R32_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 1
-   LAYERS               = "Typical IEAD Roof-R32_l"
-   ..
-
-"Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
-   MATERIAL                 = (
-      "Typical Insulation-R4",
-      "8 in. Normalweight Concrete Floor",
-      "Typical Carpet Pad"
-   )
-   ..
-
-"Tpcl Insltd Crptd 8n Slb FlrR5_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
-   ..
-
-
-"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
-   MATERIAL                 = (
-      "Typical Insulation-R7",
-      "8 in. Concrete Block Basement Wall"
-   )
-   ..
-
-"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
-   ..
-
-
-"TpclInsltdStlFrmdExtrrWllR19_l" = LAYERS
-   MATERIAL                 = (
-      "25mm Stucco",
-      "5/8 in. Gypsum Board",
-      "Typical Insulation-R17",
-      "5/8 in. Gypsum Board"
-   )
-   ..
-
-"TpclInsltdStlFrmdExtrrWllR19_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
-   ..
-
-"Typical Overhead Door-R4_l" = LAYERS
-   MATERIAL                 = (
-      "Typical Insulation-R4"
-   )
-   ..
-
-"Typical Overhead Door-R4_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Overhead Door-R4_l"
+   THICKNESS       = 0.083
+   CONDUCTIVITY    = 0.228
+   DENSITY         = 115.87
+   SPECIFIC-HEAT   = 0.361
    ..
 
 "TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
@@ -261,6 +172,95 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 5
    LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+   ..
+
+"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R7",
+      "8 in. Concrete Block Basement Wall"
+   )
+   ..
+
+"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
+   ..
+
+"Typical Overhead Door-R4_l" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R4"
+   )
+   ..
+
+"Typical Overhead Door-R4_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R4_l"
+   ..
+
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R4",
+      "8 in. Normalweight Concrete Floor",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
+   ..
+
+"TpclInsltdStlFrmdExtrrWllR19_l" = LAYERS
+   MATERIAL                 = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R17",
+      "5/8 in. Gypsum Board"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrWllR19_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
+   ..
+
+"Tpcl Insltd Mtl DrR3_l" = LAYERS
+   MATERIAL                 = (
+      "F08 Metal surface",
+      "Typical Insulation-R3"
+   )
+   ..
+
+"Tpcl Insltd Mtl DrR3_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Tpcl Insltd Mtl DrR3_l"
+   ..
+
+
+"Typical IEAD Roof-R32_l" = LAYERS
+   MATERIAL                 = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32_l"
    ..
 
 
@@ -400,23 +400,23 @@ $ *********************************************************
    ..
 
 "rmOne_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmOne_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmOne_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmOne_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmOne_grnd_flr" = UNDERGROUND-WALL
-   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   CONSTRUCTION      = "Tpcl Insltd Crptd 8n Slb FlrR5"
    LOCATION          = BOTTOM
    ..
 "rmTwo" = SPACE
@@ -426,31 +426,31 @@ $ *********************************************************
    ..
 
 "rmTwo_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmTwo_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmTwo_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmTwo_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmTwo_Wall_5" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V5
    ..
 "rmTwo_Wall_6" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V6
    ..
 "rmTwo_grnd_flr" = UNDERGROUND-WALL
-   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   CONSTRUCTION      = "Tpcl Insltd Crptd 8n Slb FlrR5"
    LOCATION          = BOTTOM
    ..
 "rmThree" = SPACE
@@ -460,27 +460,27 @@ $ *********************************************************
    ..
 
 "rmThree_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmThree_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmThree_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmThree_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmThree_Wall_5" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V5
    ..
 "rmThree_grnd_flr" = UNDERGROUND-WALL
-   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   CONSTRUCTION      = "Tpcl Insltd Crptd 8n Slb FlrR5"
    LOCATION          = BOTTOM
    ..
 "rmFour" = SPACE
@@ -490,27 +490,27 @@ $ *********************************************************
    ..
 
 "rmFour_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmFour_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmFour_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmFour_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmFour_Wall_5" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V5
    ..
 "rmFour_grnd_flr" = UNDERGROUND-WALL
-   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   CONSTRUCTION      = "Tpcl Insltd Crptd 8n Slb FlrR5"
    LOCATION          = BOTTOM
    ..
 "storyTwo" = FLOOR
@@ -528,19 +528,19 @@ $ *********************************************************
    ..
 
 "rmOneL2_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmOneL2_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmOneL2_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmOneL2_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmOneL2_roof" = EXTERIOR-WALL
@@ -554,27 +554,27 @@ $ *********************************************************
    ..
 
 "rmTwoL2_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmTwoL2_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmTwoL2_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmTwoL2_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmTwoL2_Wall_5" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V5
    ..
 "rmTwoL2_Wall_6" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V6
    ..
 "rmTwoL2_roof" = EXTERIOR-WALL
@@ -588,23 +588,23 @@ $ *********************************************************
    ..
 
 "rmThreeL2_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmThreeL2_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmThreeL2_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmThreeL2_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmThreeL2_Wall_5" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V5
    ..
 "rmThreeL2_roof" = EXTERIOR-WALL
@@ -618,23 +618,23 @@ $ *********************************************************
    ..
 
 "rmFourL2_Wall_1" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V1
    ..
 "rmFourL2_Wall_2" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V2
    ..
 "rmFourL2_Wall_3" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V3
    ..
 "rmFourL2_Wall_4" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V4
    ..
 "rmFourL2_Wall_5" = EXTERIOR-WALL
-   CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
+   CONSTRUCTION   = "TpclInsltdStlFrmdExtrrWllR19"
    LOCATION       = SPACE-V5
    ..
 "rmFourL2_roof" = EXTERIOR-WALL
