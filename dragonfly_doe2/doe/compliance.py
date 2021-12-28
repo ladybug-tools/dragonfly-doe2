@@ -1,5 +1,6 @@
 """Compliance Data."""
 
+
 class ComplianceData(object):
 
     permit_scope = 0
@@ -25,7 +26,7 @@ class ComplianceData(object):
             '   C-CODE-VERSION   = {code_version}\n'.format(code_version=self.code_version) + \
             '   C-901-NUM-FLRS   = {num_floors}\n'.format(num_floors=self.num_floors) + \
             '   C-901-BLDG-TYPE  = {bldg_type_901}\n'.format(bldg_type_901=self.bldg_type_901) + \
-            '..'
+            '   ..'
 
     def __repr__(self):
         return self.to_inp()
