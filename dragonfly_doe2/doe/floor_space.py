@@ -203,8 +203,12 @@ class Space:
                       f'   SHAPE           = POLYGON\n' \
                       f'   POLYGON         = "{self.name} Plg"\n' \
                       f'   C-ACTIVITY-DESC = *{self.activity}*\n   ..\n'
-        return '\n'.join([space_block, space_walls, self.slab.to_inp()
-                          if self.slab else space_block, space_walls])
+        rtrn_lst = [space_block, space_walls]
+        if self.slab:
+            rtrn_lst.append(self.slab.to_inp())
+        if self.roof:
+            rtrn_lst.append(self.roof.to_inp())
+        return '\n'.join(rtrn_lst)
 
     def __repr__(self):
         return self.to_inp()
