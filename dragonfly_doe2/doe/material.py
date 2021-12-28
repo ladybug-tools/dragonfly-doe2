@@ -7,6 +7,7 @@ from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
 
 
 class MaterialType(Enum):
+    # TODO: Need to add 'name longer than limit' exception
     """Doe2 material types."""
     mass = 'PROPERTIES'
     no_mass = 'RESISTANCE'
@@ -27,7 +28,7 @@ def _unit_convertor(value, to_, from_):
 
 @dataclass
 class NoMassMaterial:
-
+    # TODO: Need to add 'name longer than limit' exception
     name: str
     resistance: float
 
@@ -81,6 +82,7 @@ class MassMaterial:
 
 @dataclass
 class Material:
+    # TODO: Need to add 'name longer than limit' exception
     """Do2 Material object.
 
     refer to:
