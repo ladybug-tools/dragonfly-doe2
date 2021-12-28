@@ -10,6 +10,8 @@ class SpaceFloor:
 
         Init method(s):
             1. from_checked_room(name, construction, type_adjacency).
+            note: temp naming conv: intent is for at space class level to
+            check if is_ground_contact == True; do SpaceFloor init.
 
         Args:
             name: space name. (is joined with _floor_{n}). 
