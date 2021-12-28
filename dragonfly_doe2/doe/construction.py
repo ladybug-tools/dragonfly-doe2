@@ -6,10 +6,12 @@ from honeybee_energy.construction.opaque import OpaqueConstruction as OpConstr
 
 from .material import Material
 from . import blocks as fb
+from .utils import short_name
 
 
 @dataclass
 class Construction:
+    # TODO: Need to add 'name longer than limit' exception
     name: str
     materials: List[Material]
     absorptance: float
@@ -35,7 +37,9 @@ class Construction:
         absorptance = construction.materials[0].solar_absorptance
         roughness = roughdict[construction.materials[0].roughness]
 
-        return cls(construction.display_name, materials, absorptance, roughness)
+        cons_name = short_name(construction.display_name, 30)
+
+        return cls(cons_name, materials, absorptance, roughness)
 
     def to_inp(self, include_materials=True):
 
@@ -51,11 +55,11 @@ class Construction:
         materials = '\n      '.join(f'"{material.name}",'
                                     for material in self.materials)
 
-        layers_name = f'"{self.name} Layers"'
+        layers_name = f'"{self.name}_l"'
         construction = f'{layers_name} = LAYERS\n' \
             f'   MATERIAL                 = (\n      {materials[:-1]}\n   )\n' \
             '   ..\n\n' \
-            f'"{self.name}_constr" = CONSTRUCTION\n' \
+            f'"{self.name}_c" = CONSTRUCTION\n' \
             '   TYPE                 = LAYERS\n' \
             f'   ABSORPTANCE          = {self.absorptance}\n' \
             f'   ROUGHNESS            = {self.roughness}\n' \
