@@ -10,7 +10,7 @@ class Title:
         """Return run period as an inp string."""
         # standard holidays should be exposed.
         return 'TITLE\n' \
-            '    LINE-1           = *{self.title}*\n' \
+            f'    LINE-1           = *{self.title}*\n' \
             '    ..'
 
     def __repr__(self) -> str:

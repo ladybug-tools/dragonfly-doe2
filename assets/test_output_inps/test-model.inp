@@ -67,40 +67,9 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.35746465269496897
    ..
 
-"Typical Insulation-R31" = MATERIAL
+"Typical Carpet Pad" = MATERIAL
    TYPE           = RESISTANCE
-   RESISTANCE     = 31.000000000000004
-   ..
-
-"25mm Stucco" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.083333336
-   CONDUCTIVITY    = 0.22808616170679177
-   DENSITY         = 115.86991158219044
-   SPECIFIC-HEAT   = 0.36090181281703604
-   ..
-
-"Typical Insulation-R17" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 17.0
-   ..
-
-"Typical Insulation-R4" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 4.0
-   ..
-
-"F08 Metal surface" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.0026246720000000006
-   CONDUCTIVITY    = 14.344085280671607
-   DENSITY         = 488.45161003182125
-   SPECIFIC-HEAT   = 0.2148225076291888
-   ..
-
-"Typical Insulation-R7" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 7.0
+   RESISTANCE     = 1.22923037424
    ..
 
 "5/8 in. Gypsum Board" = MATERIAL
@@ -111,6 +80,29 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.4683130666316304
    ..
 
+"Typical Insulation-R7" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 7.0
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 17.0
+   ..
+
+"25mm Stucco" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.083333336
+   CONDUCTIVITY    = 0.22808616170679177
+   DENSITY         = 115.86991158219044
+   SPECIFIC-HEAT   = 0.36090181281703604
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 4.0
+   ..
+
 "Roof Membrane" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.031167979999999994
@@ -119,12 +111,22 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.627281722277231
    ..
 
-"Metal Roof Surface" = MATERIAL
+"Typical Insulation-R31" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 31.000000000000004
+   ..
+
+"F08 Metal surface" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.002624671999999993
-   CONDUCTIVITY    = 14.344085280671562
+   THICKNESS       = 0.0026246720000000006
+   CONDUCTIVITY    = 14.344085280671607
    DENSITY         = 488.45161003182125
-   SPECIFIC-HEAT   = 0.214822507629187
+   SPECIFIC-HEAT   = 0.2148225076291888
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE           = RESISTANCE
+   RESISTANCE     = 23.999999999999996
    ..
 
 "8 in. Concrete Block Basement Wall" = MATERIAL
@@ -140,14 +142,27 @@ $ ---------------------------------------------------------
    RESISTANCE     = 2.9999999999999996
    ..
 
-"Typical Carpet Pad" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 1.22923037424
+"Metal Roof Surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.002624671999999993
+   CONDUCTIVITY    = 14.344085280671562
+   DENSITY         = 488.45161003182125
+   SPECIFIC-HEAT   = 0.214822507629187
    ..
 
-"Typical Insulation-R24" = MATERIAL
-   TYPE           = RESISTANCE
-   RESISTANCE     = 23.999999999999996
+"Typical IEAD Roof-R32 Layers" = LAYERS
+   MATERIAL                 = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32 Layers"
    ..
 
 "Typical Insulated Carpeted 8in Slab Floor-R5 Layers" = LAYERS
@@ -165,6 +180,21 @@ $ ---------------------------------------------------------
    LAYERS               = "Typical Insulated Carpeted 8in Slab Floor-R5 Layers"
    ..
 
+"Typical Insulated Basement Mass Wall-R8 Layers" = LAYERS
+   MATERIAL                 = (
+      "Typical Insulation-R7",
+      "8 in. Concrete Block Basement Wall"
+   )
+   ..
+
+"Typical Insulated Basement Mass Wall-R8" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Insulated Basement Mass Wall-R8 Layers"
+   ..
+
+
 
 "Typical Insulated Steel Framed Exterior Wall-R19 Layers" = LAYERS
    MATERIAL                 = (
@@ -180,6 +210,20 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 5
    LAYERS               = "Typical Insulated Steel Framed Exterior Wall-R19 Layers"
+   ..
+
+"Typical Insulated Metal Door-R3 Layers" = LAYERS
+   MATERIAL                 = (
+      "F08 Metal surface",
+      "Typical Insulation-R3"
+   )
+   ..
+
+"Typical Insulated Metal Door-R3" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Typical Insulated Metal Door-R3 Layers"
    ..
 
 "Typical Overhead Door-R4 Layers" = LAYERS
@@ -210,50 +254,6 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 5
    LAYERS               = "Typical Insulated Steel Framed Exterior Floor-R27 Layers"
-   ..
-
-"Typical Insulated Metal Door-R3 Layers" = LAYERS
-   MATERIAL                 = (
-      "F08 Metal surface",
-      "Typical Insulation-R3"
-   )
-   ..
-
-"Typical Insulated Metal Door-R3" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "Typical Insulated Metal Door-R3 Layers"
-   ..
-
-"Typical Insulated Basement Mass Wall-R8 Layers" = LAYERS
-   MATERIAL                 = (
-      "Typical Insulation-R7",
-      "8 in. Concrete Block Basement Wall"
-   )
-   ..
-
-"Typical Insulated Basement Mass Wall-R8" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Insulated Basement Mass Wall-R8 Layers"
-   ..
-
-
-"Typical IEAD Roof-R32 Layers" = LAYERS
-   MATERIAL                 = (
-      "Roof Membrane",
-      "Typical Insulation-R31",
-      "Metal Roof Surface"
-   )
-   ..
-
-"Typical IEAD Roof-R32" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 1
-   LAYERS               = "Typical IEAD Roof-R32 Layers"
    ..
 
 
@@ -408,6 +408,10 @@ $ *********************************************************
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V4
    ..
+"rmOne_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   LOCATION          = BOTTOM
+   ..
 "rmTwo" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmTwo Plg"
@@ -438,6 +442,10 @@ $ *********************************************************
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V6
    ..
+"rmTwo_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   LOCATION          = BOTTOM
+   ..
 "rmThree" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmThree Plg"
@@ -464,6 +472,10 @@ $ *********************************************************
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V5
    ..
+"rmThree_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   LOCATION          = BOTTOM
+   ..
 "rmFour" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmFour Plg"
@@ -489,6 +501,10 @@ $ *********************************************************
 "rmFour_Wall_5" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V5
+   ..
+"rmFour_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION      = "Typical Insulated Carpeted 8in Slab Floor-R5"
+   LOCATION          = BOTTOM
    ..
 "storyTwo" = FLOOR
    Z                = 11.475409836065573
@@ -520,6 +536,10 @@ $ *********************************************************
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V4
    ..
+"rmOneL2_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32"
+   LOCATION        = TOP
+   ..
 "rmTwoL2" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmTwoL2 Plg"
@@ -550,6 +570,10 @@ $ *********************************************************
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V6
    ..
+"rmTwoL2_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32"
+   LOCATION        = TOP
+   ..
 "rmThreeL2" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmThreeL2 Plg"
@@ -576,6 +600,10 @@ $ *********************************************************
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V5
    ..
+"rmThreeL2_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32"
+   LOCATION        = TOP
+   ..
 "rmFourL2" = SPACE
    SHAPE           = POLYGON
    POLYGON         = "rmFourL2 Plg"
@@ -601,6 +629,10 @@ $ *********************************************************
 "rmFourL2_Wall_5" = EXTERIOR-WALL
    CONSTRUCTION   = "Typical Insulated Steel Framed Exterior Wall-R19"
    LOCATION       = SPACE-V5
+   ..
+"rmFourL2_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32"
+   LOCATION        = TOP
    ..
 
 
