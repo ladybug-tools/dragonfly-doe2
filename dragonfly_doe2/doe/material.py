@@ -56,10 +56,10 @@ class MassMaterial:
     @classmethod
     def from_hb_material(cls, material: EnergyMaterial):
         name = short_name(material.display_name, 32)
-        thickness = _unit_convertor([material.thickness, 3], 'ft', 'm')
-        conductivity = _unit_convertor([material.conductivity, 3], 'Btu/h-ft2', 'W/m2')
+        thickness = _unit_convertor([material.thickness], 'ft', 'm')
+        conductivity = _unit_convertor([material.conductivity], 'Btu/h-ft2', 'W/m2')
         density = round(material.density / 16.018, 3)
-        specific_heat = _unit_convertor([material.specific_heat, 3], 'Btu/lb', 'J/kg')
+        specific_heat = _unit_convertor([material.specific_heat], 'Btu/lb', 'J/kg')
         return cls(
             name, thickness, conductivity, density, specific_heat
         )
