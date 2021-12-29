@@ -3,8 +3,6 @@ from dragonfly.story import Story
 from dataclasses import dataclass
 from typing import List
 from .utils import short_name
-# TODO: See if in future can be a 'single place' to process the dfm to
-# TODO: Shorten names, perhaps at the writer.py level
 
 
 @dataclass
@@ -12,7 +10,7 @@ class Slab:
     """Object for 'floor' surface.
 
         Init method(s):
-            1. from_checked_room(name, construction, type_adjacency).
+            1. from_room(name, construction, type_adjacency).
             note: temp naming conv: intent is for at space class level to
             check if is_ground_contact == True; do SpaceFloor init.
 
@@ -34,7 +32,7 @@ class Slab:
     type_adjacency: str = 'BOTTOM'
 
     @classmethod
-    def from_checked_room(
+    def from_room(
             cls, name: str, construction: str, type_adjacency: str = 'BOTTOM'):
         return cls(name=name, construction=construction, type_adjacency=type_adjacency)
 
@@ -188,13 +186,10 @@ class Space:
             for i, bc in enumerate(room.boundary_conditions)
             if str(bc) == 'Outdoors'
         ]
-        slab = None
-        if room.is_ground_contact == True:
-            slab = Slab.from_checked_room(name, short_name(
-                room.properties.energy.construction_set.floor_set.ground_construction.display_name, 30))
-        roof = None
-        if room.is_top_exposed == True:
-            roof = RoofCeiling.from_room(room)
+        slab = None if room.is_ground_contact != True else Slab.from_room(name, short_name(
+            room.properties.energy.construction_set.floor_set.ground_construction.display_name, 30))
+
+        roof = None if room.is_top_exposed != True else RoofCeiling.from_room(room)
 
         return cls(
             name=room.display_name,
@@ -207,12 +202,12 @@ class Space:
                       f'   SHAPE           = POLYGON\n' \
                       f'   POLYGON         = "{self.name} Plg"\n' \
                       f'   C-ACTIVITY-DESC = *{self.activity}*\n   ..\n'
-        rtrn_lst = [space_block, space_walls]
+        blocks = [space_block, space_walls]
         if self.slab:
-            rtrn_lst.append(self.slab.to_inp())
+            blocks.append(self.slab.to_inp())
         if self.roof:
-            rtrn_lst.append(self.roof.to_inp())
-        return '\n'.join(rtrn_lst)
+            blocks.append(self.roof.to_inp())
+        return '\n'.join(blocks)
 
     def __repr__(self):
         return self.to_inp()
