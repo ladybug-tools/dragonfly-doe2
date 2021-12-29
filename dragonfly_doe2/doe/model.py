@@ -129,6 +129,7 @@ class Model:
 
         data = [
             self._header,
+            fb.global_params,
             fb.ttrpddh, self.title.to_inp(), self.run_period.to_inp(),
             fb.comply,
             self.compliance_data.to_inp(),
