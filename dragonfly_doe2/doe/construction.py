@@ -11,7 +11,6 @@ from .utils import short_name
 
 @dataclass
 class Construction:
-    # TODO: Need to add 'name longer than limit' exception
     name: str
     materials: List[Material]
     absorptance: float
@@ -57,7 +56,7 @@ class Construction:
 
         layers_name = f'"{self.name}_l"'
         construction = f'{layers_name} = LAYERS\n' \
-            f'   MATERIAL                 = (\n      {materials[:-1]}\n   )\n' \
+            f'   MATERIAL             = (\n      {materials[:-1]}\n   )\n' \
             '   ..\n\n' \
             f'"{self.name}_c" = CONSTRUCTION\n' \
             '   TYPE                 = LAYERS\n' \

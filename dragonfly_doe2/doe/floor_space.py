@@ -38,8 +38,8 @@ class Slab:
 
     def to_inp(self):
         return f'"{self.name}_grnd_flr" = UNDERGROUND-WALL\n' \
-               f'   CONSTRUCTION      = "{self.construction}"\n' \
-               f'   LOCATION          = {self.type_adjacency}\n   ..'
+               f'   CONSTRUCTION    = "{self.construction}"\n' \
+               f'   LOCATION        = {self.type_adjacency}\n   ..'
 
     def __repr__(self):
         return self.to_inp()
@@ -125,8 +125,8 @@ class Wall:
 
     def to_inp(self):
         return f'"{self.name}" = EXTERIOR-WALL\n' \
-            f'   CONSTRUCTION   = "{self.construction}"\n' \
-            f'   LOCATION       = SPACE-V{self.location}\n   ..'
+            f'   CONSTRUCTION    = "{self.construction}"\n' \
+            f'   LOCATION        = SPACE-V{self.location}\n   ..'
 
     def __repr__(self) -> str:
         return self.to_inp()
@@ -267,11 +267,11 @@ class Floor:
 
     def to_inp(self):
         flr_str = f'"{self.name}" = FLOOR\n' \
-            f'   Z                = {self.floor_z}\n' \
-            f'   POLYGON          = "{self.name} Plg"\n' \
-            f'   SHAPE            = POLYGON\n' \
-            f'   FLOOR-HEIGHT     = {self.floor_height}\n' \
-            f'   C-DIAGRAM-DATA   = *{self.name} UI DiagData*\n   ..\n'
+            f'   Z               = {self.floor_z}\n' \
+            f'   POLYGON         = "{self.name} Plg"\n' \
+            f'   SHAPE           = POLYGON\n' \
+            f'   FLOOR-HEIGHT    = {self.floor_height}\n' \
+            f'   C-DIAGRAM-DATA  = *{self.name} UI DiagData*\n   ..\n'
         flr_spcs = '\n'.join(spc.to_inp() for spc in self.spaces)
         return '\n'.join([flr_str, flr_spcs])
 
