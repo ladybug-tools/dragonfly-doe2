@@ -23,7 +23,7 @@ def _unit_convertor(value, to_, from_):
         raise ValueError(f'Invalid type: {from_}')
 
     value = base_type.to_unit(value, to_, from_)
-    return value[0]
+    return round(value[0], 3)
 
 
 @dataclass
@@ -34,9 +34,7 @@ class NoMassMaterial:
 
     @classmethod
     def from_hb_material(cls, material: EnergyMaterialNoMass):
-        resistance = round(_unit_convertor(
-            [material.r_value],
-            'h-ft2-F/Btu', 'm2-K/W'), 3)
+        resistance = _unit_convertor([material.r_value], 'h-ft2-F/Btu', 'm2-K/W')
         return cls(short_name(material.display_name, 32), resistance)
 
     def to_inp(self):
@@ -58,14 +56,10 @@ class MassMaterial:
     @classmethod
     def from_hb_material(cls, material: EnergyMaterial):
         name = short_name(material.display_name, 32)
-        thickness = round(_unit_convertor([material.thickness, 3], 'ft', 'm'), 3)
-        conductivity = round(_unit_convertor(
-            [material.conductivity, 3],
-            'Btu/h-ft2', 'W/m2'), 3)
+        thickness = _unit_convertor([material.thickness, 3], 'ft', 'm')
+        conductivity = _unit_convertor([material.conductivity, 3], 'Btu/h-ft2', 'W/m2')
         density = round(material.density / 16.018, 3)
-        specific_heat = round(_unit_convertor(
-            [material.specific_heat, 3],
-            'Btu/lb', 'J/kg'), 3)
+        specific_heat = _unit_convertor([material.specific_heat, 3], 'Btu/lb', 'J/kg')
         return cls(
             name, thickness, conductivity, density, specific_heat
         )
