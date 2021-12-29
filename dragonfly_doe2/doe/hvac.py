@@ -1,3 +1,6 @@
+from .utils import short_name
+from dataclasses import dataclass
+
 
 class HVAC(object):
     """Placeholder HVAC class.
@@ -13,3 +16,11 @@ class HVAC(object):
 
     def __repr__(self):
         return self.to_inp()
+
+
+@dataclass
+class _HVACBase(object):
+    """Make base that takes HB HVAC objs:
+        Checks if in eQuest system lib, makes obj
+    """
+    pass

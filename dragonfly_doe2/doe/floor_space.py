@@ -38,7 +38,7 @@ class Slab:
 
     def to_inp(self):
         return f'"{self.name}_grnd_flr" = UNDERGROUND-WALL\n' \
-               f'   CONSTRUCTION    = "{self.construction}"\n' \
+               f'   CONSTRUCTION    = "{self.construction}_c"\n' \
                f'   LOCATION        = {self.type_adjacency}\n   ..'
 
     def __repr__(self):
@@ -85,7 +85,7 @@ class RoofCeiling:
 
     def to_inp(self):
         return f'"{self.name}_roof" = EXTERIOR-WALL\n' \
-               f'   CONSTRUCTION    = "{self.construction}"\n' \
+               f'   CONSTRUCTION    = "{self.construction}_c"\n' \
                f'   LOCATION        = TOP\n   ..'
 
     def __repr__(self):
@@ -125,7 +125,7 @@ class Wall:
 
     def to_inp(self):
         return f'"{self.name}" = EXTERIOR-WALL\n' \
-            f'   CONSTRUCTION    = "{self.construction}"\n' \
+            f'   CONSTRUCTION    = "{self.construction}_c"\n' \
             f'   LOCATION        = SPACE-V{self.location}\n   ..'
 
     def __repr__(self) -> str:
