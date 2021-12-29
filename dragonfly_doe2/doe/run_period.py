@@ -26,16 +26,16 @@ class RunPeriod:
     def to_inp(self) -> str:
         """Return run period as an inp string."""
         # standard holidays should be exposed.
-        return '"Entire Year" = RUN-PERIOD-PD\n  ' \
+        return '"Entire Year" = RUN-PERIOD-PD\n   ' \
             'BEGIN-MONTH     = 1\n' \
-            'BEGIN-DAY      = 1\n' \
-            'BEGIN-YEAR     = 2021\n' \
-            'END-MONTH      = 12\n' \
-            'END-DAY        = 31\n' \
-            'END-YEAR       = 2021\n' \
-            '..\n\n' \
-            '"Standard US Holidays" = HOLIDAYS\n  ' \
-            'LIBRARY-ENTRY "US"\n  ..'
+            '   BEGIN-DAY      = 1\n' \
+            '   BEGIN-YEAR     = 2021\n' \
+            '   END-MONTH      = 12\n' \
+            '   END-DAY        = 31\n' \
+            '   END-YEAR       = 2021\n' \
+            '   ..\n\n' \
+            '"Standard US Holidays" = HOLIDAYS\n   ' \
+            'LIBRARY-ENTRY "US"\n   ..'
 
     def __repr__(self) -> str:
         return self.to_inp()

@@ -28,7 +28,6 @@ def _unit_convertor(value, to_, from_):
 
 @dataclass
 class NoMassMaterial:
-    # TODO: Need to add 'name longer than limit' exception
     name: str
     resistance: float
 
@@ -39,8 +38,8 @@ class NoMassMaterial:
 
     def to_inp(self):
         return f'"{self.name}" = MATERIAL\n' \
-            f'   TYPE           = {MaterialType.no_mass.value}\n' \
-            f'   RESISTANCE     = {self.resistance}\n' \
+            f'   TYPE            = {MaterialType.no_mass.value}\n' \
+            f'   RESISTANCE      = {self.resistance}\n' \
             '   ..'
 
 
@@ -76,7 +75,6 @@ class MassMaterial:
 
 @dataclass
 class Material:
-    # TODO: Need to add 'name longer than limit' exception
     """Do2 Material object.
 
     refer to:
