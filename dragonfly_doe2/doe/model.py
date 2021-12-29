@@ -33,8 +33,7 @@ class Model:
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
         # Check model units, ensure units in feet
-        if df_model.units != 'Feet':
-            df_model.convert_to_units(units='Feet')
+        df_model.convert_to_units(units='Feet')
 
         polygons = []
         flr_spc = [Floor.from_story(story) for story in df_model.stories]
