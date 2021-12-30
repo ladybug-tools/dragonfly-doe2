@@ -21,8 +21,7 @@ class Polygon(object):
             would be good to go as is? or am I misunderstanding the specifics in which should
             do check: raise exeption if issue?
         """
-        cf = room.floor_geometry.remove_colinear_vertices(tolerance=tolerace)
-        vertices = cf.upper_left_counter_clockwise_vertices
+        vertices = room.floor_geometry.lower_left_counter_clockwise_vertices
         return cls(room.display_name, vertices)
 
     @classmethod
@@ -35,7 +34,7 @@ class Polygon(object):
         vertices = []
         for face in geo:
             cf = face.remove_colinear_vertices(tolerance=tolerace)
-            vertices.extend(cf.upper_left_counter_clockwise_vertices)
+            vertices.extend(cf.lower_left_counter_clockwise_vertices)
         return cls(story.display_name, vertices)
 
     def to_inp(self) -> str:
