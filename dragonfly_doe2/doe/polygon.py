@@ -33,8 +33,7 @@ class Polygon(object):
         geo = story.footprint(tolerance=tolerace)
         vertices = []
         for face in geo:
-            cf = face.remove_colinear_vertices(tolerance=tolerace)
-            vertices.extend(cf.lower_left_counter_clockwise_vertices)
+            vertices.extend(face.lower_left_counter_clockwise_vertices)
         return cls(story.display_name, vertices)
 
     def to_inp(self) -> str:

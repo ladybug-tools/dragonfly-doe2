@@ -19,6 +19,9 @@ setuptools.setup(
     packages=setuptools.find_packages(exclude=["tests"]),
     include_package_data=True,
     install_requires=requirements,
+    entry_points={
+        "console_scripts": ["dragonfly-doe2 = dragonfly_doe2.cli:doe2"]
+    },
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
