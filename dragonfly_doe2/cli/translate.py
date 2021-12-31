@@ -17,7 +17,7 @@ def translate():
 
 
 @translate.command('model-to-inp')
-@click.argument('model-json', type=click.Path(
+@click.argument('df-json', type=click.Path(
     exists=True, file_okay=True, dir_okay=False, resolve_path=True)
 )
 @click.option('--name', '-n', help='Name of the output file.', default="model",
