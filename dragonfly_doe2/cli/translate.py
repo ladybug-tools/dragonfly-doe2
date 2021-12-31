@@ -4,10 +4,11 @@ import sys
 import pathlib
 import logging
 
-from .writer import model_to_inp
-from dragonfly.models import Model
+from ..writer import model_to_inp
+from dragonfly.model import Model
 
-_logger = logging.addLevelName(__name__)
+
+_logger = logging.getLogger(__name__)
 
 
 @click.group(help='Commands for translating Dragonfly JSON files to *.inp files.')
@@ -26,13 +27,13 @@ def translate():
     exists=False, file_okay=False, resolve_path=True, dir_okay=True),
     default='.', show_default=True
 )
-def model_to_inp(df_json, name, folder):
+def model_to_inp_file(df_json, name, folder):
     """Translate a df_model.dfjson into a doe2 *.inp file."""
     try:
         model = Model.from_dfjson(dfjson_file=df_json)
         folder = pathlib.Path(folder)
         folder.mkdir(parents=True, exist_ok=True)
-        made_model = model_to_inp(model, folder=folder, name=name)
+        model_to_inp(model, folder=folder, name=name)
     except Exception as e:
         _logger.exception(f'Model translation failed.\n{e}')
         sys.exit(1)
