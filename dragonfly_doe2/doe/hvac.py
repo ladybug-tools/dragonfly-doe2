@@ -19,7 +19,7 @@ class HVAC:
 
 
 @dataclass
-class _HVACBase(object):
+class _HVACBase:
     """Make base that takes HB HVAC objs:
         Checks if in eQuest system lib, makes obj
     """
