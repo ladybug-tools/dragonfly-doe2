@@ -3,6 +3,7 @@ from dragonfly.story import Story
 from dataclasses import dataclass
 from typing import List
 from .utils import short_name
+from dragonfly.windowparameter import RectangularWindows as RectWind
 
 
 @dataclass
@@ -93,6 +94,65 @@ class RoofCeiling:
 
 
 @dataclass
+class Window:
+    """*.inp Window object.
+
+    Init methods(s):
+        1. from_window(name, x, y, width, height)
+
+    """
+    name: str
+    location: int
+    x: float
+    y: float
+    width: float
+    height: float
+
+    @classmethod
+    def from_window(cls, nm, x, y, w, h):
+        return cls(name=nm, x=x, y=y, width=w, height=h)
+
+    def to_inp(self):
+        return f'{self.name}_wall{self.location} = WINDOW\n   ' \
+               f'X           = {self.x}\n   ' \
+               f'Y           = {self.y}\n   ' \
+               f'WIDTH       = {self.width}\n   ' \
+               f'HEIGHT      = {self.height}\n   '\
+               f'GLASS-TYPE  = WT1\n   ..\n'
+
+    def __repr__(self):
+        return self.to_inp()
+
+
+@dataclass
+class WindowSet:
+    name: str
+    location: int
+    window_data: List[Window]
+
+    @classmethod
+    def from_params(cls, name: str, location: int,  rw_paras: RectWind):
+        origins = [(orig.x, orig.y) for orig in rw_paras.origins]
+        widths = rw_paras.widths
+        heights = rw_paras.heights
+
+        windows = []
+        for i, (org, w, h) in enumerate(zip(origins, widths, heights)):
+            windows.append(
+                Window(
+                    f'{name}_wndw_{i}', location+1, org[0],
+                    org[1],
+                    w, h))
+        return cls(name=name, location=location+1, window_data=windows)
+
+    def to_inp(self):
+        return '\n'.join([wndw.to_inp() for wndw in self.window_data])
+
+    def __repr__(self):
+        return self.to_inp()
+
+
+@dataclass
 class Wall:
     """*.inp Wall object.
 
@@ -177,15 +237,37 @@ class Space:
                 f'Unsupported Type: {type(room)}.\n'
                 'Expected dragonfly.room2d.Room2D'
             )
+        segments = room.floor_segments
+        bcs = room.boundary_conditions
+        start_vert = room.floor_geometry.lower_left_counter_clockwise_vertices[0]
+
+        for i, seg in enumerate(segments):
+            if seg.p == start_vert:
+                break
+
+        segments = segments[i:] + segments[:i]
+        bcs = bcs[i:] + bcs[:i]
+        wndw_para = [param for param in room.window_parameters]
 
         wall_constr_name = short_name(
             room.properties.energy.construction_set.wall_set.exterior_construction.display_name, 30)
         name = room.display_name
-        walls = [
+
+        windows = []
+        for i, param in enumerate(wndw_para):
+            if param is not None:
+                windows.append(WindowSet.from_params(name, i, param))
+
+        wall_objs = [
             Wall.from_room_seg(name, i, wall_constr_name)
-            for i, bc in enumerate(room.boundary_conditions)
+            for i, bc in enumerate(bcs)
             if str(bc) == 'Outdoors'
         ]
+
+        walls = []
+        for i, (wall, window) in enumerate(zip(wall_objs, windows)):
+            walls.append('\n'.join([wall.to_inp(), window.to_inp()]))
+
         slab = None if room.is_ground_contact != True else Slab.from_room(name, short_name(
             room.properties.energy.construction_set.floor_set.ground_construction.display_name, 30))
 
@@ -197,7 +279,7 @@ class Space:
             slab=slab, roof=roof)
 
     def to_inp(self):
-        space_walls = '\n'.join(wall.to_inp() for wall in self.walls)
+        space_walls = '\n'.join(wall for wall in self.walls)
         space_block = f'"{self.name}" = SPACE\n' \
                       f'   SHAPE           = POLYGON\n' \
                       f'   POLYGON         = "{self.name} Plg"\n' \

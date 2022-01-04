@@ -19,6 +19,7 @@ def model_to_inp(
     """
 
     # TODO: add all the other arguments that one might to pass to the model
+    model.to_rectangular_windows()
     inp_model = Model.from_df_model(model)
 
     # write to inp

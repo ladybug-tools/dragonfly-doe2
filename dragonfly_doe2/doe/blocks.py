@@ -19,8 +19,14 @@ mats_layers = '{sd_brk}$              Materials / Layers / Constructions\n{sd_br
     sd_brk=sd_brk, spacer=spacer)
 glzCode = '{sd_brk}$              Glass Type Codes\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
-glzTyp = '{sd_brk}$              Glass Types\n{sd_brk}{spacer}'.format(
-    sd_brk=sd_brk, spacer=spacer)
+glzTyp = '{sd_brk}$              Glass Types\n{sd_brk}{spacer}\n\n'.format(
+    sd_brk=sd_brk, spacer=spacer) +\
+    '"WT1" = GLASS-TYPE\n  '\
+    'TYPE             = GLASS-TYPE-CODE\n   '\
+    'GLASS-TYPE-CODE  = "2001"\n   '\
+    'C-PRODUCT-TYPE   = 0\n   '\
+    'C-FRAME-TYPE     = 0\n   '\
+    '..\n\n'
 WindowLayers = '{sd_brk}$              Window Layers\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
 iLikeLamp = '{sd_brk}$              Lamps / Luminaries / Lighting Systems\n{sd_brk}{spacer}'.format(
