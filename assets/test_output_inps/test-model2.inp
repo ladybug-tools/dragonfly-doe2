@@ -86,9 +86,9 @@ $ ---------------------------------------------------------
 
 
 
-"Typical Insulation-R7" = MATERIAL
+"Typical Insulation-R4" = MATERIAL
    TYPE            = RESISTANCE
-   RESISTANCE      = 7.0
+   RESISTANCE      = 4.0
    ..
 
 "Typical Carpet Pad" = MATERIAL
@@ -96,56 +96,9 @@ $ ---------------------------------------------------------
    RESISTANCE      = 1.229
    ..
 
-"F08 Metal surface" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.003
-   CONDUCTIVITY    = 14.344
-   DENSITY         = 488.452
-   SPECIFIC-HEAT   = 0.215
-   ..
-
-"Typical Insulation-R17" = MATERIAL
+"Typical Insulation-R7" = MATERIAL
    TYPE            = RESISTANCE
-   RESISTANCE      = 17.0
-   ..
-
-"Typical Insulation-R24" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 24.0
-   ..
-
-"Metal Roof Surface" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.003
-   CONDUCTIVITY    = 14.344
-   DENSITY         = 488.452
-   SPECIFIC-HEAT   = 0.215
-   ..
-
-"8 n. Nrmlwght Cncrt Flr" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.667
-   CONDUCTIVITY    = 0.732
-   DENSITY         = 144.962
-   SPECIFIC-HEAT   = 0.357
-   ..
-
-"Typical Insulation-R4" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 4.0
-   ..
-
-"Typical Insulation-R3" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 3.0
-   ..
-
-"5/8 in. Gypsum Board" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.052
-   CONDUCTIVITY    = 0.051
-   DENSITY         = 49.944
-   SPECIFIC-HEAT   = 0.468
+   RESISTANCE      = 7.0
    ..
 
 "25mm Stucco" = MATERIAL
@@ -156,9 +109,54 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.361
    ..
 
-"Typical Insulation-R31" = MATERIAL
+"8 n. Nrmlwght Cncrt Flr" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
+   ..
+
+"Typical Insulation-R3" = MATERIAL
    TYPE            = RESISTANCE
-   RESISTANCE      = 31.0
+   RESISTANCE      = 3.0
+   ..
+
+"Metal Roof Surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 70.002
+   SPECIFIC-HEAT   = 0.627
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 17.0
+   ..
+
+"5/8 in. Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.052
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 49.944
+   SPECIFIC-HEAT   = 0.468
    ..
 
 "8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
@@ -169,12 +167,14 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.392
    ..
 
-"Roof Membrane" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.031
-   CONDUCTIVITY    = 0.051
-   DENSITY         = 70.002
-   SPECIFIC-HEAT   = 0.627
+"Typical Insulation-R31" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 31.0
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 24.0
    ..
 "Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
    MATERIAL             = (
@@ -190,22 +190,6 @@ $ ---------------------------------------------------------
    LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
    ..
 
-"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
-   MATERIAL             = (
-      "25mm Stucco",
-      "5/8 in. Gypsum Board",
-      "Typical Insulation-R24",
-      "5/8 in. Gypsum Board",
-      "Typical Carpet Pad"
-   )
-   ..
-
-"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
-   ..
 
 "Typical IEAD Roof-R32_l" = LAYERS
    MATERIAL             = (
@@ -220,19 +204,6 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 1
    LAYERS               = "Typical IEAD Roof-R32_l"
-   ..
-
-"Typical Overhead Door-R4_l" = LAYERS
-   MATERIAL             = (
-      "Typical Insulation-R4"
-   )
-   ..
-
-"Typical Overhead Door-R4_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Overhead Door-R4_l"
    ..
 
 "Tpcl Insltd Mtl DrR3_l" = LAYERS
@@ -265,8 +236,18 @@ $ ---------------------------------------------------------
    LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
    ..
 
+"Typical Overhead Door-R4_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R4"
+   )
+   ..
 
-
+"Typical Overhead Door-R4_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R4_l"
+   ..
 
 "Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
    MATERIAL             = (
@@ -284,27 +265,23 @@ $ ---------------------------------------------------------
    ..
 
 
-$ ---------------------------------------------------------
-$              Glass Type Codes
-$ ---------------------------------------------------------
 
-
-
-
-$ ---------------------------------------------------------
-$              Glass Types
-$ ---------------------------------------------------------
-
-
-
-
-"WT1" = GLASS-TYPE
-  TYPE             = GLASS-TYPE-CODE
-   GLASS-TYPE-CODE  = "2001"
-   C-PRODUCT-TYPE   = 0
-   C-FRAME-TYPE     = 0
+"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
    ..
 
+"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+   ..
 
 
 $ ---------------------------------------------------------
@@ -458,86 +435,14 @@ $ *********************************************************
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V1
    ..
-rmOne_wndw_0_wall1 = WINDOW
-   X           = 0.6830601092896195
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmOne_wndw_1_wall1 = WINDOW
-   X           = 11.612021857923496
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmOne_wndw_2_wall1 = WINDOW
-   X           = 22.54098360655738
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmOne_Wall_3" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V3
    ..
-rmOne_wndw_0_wall3 = WINDOW
-   X           = 0.6830601092896172
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmOne_wndw_1_wall3 = WINDOW
-   X           = 11.612021857923498
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054644
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmOne_wndw_2_wall3 = WINDOW
-   X           = 22.540983606557376
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmOne_Wall_4" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V4
    ..
-rmOne_wndw_0_wall4 = WINDOW
-   X           = 0.6830601092896172
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmOne_wndw_1_wall4 = WINDOW
-   X           = 11.612021857923498
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054644
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmOne_wndw_2_wall4 = WINDOW
-   X           = 22.540983606557376
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmOne_grnd_flr" = UNDERGROUND-WALL
    CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
    LOCATION        = BOTTOM
@@ -552,102 +457,14 @@ rmOne_wndw_2_wall4 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V1
    ..
-rmTwo_wndw_0_wall1 = WINDOW
-   X           = 0.6830601092896172
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_1_wall1 = WINDOW
-   X           = 11.612021857923498
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054644
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_2_wall1 = WINDOW
-   X           = 22.540983606557376
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmTwo_Wall_2" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V2
    ..
-rmTwo_wndw_0_wall2 = WINDOW
-   X           = 0.6147540983606558
-   Y           = 2.6229508196721314
-   WIDTH       = 8.60655737704918
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_1_wall2 = WINDOW
-   X           = 10.450819672131148
-   Y           = 2.6229508196721314
-   WIDTH       = 8.606557377049187
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_2_wall2 = WINDOW
-   X           = 20.286885245901644
-   Y           = 2.6229508196721314
-   WIDTH       = 8.606557377049183
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_3_wall2 = WINDOW
-   X           = 30.122950819672138
-   Y           = 2.6229508196721314
-   WIDTH       = 8.60655737704918
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_4_wall2 = WINDOW
-   X           = 39.95901639344263
-   Y           = 2.6229508196721314
-   WIDTH       = 8.60655737704918
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmTwo_Wall_5" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V5
    ..
-rmTwo_wndw_0_wall5 = WINDOW
-   X           = 0.6830601092896195
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_1_wall5 = WINDOW
-   X           = 11.612021857923496
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwo_wndw_2_wall5 = WINDOW
-   X           = 22.54098360655738
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmTwo_grnd_flr" = UNDERGROUND-WALL
    CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
    LOCATION        = BOTTOM
@@ -662,78 +479,14 @@ rmTwo_wndw_2_wall5 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V3
    ..
-rmThree_wndw_0_wall3 = WINDOW
-   X           = 0.5122950819672073
-   Y           = 2.6229508196721314
-   WIDTH       = 7.172131147540978
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmThree_wndw_1_wall3 = WINDOW
-   X           = 8.709016393442612
-   Y           = 2.6229508196721314
-   WIDTH       = 7.172131147540984
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmThree_Wall_4" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V4
    ..
-rmThree_wndw_0_wall4 = WINDOW
-   X           = 0.6830601092896195
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmThree_wndw_1_wall4 = WINDOW
-   X           = 11.612021857923496
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmThree_wndw_2_wall4 = WINDOW
-   X           = 22.54098360655738
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmThree_Wall_5" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V5
    ..
-rmThree_wndw_0_wall5 = WINDOW
-   X           = 0.6830601092896136
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmThree_wndw_1_wall5 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmThree_wndw_2_wall5 = WINDOW
-   X           = 22.540983606557372
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmThree_grnd_flr" = UNDERGROUND-WALL
    CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
    LOCATION        = BOTTOM
@@ -748,86 +501,14 @@ rmThree_wndw_2_wall5 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V1
    ..
-rmFour_wndw_0_wall1 = WINDOW
-   X           = 0.6830601092896136
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmFour_wndw_1_wall1 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmFour_wndw_2_wall1 = WINDOW
-   X           = 22.540983606557365
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmFour_Wall_2" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V2
    ..
-rmFour_wndw_0_wall2 = WINDOW
-   X           = 0.6830601092896166
-   Y           = 2.6229508196721314
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmFour_wndw_1_wall2 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmFour_wndw_2_wall2 = WINDOW
-   X           = 22.540983606557372
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmFour_Wall_3" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V3
    ..
-rmFour_wndw_0_wall3 = WINDOW
-   X           = 0.6830601092896136
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmFour_wndw_1_wall3 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
-rmFour_wndw_2_wall3 = WINDOW
-   X           = 22.540983606557372
-   Y           = 2.6229508196721314
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180327
-   GLASS-TYPE  = WT1
-   ..
-
 "rmFour_grnd_flr" = UNDERGROUND-WALL
    CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
    LOCATION        = BOTTOM
@@ -850,86 +531,14 @@ rmFour_wndw_2_wall3 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V1
    ..
-rmOneL2_wndw_0_wall1 = WINDOW
-   X           = 0.6830601092896195
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmOneL2_wndw_1_wall1 = WINDOW
-   X           = 11.612021857923496
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmOneL2_wndw_2_wall1 = WINDOW
-   X           = 22.54098360655738
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmOneL2_Wall_3" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V3
    ..
-rmOneL2_wndw_0_wall3 = WINDOW
-   X           = 0.6830601092896172
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmOneL2_wndw_1_wall3 = WINDOW
-   X           = 11.612021857923498
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054644
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmOneL2_wndw_2_wall3 = WINDOW
-   X           = 22.540983606557376
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmOneL2_Wall_4" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V4
    ..
-rmOneL2_wndw_0_wall4 = WINDOW
-   X           = 0.6830601092896172
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmOneL2_wndw_1_wall4 = WINDOW
-   X           = 11.612021857923498
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054644
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmOneL2_wndw_2_wall4 = WINDOW
-   X           = 22.540983606557376
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmOneL2_roof" = EXTERIOR-WALL
    CONSTRUCTION    = "Typical IEAD Roof-R32_c"
    LOCATION        = TOP
@@ -944,102 +553,14 @@ rmOneL2_wndw_2_wall4 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V1
    ..
-rmTwoL2_wndw_0_wall1 = WINDOW
-   X           = 0.6830601092896172
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_1_wall1 = WINDOW
-   X           = 11.612021857923498
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054644
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_2_wall1 = WINDOW
-   X           = 22.540983606557376
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmTwoL2_Wall_2" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V2
    ..
-rmTwoL2_wndw_0_wall2 = WINDOW
-   X           = 0.6147540983606558
-   Y           = 2.6229508196721305
-   WIDTH       = 8.60655737704918
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_1_wall2 = WINDOW
-   X           = 10.450819672131148
-   Y           = 2.6229508196721305
-   WIDTH       = 8.606557377049187
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_2_wall2 = WINDOW
-   X           = 20.286885245901644
-   Y           = 2.6229508196721305
-   WIDTH       = 8.606557377049183
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_3_wall2 = WINDOW
-   X           = 30.122950819672138
-   Y           = 2.6229508196721305
-   WIDTH       = 8.60655737704918
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_4_wall2 = WINDOW
-   X           = 39.95901639344263
-   Y           = 2.6229508196721305
-   WIDTH       = 8.60655737704918
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmTwoL2_Wall_5" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V5
    ..
-rmTwoL2_wndw_0_wall5 = WINDOW
-   X           = 0.6830601092896195
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_1_wall5 = WINDOW
-   X           = 11.612021857923496
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmTwoL2_wndw_2_wall5 = WINDOW
-   X           = 22.54098360655738
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmTwoL2_roof" = EXTERIOR-WALL
    CONSTRUCTION    = "Typical IEAD Roof-R32_c"
    LOCATION        = TOP
@@ -1054,78 +575,14 @@ rmTwoL2_wndw_2_wall5 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V3
    ..
-rmThreeL2_wndw_0_wall3 = WINDOW
-   X           = 0.5122950819672073
-   Y           = 2.6229508196721305
-   WIDTH       = 7.172131147540978
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmThreeL2_wndw_1_wall3 = WINDOW
-   X           = 8.709016393442612
-   Y           = 2.6229508196721305
-   WIDTH       = 7.172131147540984
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmThreeL2_Wall_4" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V4
    ..
-rmThreeL2_wndw_0_wall4 = WINDOW
-   X           = 0.6830601092896195
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmThreeL2_wndw_1_wall4 = WINDOW
-   X           = 11.612021857923496
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmThreeL2_wndw_2_wall4 = WINDOW
-   X           = 22.54098360655738
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmThreeL2_Wall_5" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V5
    ..
-rmThreeL2_wndw_0_wall5 = WINDOW
-   X           = 0.6830601092896136
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmThreeL2_wndw_1_wall5 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmThreeL2_wndw_2_wall5 = WINDOW
-   X           = 22.540983606557372
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmThreeL2_roof" = EXTERIOR-WALL
    CONSTRUCTION    = "Typical IEAD Roof-R32_c"
    LOCATION        = TOP
@@ -1140,86 +597,14 @@ rmThreeL2_wndw_2_wall5 = WINDOW
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V1
    ..
-rmFourL2_wndw_0_wall1 = WINDOW
-   X           = 0.6830601092896136
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054643
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmFourL2_wndw_1_wall1 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmFourL2_wndw_2_wall1 = WINDOW
-   X           = 22.540983606557365
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmFourL2_Wall_2" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V2
    ..
-rmFourL2_wndw_0_wall2 = WINDOW
-   X           = 0.6830601092896166
-   Y           = 2.6229508196721305
-   WIDTH       = 9.562841530054646
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmFourL2_wndw_1_wall2 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmFourL2_wndw_2_wall2 = WINDOW
-   X           = 22.540983606557372
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmFourL2_Wall_3" = EXTERIOR-WALL
    CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
    LOCATION        = SPACE-V3
    ..
-rmFourL2_wndw_0_wall3 = WINDOW
-   X           = 0.6830601092896136
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmFourL2_wndw_1_wall3 = WINDOW
-   X           = 11.612021857923489
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
-rmFourL2_wndw_2_wall3 = WINDOW
-   X           = 22.540983606557372
-   Y           = 2.6229508196721305
-   WIDTH       = 9.56284153005465
-   HEIGHT      = 6.557377049180328
-   GLASS-TYPE  = WT1
-   ..
-
 "rmFourL2_roof" = EXTERIOR-WALL
    CONSTRUCTION    = "Typical IEAD Roof-R32_c"
    LOCATION        = TOP

@@ -135,6 +135,8 @@ class Model:
             self.compliance_data.to_inp(),
             self.site_bldg_data.to_inp(),
             self.constructions.to_inp(),
+            fb.glzCode,
+            fb.glzTyp,
             fb.polygons,
             '\n'.join(pl.to_inp() for pl in self.polygons),
             fb.wallParams,
