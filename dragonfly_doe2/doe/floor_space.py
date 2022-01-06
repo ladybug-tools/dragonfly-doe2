@@ -202,23 +202,22 @@ class Wall:
     name: str
     location: int
     construction: str
-    window_params: RectangularWindows = None
+    windows: RectangularWindows = None
 
     @classmethod
     def from_room_seg(cls, name: str, location: int, construction: str,
-                      window_params: None):
+                      windows: None):
         indexed_id = location + 1
-        window_params = window_params
-        return cls(f'{name}_Wall_{indexed_id}', indexed_id, construction, window_params)
+        return cls(f'{name}_Wall_{indexed_id}', indexed_id, construction, windows)
 
     def to_inp(self):
         wallstr = f'"{self.name}" = EXTERIOR-WALL\n' \
                   f'   CONSTRUCTION    = "{self.construction}_c"\n' \
                   f'   LOCATION        = SPACE-V{self.location}\n   ..'
 
-        if self.window_params is not None:
+        if self.windows is not None:
             window_set = WindowSet.from_params(
-                self.name, self.location, self.window_params)
+                self.name, self.location, self.windows)
             wall_set = [wallstr]
             wall_set.append(window_set.to_inp())
             return '\n'.join(wall_set)
