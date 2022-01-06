@@ -3,7 +3,7 @@ from dragonfly.story import Story
 from dataclasses import dataclass
 from typing import List
 from .utils import short_name
-from dragonfly.windowparameter import RectangularWindows as RectWind
+from dragonfly.windowparameter import RectangularWindows
 
 
 @dataclass
@@ -42,7 +42,7 @@ class Slab:
                f'   CONSTRUCTION    = "{self.construction}_c"\n' \
                f'   LOCATION        = {self.type_adjacency}\n   ..'
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.to_inp()
 
 
@@ -89,7 +89,7 @@ class RoofCeiling:
                f'   CONSTRUCTION    = "{self.construction}_c"\n' \
                f'   LOCATION        = TOP\n   ..'
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.to_inp()
 
 
@@ -97,9 +97,25 @@ class RoofCeiling:
 class Window:
     """*.inp Window object.
 
-    Init methods(s):
-        1. from_window(name, x, y, width, height)
+        Args:
+            name: display name of the room2d, to be added to, creating a unique displayname.
+            location: the index/n of the window in the set of windows hosted by the wall
+            segment.
+            x: window origin pt.x coord.
+            y: window origin pt.y coord.
+            width: window width.
+            height: window height.
 
+    Example:
+        .. code-block:: f#
+
+            rmOne_wndw_0_wall1 = WINDOW
+                X           = 0.6830601092896195
+                Y           = 2.6229508196721314
+                WIDTH       = 9.562841530054643
+                HEIGHT      = 6.557377049180327
+                GLASS-TYPE  = WT1
+                ..
     """
     name: str
     location: int
@@ -107,10 +123,6 @@ class Window:
     y: float
     width: float
     height: float
-
-    @classmethod
-    def from_window(cls, nm, x, y, w, h):
-        return cls(name=nm, x=x, y=y, width=w, height=h)
 
     def to_inp(self):
         return f'{self.name}_wall{self.location} = WINDOW\n   ' \
@@ -120,18 +132,31 @@ class Window:
                f'HEIGHT      = {self.height}\n   '\
                f'GLASS-TYPE  = WT1\n   ..\n'
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.to_inp()
 
 
 @dataclass
 class WindowSet:
+    """ An internal object comprising all of the windows hosted by a wall segment.
+
+        Init methods(s):
+            from_params(name, location, rw_paras).
+
+        Args:
+            name: the display name of the room2d hosting the wall the windowset belongs to.
+            location: the index of the room2D's wall segment hosting the window set. for use on
+            creating unique identifier name for each window.
+            windows: list of Window objects comprising the window set.
+
+
+    """
     name: str
     location: int
-    window_data: List[Window]
+    windows: List[Window]
 
     @classmethod
-    def from_params(cls, name: str, location: int,  rw_paras: RectWind):
+    def from_params(cls, name: str, location: int,  rw_paras: RectangularWindows):
         origins = [(orig.x, orig.y) for orig in rw_paras.origins]
         widths = rw_paras.widths
         heights = rw_paras.heights
@@ -140,15 +165,15 @@ class WindowSet:
         for i, (org, w, h) in enumerate(zip(origins, widths, heights)):
             windows.append(
                 Window(
-                    f'{name}_wndw_{i}', location+1, org[0],
+                    f'{name}_wndw_{i}', location + 1, org[0],
                     org[1],
                     w, h))
-        return cls(name=name, location=location+1, window_data=windows)
+        return cls(name=name, location=location + 1, windows=windows)
 
     def to_inp(self):
-        return '\n'.join([wndw.to_inp() for wndw in self.window_data])
+        return '\n'.join([wndw.to_inp() for wndw in self.windows])
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.to_inp()
 
 
@@ -177,16 +202,28 @@ class Wall:
     name: str
     location: int
     construction: str
+    window_params: RectangularWindows = None
 
     @classmethod
-    def from_room_seg(cls, name: str, location: int, construction: str):
+    def from_room_seg(cls, name: str, location: int, construction: str,
+                      window_params: None):
         indexed_id = location + 1
-        return cls(f'{name}_Wall_{indexed_id}', indexed_id, construction)
+        window_params = window_params
+        return cls(f'{name}_Wall_{indexed_id}', indexed_id, construction, window_params)
 
     def to_inp(self):
-        return f'"{self.name}" = EXTERIOR-WALL\n' \
-            f'   CONSTRUCTION    = "{self.construction}_c"\n' \
-            f'   LOCATION        = SPACE-V{self.location}\n   ..'
+        wallstr = f'"{self.name}" = EXTERIOR-WALL\n' \
+                  f'   CONSTRUCTION    = "{self.construction}_c"\n' \
+                  f'   LOCATION        = SPACE-V{self.location}\n   ..'
+
+        if self.window_params is not None:
+            window_set = WindowSet.from_params(
+                self.name, self.location, self.window_params)
+            wall_set = [wallstr]
+            wall_set.append(window_set.to_inp())
+            return '\n'.join(wall_set)
+        else:
+            return wallstr
 
     def __repr__(self) -> str:
         return self.to_inp()
@@ -247,26 +284,16 @@ class Space:
 
         segments = segments[i:] + segments[:i]
         bcs = bcs[i:] + bcs[:i]
-        wndw_para = [param for param in room.window_parameters]
+        wndw_paras = [param for param in room.window_parameters]
 
         wall_constr_name = short_name(
             room.properties.energy.construction_set.wall_set.exterior_construction.display_name, 30)
         name = room.display_name
 
-        windows = []
-        for i, param in enumerate(wndw_para):
-            if param is not None:
-                windows.append(WindowSet.from_params(name, i, param))
-
-        wall_objs = [
-            Wall.from_room_seg(name, i, wall_constr_name)
-            for i, bc in enumerate(bcs)
-            if str(bc) == 'Outdoors'
-        ]
-
         walls = []
-        for i, (wall, window) in enumerate(zip(wall_objs, windows)):
-            walls.append('\n'.join([wall.to_inp(), window.to_inp()]))
+        for i, (bc, window_param) in enumerate(zip(bcs, wndw_paras)):
+            if str(bc) == 'Outdoors':
+                walls.append(Wall.from_room_seg(name, i, wall_constr_name, window_param))
 
         slab = None if room.is_ground_contact != True else Slab.from_room(name, short_name(
             room.properties.energy.construction_set.floor_set.ground_construction.display_name, 30))
@@ -279,7 +306,7 @@ class Space:
             slab=slab, roof=roof)
 
     def to_inp(self):
-        space_walls = '\n'.join(wall for wall in self.walls)
+        space_walls = '\n'.join(wall.to_inp() for wall in self.walls)
         space_block = f'"{self.name}" = SPACE\n' \
                       f'   SHAPE           = POLYGON\n' \
                       f'   POLYGON         = "{self.name} Plg"\n' \
@@ -291,7 +318,7 @@ class Space:
             blocks.append(self.roof.to_inp())
         return '\n'.join(blocks)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.to_inp()
 
 
@@ -357,5 +384,5 @@ class Floor:
         flr_spcs = '\n'.join(spc.to_inp() for spc in self.spaces)
         return '\n'.join([flr_str, flr_spcs])
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.to_inp()

@@ -13,8 +13,6 @@ tox.ini
 .eggs
 *.code-workspace
 .env
-NERB.inp
-!dfjson.ipynb
 reffiles
 assets/sample_out/
 makedoe.py
