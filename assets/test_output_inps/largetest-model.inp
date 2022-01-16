@@ -1,0 +1,1271 @@
+INPUT ..
+
+
+
+
+$ ---------------------------------------------------------
+$              Abort, Diagnostics
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Global Parameters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Title, Run Periods, Design Days, Holidays
+$ ---------------------------------------------------------
+
+
+
+
+TITLE
+    LINE-1           = *Buffalo New Development*
+    ..
+
+"Entire Year" = RUN-PERIOD-PD
+   BEGIN-MONTH     = 1
+   BEGIN-DAY      = 1
+   BEGIN-YEAR     = 2021
+   END-MONTH      = 12
+   END-DAY        = 31
+   END-YEAR       = 2021
+   ..
+
+"Standard US Holidays" = HOLIDAYS
+   LIBRARY-ENTRY "US"
+   ..
+
+$ ---------------------------------------------------------
+$              Compliance Data
+$ ---------------------------------------------------------
+
+
+
+
+"Compliance Data" = COMPLIANCE
+   C-PERMIT-SCOPE   = 0
+   C-PROJ-NAME      = *Buffalo New Development*
+   C-BUILDING-TYPE  = 32
+   C-CONS-PHASE     = 0
+   C-NR-DHW-INCL    = 1
+   C-CODE-VERSION   = 1
+   C-901-NUM-FLRS   = 1
+   C-901-BLDG-TYPE  = 32
+   ..
+
+$---------------------------------------------------------
+$              Site and Building Data
+$---------------------------------------------------------
+
+"Site Data" = SITE-PARAMETERS
+  ALTITUDE          = 150
+  C-STATE           = 21
+  C-WEATHER-FILE    = *TMY2\HARTFOCT.bin* 
+  C-COUNTRY         = 1
+  C-901-LOCATION    = 1092
+  ..
+"Building Data" = BUILD-PARAMETERS
+  HOLIDAYS        = "Standard US Holidays"
+  ..
+
+
+PROJECT-DATA
+  ..
+
+
+
+$ ---------------------------------------------------------
+$              Materials / Layers / Constructions
+$ ---------------------------------------------------------
+
+
+
+"8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.42
+   DENSITY         = 114.996
+   SPECIFIC-HEAT   = 0.392
+   ..
+
+"Typical Insulation-R2" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 2.0
+   ..
+
+"Typical Insulation-R7" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 7.0
+   ..
+
+"5/8 in. Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.052
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 49.944
+   SPECIFIC-HEAT   = 0.468
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 4.0
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 17.0
+   ..
+
+"Typical Insulation-R31" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 31.0
+   ..
+
+"Typical Carpet Pad" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 1.229
+   ..
+
+"Metal Roof Surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 70.002
+   SPECIFIC-HEAT   = 0.627
+   ..
+
+"25mm Stucco" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.083
+   CONDUCTIVITY    = 0.228
+   DENSITY         = 115.87
+   SPECIFIC-HEAT   = 0.361
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 24.0
+   ..
+
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"8 n. Nrmlwght Cncrt Flr" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
+   ..
+"Typical Overhead Door-R2_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R2"
+   )
+   ..
+
+"Typical Overhead Door-R2_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R2_l"
+   ..
+
+"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+   ..
+
+
+"Tpcl Insltd Mtl DrR2_l" = LAYERS
+   MATERIAL             = (
+      "F08 Metal surface",
+      "Typical Insulation-R2"
+   )
+   ..
+
+"Tpcl Insltd Mtl DrR2_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Tpcl Insltd Mtl DrR2_l"
+   ..
+
+
+
+"Typical IEAD Roof-R32_l" = LAYERS
+   MATERIAL             = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32_l"
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R4",
+      "8 n. Nrmlwght Cncrt Flr",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
+   ..
+
+"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R7",
+      "8 n. Cncrt Blck Bsmnt Wll"
+   )
+   ..
+
+"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
+   ..
+
+"TpclInsltdStlFrmdExtrrWllR19_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R17",
+      "5/8 in. Gypsum Board"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrWllR19_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
+   ..
+
+
+$ ---------------------------------------------------------
+$              Glass Type Codes
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Glass Types
+$ ---------------------------------------------------------
+
+
+
+
+"WT1" = GLASS-TYPE
+  TYPE             = GLASS-TYPE-CODE
+   GLASS-TYPE-CODE  = "2001"
+   C-PRODUCT-TYPE   = 0
+   C-FRAME-TYPE     = 0
+   ..
+
+
+
+$ ---------------------------------------------------------
+$              Polygons
+$ ---------------------------------------------------------
+
+
+
+
+"Flr1_Ground_Mixed_use1_Floor1 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1514.276784, 779.934224 )
+   V5        = ( 1342.352392, 724.341234 )
+   V6        = ( 1384.710370, 593.355050 )
+   V7        = ( 1229.159729, 543.056219 )
+   ..
+"Flr1GrndMxds1Flr1Rm1 Plg" = POLYGON
+   V1        = ( 1560.879412, 82.295050 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1555.592650, 536.476555 )
+   ..
+"Flr1GrndMxds1Flr1Rm2 Plg" = POLYGON
+   V1        = ( 1555.592650, 536.476555 )
+   V2        = ( 1588.321660, 541.639355 )
+   V3        = ( 1514.276784, 779.934224 )
+   V4        = ( 1492.807843, 738.533713 )
+   ..
+"Flr1GrndMxds1Flr1Rm3 Plg" = POLYGON
+   V1        = ( 1342.352392, 724.341234 )
+   V2        = ( 1383.637044, 703.232548 )
+   V3        = ( 1492.807843, 738.533713 )
+   V4        = ( 1514.276784, 779.934224 )
+   ..
+"Flr1GrndMxds1Flr1Rm4 Plg" = POLYGON
+   V1        = ( 1384.710370, 593.355050 )
+   V2        = ( 1425.994998, 572.246439 )
+   V3        = ( 1383.637044, 703.232548 )
+   V4        = ( 1342.352392, 724.341234 )
+   ..
+"Flr1GrndMxds1Flr1Rm5 Plg" = POLYGON
+   V1        = ( 1229.159729, 543.056219 )
+   V2        = ( 1270.444200, 521.947558 )
+   V3        = ( 1425.994998, 572.246439 )
+   V4        = ( 1384.710370, 593.355050 )
+   ..
+"Flr1GrndMxds1Flr1Rm6 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1426.022350, 40.835397 )
+   V3        = ( 1270.444200, 521.947558 )
+   V4        = ( 1229.159729, 543.056219 )
+   ..
+"Flr1GrndMxds1Flr1Rm7 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1560.879412, 82.295050 )
+   V4        = ( 1426.022350, 40.835397 )
+   ..
+"Flr1GrndMxds1Flr1Rm8 Plg" = POLYGON
+   V1        = ( 1426.022350, 40.835397 )
+   V2        = ( 1560.879412, 82.295050 )
+   V3        = ( 1555.592650, 536.476555 )
+   V4        = ( 1492.807843, 738.533713 )
+   V5        = ( 1383.637044, 703.232548 )
+   V6        = ( 1425.994998, 572.246439 )
+   V7        = ( 1270.444200, 521.947558 )
+   ..
+"Flr1_Mixed_use1_Floor1 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1514.276784, 779.934224 )
+   V5        = ( 1342.352392, 724.341234 )
+   V6        = ( 1384.710370, 593.355050 )
+   V7        = ( 1229.159729, 543.056219 )
+   ..
+"Flr1Mxds1Flr1Rm1 Plg" = POLYGON
+   V1        = ( 1560.879412, 82.295050 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1555.592650, 536.476555 )
+   ..
+"Flr1Mxds1Flr1Rm2 Plg" = POLYGON
+   V1        = ( 1555.592650, 536.476555 )
+   V2        = ( 1588.321660, 541.639355 )
+   V3        = ( 1514.276784, 779.934224 )
+   V4        = ( 1492.807843, 738.533713 )
+   ..
+"Flr1Mxds1Flr1Rm3 Plg" = POLYGON
+   V1        = ( 1342.352392, 724.341234 )
+   V2        = ( 1383.637044, 703.232548 )
+   V3        = ( 1492.807843, 738.533713 )
+   V4        = ( 1514.276784, 779.934224 )
+   ..
+"Flr1Mxds1Flr1Rm4 Plg" = POLYGON
+   V1        = ( 1384.710370, 593.355050 )
+   V2        = ( 1425.994998, 572.246439 )
+   V3        = ( 1383.637044, 703.232548 )
+   V4        = ( 1342.352392, 724.341234 )
+   ..
+"Flr1Mxds1Flr1Rm5 Plg" = POLYGON
+   V1        = ( 1229.159729, 543.056219 )
+   V2        = ( 1270.444200, 521.947558 )
+   V3        = ( 1425.994998, 572.246439 )
+   V4        = ( 1384.710370, 593.355050 )
+   ..
+"Flr1Mxds1Flr1Rm6 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1426.022350, 40.835397 )
+   V3        = ( 1270.444200, 521.947558 )
+   V4        = ( 1229.159729, 543.056219 )
+   ..
+"Flr1Mxds1Flr1Rm7 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1560.879412, 82.295050 )
+   V4        = ( 1426.022350, 40.835397 )
+   ..
+"Flr1Mxds1Flr1Rm8 Plg" = POLYGON
+   V1        = ( 1426.022350, 40.835397 )
+   V2        = ( 1560.879412, 82.295050 )
+   V3        = ( 1555.592650, 536.476555 )
+   V4        = ( 1492.807843, 738.533713 )
+   V5        = ( 1383.637044, 703.232548 )
+   V6        = ( 1425.994998, 572.246439 )
+   V7        = ( 1270.444200, 521.947558 )
+   ..
+"Flr2_Mixed_use1_Floor1 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1514.276784, 779.934224 )
+   V5        = ( 1342.352392, 724.341234 )
+   V6        = ( 1384.710370, 593.355050 )
+   V7        = ( 1229.159729, 543.056219 )
+   ..
+"Flr2Mxds1Flr1Rm1 Plg" = POLYGON
+   V1        = ( 1560.879412, 82.295050 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1555.592650, 536.476555 )
+   ..
+"Flr2Mxds1Flr1Rm2 Plg" = POLYGON
+   V1        = ( 1555.592650, 536.476555 )
+   V2        = ( 1588.321660, 541.639355 )
+   V3        = ( 1514.276784, 779.934224 )
+   V4        = ( 1492.807843, 738.533713 )
+   ..
+"Flr2Mxds1Flr1Rm3 Plg" = POLYGON
+   V1        = ( 1342.352392, 724.341234 )
+   V2        = ( 1383.637044, 703.232548 )
+   V3        = ( 1492.807843, 738.533713 )
+   V4        = ( 1514.276784, 779.934224 )
+   ..
+"Flr2Mxds1Flr1Rm4 Plg" = POLYGON
+   V1        = ( 1384.710370, 593.355050 )
+   V2        = ( 1425.994998, 572.246439 )
+   V3        = ( 1383.637044, 703.232548 )
+   V4        = ( 1342.352392, 724.341234 )
+   ..
+"Flr2Mxds1Flr1Rm5 Plg" = POLYGON
+   V1        = ( 1229.159729, 543.056219 )
+   V2        = ( 1270.444200, 521.947558 )
+   V3        = ( 1425.994998, 572.246439 )
+   V4        = ( 1384.710370, 593.355050 )
+   ..
+"Flr2Mxds1Flr1Rm6 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1426.022350, 40.835397 )
+   V3        = ( 1270.444200, 521.947558 )
+   V4        = ( 1229.159729, 543.056219 )
+   ..
+"Flr2Mxds1Flr1Rm7 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1560.879412, 82.295050 )
+   V4        = ( 1426.022350, 40.835397 )
+   ..
+"Flr2Mxds1Flr1Rm8 Plg" = POLYGON
+   V1        = ( 1426.022350, 40.835397 )
+   V2        = ( 1560.879412, 82.295050 )
+   V3        = ( 1555.592650, 536.476555 )
+   V4        = ( 1492.807843, 738.533713 )
+   V5        = ( 1383.637044, 703.232548 )
+   V6        = ( 1425.994998, 572.246439 )
+   V7        = ( 1270.444200, 521.947558 )
+   ..
+"Flr1_Top_Mixed_use1_Floor1 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1514.276784, 779.934224 )
+   V5        = ( 1342.352392, 724.341234 )
+   V6        = ( 1384.710370, 593.355050 )
+   V7        = ( 1229.159729, 543.056219 )
+   ..
+"Flr1TpMxds1Flr1Rm1 Plg" = POLYGON
+   V1        = ( 1560.879412, 82.295050 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1588.321660, 541.639355 )
+   V4        = ( 1555.592650, 536.476555 )
+   ..
+"Flr1TpMxds1Flr1Rm2 Plg" = POLYGON
+   V1        = ( 1555.592650, 536.476555 )
+   V2        = ( 1588.321660, 541.639355 )
+   V3        = ( 1514.276784, 779.934224 )
+   V4        = ( 1492.807843, 738.533713 )
+   ..
+"Flr1TpMxds1Flr1Rm3 Plg" = POLYGON
+   V1        = ( 1342.352392, 724.341234 )
+   V2        = ( 1383.637044, 703.232548 )
+   V3        = ( 1492.807843, 738.533713 )
+   V4        = ( 1514.276784, 779.934224 )
+   ..
+"Flr1TpMxds1Flr1Rm4 Plg" = POLYGON
+   V1        = ( 1384.710370, 593.355050 )
+   V2        = ( 1425.994998, 572.246439 )
+   V3        = ( 1383.637044, 703.232548 )
+   V4        = ( 1342.352392, 724.341234 )
+   ..
+"Flr1TpMxds1Flr1Rm5 Plg" = POLYGON
+   V1        = ( 1229.159729, 543.056219 )
+   V2        = ( 1270.444200, 521.947558 )
+   V3        = ( 1425.994998, 572.246439 )
+   V4        = ( 1384.710370, 593.355050 )
+   ..
+"Flr1TpMxds1Flr1Rm6 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1426.022350, 40.835397 )
+   V3        = ( 1270.444200, 521.947558 )
+   V4        = ( 1229.159729, 543.056219 )
+   ..
+"Flr1TpMxds1Flr1Rm7 Plg" = POLYGON
+   V1        = ( 1404.768847, 0.000000 )
+   V2        = ( 1593.949448, 58.160560 )
+   V3        = ( 1560.879412, 82.295050 )
+   V4        = ( 1426.022350, 40.835397 )
+   ..
+"Flr1TpMxds1Flr1Rm8 Plg" = POLYGON
+   V1        = ( 1426.022350, 40.835397 )
+   V2        = ( 1560.879412, 82.295050 )
+   V3        = ( 1555.592650, 536.476555 )
+   V4        = ( 1492.807843, 738.533713 )
+   V5        = ( 1383.637044, 703.232548 )
+   V6        = ( 1425.994998, 572.246439 )
+   V7        = ( 1270.444200, 521.947558 )
+   ..
+
+
+
+$ ---------------------------------------------------------
+$              Wall Parameters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Fixed and Building Shades
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Misc Cost Related Objects
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                Performance Curves                   **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **      Floors / Spaces / Walls / Windows / Doors      **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+"Flr1_Ground_Mixed_use1_Floor1" = FLOOR
+   Z               = 0.0
+   POLYGON         = "Flr1_Ground_Mixed_use1_Floor1 Plg"
+   SHAPE           = POLYGON
+   FLOOR-HEIGHT    = 11.475409836065573
+   C-DIAGRAM-DATA  = *Flr1_Ground_Mixed_use1_Floor1 UI DiagData*
+   ..
+
+"Flr1GrndMxds1Flr1Rm1" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm1 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm1_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1GrndMxds1Flr1Rm1_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm2 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm2_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1GrndMxds1Flr1Rm2_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm3" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm3 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm3_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1GrndMxds1Flr1Rm3_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm4" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm4 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm4_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1GrndMxds1Flr1Rm4_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm5" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm5 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm5_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1GrndMxds1Flr1Rm5_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm6" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm6 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm6_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1GrndMxds1Flr1Rm6_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm7" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm7 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1GrndMxds1Flr1Rm7_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+"Flr1GrndMxds1Flr1Rm7_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1GrndMxds1Flr1Rm8" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1GrndMxds1Flr1Rm8 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+
+"Flr1GrndMxds1Flr1Rm8_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1_Mixed_use1_Floor1" = FLOOR
+   Z               = 11.475409836065573
+   POLYGON         = "Flr1_Mixed_use1_Floor1 Plg"
+   SHAPE           = POLYGON
+   FLOOR-HEIGHT    = 11.475409836065573
+   C-DIAGRAM-DATA  = *Flr1_Mixed_use1_Floor1 UI DiagData*
+   ..
+
+"Flr1_Mixed_use1_Floor1_Room1" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room1 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm1Wll2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1_Mixed_use1_Floor1_Room2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room2 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm2Wll2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1_Mixed_use1_Floor1_Room3" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room3 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm3Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Mixed_use1_Floor1_Room4" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room4 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm4Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Mixed_use1_Floor1_Room5" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room5 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm5Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Mixed_use1_Floor1_Room6" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room6 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm6Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Mixed_use1_Floor1_Room7" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room7 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1Mxds1Flr1Rm7Wll1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+"Flr1_Mixed_use1_Floor1_Room8" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Mixed_use1_Floor1_Room8 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+
+"Flr2_Mixed_use1_Floor1" = FLOOR
+   Z               = 22.950819672131146
+   POLYGON         = "Flr2_Mixed_use1_Floor1 Plg"
+   SHAPE           = POLYGON
+   FLOOR-HEIGHT    = 11.475409836065573
+   C-DIAGRAM-DATA  = *Flr2_Mixed_use1_Floor1 UI DiagData*
+   ..
+
+"Flr2_Mixed_use1_Floor1_Room1" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room1 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm1Wll2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr2_Mixed_use1_Floor1_Room2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room2 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm2Wll2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr2_Mixed_use1_Floor1_Room3" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room3 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm3Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr2_Mixed_use1_Floor1_Room4" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room4 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm4Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr2_Mixed_use1_Floor1_Room5" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room5 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm5Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr2_Mixed_use1_Floor1_Room6" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room6 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm6Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr2_Mixed_use1_Floor1_Room7" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room7 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr2Mxds1Flr1Rm7Wll1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+"Flr2_Mixed_use1_Floor1_Room8" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr2_Mixed_use1_Floor1_Room8 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+
+"Flr1_Top_Mixed_use1_Floor1" = FLOOR
+   Z               = 34.42622950819672
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1 Plg"
+   SHAPE           = POLYGON
+   FLOOR-HEIGHT    = 11.475409836065573
+   C-DIAGRAM-DATA  = *Flr1_Top_Mixed_use1_Floor1 UI DiagData*
+   ..
+
+"Flr1_Top_Mixed_use1_Floor1_Room1" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room1 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm1Wll2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room1_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room2" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room2 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm2Wll2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room2_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room3" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room3 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm3Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room3_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room4" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room4 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm4Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room4_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room5" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room5 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm5Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room5_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room6" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room6 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm6Wll4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room6_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room7" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room7 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+"Flr1TpMxds1Flr1Rm7Wll1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room7_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Top_Mixed_use1_Floor1_Room8" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Top_Mixed_use1_Floor1_Room8 Plg"
+   C-ACTIVITY-DESC = *Mixed Use Building Program*
+   ..
+
+
+"Flr1_Top_Mixed_use1_Floor1_Room8_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **              Electric & Fuel Meters                 **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Electric Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Fuel Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Master Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **      HVAC Circulation Loops / Plant Equipment       **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Pumps
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Heat Exchangers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Circulation Loops
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Chillers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Boilers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Domestic Water Heaters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Heat Rejection
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Tower Free Cooling
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Photovoltaic Modules
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Electric Generators
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Thermal Storage
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Ground Loop Heat Exchangers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Compliance DHW (residential dwelling units)
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **            Steam & Chilled Water Meters             **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Steam Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Chilled Water Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **               HVAC Systems / Zones                  **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                Metering & Misc HVAC                 **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Equipment Controls
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Load Management
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                    Utility Rates                    **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Ratchets
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Block Charges
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Utility Rates
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                 Output Reporting                    **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Loads Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Systems Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Plant Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Economics Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              THE END
+$ ---------------------------------------------------------
+
+END ..
+COMPUTE ..
+STOP ..
