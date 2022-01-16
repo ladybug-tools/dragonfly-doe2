@@ -36,7 +36,11 @@ class Model:
         df_model.convert_to_units(units='Feet')
 
         polygons = []
-        flr_spc = [Floor.from_story(story) for story in df_model.stories]
+
+        for building in df_model.buildings:
+
+            flr_spc = [Floor.from_story(story)
+                       for story in building.all_stories()]
 
         for story in df_model.stories:
             polygons.append(Polygon.from_story(story))
