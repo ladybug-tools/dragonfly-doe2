@@ -36,16 +36,13 @@ class Model:
         df_model.convert_to_units(units='Feet')
 
         polygons = []
-
+        flr_spc = []
         for building in df_model.buildings:
-
-            flr_spc = [Floor.from_story(story)
-                       for story in building.all_stories()]
-
-        for story in df_model.stories:
-            polygons.append(Polygon.from_story(story))
-            for room in story:
-                polygons.append(Polygon.from_room(room))
+            for story in building.all_stories():
+                flr_spc.append(Floor.from_story(story))
+                polygons.append(Polygon.from_story(story))
+                for room in story:
+                    polygons.append(Polygon.from_room(room))
 
         constructions = ConstructionCollection.from_hb_constructions(
             df_model.properties.energy.constructions)
