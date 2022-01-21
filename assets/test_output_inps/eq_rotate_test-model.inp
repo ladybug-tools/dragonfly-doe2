@@ -1,0 +1,881 @@
+INPUT ..
+
+
+
+
+$ ---------------------------------------------------------
+$              Abort, Diagnostics
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Global Parameters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Title, Run Periods, Design Days, Holidays
+$ ---------------------------------------------------------
+
+
+
+
+TITLE
+    LINE-1           = *unnamed*
+    ..
+
+"Entire Year" = RUN-PERIOD-PD
+   BEGIN-MONTH     = 1
+   BEGIN-DAY      = 1
+   BEGIN-YEAR     = 2021
+   END-MONTH      = 12
+   END-DAY        = 31
+   END-YEAR       = 2021
+   ..
+
+"Standard US Holidays" = HOLIDAYS
+   LIBRARY-ENTRY "US"
+   ..
+
+$ ---------------------------------------------------------
+$              Compliance Data
+$ ---------------------------------------------------------
+
+
+
+
+"Compliance Data" = COMPLIANCE
+   C-PERMIT-SCOPE   = 0
+   C-PROJ-NAME      = *unnamed*
+   C-BUILDING-TYPE  = 32
+   C-CONS-PHASE     = 0
+   C-NR-DHW-INCL    = 1
+   C-CODE-VERSION   = 1
+   C-901-NUM-FLRS   = 1
+   C-901-BLDG-TYPE  = 32
+   ..
+
+$---------------------------------------------------------
+$              Site and Building Data
+$---------------------------------------------------------
+
+"Site Data" = SITE-PARAMETERS
+  ALTITUDE          = 150
+  C-STATE           = 21
+  C-WEATHER-FILE    = *TMY2\HARTFOCT.bin* 
+  C-COUNTRY         = 1
+  C-901-LOCATION    = 1092
+  ..
+"Building Data" = BUILD-PARAMETERS
+  HOLIDAYS        = "Standard US Holidays"
+  ..
+
+
+PROJECT-DATA
+  ..
+
+
+
+$ ---------------------------------------------------------
+$              Materials / Layers / Constructions
+$ ---------------------------------------------------------
+
+
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 4.0
+   ..
+
+"Typical Insulation-R3" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 3.0
+   ..
+
+"Typical Insulation-R7" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 7.0
+   ..
+
+"25mm Stucco" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.083
+   CONDUCTIVITY    = 0.228
+   DENSITY         = 115.87
+   SPECIFIC-HEAT   = 0.361
+   ..
+
+"8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.42
+   DENSITY         = 114.996
+   SPECIFIC-HEAT   = 0.392
+   ..
+
+"8 n. Nrmlwght Cncrt Flr" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
+   ..
+
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 24.0
+   ..
+
+"Typical Insulation-R31" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 31.0
+   ..
+
+"Typical Carpet Pad" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 1.229
+   ..
+
+"Metal Roof Surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 70.002
+   SPECIFIC-HEAT   = 0.627
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 17.0
+   ..
+
+"5/8 in. Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.052
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 49.944
+   SPECIFIC-HEAT   = 0.468
+   ..
+"TpclInsltdStlFrmdExtrrWllR19_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R17",
+      "5/8 in. Gypsum Board"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrWllR19_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
+   ..
+
+"Typical IEAD Roof-R32_l" = LAYERS
+   MATERIAL             = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32_l"
+   ..
+
+"Typical Overhead Door-R4_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R4"
+   )
+   ..
+
+"Typical Overhead Door-R4_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R4_l"
+   ..
+
+
+"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R7",
+      "8 n. Cncrt Blck Bsmnt Wll"
+   )
+   ..
+
+"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
+   ..
+
+
+"Tpcl Insltd Mtl DrR3_l" = LAYERS
+   MATERIAL             = (
+      "F08 Metal surface",
+      "Typical Insulation-R3"
+   )
+   ..
+
+"Tpcl Insltd Mtl DrR3_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Tpcl Insltd Mtl DrR3_l"
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R4",
+      "8 n. Nrmlwght Cncrt Flr",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
+   ..
+
+
+"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+   ..
+
+
+$ ---------------------------------------------------------
+$              Glass Type Codes
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Glass Types
+$ ---------------------------------------------------------
+
+
+
+
+"WT1" = GLASS-TYPE
+  TYPE             = GLASS-TYPE-CODE
+   GLASS-TYPE-CODE  = "2001"
+   C-PRODUCT-TYPE   = 0
+   C-FRAME-TYPE     = 0
+   ..
+
+
+
+$ ---------------------------------------------------------
+$              Polygons
+$ ---------------------------------------------------------
+
+
+
+
+"Flr1_Story_387 Plg" = POLYGON
+   V1        = ( 0.122697, 21.274175 )
+   V2        = ( 21.321990, 0.074882 )
+   V3        = ( 42.521283, 21.274175 )
+   V4        = ( 21.321990, 42.473469 )
+   ..
+"Flr1_Room_1921 Plg" = POLYGON
+   V1        = ( 10.015701, 21.274175 )
+   V2        = ( 21.321990, 9.967886 )
+   V3        = ( 32.628280, 21.274175 )
+   V4        = ( 21.321990, 32.580465 )
+   ..
+"Flr1_Room_1922 Plg" = POLYGON
+   V1        = ( 0.122697, 21.274175 )
+   V2        = ( 21.321990, 0.074882 )
+   V3        = ( 21.321990, 9.967886 )
+   V4        = ( 10.015701, 21.274175 )
+   ..
+"Flr1_Room_1923 Plg" = POLYGON
+   V1        = ( 0.122697, 21.274175 )
+   V2        = ( 10.015701, 21.274175 )
+   V3        = ( 21.321990, 32.580465 )
+   V4        = ( 21.321990, 42.473469 )
+   ..
+"Flr1_Room_1924 Plg" = POLYGON
+   V1        = ( 32.628280, 21.274175 )
+   V2        = ( 42.521283, 21.274175 )
+   V3        = ( 21.321990, 42.473469 )
+   V4        = ( 21.321990, 32.580465 )
+   ..
+"Flr1_Room_1925 Plg" = POLYGON
+   V1        = ( 21.321990, 0.074882 )
+   V2        = ( 42.521283, 21.274175 )
+   V3        = ( 32.628280, 21.274175 )
+   V4        = ( 21.321990, 9.967886 )
+   ..
+"Flr1_Story_388 Plg" = POLYGON
+   V1        = ( 0.122697, 21.274175 )
+   V2        = ( 21.321990, 0.074882 )
+   V3        = ( 42.521283, 21.274175 )
+   V4        = ( 21.321990, 42.473469 )
+   ..
+"Flr1_Room_1926 Plg" = POLYGON
+   V1        = ( 10.015701, 21.274175 )
+   V2        = ( 21.321990, 9.967886 )
+   V3        = ( 32.628280, 21.274175 )
+   V4        = ( 21.321990, 32.580465 )
+   ..
+"Flr1_Room_1927 Plg" = POLYGON
+   V1        = ( 0.122697, 21.274175 )
+   V2        = ( 21.321990, 0.074882 )
+   V3        = ( 21.321990, 9.967886 )
+   V4        = ( 10.015701, 21.274175 )
+   ..
+"Flr1_Room_1928 Plg" = POLYGON
+   V1        = ( 0.122697, 21.274175 )
+   V2        = ( 10.015701, 21.274175 )
+   V3        = ( 21.321990, 32.580465 )
+   V4        = ( 21.321990, 42.473469 )
+   ..
+"Flr1_Room_1929 Plg" = POLYGON
+   V1        = ( 32.628280, 21.274175 )
+   V2        = ( 42.521283, 21.274175 )
+   V3        = ( 21.321990, 42.473469 )
+   V4        = ( 21.321990, 32.580465 )
+   ..
+"Flr1_Room_1930 Plg" = POLYGON
+   V1        = ( 21.321990, 0.074882 )
+   V2        = ( 42.521283, 21.274175 )
+   V3        = ( 32.628280, 21.274175 )
+   V4        = ( 21.321990, 9.967886 )
+   ..
+
+
+
+$ ---------------------------------------------------------
+$              Wall Parameters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Fixed and Building Shades
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Misc Cost Related Objects
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                Performance Curves                   **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **      Floors / Spaces / Walls / Windows / Doors      **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+"Flr1_Story_387" = FLOOR
+   Z               = 0.0
+   POLYGON         = "Flr1_Story_387 Plg"
+   SHAPE           = POLYGON
+   FLOOR-HEIGHT    = 9.99344262295082
+   C-DIAGRAM-DATA  = *Flr1_Story_387 UI DiagData*
+   ..
+
+"Flr1_Room_1921" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1921 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+
+"Flr1_Room_1921_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1_Room_1922" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1922 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1922_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+Flr1_Room_1922_Wall_1_wndw_0_wall2 = WINDOW
+   X           = 3.006014230587997
+   Y           = 3.106291750819675
+   WIDTH       = 23.96829940767646
+   HEIGHT      = 5.000049127868857
+   GLASS-TYPE  = WT1
+   ..
+
+"Flr1_Room_1922_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1_Room_1923" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1923 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1923_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Room_1923_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1_Room_1924" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1924 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1924_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1_Room_1924_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1_Room_1925" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1925 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1925_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+Flr1_Room_1925_Wall_1_wndw_0_wall2 = WINDOW
+   X           = 3.006014230587997
+   Y           = 3.106291750819675
+   WIDTH       = 23.96829940767646
+   HEIGHT      = 5.000049127868857
+   GLASS-TYPE  = WT1
+   ..
+
+"Flr1_Room_1925_grnd_flr" = UNDERGROUND-WALL
+   CONSTRUCTION    = "Tpcl Insltd Crptd 8n Slb FlrR5_c"
+   LOCATION        = BOTTOM
+   ..
+"Flr1_Story_388" = FLOOR
+   Z               = 9.99344262295082
+   POLYGON         = "Flr1_Story_388 Plg"
+   SHAPE           = POLYGON
+   FLOOR-HEIGHT    = 9.99344262295082
+   C-DIAGRAM-DATA  = *Flr1_Story_388 UI DiagData*
+   ..
+
+"Flr1_Room_1926" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1926 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+
+"Flr1_Room_1926_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Room_1927" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1927 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1927_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+Flr1_Room_1927_Wall_1_wndw_0_wall2 = WINDOW
+   X           = 3.006014230587997
+   Y           = 3.106291750819675
+   WIDTH       = 23.96829940767646
+   HEIGHT      = 5.000049127868857
+   GLASS-TYPE  = WT1
+   ..
+
+"Flr1_Room_1927_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Room_1928" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1928 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1928_Wall_4" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V4
+   ..
+"Flr1_Room_1928_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Room_1929" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1929 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1929_Wall_2" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V2
+   ..
+"Flr1_Room_1929_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+"Flr1_Room_1930" = SPACE
+   SHAPE           = POLYGON
+   POLYGON         = "Flr1_Room_1930 Plg"
+   C-ACTIVITY-DESC = *Generic Office Program*
+   ..
+
+"Flr1_Room_1930_Wall_1" = EXTERIOR-WALL
+   CONSTRUCTION    = "TpclInsltdStlFrmdExtrrWllR19_c"
+   LOCATION        = SPACE-V1
+   ..
+Flr1_Room_1930_Wall_1_wndw_0_wall2 = WINDOW
+   X           = 3.006014230587997
+   Y           = 3.106291750819675
+   WIDTH       = 23.96829940767646
+   HEIGHT      = 5.000049127868857
+   GLASS-TYPE  = WT1
+   ..
+
+"Flr1_Room_1930_roof" = EXTERIOR-WALL
+   CONSTRUCTION    = "Typical IEAD Roof-R32_c"
+   LOCATION        = TOP
+   ..
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **              Electric & Fuel Meters                 **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Electric Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Fuel Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Master Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **      HVAC Circulation Loops / Plant Equipment       **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Pumps
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Heat Exchangers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Circulation Loops
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Chillers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Boilers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Domestic Water Heaters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Heat Rejection
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Tower Free Cooling
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Photovoltaic Modules
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Electric Generators
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Thermal Storage
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Ground Loop Heat Exchangers
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Compliance DHW (residential dwelling units)
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **            Steam & Chilled Water Meters             **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Steam Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Chilled Water Meters
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **               HVAC Systems / Zones                  **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                Metering & Misc HVAC                 **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Equipment Controls
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Load Management
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                    Utility Rates                    **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Ratchets
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Block Charges
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Utility Rates
+$ ---------------------------------------------------------
+
+
+
+
+$ *********************************************************
+$ **                                                     **
+$ **                 Output Reporting                    **
+$ **                                                     **
+$ *********************************************************
+
+
+
+
+$ ---------------------------------------------------------
+$              Loads Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Systems Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Plant Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Economics Non-Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              Hourly Reporting
+$ ---------------------------------------------------------
+
+
+
+
+$ ---------------------------------------------------------
+$              THE END
+$ ---------------------------------------------------------
+
+END ..
+COMPUTE ..
+STOP ..
