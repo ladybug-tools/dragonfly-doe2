@@ -141,7 +141,7 @@ class WindowSet:
     """ An internal object comprising all of the windows hosted by a wall segment.
 
         Init methods(s):
-            from_params(name, location, rw_paras).
+            from_params(name, location, rectangular_window_params).
 
         Args:
             name: the display name of the room2d hosting the wall the windowset belongs to.
@@ -156,10 +156,11 @@ class WindowSet:
     windows: List[Window]
 
     @classmethod
-    def from_params(cls, name: str, location: int,  rw_paras: RectangularWindows):
-        origins = [(orig.x, orig.y) for orig in rw_paras.origins]
-        widths = rw_paras.widths
-        heights = rw_paras.heights
+    def from_params(cls, name: str, location: int,
+                    rectangular_window_params: RectangularWindows):
+        origins = [(orig.x, orig.y) for orig in rectangular_window_params.origins]
+        widths = rectangular_window_params.widths
+        heights = rectangular_window_params.heights
 
         windows = []
         for i, (org, w, h) in enumerate(zip(origins, widths, heights)):
