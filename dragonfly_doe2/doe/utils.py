@@ -35,6 +35,6 @@ def lower_left_properties(room_2d):
     verts = floor_geo.vertices[pt_i:] + floor_geo.vertices[:pt_i]
     bcs = room_2d.boundary_conditions[pt_i:] + room_2d.boundary_conditions[:pt_i]
     w_par = room_2d.window_parameters[pt_i:] + room_2d.window_parameters[:pt_i]
+    return (verts, bcs, w_par)
 
-
-doe2_verts, doe2_bcs, doe2_windows = lower_left_properties(room_2d)
+#doe2_verts, doe2_bcs, doe2_windows = lower_left_properties(room_2d)

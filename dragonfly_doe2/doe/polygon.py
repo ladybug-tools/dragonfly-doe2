@@ -3,6 +3,7 @@
 """
 from dragonfly.room2d import Room2D
 from dragonfly.story import Story
+from .utils import short_name, lower_left_properties
 
 
 class Polygon(object):
@@ -21,7 +22,7 @@ class Polygon(object):
             would be good to go as is? or am I misunderstanding the specifics in which should
             do check: raise exeption if issue?
         """
-        vertices = room.floor_geometry.lower_left_counter_clockwise_vertices
+        vertices = lower_left_properties(room)[0]
         return cls(room.display_name, vertices)
 
     @classmethod
