@@ -2,7 +2,7 @@ from dragonfly.room2d import Room2D
 from dragonfly.story import Story
 from dataclasses import dataclass
 from typing import List
-from .utils import short_name
+from .utils import short_name, lower_left_properties
 from dragonfly.windowparameter import RectangularWindows
 
 
@@ -274,21 +274,13 @@ class Space:
                 f'Unsupported Type: {type(room)}.\n'
                 'Expected dragonfly.room2d.Room2D'
             )
-        segments = room.floor_segments
-        bcs = room.boundary_conditions
-        start_vert = room.floor_geometry.lower_left_counter_clockwise_vertices[0]
-
-        for i, seg in enumerate(segments):
-            if seg.p == start_vert:
-                break
-
-        segments = segments[i:] + segments[:i]
-        bcs = bcs[i:] + bcs[:i]
-        wndw_paras = [param for param in room.window_parameters]
-
         wall_constr_name = short_name(
             room.properties.energy.construction_set.wall_set.exterior_construction.display_name, 30)
         name = room.display_name
+
+        low_l_props = lower_left_properties(room)
+        bcs = low_l_props[1]
+        wndw_paras = low_l_props[2]
 
         walls = []
         for i, (bc, window_param) in enumerate(zip(bcs, wndw_paras)):

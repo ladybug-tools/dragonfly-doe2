@@ -86,17 +86,30 @@ $ ---------------------------------------------------------
 
 
 
-"8 n. Nrmlwght Cncrt Flr" = MATERIAL
+"5/8 in. Gypsum Board" = MATERIAL
    TYPE            = PROPERTIES
-   THICKNESS       = 0.667
-   CONDUCTIVITY    = 0.732
-   DENSITY         = 144.962
-   SPECIFIC-HEAT   = 0.357
+   THICKNESS       = 0.052
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 49.944
+   SPECIFIC-HEAT   = 0.468
    ..
 
-"Typical Insulation-R4" = MATERIAL
+"Typical Insulation-R3" = MATERIAL
    TYPE            = RESISTANCE
-   RESISTANCE      = 4.0
+   RESISTANCE      = 3.0
+   ..
+
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 24.0
    ..
 
 "Typical Insulation-R31" = MATERIAL
@@ -112,33 +125,32 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.215
    ..
 
+"Typical Carpet Pad" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 1.229
+   ..
+
+"Typical Insulation-R7" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 7.0
+   ..
+
+"Typical Insulation-R17" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 17.0
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 4.0
+   ..
+
 "8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.667
    CONDUCTIVITY    = 0.42
    DENSITY         = 114.996
    SPECIFIC-HEAT   = 0.392
-   ..
-
-"F08 Metal surface" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.003
-   CONDUCTIVITY    = 14.344
-   DENSITY         = 488.452
-   SPECIFIC-HEAT   = 0.215
-   ..
-
-"5/8 in. Gypsum Board" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.052
-   CONDUCTIVITY    = 0.051
-   DENSITY         = 49.944
-   SPECIFIC-HEAT   = 0.468
-   ..
-
-"Typical Insulation-R24" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 24.0
    ..
 
 "Roof Membrane" = MATERIAL
@@ -149,9 +161,12 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.627
    ..
 
-"Typical Insulation-R17" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 17.0
+"8 n. Nrmlwght Cncrt Flr" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
    ..
 
 "25mm Stucco" = MATERIAL
@@ -160,80 +175,6 @@ $ ---------------------------------------------------------
    CONDUCTIVITY    = 0.228
    DENSITY         = 115.87
    SPECIFIC-HEAT   = 0.361
-   ..
-
-"Typical Insulation-R7" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 7.0
-   ..
-
-"Typical Insulation-R3" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 3.0
-   ..
-
-"Typical Carpet Pad" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 1.229
-   ..
-"Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
-   MATERIAL             = (
-      "Typical Insulation-R4",
-      "8 n. Nrmlwght Cncrt Flr",
-      "Typical Carpet Pad"
-   )
-   ..
-
-"Tpcl Insltd Crptd 8n Slb FlrR5_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
-   ..
-
-"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
-   MATERIAL             = (
-      "25mm Stucco",
-      "5/8 in. Gypsum Board",
-      "Typical Insulation-R24",
-      "5/8 in. Gypsum Board",
-      "Typical Carpet Pad"
-   )
-   ..
-
-"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
-   ..
-
-
-"Tpcl Insltd Mtl DrR3_l" = LAYERS
-   MATERIAL             = (
-      "F08 Metal surface",
-      "Typical Insulation-R3"
-   )
-   ..
-
-"Tpcl Insltd Mtl DrR3_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "Tpcl Insltd Mtl DrR3_l"
-   ..
-
-"Typical Overhead Door-R4_l" = LAYERS
-   MATERIAL             = (
-      "Typical Insulation-R4"
-   )
-   ..
-
-"Typical Overhead Door-R4_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Overhead Door-R4_l"
    ..
 
 "Typical IEAD Roof-R32_l" = LAYERS
@@ -251,6 +192,19 @@ $ ---------------------------------------------------------
    LAYERS               = "Typical IEAD Roof-R32_l"
    ..
 
+"Tpcl Insltd Mtl DrR3_l" = LAYERS
+   MATERIAL             = (
+      "F08 Metal surface",
+      "Typical Insulation-R3"
+   )
+   ..
+
+"Tpcl Insltd Mtl DrR3_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "Tpcl Insltd Mtl DrR3_l"
+   ..
 
 "Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
    MATERIAL             = (
@@ -280,6 +234,52 @@ $ ---------------------------------------------------------
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 5
    LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
+   ..
+
+"Typical Overhead Door-R4_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R4"
+   )
+   ..
+
+"Typical Overhead Door-R4_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Typical Overhead Door-R4_l"
+   ..
+
+
+"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R4",
+      "8 n. Nrmlwght Cncrt Flr",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"Tpcl Insltd Crptd 8n Slb FlrR5_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
    ..
 
 
@@ -321,10 +321,10 @@ $ ---------------------------------------------------------
    V4        = ( -12.000833, 44.787718 )
    ..
 "Flr1_Room_3 Plg" = POLYGON
-   V1        = ( -28.394276, 16.393443 )
-   V2        = ( 0.000000, 0.000000 )
-   V3        = ( 16.393443, 28.394276 )
-   V4        = ( -12.000833, 44.787718 )
+   V1        = ( 0.000000, 0.000000 )
+   V2        = ( 16.393443, 28.394276 )
+   V3        = ( -12.000833, 44.787718 )
+   V4        = ( -28.394276, 16.393443 )
    ..
 
 
