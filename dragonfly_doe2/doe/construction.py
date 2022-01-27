@@ -25,8 +25,8 @@ class Construction:
             # this should raise an error but for now I leave it to print until we
             # support a handful number of types
             print(
-                f'Unsupported type: {type(construction)}.\n'
-                'Currently only OpaqueConstruction type is supported.'
+                f'Unsupported Construction type: {type(construction)}.\n'
+                'Please be patient as more features and capabilities are implemented.'
             )
             return cls(construction.display_name, [], 0, 0)
 
