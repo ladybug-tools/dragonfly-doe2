@@ -37,15 +37,17 @@ class Model:
 
         polygons = []
         flr_spc = []
+        model_constructions = []
         for building in df_model.buildings:
             for story in building.all_stories():
+                for con in building.properties.energy.construction_set.constructions_unique:
+                    model_constructions.append(con)
                 flr_spc.append(Floor.from_story(story))
                 polygons.append(Polygon.from_story(story))
                 for room in story:
                     polygons.append(Polygon.from_room(room))
 
-        constructions = ConstructionCollection.from_hb_constructions(
-            df_model.properties.energy.constructions)
+        constructions = ConstructionCollection.from_hb_constructions(model_constructions)
 
         return cls(df_model.display_name, run_period, polygons=polygons,
                    constructions=constructions, floors=flr_spc)
