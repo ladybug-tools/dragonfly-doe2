@@ -20,11 +20,13 @@ def short_name(name, max_length):
 
 
 def lower_left_properties(room_2d):
-    """Get the vertices, boundary conditions and windows starting from lower left."""
+    """Get the vertices, boundary conditions and windows starting from lower left.
+    v2 WIP
+    """
     floor_geo = room_2d.floor_geometry
-    start_pt = floor_geo.vertices[0]
+    start_pt = floor_geo.boundary[0]
     min_y, min_x, pt_i = start_pt.y, start_pt.x, 0
-    for i, pt in enumerate(floor_geo.vertices):
+    for i, pt in enumerate(floor_geo.boundary):
         if pt.y < min_y:
             min_y, min_x = pt.y, pt.x
             pt_i = i
@@ -32,9 +34,13 @@ def lower_left_properties(room_2d):
             if pt.x < min_x:
                 min_y, min_x = pt.y, pt.x
                 pt_i = i
-    verts = floor_geo.vertices[pt_i:] + floor_geo.vertices[:pt_i]
-    bcs = room_2d.boundary_conditions[pt_i:] + room_2d.boundary_conditions[:pt_i]
-    w_par = room_2d.window_parameters[pt_i:] + room_2d.window_parameters[:pt_i]
-    return (verts, bcs, w_par)
-
-#doe2_verts, doe2_bcs, doe2_windows = lower_left_properties(room_2d)
+    verts = floor_geo.boundary[pt_i:] + floor_geo.boundary[:pt_i]
+    if floor_geo.has_holes:
+        bcs = room_2d.boundary_conditions[:len(floor_geo.boundary)]
+        w_par = room_2d.window_parameters[:len(floor_geo.boundary)]
+    else:
+        bcs = room_2d.boundary_conditions
+        w_par = room_2d.window_parameters
+    bcs = bcs[pt_i:] + bcs[:pt_i]
+    w_par = w_par[pt_i:] + w_par[:pt_i]
+    return (verts, bcs, w_par)  # Intentionally a Tuple ;)
