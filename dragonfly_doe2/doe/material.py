@@ -65,11 +65,11 @@ class MassMaterial:
 
     def to_inp(self):
         return f'"{self.name}" = MATERIAL\n' \
-            f'   TYPE            = {MaterialType.mass.value}\n' \
-            f'   THICKNESS       = {self.thickness}\n' \
-            f'   CONDUCTIVITY    = {self.conductivity}\n' \
-            f'   DENSITY         = {self.density}\n' \
-            f'   SPECIFIC-HEAT   = {self.specific_heat}\n' \
+               f'   TYPE            = {MaterialType.mass.value}\n' \
+               f'   THICKNESS       = {self.thickness}\n' \
+               f'   CONDUCTIVITY    = {self.conductivity}\n' \
+               f'   DENSITY         = {self.density}\n' \
+               f'   SPECIFIC-HEAT   = {self.specific_heat}\n' \
             '   ..'
 
 
