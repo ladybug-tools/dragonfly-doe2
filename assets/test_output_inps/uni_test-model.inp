@@ -86,6 +86,45 @@ $ ---------------------------------------------------------
 
 
 
+"Generic LW Concrete" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.328
+   CONDUCTIVITY    = 0.168
+   DENSITY         = 79.91
+   SPECIFIC-HEAT   = 0.361
+   ..
+
+"Typical Carpet Pad" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 1.229
+   ..
+
+"Typical Insulation-R4" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 4.0
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 24.0
+   ..
+
+"Generic Wall Air Gap" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.328
+   CONDUCTIVITY    = 0.211
+   DENSITY         = 0.08
+   SPECIFIC-HEAT   = 0.43
+   ..
+
+"25mm Stucco" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.083
+   CONDUCTIVITY    = 0.228
+   DENSITY         = 115.87
+   SPECIFIC-HEAT   = 0.361
+   ..
+
 "Metal Roof Surface" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.003
@@ -94,9 +133,17 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.215
    ..
 
-"Typical Insulation-R24" = MATERIAL
+"Typical Insulation-R17" = MATERIAL
    TYPE            = RESISTANCE
-   RESISTANCE      = 24.0
+   RESISTANCE      = 17.0
+   ..
+
+"Generic Gypsum Board" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.042
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 49.944
+   SPECIFIC-HEAT   = 0.469
    ..
 
 "8 n. Nrmlwght Cncrt Flr" = MATERIAL
@@ -112,35 +159,17 @@ $ ---------------------------------------------------------
    RESISTANCE      = 2.0
    ..
 
+"Typical Insulation-R7" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 7.0
+   ..
+
 "5/8 in. Gypsum Board" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.052
    CONDUCTIVITY    = 0.051
    DENSITY         = 49.944
    SPECIFIC-HEAT   = 0.468
-   ..
-
-"Typical Insulation-R17" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 17.0
-   ..
-
-"Typical Insulation-R31" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 31.0
-   ..
-
-"Roof Membrane" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.031
-   CONDUCTIVITY    = 0.051
-   DENSITY         = 70.002
-   SPECIFIC-HEAT   = 0.627
-   ..
-
-"Typical Insulation-R4" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 4.0
    ..
 
 "F08 Metal surface" = MATERIAL
@@ -151,22 +180,20 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.215
    ..
 
-"Typical Insulation-R7" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 7.0
-   ..
-
-"25mm Stucco" = MATERIAL
+"Generic 25mm Wood" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.083
-   CONDUCTIVITY    = 0.228
-   DENSITY         = 115.87
-   SPECIFIC-HEAT   = 0.361
+   CONDUCTIVITY    = 0.048
+   DENSITY         = 37.957
+   SPECIFIC-HEAT   = 0.701
    ..
 
-"Typical Carpet Pad" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 1.229
+"Generic 50mm Insulation" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.164
+   CONDUCTIVITY    = 0.01
+   DENSITY         = 2.684
+   SPECIFIC-HEAT   = 0.52
    ..
 
 "8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
@@ -176,40 +203,43 @@ $ ---------------------------------------------------------
    DENSITY         = 114.996
    SPECIFIC-HEAT   = 0.392
    ..
-"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
-   MATERIAL             = (
-      "25mm Stucco",
-      "5/8 in. Gypsum Board",
-      "Typical Insulation-R24",
-      "5/8 in. Gypsum Board",
-      "Typical Carpet Pad"
-   )
+
+"Generic HW Concrete" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.656
+   CONDUCTIVITY    = 0.618
+   DENSITY         = 139.843
+   SPECIFIC-HEAT   = 0.387
    ..
 
-"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 5
-   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+"Generic Acoustic Tile" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.066
+   CONDUCTIVITY    = 0.019
+   DENSITY         = 22.974
+   SPECIFIC-HEAT   = 0.254
    ..
 
-
-"Typical IEAD Roof-R32_l" = LAYERS
-   MATERIAL             = (
-      "Roof Membrane",
-      "Typical Insulation-R31",
-      "Metal Roof Surface"
-   )
+"Roof Membrane" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.031
+   CONDUCTIVITY    = 0.051
+   DENSITY         = 70.002
+   SPECIFIC-HEAT   = 0.627
    ..
 
-"Typical IEAD Roof-R32_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 1
-   LAYERS               = "Typical IEAD Roof-R32_l"
+"Typical Insulation-R31" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 31.0
    ..
 
-
+"Generic Ceiling Air Gap" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.328
+   CONDUCTIVITY    = 0.176
+   DENSITY         = 0.08
+   SPECIFIC-HEAT   = 0.43
+   ..
 "Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
    MATERIAL             = (
       "Typical Insulation-R4",
@@ -225,19 +255,7 @@ $ ---------------------------------------------------------
    LAYERS               = "Tpcl Insltd Crptd 8n Slb FlrR5_l"
    ..
 
-"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
-   MATERIAL             = (
-      "Typical Insulation-R7",
-      "8 n. Cncrt Blck Bsmnt Wll"
-   )
-   ..
 
-"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
-   ..
 
 
 "TpclInsltdStlFrmdExtrrWllR19_l" = LAYERS
@@ -256,6 +274,80 @@ $ ---------------------------------------------------------
    LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
    ..
 
+"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
+   MATERIAL             = (
+      "Typical Insulation-R7",
+      "8 n. Cncrt Blck Bsmnt Wll"
+   )
+   ..
+
+"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
+   ..
+
+"Typical IEAD Roof-R32_l" = LAYERS
+   MATERIAL             = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32_l"
+   ..
+
+"Generic Underground Roof_l" = LAYERS
+   MATERIAL             = (
+      "Generic 50mm Insulation",
+      "Generic HW Concrete",
+      "Generic Ceiling Air Gap",
+      "Generic Acoustic Tile"
+   )
+   ..
+
+"Generic Underground Roof_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 3
+   LAYERS               = "Generic Underground Roof_l"
+   ..
+
+"Generic Interior Ceiling_l" = LAYERS
+   MATERIAL             = (
+      "Generic LW Concrete",
+      "Generic Ceiling Air Gap",
+      "Generic Acoustic Tile"
+   )
+   ..
+
+"Generic Interior Ceiling_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.8
+   ROUGHNESS            = 3
+   LAYERS               = "Generic Interior Ceiling_l"
+   ..
+
+
+"Generic Interior Door_l" = LAYERS
+   MATERIAL             = (
+      "Generic 25mm Wood"
+   )
+   ..
+
+"Generic Interior Door_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.5
+   ROUGHNESS            = 4
+   LAYERS               = "Generic Interior Door_l"
+   ..
+
 "Typical Overhead Door-R2_l" = LAYERS
    MATERIAL             = (
       "Typical Insulation-R2"
@@ -268,6 +360,55 @@ $ ---------------------------------------------------------
    ROUGHNESS            = 4
    LAYERS               = "Typical Overhead Door-R2_l"
    ..
+
+"TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
+   MATERIAL             = (
+      "25mm Stucco",
+      "5/8 in. Gypsum Board",
+      "Typical Insulation-R24",
+      "5/8 in. Gypsum Board",
+      "Typical Carpet Pad"
+   )
+   ..
+
+"TpclInsltdStlFrmdExtrrFlrR27_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 5
+   LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
+   ..
+
+"Generic Interior Floor_l" = LAYERS
+   MATERIAL             = (
+      "Generic Acoustic Tile",
+      "Generic Ceiling Air Gap",
+      "Generic LW Concrete"
+   )
+   ..
+
+"Generic Interior Floor_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.2
+   ROUGHNESS            = 4
+   LAYERS               = "Generic Interior Floor_l"
+   ..
+
+"Generic Interior Wall_l" = LAYERS
+   MATERIAL             = (
+      "Generic Gypsum Board",
+      "Generic Wall Air Gap",
+      "Generic Gypsum Board"
+   )
+   ..
+
+"Generic Interior Wall_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.5
+   ROUGHNESS            = 4
+   LAYERS               = "Generic Interior Wall_l"
+   ..
+
+
 
 "Tpcl Insltd Mtl DrR2_l" = LAYERS
    MATERIAL             = (
