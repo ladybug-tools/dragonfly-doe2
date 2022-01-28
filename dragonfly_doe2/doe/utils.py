@@ -23,6 +23,7 @@ def lower_left_properties(room_2d):
     """Get the vertices, boundary conditions and windows starting from lower left.
     v2 WIP
     """
+    w_const_name = room_2d.properties.energy.construction_set.aperture_set.window_construction.display_name
     floor_geo = room_2d.floor_geometry
     start_pt = floor_geo.boundary[0]
     min_y, min_x, pt_i = start_pt.y, start_pt.x, 0
@@ -43,4 +44,8 @@ def lower_left_properties(room_2d):
         w_par = room_2d.window_parameters
     bcs = bcs[pt_i:] + bcs[:pt_i]
     w_par = w_par[pt_i:] + w_par[:pt_i]
-    return (verts, bcs, w_par)  # Intentionally a Tuple ;)
+    return (verts, bcs, w_par, w_const_name)
+
+    # is just sticking some data needed down the line
+    # in a tuple, piggybacking on the data that is already sent
+    # to the target class: lazy? good? bad?
