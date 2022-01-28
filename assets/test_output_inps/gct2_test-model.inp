@@ -86,53 +86,14 @@ $ ---------------------------------------------------------
 
 
 
-"Metal Roof Surface" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.003
-   CONDUCTIVITY    = 14.344
-   DENSITY         = 488.452
-   SPECIFIC-HEAT   = 0.215
-   ..
-
-"Typical Insulation-R7" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 7.0
-   ..
-
-"Typical Insulation-R17" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 17.0
-   ..
-
 "Typical Insulation-R4" = MATERIAL
    TYPE            = RESISTANCE
    RESISTANCE      = 4.0
    ..
 
-"8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.667
-   CONDUCTIVITY    = 0.42
-   DENSITY         = 114.996
-   SPECIFIC-HEAT   = 0.392
-   ..
-
-"8 n. Nrmlwght Cncrt Flr" = MATERIAL
-   TYPE            = PROPERTIES
-   THICKNESS       = 0.667
-   CONDUCTIVITY    = 0.732
-   DENSITY         = 144.962
-   SPECIFIC-HEAT   = 0.357
-   ..
-
-"Typical Insulation-R24" = MATERIAL
+"Typical Carpet Pad" = MATERIAL
    TYPE            = RESISTANCE
-   RESISTANCE      = 24.0
-   ..
-
-"Typical Insulation-R3" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 3.0
+   RESISTANCE      = 1.229
    ..
 
 "25mm Stucco" = MATERIAL
@@ -143,9 +104,24 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.361
    ..
 
+"Typical Insulation-R3" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 3.0
+   ..
+
 "Typical Insulation-R31" = MATERIAL
    TYPE            = RESISTANCE
    RESISTANCE      = 31.0
+   ..
+
+"Typical Insulation-R7" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 7.0
+   ..
+
+"Typical Insulation-R24" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 24.0
    ..
 
 "5/8 in. Gypsum Board" = MATERIAL
@@ -164,7 +140,28 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.627
    ..
 
-"F08 Metal surface" = MATERIAL
+"Typical Insulation-R17" = MATERIAL
+   TYPE            = RESISTANCE
+   RESISTANCE      = 17.0
+   ..
+
+"8 n. Cncrt Blck Bsmnt Wll" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.42
+   DENSITY         = 114.996
+   SPECIFIC-HEAT   = 0.392
+   ..
+
+"8 n. Nrmlwght Cncrt Flr" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.667
+   CONDUCTIVITY    = 0.732
+   DENSITY         = 144.962
+   SPECIFIC-HEAT   = 0.357
+   ..
+
+"Metal Roof Surface" = MATERIAL
    TYPE            = PROPERTIES
    THICKNESS       = 0.003
    CONDUCTIVITY    = 14.344
@@ -172,9 +169,12 @@ $ ---------------------------------------------------------
    SPECIFIC-HEAT   = 0.215
    ..
 
-"Typical Carpet Pad" = MATERIAL
-   TYPE            = RESISTANCE
-   RESISTANCE      = 1.229
+"F08 Metal surface" = MATERIAL
+   TYPE            = PROPERTIES
+   THICKNESS       = 0.003
+   CONDUCTIVITY    = 14.344
+   DENSITY         = 488.452
+   SPECIFIC-HEAT   = 0.215
    ..
 "Tpcl Insltd Mtl DrR3_l" = LAYERS
    MATERIAL             = (
@@ -189,7 +189,6 @@ $ ---------------------------------------------------------
    ROUGHNESS            = 5
    LAYERS               = "Tpcl Insltd Mtl DrR3_l"
    ..
-
 
 "TpclInsltdStlFrmdExtrrWllR19_l" = LAYERS
    MATERIAL             = (
@@ -207,20 +206,20 @@ $ ---------------------------------------------------------
    LAYERS               = "TpclInsltdStlFrmdExtrrWllR19_l"
    ..
 
-"Typical IEAD Roof-R32_l" = LAYERS
+"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
    MATERIAL             = (
-      "Roof Membrane",
-      "Typical Insulation-R31",
-      "Metal Roof Surface"
+      "Typical Insulation-R7",
+      "8 n. Cncrt Blck Bsmnt Wll"
    )
    ..
 
-"Typical IEAD Roof-R32_c" = CONSTRUCTION
+"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
    TYPE                 = LAYERS
    ABSORPTANCE          = 0.7
-   ROUGHNESS            = 1
-   LAYERS               = "Typical IEAD Roof-R32_l"
+   ROUGHNESS            = 4
+   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
    ..
+
 
 "TpclInsltdStlFrmdExtrrFlrR27_l" = LAYERS
    MATERIAL             = (
@@ -239,18 +238,6 @@ $ ---------------------------------------------------------
    LAYERS               = "TpclInsltdStlFrmdExtrrFlrR27_l"
    ..
 
-"Typical Overhead Door-R4_l" = LAYERS
-   MATERIAL             = (
-      "Typical Insulation-R4"
-   )
-   ..
-
-"Typical Overhead Door-R4_c" = CONSTRUCTION
-   TYPE                 = LAYERS
-   ABSORPTANCE          = 0.7
-   ROUGHNESS            = 4
-   LAYERS               = "Typical Overhead Door-R4_l"
-   ..
 
 "Tpcl Insltd Crptd 8n Slb FlrR5_l" = LAYERS
    MATERIAL             = (
@@ -268,19 +255,32 @@ $ ---------------------------------------------------------
    ..
 
 
-
-"Tpcl Insltd Bsmnt Mss WllR8_l" = LAYERS
+"Typical Overhead Door-R4_l" = LAYERS
    MATERIAL             = (
-      "Typical Insulation-R7",
-      "8 n. Cncrt Blck Bsmnt Wll"
+      "Typical Insulation-R4"
    )
    ..
 
-"Tpcl Insltd Bsmnt Mss WllR8_c" = CONSTRUCTION
+"Typical Overhead Door-R4_c" = CONSTRUCTION
    TYPE                 = LAYERS
    ABSORPTANCE          = 0.7
    ROUGHNESS            = 4
-   LAYERS               = "Tpcl Insltd Bsmnt Mss WllR8_l"
+   LAYERS               = "Typical Overhead Door-R4_l"
+   ..
+
+"Typical IEAD Roof-R32_l" = LAYERS
+   MATERIAL             = (
+      "Roof Membrane",
+      "Typical Insulation-R31",
+      "Metal Roof Surface"
+   )
+   ..
+
+"Typical IEAD Roof-R32_c" = CONSTRUCTION
+   TYPE                 = LAYERS
+   ABSORPTANCE          = 0.7
+   ROUGHNESS            = 1
+   LAYERS               = "Typical IEAD Roof-R32_l"
    ..
 
 

@@ -137,6 +137,14 @@ class Model:
     def constructions(self, value):
         self._constructions = value
 
+    @property
+    def glass_types(self):
+        return self._glass_types
+
+    @glass_types.setter
+    def glass_types(self, value):
+        self._glass_types = value
+
     def to_inp(self):
 
         data = [
