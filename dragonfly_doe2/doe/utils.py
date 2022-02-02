@@ -48,6 +48,3 @@ def lower_left_properties(room_2d):
     bcs = bcs[pt_i:] + bcs[:pt_i]
     w_par = w_par[pt_i:] + w_par[:pt_i]
     return (verts, bcs, w_par, w_const_name)
-    # is just sticking some data needed down the line
-    # in a tuple, piggybacking on the data that is already sent
-    # to the target class: lazy? good? bad?
