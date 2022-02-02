@@ -6,7 +6,7 @@ from dragonfly.model import Model
 
 def test_dfjson_translate():
     """Test translating a DFJSON file to an inp file."""
-    df_json = 'assets/reference_dfm/complex_model.dfjson'
+    df_json = 'assets/reference_dfm/complex_model_with_bcs.dfjson'
     out_inp = 'assets/sample_out'
     out_file = pathlib.Path(out_inp, 'test-model.inp')
     # delete if exist

@@ -42,7 +42,8 @@ class GlassType:
         glass_cond = _unit_convertor(
             [simple_window_mat.u_factor], 'Btu/h-ft2-F', 'W/m2-K')
 
-        name = short_name(str(simple_window_mat.display_name), 32)
+        name = simple_window_con.identifier
+        name = short_name(name, 32)
 
         return cls(name=name, shading_coef=shading_coef, glass_cond=glass_cond)
 

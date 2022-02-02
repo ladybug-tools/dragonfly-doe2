@@ -42,11 +42,10 @@ class Model:
         polygons = []
         flr_spc = []
         window_constructions = []
+        for con_set in df_model.properties.energy.construction_sets:
+            window_constructions.append(con_set.aperture_set.window_construction)
         for building in df_model.buildings:
             for story in building.all_stories():
-                for con in building.properties.energy.construction_set.constructions_unique:
-                    if type(con) == WindowConstruction:
-                        window_constructions.append(con)
 
                 flr_spc.append(Floor.from_story(story))
                 polygons.append(Polygon.from_story(story))
