@@ -39,3 +39,28 @@ def model_to_inp_file(df_json, name, folder):
         sys.exit(1)
     else:
         sys.exit(0)
+
+
+@translate.command('honeybee-model-to-inp')
+@click.argument('model-json', type=click.Path(
+    exists=True, file_okay=True, dir_okay=False, resolve_path=True)
+)
+@click.option('--name', '-n', help='Name of the output file.', default="model",
+              show_default=True
+              )
+@click.option('--folder', '-f', help='Path to target folder.', type=click.Path(
+    exists=False, file_okay=False, resolve_path=True, dir_okay=True),
+    default='.', show_default=True
+)
+def hb_model_to_inp_file(hb_json, name, folder):
+    """Translate a hb_model.json into a doe2 *.inp file."""
+    try:
+        model = Model.from_hbjson(hb_json)
+        folder = pathlib.Path(folder)
+        folder.mkdir(parents=True, exist_ok=True)
+        model_to_inp(model, folder=folder, name=name)
+    except Exception as e:
+        _logger.exception(f'Model translation failed.\n{e}')
+        sys.exit(1)
+    else:
+        sys.exit(0)
