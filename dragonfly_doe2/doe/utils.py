@@ -5,17 +5,19 @@ def short_name(name, max_length):
     if len(name) <= max_length:
         return name
 
-    shortened_name = ''.join(re.split('[aeiouy\-\_]', name))
+    shortened_name = ''.join(re.split("[aeiouy\\-\\_/]", name))
 
     if len(shortened_name) <= max_length:
         return shortened_name
 
     shortened_name = ''.join(shortened_name.split())
     if len(shortened_name) > max_length:
-        raise ValueError(
-            f'{name} cannot be shorten to fit the eQuest limitation of 32 characters. '
-            'You need to change the name manually to be shorter than 32 characters.'
-        )
+        shortened_name = ''.join(shortened_name.split())
+        if len(shortened_name) > max_length:
+            raise ValueError(
+                f'{name} cannot be shorten to fit the eQuest limitation of 32 characters. ',
+                f'Shortens to {shortened_name}\n '
+                'You need to change the name manually to be shorter than 32 characters.')
     return shortened_name
 
 
@@ -23,7 +25,8 @@ def lower_left_properties(room_2d):
     """Get the vertices, boundary conditions and windows starting from lower left.
     v2 WIP
     """
-    w_const_name = room_2d.properties.energy.construction_set.aperture_set.window_construction.display_name
+    simple_w_con = room_2d.properties.energy.construction_set.aperture_set.window_construction.to_simple_construction()
+    w_const_name = short_name(simple_w_con.identifier, 32)
     floor_geo = room_2d.floor_geometry
     start_pt = floor_geo.boundary[0]
     min_y, min_x, pt_i = start_pt.y, start_pt.x, 0
@@ -45,7 +48,6 @@ def lower_left_properties(room_2d):
     bcs = bcs[pt_i:] + bcs[:pt_i]
     w_par = w_par[pt_i:] + w_par[:pt_i]
     return (verts, bcs, w_par, w_const_name)
-
     # is just sticking some data needed down the line
     # in a tuple, piggybacking on the data that is already sent
     # to the target class: lazy? good? bad?

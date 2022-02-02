@@ -132,7 +132,7 @@ class Window:
                f'Y           = {self.y}\n   ' \
                f'WIDTH       = {self.width}\n   ' \
                f'HEIGHT      = {self.height}\n   '\
-               f'GLASS-TYPE  = {self.glass_type}\n   ..\n'
+               f'GLASS-TYPE  = "{short_name(self.glass_type, 32)}"\n   ..\n'
 
     def __repr__(self) -> str:
         return self.to_inp()
@@ -156,7 +156,7 @@ class WindowSet:
     name: str
     location: int
     windows: List[Window]
-    glass_type: str
+    glass_type: None
 
     @classmethod
     def from_params(cls, name: str, location: int,

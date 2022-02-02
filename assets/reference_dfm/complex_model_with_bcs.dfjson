@@ -952,7 +952,7 @@
                 }, 
                 {
                     "type": "WindowConstructionAbridged", 
-                    "identifier": "U 0.44 SHGC 0.26 Dbl Ref-B-H Clr 6mm/13mm Air", 
+                    "identifier": "smallernamewindowconst", 
                     "materials": [
                         "REF B CLEAR HI 6MM", 
                         "AIR 13MM", 
@@ -3015,7 +3015,7 @@
                     "door_set": {
                         "overhead_construction": "Typical Overhead Door-R4", 
                         "interior_glass_construction": null, 
-                        "exterior_glass_construction": "U 0.44 SHGC 0.26 Dbl Ref-B-H Clr 6mm/13mm Air", 
+                        "exterior_glass_construction": "smallernamewindowconst", 
                         "type": "DoorConstructionSetAbridged", 
                         "interior_construction": null, 
                         "exterior_construction": "Typical Insulated Metal Door-R3"
