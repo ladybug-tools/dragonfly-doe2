@@ -8,21 +8,7 @@ from honeybee_energy.material.glazing import EnergyWindowMaterialGlazing, \
 
 from honeybee_energy.construction.window import WindowConstruction
 
-from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
-from .utils import short_name
-
-
-def _unit_convertor(value, to_, from_):
-    """Helper function to convert values from one unit to another."""
-    for key in lbt_units:
-        if from_ in lbt_units[key]:
-            base_type = lbt_td[key]()
-            break
-    else:
-        raise ValueError(f'Invalid type: {from_}')
-
-    value = base_type.to_unit(value, to_, from_)
-    return round(value[0], 3)
+from .utils import short_name, unit_convertor
 
 
 @dataclass
@@ -39,7 +25,7 @@ class GlassType:
 
         shading_coef = simple_window_mat.shgc / 0.87
 
-        glass_cond = _unit_convertor(
+        glass_cond = unit_convertor(
             [simple_window_mat.u_factor], 'Btu/h-ft2-F', 'W/m2-K')
 
         name = simple_window_con.identifier
