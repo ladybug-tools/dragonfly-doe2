@@ -1,4 +1,5 @@
 import re
+from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
 
 
 def short_name(name, max_length):
@@ -48,3 +49,16 @@ def lower_left_properties(room_2d):
     bcs = bcs[pt_i:] + bcs[:pt_i]
     w_par = w_par[pt_i:] + w_par[:pt_i]
     return (verts, bcs, w_par, w_const_name)
+
+
+def unit_convertor(value, to_, from_):
+    """Helper function to convert values from one unit to another."""
+    for key in lbt_units:
+        if from_ in lbt_units[key]:
+            base_type = lbt_td[key]()
+            break
+    else:
+        raise ValueError(f'Invalid type: {from_}')
+
+    value = base_type.to_unit(value, to_, from_)
+    return round(value[0], 3)

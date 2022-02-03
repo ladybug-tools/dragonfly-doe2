@@ -3,27 +3,13 @@ from enum import Enum
 from typing import Union
 
 from honeybee_energy.material.opaque import EnergyMaterial, EnergyMaterialNoMass
-from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
-from .utils import short_name
+from .utils import short_name, unit_convertor
 
 
 class MaterialType(Enum):
     """Doe2 material types."""
     mass = 'PROPERTIES'
     no_mass = 'RESISTANCE'
-
-
-def _unit_convertor(value, to_, from_):
-    """Helper function to convert values from one unit to another."""
-    for key in lbt_units:
-        if from_ in lbt_units[key]:
-            base_type = lbt_td[key]()
-            break
-    else:
-        raise ValueError(f'Invalid type: {from_}')
-
-    value = base_type.to_unit(value, to_, from_)
-    return round(value[0], 3)
 
 
 @dataclass
@@ -33,7 +19,7 @@ class NoMassMaterial:
 
     @classmethod
     def from_hb_material(cls, material: EnergyMaterialNoMass):
-        resistance = _unit_convertor([material.r_value], 'h-ft2-F/Btu', 'm2-K/W')
+        resistance = unit_convertor([material.r_value], 'h-ft2-F/Btu', 'm2-K/W')
         return cls(short_name(material.display_name, 32), resistance)
 
     def to_inp(self):
@@ -55,10 +41,10 @@ class MassMaterial:
     @classmethod
     def from_hb_material(cls, material: EnergyMaterial):
         name = short_name(material.display_name, 32)
-        thickness = _unit_convertor([material.thickness], 'ft', 'm')
-        conductivity = _unit_convertor([material.conductivity], 'Btu/h-ft2', 'W/m2')
+        thickness = unit_convertor([material.thickness], 'ft', 'm')
+        conductivity = unit_convertor([material.conductivity], 'Btu/h-ft2', 'W/m2')
         density = round(material.density / 16.018, 3)
-        specific_heat = _unit_convertor([material.specific_heat], 'Btu/lb', 'J/kg')
+        specific_heat = unit_convertor([material.specific_heat], 'Btu/lb', 'J/kg')
         return cls(
             name, thickness, conductivity, density, specific_heat
         )
