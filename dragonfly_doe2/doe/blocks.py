@@ -41,7 +41,7 @@ polygons = '{sd_brk}$              Polygons\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
 wallParams = spacer+'{sd_brk}$              Wall Parameters\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
-fixBldgShade = '{sd_brk}$              Fixed and Building Shades\n{sd_brk}{spacer}'.format(
+fix_bldg_shade = '{sd_brk}$              Fixed and Building Shades\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)
 miscCost = '{sd_brk}$              Misc Cost Related Objects\n{sd_brk}{spacer}'.format(
     sd_brk=sd_brk, spacer=spacer)

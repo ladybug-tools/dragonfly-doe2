@@ -68,6 +68,11 @@ class Model:
             constructions=constructions, floors=flr_spc, glass_types=glass_types,
             context_shades=context_shades)
 
+        return cls(
+            df_model.display_name, run_period, polygons=polygons,
+            constructions=constructions, floors=flr_spc, glass_types=glass_types,
+            context_shades=context_shades)
+
     @classmethod
     def from_dfjson(cls, dfjson_file, run_period=None):
         model = DFModel.from_dfjson(dfjson_file)
