@@ -17,3 +17,5 @@ reffiles
 assets/sample_out/
 makedoe.py
 reference_dfm/
+test_output_inps/
+tf_wrkspc/
