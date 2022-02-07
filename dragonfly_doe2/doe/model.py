@@ -14,6 +14,7 @@ from .run_period import RunPeriod
 from .construction import Construction, ConstructionCollection
 from .floor_space import Floor
 from .glass_types import GlassType
+from .shades import Doe2ShadeCollection
 
 from . import blocks as fb
 
@@ -21,10 +22,9 @@ from . import blocks as fb
 class Model:
     """A DOE *.inp Model File Object."""
 
-    def __init__(
-            self, title, run_period=None, compliance_data=None, site_building_data=None,
-            polygons=None, constructions=None, floors=None, glass_types=None
-    ) -> None:
+    def __init__(self, title, run_period=None, compliance_data=None,
+                 site_building_data=None, polygons=None, constructions=None, floors=None,
+                 glass_types=None, context_shades=None) -> None:
         self.title = title
         self.run_period = run_period
         self.compliance_data = compliance_data
@@ -33,6 +33,7 @@ class Model:
         self.constructions = constructions
         self.floors = floors
         self.glass_types = glass_types
+        self.context_shades = context_shades
 
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
@@ -42,6 +43,8 @@ class Model:
         polygons = []
         flr_spc = []
         window_constructions = []
+        context_shades = []
+
         for con_set in df_model.properties.energy.construction_sets:
             window_constructions.append(con_set.aperture_set.window_construction)
         for building in df_model.buildings:
@@ -57,8 +60,13 @@ class Model:
         glass_types = [GlassType.from_hb_window_constr(
             w_con) for w_con in window_constructions]
 
-        return cls(df_model.display_name, run_period, polygons=polygons,
-                   constructions=constructions, floors=flr_spc, glass_types=glass_types)
+        shade_objs = df_model.context_shades
+        context_shades.append(Doe2ShadeCollection.from_df_context_shades(shade_objs))
+
+        return cls(
+            df_model.display_name, run_period, polygons=polygons,
+            constructions=constructions, floors=flr_spc, glass_types=glass_types,
+            context_shades=context_shades)
 
     @classmethod
     def from_dfjson(cls, dfjson_file, run_period=None):
@@ -144,6 +152,14 @@ class Model:
     def glass_types(self, value):
         self._glass_types = value
 
+    @property
+    def context_shades(self):
+        return self._context_shades
+
+    @context_shades.setter
+    def context_shades(self, value):
+        self._context_shades = value
+
     def to_inp(self):
 
         data = [
@@ -159,7 +175,7 @@ class Model:
             fb.polygons,
             '\n'.join(pl.to_inp() for pl in self.polygons),
             fb.wallParams,
-            fb.fixBldgShade,
+            '\n'.join(shd.to_inp() for shd in self.context_shades),
             fb.miscCost,
             fb.perfCurve,
             fb.floorNspace,
