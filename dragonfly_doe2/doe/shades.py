@@ -107,7 +107,7 @@ class Doe2ShadeCollection:
 
     def to_inp(self):
 
-        block = [fb.fixBldgShade]
+        block = [fb.fix_bldg_shade]
         shades = [shade.to_inp() for shade in self.doe_shades]
 
         block.append('\n\n'.join(shades))
