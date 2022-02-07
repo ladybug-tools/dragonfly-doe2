@@ -16,9 +16,12 @@ import math
 class Doe2Shade:
     # TODO: will need to change things up to support rm2d.shade_params
     """ DOE2 shade object. Can be either:
-    -  'FIXED-SHADE': azimuth is independent from the buildign.
+    -  'FIXED-SHADE': azimuth is independent from the building, i.e context shade such as
+        buildings and terrain. Objects that are independent from the orientation of the 
+        building during ASHRAE 90.1 baseline orientation averages. 
     -  'BUILDING-SHADE': azimuth is connected to the buildign azimuth,
-          will rotate withh the building on change of azimuth
+          will rotate withh the building on change of azimuth, i.e fin shades, awnings, and
+          other types of "on building" shading devices.
 
     """
     name: str
