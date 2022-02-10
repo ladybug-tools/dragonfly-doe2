@@ -47,7 +47,6 @@ class Doe2Shade:
             Face3D.from_regular_polygon(face.boundary_polygon2d)
 
         face = face if face.normal.z <= 0 else face.flip()
-        # todo: add isclose check for geometry
         shade_type = "FIXED-SHADE" if shade_type == None else shade_type
         orig_point = face.lower_left_corner
         x_ref, y_ref, z_ref = orig_point[0], orig_point[1], orig_point[2]

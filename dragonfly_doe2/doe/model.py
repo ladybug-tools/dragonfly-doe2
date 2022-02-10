@@ -55,8 +55,17 @@ class Model:
                 for room in story:
                     polygons.append(Polygon.from_room(room))
 
+        df_envelope_constrs = []
+        for construction_set in df_model.properties.energy.construction_sets:
+            for con in construction_set.wall_set.constructions:
+                df_envelope_constrs.append(con)
+            for con in construction_set.floor_set.constructions:
+                df_envelope_constrs.append(con)
+            for con in construction_set.roof_ceiling_set:
+                df_envelope_constrs.append(con)
+
         constructions = ConstructionCollection.from_hb_constructions(
-            df_model.properties.energy.constructions)
+            df_envelope_constrs)
         glass_types = [GlassType.from_hb_window_constr(
             w_con) for w_con in window_constructions]
 
