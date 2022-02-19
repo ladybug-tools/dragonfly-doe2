@@ -71,7 +71,8 @@ class Model:
             df_envelope_constrs.append(con)
         for con in generic_construction_set.roof_ceiling_set:
             df_envelope_constrs.append(con)
-
+        # TODO: This messy MO takes the un-needed door constructions out of the equation
+        # TODO: Make more elegant when implements "to thin, make u-val"
         for construction_set in df_model.properties.energy.construction_sets:
             for con in construction_set.wall_set.constructions:
                 df_envelope_constrs.append(con)
