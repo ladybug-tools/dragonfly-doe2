@@ -1,6 +1,8 @@
 from typing import List
 
 from dragonfly.model import Model as DFModel
+from dragonfly.story import Story as DFStory
+from dragonfly.room2d import Room2D as DFRoom
 
 from ladybug.analysisperiod import AnalysisPeriod
 
@@ -49,10 +51,14 @@ class Model:
             window_constructions.append(con_set.aperture_set.window_construction)
         for building in df_model.buildings:
             for story in building.all_stories():
+                adj_room2ds = [room.duplicate() for room in list(
+                    story.room_2ds)]
+                adj_info = DFRoom.solve_adjacency(adj_room2ds)
 
-                flr_spc.append(Floor.from_story(story))
-                polygons.append(Polygon.from_story(story))
-                for room in story:
+                clean_story = DFStory(story.display_name, adj_room2ds)
+                flr_spc.append(Floor.from_story(clean_story))
+                polygons.append(Polygon.from_story(clean_story))
+                for room in clean_story:
                     polygons.append(Polygon.from_room(room))
 
         df_envelope_constrs = []
