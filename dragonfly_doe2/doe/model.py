@@ -7,6 +7,7 @@ from dragonfly.room2d import Room2D as DFRoom
 from ladybug.analysisperiod import AnalysisPeriod
 
 from honeybee_energy.construction.window import WindowConstruction
+from honeybee_energy.lib.constructionsets import generic_construction_set
 
 from .polygon import Polygon
 from .compliance import ComplianceData
@@ -41,29 +42,40 @@ class Model:
     def from_df_model(cls, df_model: DFModel, run_period=None):
         # Check model units, ensure units in feet
         df_model.convert_to_units(units='Feet')
+        df_model.properties.energy.construction_sets.append(generic_construction_set)
 
         polygons = []
         flr_spc = []
         window_constructions = []
         context_shades = []
 
+        window_constructions.append(
+            generic_construction_set.aperture_set.window_construction)
+
         for con_set in df_model.properties.energy.construction_sets:
             window_constructions.append(con_set.aperture_set.window_construction)
         for building in df_model.buildings:
             for story in building.all_stories():
-                adj_room2ds = [room.duplicate() for room in list(
-                    story.room_2ds)]
-                adj_info = DFRoom.solve_adjacency(adj_room2ds)
 
-                clean_story = DFStory(story.display_name, adj_room2ds)
-                flr_spc.append(Floor.from_story(clean_story))
-                polygons.append(Polygon.from_story(clean_story))
-                for room in clean_story:
+                story.solve_room_2d_adjacency(df_model.tolerance, intersect=True)
+
+                flr_spc.append(Floor.from_story(story))
+                polygons.append(Polygon.from_story(story))
+                for room in story:
                     polygons.append(Polygon.from_room(room))
 
         df_envelope_constrs = []
+        for con in generic_construction_set.wall_set.constructions:
+            df_envelope_constrs.append(con)
+        for con in generic_construction_set.floor_set.constructions:
+            df_envelope_constrs.append(con)
+        for con in generic_construction_set.roof_ceiling_set:
+            df_envelope_constrs.append(con)
+
         for construction_set in df_model.properties.energy.construction_sets:
             for con in construction_set.wall_set.constructions:
+                df_envelope_constrs.append(con)
+            for con in generic_construction_set.wall_set.constructions:
                 df_envelope_constrs.append(con)
             for con in construction_set.floor_set.constructions:
                 df_envelope_constrs.append(con)
