@@ -295,7 +295,7 @@ class Space:
 
         walls = []
         for i, (bc, window_param) in enumerate(zip(bcs, wndw_paras)):
-            if str(bc) == 'Outdoors':
+            if str(bc) in list(['Outdoors', 'Ground']):
                 walls.append(
                     Wall.from_room_seg(
                         name, i, wall_constr_name, window_param, wndw_constr))
