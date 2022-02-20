@@ -18,6 +18,7 @@ from .construction import Construction, ConstructionCollection
 from .floor_space import Floor
 from .glass_types import GlassType
 from .shades import Doe2ShadeCollection
+from .hvac import HVACSystem
 
 from . import blocks as fb
 
@@ -27,7 +28,7 @@ class Model:
 
     def __init__(self, title, run_period=None, compliance_data=None,
                  site_building_data=None, polygons=None, constructions=None, floors=None,
-                 glass_types=None, context_shades=None) -> None:
+                 glass_types=None, context_shades=None, hvac_system_zone=None) -> None:
         self.title = title
         self.run_period = run_period
         self.compliance_data = compliance_data
@@ -37,6 +38,7 @@ class Model:
         self.floors = floors
         self.glass_types = glass_types
         self.context_shades = context_shades
+        self.hvac_system_zone = hvac_system_zone
 
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
@@ -48,6 +50,7 @@ class Model:
         flr_spc = []
         window_constructions = []
         context_shades = []
+        hvac_system_zone = []
 
         window_constructions.append(
             generic_construction_set.aperture_set.window_construction)
@@ -58,6 +61,8 @@ class Model:
             for story in building.all_stories():
 
                 story.solve_room_2d_adjacency(df_model.tolerance, intersect=True)
+
+                hvac_system_zone.append(HVACSystem.from_story(story))
 
                 flr_spc.append(Floor.from_story(story))
                 polygons.append(Polygon.from_story(story))
@@ -94,12 +99,7 @@ class Model:
         return cls(
             df_model.display_name, run_period, polygons=polygons,
             constructions=constructions, floors=flr_spc, glass_types=glass_types,
-            context_shades=context_shades)
-
-        return cls(
-            df_model.display_name, run_period, polygons=polygons,
-            constructions=constructions, floors=flr_spc, glass_types=glass_types,
-            context_shades=context_shades)
+            context_shades=context_shades, hvac_system_zone=hvac_system_zone)
 
     @classmethod
     def from_dfjson(cls, dfjson_file, run_period=None):
@@ -193,6 +193,14 @@ class Model:
     def context_shades(self, value):
         self._context_shades = value
 
+    @property
+    def hvac_system_zone(self):
+        return self._hvac_system_zone
+
+    @hvac_system_zone.setter
+    def hvac_system_zone(self, value):
+        self._hvac_system_zone = value
+
     def to_inp(self):
 
         data = [
@@ -235,6 +243,7 @@ class Model:
             fb.steam_mtr,
             fb.chill_meter,
             fb.hvac_sys_zone,
+            '\n'.join(hv_sys.to_inp() for hv_sys in self.hvac_system_zone),
             fb.misc_meter_hvac,
             fb.equip_controls,
             fb.load_manage,

@@ -50,6 +50,7 @@ class Slab:
 @dataclass
 class RoofCeiling:
     # TODO: Need to add "what's on the other side" for interior adj ceilings.
+    # TODO: refer to df intesect/solve adj's adj info
     # ! Currently will only provide exterior roof for roofs with no internal adj's
     # ? if not needed full interior detailing: Need to add to solve adj: story<->story solve adj
     """Object for roof/ceiling inputs.
@@ -127,7 +128,8 @@ class Window:
     glass_type: str
 
     def to_inp(self):
-        return f'{self.name}_wall{self.location} = WINDOW\n   ' \
+        shortened_name = short_name(f'{self.name}_w{self.location}', 32)
+        return f'{shortened_name} = WINDOW\n   ' \
                f'X           = {self.x}\n   ' \
                f'Y           = {self.y}\n   ' \
                f'WIDTH       = {self.width}\n   ' \
@@ -330,7 +332,6 @@ class Space:
 @dataclass
 class Floor:
     """The *.inp 'Floor' object, contains spaces and space meta-data.
-
         Init method(s):
             1. from_story(story: Story).
         Args:
