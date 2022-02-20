@@ -6,7 +6,9 @@ from typing import List
 
 # TODO: I don't like the disconnect between this MO and the 'floor_space'
 # TODO: Classes, on refactor; need more OOP for sure, this 'lesser oopy'
-# TODO: be getting confusing..
+# TODO: be getting confusing and there is obvious shared atrib/props
+# TODO: that should be linked to prevent breakage, possibly from doe objs
+# TODO: instead of df objs? as a temp means?
 
 
 @dataclass
@@ -30,18 +32,23 @@ class Zone:
                 f'Unsupported type: {type(room)}\n'
                 'Expected dragonfly.room2d.Room2D'
             )
+
         name = room.display_name
-        hx_setpoint = room.properties.energy.program_type.setpoint.heating_setpoint
-        cx_setpoint = room.properties.energy.program_type.setpoint.cooling_setpoint
+        if room.properties.energy.is_conditioned:
+            hx_setpoint = room.properties.energy.program_type.setpoint.heating_setpoint
+            cx_setpoint = room.properties.energy.program_type.setpoint.cooling_setpoint
+        else:
+            hx_setpoint = 72
+            cx_setpoint = 75
 
         return cls(name=name, hx_setpoint=hx_setpoint, cx_setpoint=cx_setpoint)
 
     def to_inp(self):
         inp_str = f'"{self.name} Zn"   = ZONE\n  ' \
-            f'TYPE             = UNCONDITIONED\n  ' \
+            'TYPE             = UNCONDITIONED\n  ' \
             f'DESIGN-HEAT-T    = {self.hx_setpoint}\n  ' \
             f'DESIGN-COOL-T    = {self.cx_setpoint}\n  ' \
-            f'SIZING-OPTION    = ADJUST-LOADS\n  ' \
+            'SIZING-OPTION    = ADJUST-LOADS\n  ' \
             f'SPACE            = {self.name}\n  ..\n'
         return inp_str
 
@@ -50,7 +57,7 @@ class Zone:
 
 
 @dataclass
-class HVAC:
+class HVACSystem:
     """Placeholder HVAC system class, returns each floor as a doe2,
     HVAC system, with rooms as zones.
     Args:
@@ -71,6 +78,7 @@ class HVAC:
             )
         name = story.display_name
         zones = [Zone.from_room(room) for room in story.room_2ds]
+        return cls(name=name, zones=zones)
 
     def to_inp(self):
         sys_str = f'"{self.name}flr_Sys (SUM)" = SYSTEM\n' \
