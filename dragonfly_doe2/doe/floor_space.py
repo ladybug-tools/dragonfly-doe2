@@ -128,7 +128,8 @@ class Window:
     glass_type: str
 
     def to_inp(self):
-        return f'{self.name}_wall{self.location} = WINDOW\n   ' \
+        shortened_name = short_name(f'{self.name}_w{self.location}', 32)
+        return f'{shortened_name} = WINDOW\n   ' \
                f'X           = {self.x}\n   ' \
                f'Y           = {self.y}\n   ' \
                f'WIDTH       = {self.width}\n   ' \
