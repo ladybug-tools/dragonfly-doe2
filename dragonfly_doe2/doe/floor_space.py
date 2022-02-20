@@ -50,6 +50,7 @@ class Slab:
 @dataclass
 class RoofCeiling:
     # TODO: Need to add "what's on the other side" for interior adj ceilings.
+    # TODO: refer to df intesect/solve adj's adj info
     # ! Currently will only provide exterior roof for roofs with no internal adj's
     # ? if not needed full interior detailing: Need to add to solve adj: story<->story solve adj
     """Object for roof/ceiling inputs.
@@ -330,7 +331,6 @@ class Space:
 @dataclass
 class Floor:
     """The *.inp 'Floor' object, contains spaces and space meta-data.
-
         Init method(s):
             1. from_story(story: Story).
         Args:
