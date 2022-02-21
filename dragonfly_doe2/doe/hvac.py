@@ -16,14 +16,14 @@ class Zone:
     """A doe2 'Zone' object from dragonfly Room2D.
     Args:
         name: room display name
-        hx_setpoint: heating setpoint temperature (*F)
-        cx_setpoint: cooling setpoint temperature (*F)
+        heating_setpoint: heating setpoint temperature (*F)
+        cooling_setpoint: cooling setpoint temperature (*F)
     Init method(s):
         1. from_room(room: DFRoom)-> doe_zone:
         """
     name: str
-    hx_setpoint: float
-    cx_setpoint: float
+    heating_setpoint: float
+    cooling_setpoint: float
 
     @classmethod
     def from_room(cls, room: DFRoom):
@@ -35,19 +35,20 @@ class Zone:
 
         name = room.display_name
         if room.properties.energy.is_conditioned:
-            hx_setpoint = room.properties.energy.program_type.setpoint.heating_setpoint
-            cx_setpoint = room.properties.energy.program_type.setpoint.cooling_setpoint
+            heating_setpoint = room.properties.energy.program_type.setpoint.heating_setpoint
+            cooling_setpoint = room.properties.energy.program_type.setpoint.cooling_setpoint
         else:
-            hx_setpoint = 72
-            cx_setpoint = 75
+            heating_setpoint = 72
+            cooling_setpoint = 75
 
-        return cls(name=name, hx_setpoint=hx_setpoint, cx_setpoint=cx_setpoint)
+        return cls(name=name, heating_setpoint=heating_setpoint,
+                   cooling_setpoint=cooling_setpoint)
 
     def to_inp(self):
         inp_str = f'"{self.name} Zn"   = ZONE\n  ' \
             'TYPE             = UNCONDITIONED\n  ' \
-            f'DESIGN-HEAT-T    = {self.hx_setpoint}\n  ' \
-            f'DESIGN-COOL-T    = {self.cx_setpoint}\n  ' \
+            f'DESIGN-HEAT-T    = {self.heating_setpoint}\n  ' \
+            f'DESIGN-COOL-T    = {self.cooling_setpoint}\n  ' \
             'SIZING-OPTION    = ADJUST-LOADS\n  ' \
             f'SPACE            = {self.name}\n  ..\n'
         return inp_str
