@@ -99,8 +99,7 @@ class Doe2ShadeCollection:
         """Generate doe2 fixed shades from dragonfly context shades"""
         shade_faces = []
 
-        for i, shade in enumerate(df_shades):
-            shade_i = i
+        for shade_i, shade in enumerate(df_shades):
             for i, geom in enumerate(shade.geometry):
                 shade_geom_name = f"shade_{shade_i}_geom{i}"
                 shade_faces.append((geom, shade_geom_name))
