@@ -16,8 +16,10 @@ class Zone:
     """A doe2 'Zone' object from dragonfly Room2D.
     Args:
         name: room display name
-        heating_setpoint: heating setpoint temperature (*F)
-        cooling_setpoint: cooling setpoint temperature (*F)
+        heating_setpoint: heating setpoint temperature (*F) eQuest default of 72*F if no 
+        setpoint found in DF room2D program
+        cooling_setpoint: cooling setpoint temperature (*F) eQuest default of 75*F if no
+        setpoint found in DF room2D program
     Init method(s):
         1. from_room(room: DFRoom)-> doe_zone:
         """
