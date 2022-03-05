@@ -379,6 +379,7 @@ class Floor:
             story.display_name, story.floor_height,
             story.floor_to_floor_height, spaces
         )
+        # TODO: Add the clustering features into here
 
     def to_inp(self):
         flr_str = f'"{self.name}" = FLOOR\n' \
