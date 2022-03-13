@@ -26,7 +26,7 @@ def lower_left_properties(room_2d):
     """Get the vertices, boundary conditions and windows starting from lower left.
     v2 WIP
     """
-    room_2d.remove_duplicate_vertices
+    room_2d.remove_duplicate_vertices()
     simple_w_con = room_2d.properties.energy.construction_set.aperture_set.window_construction.to_simple_construction()
     w_const_name = short_name(simple_w_con.identifier, 32)
     floor_geo = room_2d.floor_geometry
