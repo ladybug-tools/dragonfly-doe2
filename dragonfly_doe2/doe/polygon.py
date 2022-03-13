@@ -22,7 +22,7 @@ class Polygon(object):
             would be good to go as is? or am I misunderstanding the specifics in which should
             do check: raise exeption if issue?
         """
-        room.remove_duplicate_vertices
+        room.remove_duplicate_vertices()
         # TODO: on refactor, need to minimize the disconnect between the poly and 'space' room
         vertices = lower_left_properties(room)[0]
         return cls(room.display_name, vertices)
