@@ -129,7 +129,7 @@ class Window:
 
     def to_inp(self):
         shortened_name = short_name(f'{self.name}_w{self.location}', 32)
-        return f'{shortened_name} = WINDOW\n   ' \
+        return f'"{shortened_name}" = WINDOW\n   ' \
                f'X           = {self.x}\n   ' \
                f'Y           = {self.y}\n   ' \
                f'WIDTH       = {self.width}\n   ' \
@@ -213,15 +213,17 @@ class Wall:
     location: int
     construction: str
     windows: RectangularWindows = None
-    window_constr: window_constr = None
+    window_constr: WindowConstruction = None
 
     @classmethod
     def from_room_seg(cls, name: str, location: int, construction: str,
                       windows: None, window_constr: None):
         indexed_id = location + 1
-        return cls(
-            f'{name}_Wall_{indexed_id}', indexed_id, construction, windows,
-            window_constr)
+
+        # shorten the name to ensure we don't create duplicate names with truncated id
+        name = short_name(f'{name}_Wall_{indexed_id}', 32)
+
+        return cls(name, indexed_id, construction, windows, window_constr)
 
     def to_inp(self):
         wallstr = f'"{self.name}" = EXTERIOR-WALL\n' \
@@ -375,9 +377,18 @@ class Floor:
                 'Expected dragonfly.story.Story'
             )
         spaces = [Space.from_room(room) for room in story.room_2ds]
+        # a hack to handle cases that floor height is not set for a floor
+        # this will not work for stories that have rooms in different levels
+        floor_height = story.floor_height or story.room_2ds[0].floor_height
+        floor_to_floor_height = story.floor_to_floor_height
+        if floor_height != story.floor_height:
+            # this is file coming from Revit and we need to adjust the floor_to_floor
+            # height that is calculated by Dragonfly
+            floor_to_floor_height -= floor_height
+
         return cls(
-            story.display_name, story.floor_height,
-            story.floor_to_floor_height, spaces
+            story.display_name, floor_height,
+            floor_to_floor_height, spaces
         )
         # TODO: Add the clustering features into here
 
