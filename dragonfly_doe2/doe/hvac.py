@@ -52,7 +52,7 @@ class Zone:
             f'DESIGN-HEAT-T    = {self.heating_setpoint}\n  ' \
             f'DESIGN-COOL-T    = {self.cooling_setpoint}\n  ' \
             'SIZING-OPTION    = ADJUST-LOADS\n  ' \
-            f'SPACE            = {self.name}\n  ..\n'
+            f'SPACE            = "{self.name}"\n  ..\n'
         return inp_str
 
     def __repr__(self) -> str:

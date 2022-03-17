@@ -17,10 +17,10 @@ class Polygon(object):
     def from_room(cls, room: Room2D, tolerace=0.01):
         """
         Note: Shouldn't we ensure the points are in 2D. I'm not sure how it works.
-        #TF: ooohhhhhhhhhh good catch!! Though is there not already built into DF somthhing
+        #TF: ooohhhhhhhhhh good catch!! Though is there not already built into DF something
             of the sort for room.floor_geom? was operating off the *assumption* that obj.prop
             would be good to go as is? or am I misunderstanding the specifics in which should
-            do check: raise exeption if issue?
+            do check: raise exception if issue?
         """
         room.remove_duplicate_vertices()
         # TODO: on refactor, need to minimize the disconnect between the poly and 'space' room
@@ -28,16 +28,21 @@ class Polygon(object):
         return cls(room.display_name, vertices)
 
     @classmethod
-    def from_story(cls, story: Story, tolerace=0.01):
+    def from_story(cls, story: Story, tolerance=0.01):
         """
         Note: I'm not sure if this is correct - shouldn't we create a polygon per face?
         This is based on the initial code by Trevor so I didn't change it.
         """
-        geo = story.footprint(tolerance=tolerace)
-        vertices = []
-        for face in geo:
-            vertices.extend(face.lower_left_counter_clockwise_vertices)
-        return cls(story.display_name, vertices)
+        geo = story.footprint(tolerance=tolerance)[0]
+        # 
+        b_pts = geo.boundary
+        # remove duplicate vertices if any
+        new_bound = []
+        b_pts = b_pts[1:] + (b_pts[0],)
+        for i, vert in enumerate(b_pts):
+            if not vert.is_equivalent(b_pts[i - 1], tolerance):
+                new_bound.append(b_pts[i - 1])
+        return cls(story.display_name, new_bound)
 
     def to_inp(self) -> str:
         """Return Room Polygons block input"""

@@ -42,6 +42,9 @@ class Model:
 
     @classmethod
     def from_df_model(cls, df_model: DFModel, run_period=None):
+        # Make model windows rectangular to be INP friendly
+        df_model.to_rectangular_windows()
+
         # Check model units, ensure units in feet
         df_model.convert_to_units(units='Feet')
         df_model.properties.energy.construction_sets.append(generic_construction_set)
@@ -57,8 +60,15 @@ class Model:
 
         for con_set in df_model.properties.energy.construction_sets:
             window_constructions.append(con_set.aperture_set.window_construction)
+
+        # purge duplicate window constructions
+        window_constructions = list(set(window_constructions))
+
         for building in df_model.buildings:
             for story in building.all_stories():
+                # enforce a recompute of floor to floor height
+                if story.floor_to_floor_height == 0:
+                    story.floor_to_floor_height = None
 
                 story.solve_room_2d_adjacency(df_model.tolerance, intersect=True)
 
@@ -90,6 +100,7 @@ class Model:
 
         constructions = ConstructionCollection.from_hb_constructions(
             df_envelope_constrs)
+
         glass_types = [GlassType.from_hb_window_constr(
             w_con) for w_con in window_constructions]
 

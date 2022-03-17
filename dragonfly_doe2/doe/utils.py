@@ -2,7 +2,7 @@ import re
 from ladybug.datatype import UNITS as lbt_units, TYPESDICT as lbt_td
 
 
-def short_name(name, max_length):
+def short_name(name, max_length=32):
     if len(name) <= max_length:
         return name
 
