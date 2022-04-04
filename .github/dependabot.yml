@@ -9,3 +9,19 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 10
+    ignore:
+    - dependency-name: pytest
+    - dependency-name: setuptools
+    - dependency-name: twine
+    - dependency-name: wheel
+    - dependency-name: Sphinx
+    - dependency-name: sphinx-click
+    - dependency-name: importlib-metadata
+    - dependency-name: jinja2
+    - dependency-name: markupsafe
+    commit-message:
+      prefix: fix
+      prefix-development: build
+      include: scope
+
