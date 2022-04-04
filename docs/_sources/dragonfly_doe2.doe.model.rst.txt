@@ -1,0 +1,7 @@
+dragonfly\_doe2.doe.model module
+================================
+
+.. automodule:: dragonfly_doe2.doe.model
+   :members:
+   :undoc-members:
+   :show-inheritance:

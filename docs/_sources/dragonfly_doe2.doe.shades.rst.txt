@@ -1,0 +1,7 @@
+dragonfly\_doe2.doe.shades module
+=================================
+
+.. automodule:: dragonfly_doe2.doe.shades
+   :members:
+   :undoc-members:
+   :show-inheritance:

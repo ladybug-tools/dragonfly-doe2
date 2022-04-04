@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>dragonfly_doe2.doe package &#8212; dragonfly doe2  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dragonfly_doe2.doe.blocks module" href="dragonfly_doe2.doe.blocks.html" />
+    <link rel="prev" title="dragonfly_doe2.cli.translate module" href="dragonfly_doe2.cli.translate.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          dragonfly doe2</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli/index.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli/translate.html">translate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate">dragonfly-doe2 translate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate-dfjson-to-inp">dfjson-to-inp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate-hbjson-to-inp">hbjson-to-inp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dragonfly_doe2</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.cli.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.cli.translate.html">dragonfly_doe2.cli.translate module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dragonfly_doe2.doe package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.blocks.html">dragonfly_doe2.doe.blocks module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.compliance.html">dragonfly_doe2.doe.compliance module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.construction.html">dragonfly_doe2.doe.construction module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.floor_space.html">dragonfly_doe2.doe.floor_space module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.glass_types.html">dragonfly_doe2.doe.glass_types module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.hvac.html">dragonfly_doe2.doe.hvac module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.material.html">dragonfly_doe2.doe.material module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.model.html">dragonfly_doe2.doe.model module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.polygon.html">dragonfly_doe2.doe.polygon module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.run_period.html">dragonfly_doe2.doe.run_period module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.shades.html">dragonfly_doe2.doe.shades module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.sitebldg.html">dragonfly_doe2.doe.sitebldg module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.title.html">dragonfly_doe2.doe.title module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.utils.html">dragonfly_doe2.doe.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-dragonfly_doe2.doe">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.writer.html">dragonfly_doe2.writer module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dragonfly_doe2</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dragonfly_doe2.doe package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.blocks.html">dragonfly_doe2.doe.blocks module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.compliance.html">dragonfly_doe2.doe.compliance module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.construction.html">dragonfly_doe2.doe.construction module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.floor_space.html">dragonfly_doe2.doe.floor_space module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.glass_types.html">dragonfly_doe2.doe.glass_types module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.hvac.html">dragonfly_doe2.doe.hvac module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.material.html">dragonfly_doe2.doe.material module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.model.html">dragonfly_doe2.doe.model module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.polygon.html">dragonfly_doe2.doe.polygon module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.run_period.html">dragonfly_doe2.doe.run_period module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.shades.html">dragonfly_doe2.doe.shades module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.sitebldg.html">dragonfly_doe2.doe.sitebldg module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.title.html">dragonfly_doe2.doe.title module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.utils.html">dragonfly_doe2.doe.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-dragonfly_doe2.doe">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="dragonfly_doe2.cli.translate.html" title="Previous Chapter: dragonfly_doe2.cli.translate module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; dragonfly_doe...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dragonfly_doe2.doe.blocks.html" title="Next Chapter: dragonfly_doe2.doe.blocks module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">dragonfly_doe... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/dragonfly_doe2.doe.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dragonfly_doe2</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dragonfly_doe2.doe package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.blocks.html">dragonfly_doe2.doe.blocks module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.compliance.html">dragonfly_doe2.doe.compliance module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.construction.html">dragonfly_doe2.doe.construction module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.floor_space.html">dragonfly_doe2.doe.floor_space module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.glass_types.html">dragonfly_doe2.doe.glass_types module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.hvac.html">dragonfly_doe2.doe.hvac module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.material.html">dragonfly_doe2.doe.material module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.model.html">dragonfly_doe2.doe.model module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.polygon.html">dragonfly_doe2.doe.polygon module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.run_period.html">dragonfly_doe2.doe.run_period module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.shades.html">dragonfly_doe2.doe.shades module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.sitebldg.html">dragonfly_doe2.doe.sitebldg module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.title.html">dragonfly_doe2.doe.title module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.doe.utils.html">dragonfly_doe2.doe.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#module-dragonfly_doe2.doe">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-8 content" role="main">
+      
+  <section id="dragonfly-doe2-doe-package">
+<h1>dragonfly_doe2.doe package<a class="headerlink" href="#dragonfly-doe2-doe-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.blocks.html">dragonfly_doe2.doe.blocks module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.compliance.html">dragonfly_doe2.doe.compliance module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.construction.html">dragonfly_doe2.doe.construction module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.floor_space.html">dragonfly_doe2.doe.floor_space module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.glass_types.html">dragonfly_doe2.doe.glass_types module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.hvac.html">dragonfly_doe2.doe.hvac module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.material.html">dragonfly_doe2.doe.material module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.model.html">dragonfly_doe2.doe.model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.polygon.html">dragonfly_doe2.doe.polygon module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.run_period.html">dragonfly_doe2.doe.run_period module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.shades.html">dragonfly_doe2.doe.shades module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.sitebldg.html">dragonfly_doe2.doe.sitebldg module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.title.html">dragonfly_doe2.doe.title module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dragonfly_doe2.doe.utils.html">dragonfly_doe2.doe.utils module</a></li>
+</ul>
+</div>
+</section>
+<section id="module-dragonfly_doe2.doe">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dragonfly_doe2.doe" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2022, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
