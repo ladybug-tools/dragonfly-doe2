@@ -1,0 +1,7 @@
+dragonfly\_doe2.doe.material module
+===================================
+
+.. automodule:: dragonfly_doe2.doe.material
+   :members:
+   :undoc-members:
+   :show-inheritance:

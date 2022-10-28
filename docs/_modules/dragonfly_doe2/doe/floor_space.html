@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dragonfly_doe2.doe.floor_space &#8212; dragonfly doe2  documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          dragonfly doe2</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli/index.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli/translate.html">translate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../cli/translate.html#dragonfly-doe2-translate">dragonfly-doe2 translate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../cli/translate.html#dragonfly-doe2-translate-dfjson-to-inp">dfjson-to-inp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../cli/translate.html#dragonfly-doe2-translate-hbjson-to-inp">hbjson-to-inp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">dragonfly_doe2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dragonfly_doe2.html">dragonfly_doe2 package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dragonfly_doe2.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.cli.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.cli.translate.html">dragonfly_doe2.cli.translate module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.doe.html">dragonfly_doe2.doe package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.doe.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.blocks.html">dragonfly_doe2.doe.blocks module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.compliance.html">dragonfly_doe2.doe.compliance module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.construction.html">dragonfly_doe2.doe.construction module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.floor_space.html">dragonfly_doe2.doe.floor_space module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.glass_types.html">dragonfly_doe2.doe.glass_types module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.hvac.html">dragonfly_doe2.doe.hvac module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.material.html">dragonfly_doe2.doe.material module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.model.html">dragonfly_doe2.doe.model module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.polygon.html">dragonfly_doe2.doe.polygon module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.run_period.html">dragonfly_doe2.doe.run_period module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.shades.html">dragonfly_doe2.doe.shades module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.sitebldg.html">dragonfly_doe2.doe.sitebldg module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.title.html">dragonfly_doe2.doe.title module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.doe.utils.html">dragonfly_doe2.doe.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.doe.html#module-dragonfly_doe2.doe">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dragonfly_doe2.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.writer.html">dragonfly_doe2.writer module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">dragonfly_doe2</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">dragonfly_doe2</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-8 content" role="main">
+      
+  <h1>Source code for dragonfly_doe2.doe.floor_space</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dragonfly.room2d</span> <span class="kn">import</span> <span class="n">Room2D</span>
+<span class="kn">from</span> <span class="nn">dragonfly.story</span> <span class="kn">import</span> <span class="n">Story</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">short_name</span><span class="p">,</span> <span class="n">lower_left_properties</span>
+<span class="kn">from</span> <span class="nn">dragonfly.windowparameter</span> <span class="kn">import</span> <span class="n">RectangularWindows</span>
+<span class="kn">from</span> <span class="nn">honeybee_energy.construction.window</span> <span class="kn">import</span> <span class="n">WindowConstruction</span>
+
+
+<div class="viewcode-block" id="Slab"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Slab">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Slab</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Object for &#39;floor&#39; surface.</span>
+
+<span class="sd">        Init method(s):</span>
+<span class="sd">            1. from_room(name, construction, type_adjacency).</span>
+<span class="sd">            note: temp naming conv: intent is for at space class level to</span>
+<span class="sd">            check if is_ground_contact == True; do SpaceFloor init.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: space name. (is joined with _floor_{n}). </span>
+<span class="sd">            construction: display_name of the floor&#39;s construction</span>
+<span class="sd">            type_adjacency: for now &#39;BOTTOM&#39; only.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: f#</span>
+
+<span class="sd">            &quot;Flr (G.1.U1)&quot; = UNDERGROUND-WALL</span>
+<span class="sd">                CONSTRUCTION     = &quot;UFCons (G.1.U2)&quot;</span>
+<span class="sd">                LOCATION         = BOTTOM</span>
+<span class="sd">                ..</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">construction</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">type_adjacency</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;BOTTOM&#39;</span>
+
+<div class="viewcode-block" id="Slab.from_room"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Slab.from_room">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_room</span><span class="p">(</span>
+            <span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">construction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">type_adjacency</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;BOTTOM&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">construction</span><span class="o">=</span><span class="n">construction</span><span class="p">,</span> <span class="n">type_adjacency</span><span class="o">=</span><span class="n">type_adjacency</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Slab.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Slab.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">_grnd_flr&quot; = UNDERGROUND-WALL</span><span class="se">\n</span><span class="s1">&#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;   CONSTRUCTION    = &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">construction</span><span class="si">}</span><span class="s1">_c&quot;</span><span class="se">\n</span><span class="s1">&#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;   LOCATION        = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type_adjacency</span><span class="si">}</span><span class="se">\n</span><span class="s1">   ..&#39;</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="RoofCeiling"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.RoofCeiling">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">RoofCeiling</span><span class="p">:</span>
+    <span class="c1"># TODO: Need to add &quot;what&#39;s on the other side&quot; for interior adj ceilings.</span>
+    <span class="c1"># TODO: refer to df intesect/solve adj&#39;s adj info</span>
+    <span class="c1"># ! Currently will only provide exterior roof for roofs with no internal adj&#39;s</span>
+    <span class="c1"># ? if not needed full interior detailing: Need to add to solve adj: story&lt;-&gt;story solve adj</span>
+    <span class="sd">&quot;&quot;&quot;Object for roof/ceiling inputs.</span>
+
+<span class="sd">        Init method(s):</span>
+<span class="sd">            1. from_room(name, construction, type_adjacency, next_to=None)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: space name. (is joind with _roof_{n}).</span>
+<span class="sd">            construction: display_name of roof_ceiling&#39;s constr.</span>
+<span class="sd">            next_to: *optional* WIP for interior ceilings adjacent space ID#!WIP</span>
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: f#</span>
+
+<span class="sd">            &quot;Roof (G.2.E9)&quot; = EXTERIOR-WALL   </span>
+<span class="sd">                CONSTRUCTION     = &quot;Roof Construction&quot;</span>
+<span class="sd">                LOCATION         = TOP</span>
+<span class="sd">                ..</span>
+<span class="sd">            &quot;Ceiling (G.1.I1)&quot; = INTERIOR-WALL   </span>
+<span class="sd">                NEXT-TO          = &quot;Plnm (G.2)&quot;</span>
+<span class="sd">                CONSTRUCTION     = &quot;Ceilg Construction&quot;</span>
+<span class="sd">                LOCATION         = TOP</span>
+<span class="sd">                ..</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">construction</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">next_to</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="RoofCeiling.from_room"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.RoofCeiling.from_room">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_room</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">Room2D</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">room</span><span class="o">.</span><span class="n">display_name</span>
+        <span class="n">construction</span> <span class="o">=</span> <span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">construction_set</span><span class="o">.</span><span class="n">roof_ceiling_set</span><span class="o">.</span><span class="n">exterior_construction</span><span class="o">.</span><span class="n">display_name</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">construction</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RoofCeiling.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.RoofCeiling.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">_roof&quot; = EXTERIOR-WALL</span><span class="se">\n</span><span class="s1">&#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;   CONSTRUCTION    = &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">construction</span><span class="si">}</span><span class="s1">_c&quot;</span><span class="se">\n</span><span class="s1">&#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;   LOCATION        = TOP</span><span class="se">\n</span><span class="s1">   ..&#39;</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Window"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Window">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Window</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;*.inp Window object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: display name of the room2d, to be added to, creating a unique displayname.</span>
+<span class="sd">            location: the index/n of the window in the set of windows hosted by the wall</span>
+<span class="sd">            segment.</span>
+<span class="sd">            x: window origin pt.x coord.</span>
+<span class="sd">            y: window origin pt.y coord.</span>
+<span class="sd">            width: window width.</span>
+<span class="sd">            height: window height.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: f#</span>
+
+<span class="sd">            rmOne_wndw_0_wall1 = WINDOW</span>
+<span class="sd">                X           = 0.6830601092896195</span>
+<span class="sd">                Y           = 2.6229508196721314</span>
+<span class="sd">                WIDTH       = 9.562841530054643</span>
+<span class="sd">                HEIGHT      = 6.557377049180327</span>
+<span class="sd">                GLASS-TYPE  = WT1</span>
+<span class="sd">                ..</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">width</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">height</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">glass_type</span><span class="p">:</span> <span class="nb">str</span>
+
+<div class="viewcode-block" id="Window.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Window.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">shortened_name</span> <span class="o">=</span> <span class="n">short_name</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">_w</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">shortened_name</span><span class="si">}</span><span class="s1">&quot; = WINDOW</span><span class="se">\n</span><span class="s1">   &#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;X           = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="se">\n</span><span class="s1">   &#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;Y           = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s1">   &#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;WIDTH       = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="se">\n</span><span class="s1">   &#39;</span> \
+               <span class="sa">f</span><span class="s1">&#39;HEIGHT      = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="se">\n</span><span class="s1">   &#39;</span>\
+               <span class="sa">f</span><span class="s1">&#39;GLASS-TYPE  = &quot;</span><span class="si">{</span><span class="n">short_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">glass_type</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span><span class="si">}</span><span class="s1">&quot;</span><span class="se">\n</span><span class="s1">   ..</span><span class="se">\n</span><span class="s1">&#39;</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WindowSet"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.WindowSet">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">WindowSet</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; An internal object comprising all of the windows hosted by a wall segment.</span>
+
+<span class="sd">        Init methods(s):</span>
+<span class="sd">            from_params(name, location, rectangular_window_params).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: the display name of the room2d hosting the wall the windowset belongs to.</span>
+<span class="sd">            location: the index of the room2D&#39;s wall segment hosting the window set. for use on</span>
+<span class="sd">            creating unique identifier name for each window.</span>
+<span class="sd">            windows: list of Window objects comprising the window set.</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">windows</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Window</span><span class="p">]</span>
+    <span class="n">glass_type</span><span class="p">:</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="WindowSet.from_params"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.WindowSet.from_params">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_params</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                    <span class="n">rectangular_window_params</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">glass_type</span><span class="p">):</span>
+
+        <span class="n">origins</span> <span class="o">=</span> <span class="p">[(</span><span class="n">orig</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">orig</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">orig</span> <span class="ow">in</span> <span class="n">rectangular_window_params</span><span class="o">.</span><span class="n">origins</span><span class="p">]</span>
+        <span class="n">widths</span> <span class="o">=</span> <span class="n">rectangular_window_params</span><span class="o">.</span><span class="n">widths</span>
+        <span class="n">heights</span> <span class="o">=</span> <span class="n">rectangular_window_params</span><span class="o">.</span><span class="n">heights</span>
+        <span class="n">glass_type</span> <span class="o">=</span> <span class="n">short_name</span><span class="p">(</span><span class="n">glass_type</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+        <span class="n">windows</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">org</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">origins</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">heights</span><span class="p">)):</span>
+            <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Window</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">_wndw_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">location</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">org</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">org</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span>
+                    <span class="n">glass_type</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">windows</span><span class="o">=</span><span class="n">windows</span><span class="p">,</span>
+                   <span class="n">glass_type</span><span class="o">=</span><span class="n">glass_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WindowSet.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.WindowSet.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">wndw</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span> <span class="k">for</span> <span class="n">wndw</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">windows</span><span class="p">])</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Wall"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Wall">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Wall</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;*.inp Wall object.</span>
+
+<span class="sd">        Init method(s):</span>
+<span class="sd">            1. from_room_seg(name, location, construction)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: space name. (is joined with _wall_{n}).</span>
+<span class="sd">            location: vertice of space poly anchoring the wall.</span>
+<span class="sd">            construction: display_name of construction wall is comprised of.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: f#</span>
+
+<span class="sd">            &quot;simple_example_dfb_Floor1_Room1 Wall_1&quot; = EXTERIOR-WALL</span>
+<span class="sd">               CONSTRUCTION    = &quot;EWall Construction&quot;</span>
+<span class="sd">               LOCATION        = SPACE-V1</span>
+<span class="sd">               ..</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">construction</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">windows</span><span class="p">:</span> <span class="n">RectangularWindows</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">window_constr</span><span class="p">:</span> <span class="n">WindowConstruction</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Wall.from_room_seg"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Wall.from_room_seg">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_room_seg</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">construction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">windows</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">window_constr</span><span class="p">:</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">indexed_id</span> <span class="o">=</span> <span class="n">location</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># shorten the name to ensure we don&#39;t create duplicate names with truncated id</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">short_name</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">_Wall_</span><span class="si">{</span><span class="n">indexed_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">indexed_id</span><span class="p">,</span> <span class="n">construction</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">window_constr</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Wall.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Wall.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">wallstr</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot; = EXTERIOR-WALL</span><span class="se">\n</span><span class="s1">&#39;</span> \
+                  <span class="sa">f</span><span class="s1">&#39;   CONSTRUCTION    = &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">construction</span><span class="si">}</span><span class="s1">_c&quot;</span><span class="se">\n</span><span class="s1">&#39;</span> \
+                  <span class="sa">f</span><span class="s1">&#39;   LOCATION        = SPACE-V</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="si">}</span><span class="se">\n</span><span class="s1">   ..&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">windows</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">window_set</span> <span class="o">=</span> <span class="n">WindowSet</span><span class="o">.</span><span class="n">from_params</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">windows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_constr</span><span class="p">)</span>
+            <span class="n">wall_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">wallstr</span><span class="p">]</span>
+            <span class="n">wall_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">window_set</span><span class="o">.</span><span class="n">to_inp</span><span class="p">())</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wall_set</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">wallstr</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Space"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Space">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Space</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;The Space Object.</span>
+<span class="sd">    Each Room2D has a Space obj. This obj contains windows, walls, doors</span>
+<span class="sd">    data.</span>
+
+<span class="sd">        Init method(s):</span>
+<span class="sd">            1. from_room(room: Room2D)</span>
+<span class="sd">        Args:</span>
+<span class="sd">             name: room.display_name.</span>
+<span class="sd">             activity: room program.display_name.</span>
+<span class="sd">             walls: List[of Wall(objects)]</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: f#</span>
+
+<span class="sd">            &quot;simple_example_dfb_Floor1_Room1&quot; = SPACE</span>
+<span class="sd">                SHAPE            = POLYGON</span>
+<span class="sd">                POLYGON          = &quot;simple_example_dfb_Floor1_Room1 Plg&quot;</span>
+<span class="sd">                C-ACTIVITY-DESC  = *Generic Office Program*</span>
+<span class="sd">                ..</span>
+<span class="sd">            &quot;simple_example_dfb_Floor1_Room1 Wall_1&quot; = EXTERIOR-WALL</span>
+<span class="sd">                CONSTRUCTION    = &quot;EWall Construction&quot;</span>
+<span class="sd">                LOCATION        = SPACE-V1</span>
+<span class="sd">                ..</span>
+<span class="sd">            &quot;simple_example_dfb_Floor1_Room1 Wall_2&quot; = EXTERIOR-WALL</span>
+<span class="sd">                CONSTRUCTION    = &quot;EWall Construction&quot;</span>
+<span class="sd">                LOCATION        = SPACE-V2</span>
+<span class="sd">                ..</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">activity</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">walls</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Wall</span><span class="p">]</span>
+    <span class="n">slab</span><span class="p">:</span> <span class="n">Slab</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">roof</span><span class="p">:</span> <span class="n">RoofCeiling</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Space.from_room"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Space.from_room">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_room</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">Room2D</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">room</span><span class="p">,</span> <span class="n">Room2D</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Unsupported Type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">room</span><span class="p">)</span><span class="si">}</span><span class="s1">.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="s1">&#39;Expected dragonfly.room2d.Room2D&#39;</span>
+            <span class="p">)</span>
+        <span class="n">wall_constr_name</span> <span class="o">=</span> <span class="n">short_name</span><span class="p">(</span>
+            <span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">construction_set</span><span class="o">.</span><span class="n">wall_set</span><span class="o">.</span><span class="n">exterior_construction</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">room</span><span class="o">.</span><span class="n">display_name</span>
+
+        <span class="n">low_l_props</span> <span class="o">=</span> <span class="n">lower_left_properties</span><span class="p">(</span><span class="n">room</span><span class="p">)</span>
+        <span class="n">bcs</span> <span class="o">=</span> <span class="n">low_l_props</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">wndw_paras</span> <span class="o">=</span> <span class="n">low_l_props</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">wndw_constr</span> <span class="o">=</span> <span class="n">low_l_props</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+        <span class="n">walls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="n">window_param</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">bcs</span><span class="p">,</span> <span class="n">wndw_paras</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">([</span><span class="s1">&#39;Outdoors&#39;</span><span class="p">,</span> <span class="s1">&#39;Ground&#39;</span><span class="p">]):</span>
+                <span class="n">walls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">Wall</span><span class="o">.</span><span class="n">from_room_seg</span><span class="p">(</span>
+                        <span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">wall_constr_name</span><span class="p">,</span> <span class="n">window_param</span><span class="p">,</span> <span class="n">wndw_constr</span><span class="p">))</span>
+
+        <span class="n">slab</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">room</span><span class="o">.</span><span class="n">is_ground_contact</span> <span class="o">!=</span> <span class="kc">True</span> <span class="k">else</span> <span class="n">Slab</span><span class="o">.</span><span class="n">from_room</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">short_name</span><span class="p">(</span>
+            <span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">construction_set</span><span class="o">.</span><span class="n">floor_set</span><span class="o">.</span><span class="n">ground_construction</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+        <span class="n">roof</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">room</span><span class="o">.</span><span class="n">is_top_exposed</span> <span class="o">!=</span> <span class="kc">True</span> <span class="k">else</span> <span class="n">RoofCeiling</span><span class="o">.</span><span class="n">from_room</span><span class="p">(</span><span class="n">room</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">room</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span>
+            <span class="n">activity</span><span class="o">=</span><span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">program_type</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">walls</span><span class="o">=</span><span class="n">walls</span><span class="p">,</span>
+            <span class="n">slab</span><span class="o">=</span><span class="n">slab</span><span class="p">,</span> <span class="n">roof</span><span class="o">=</span><span class="n">roof</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Space.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Space.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">space_walls</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wall</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span> <span class="k">for</span> <span class="n">wall</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">walls</span><span class="p">)</span>
+        <span class="n">space_block</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot; = SPACE</span><span class="se">\n</span><span class="s1">&#39;</span> \
+                      <span class="sa">f</span><span class="s1">&#39;   SHAPE           = POLYGON</span><span class="se">\n</span><span class="s1">&#39;</span> \
+                      <span class="sa">f</span><span class="s1">&#39;   POLYGON         = &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> Plg&quot;</span><span class="se">\n</span><span class="s1">&#39;</span> \
+                      <span class="sa">f</span><span class="s1">&#39;   C-ACTIVITY-DESC = *</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">activity</span><span class="si">}</span><span class="s1">*</span><span class="se">\n</span><span class="s1">   ..</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">space_block</span><span class="p">,</span> <span class="n">space_walls</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slab</span><span class="p">:</span>
+            <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slab</span><span class="o">.</span><span class="n">to_inp</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">roof</span><span class="p">:</span>
+            <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roof</span><span class="o">.</span><span class="n">to_inp</span><span class="p">())</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Floor"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Floor">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Floor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;The *.inp &#39;Floor&#39; object, contains spaces and space meta-data.</span>
+<span class="sd">        Init method(s):</span>
+<span class="sd">            1. from_story(story: Story).</span>
+<span class="sd">        Args:</span>
+<span class="sd">            name: Story display_name.</span>
+<span class="sd">            floor_z: the height of the floor poly centroid from ground level.</span>
+<span class="sd">            floor_height: the floor-to-floor height of the rooms within the story.</span>
+<span class="sd">                This is a single input for eQuest, all rooms in story share this value.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: f#</span>
+
+<span class="sd">            &quot;simple_example_dfb_Floor1&quot; = FLOOR</span>
+<span class="sd">                Z                = 0.0</span>
+<span class="sd">                POLYGON          = &quot;simple_example_dfb_Floor1 Floor Plg&quot;</span>
+<span class="sd">                SHAPE            = POLYGON</span>
+<span class="sd">                FLOOR-HEIGHT     = 10.0</span>
+<span class="sd">                C-DIAGRAM-DATA   = *simple_example_dfb_Floor1 UI DiagData*</span>
+<span class="sd">                ..</span>
+<span class="sd">            &quot;simple_example_dfb_Floor1_Room1&quot; = SPACE</span>
+<span class="sd">                SHAPE            = POLYGON</span>
+<span class="sd">                POLYGON          = &quot;simple_example_dfb_Floor1_Room1 Plg&quot;</span>
+<span class="sd">                C-ACTIVITY-DESC  = *Generic Office Program*</span>
+<span class="sd">                ..</span>
+<span class="sd">            &quot;simple_example_dfb_Floor1_Room1 Wall_1&quot; = EXTERIOR-WALL</span>
+<span class="sd">                CONSTRUCTION    = &quot;EWall Construction&quot;</span>
+<span class="sd">                LOCATION        = SPACE-V1</span>
+<span class="sd">                ..</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">floor_z</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">floor_height</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">spaces</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Space</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Floor.from_story"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Floor.from_story">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_story</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">story</span><span class="p">:</span> <span class="n">Story</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">story</span><span class="p">,</span> <span class="n">Story</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Unsupported type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">story</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="s1">&#39;Expected dragonfly.story.Story&#39;</span>
+            <span class="p">)</span>
+        <span class="n">spaces</span> <span class="o">=</span> <span class="p">[</span><span class="n">Space</span><span class="o">.</span><span class="n">from_room</span><span class="p">(</span><span class="n">room</span><span class="p">)</span> <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">]</span>
+        <span class="c1"># a hack to handle cases that floor height is not set for a floor</span>
+        <span class="c1"># this will not work for stories that have rooms in different levels</span>
+        <span class="n">floor_height</span> <span class="o">=</span> <span class="n">story</span><span class="o">.</span><span class="n">floor_height</span> <span class="ow">or</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">floor_height</span>
+        <span class="n">floor_to_floor_height</span> <span class="o">=</span> <span class="n">story</span><span class="o">.</span><span class="n">floor_to_floor_height</span>
+        <span class="k">if</span> <span class="n">floor_height</span> <span class="o">!=</span> <span class="n">story</span><span class="o">.</span><span class="n">floor_height</span><span class="p">:</span>
+            <span class="c1"># this is file coming from Revit and we need to adjust the floor_to_floor</span>
+            <span class="c1"># height that is calculated by Dragonfly</span>
+            <span class="n">floor_to_floor_height</span> <span class="o">-=</span> <span class="n">floor_height</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">story</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">floor_height</span><span class="p">,</span>
+            <span class="n">floor_to_floor_height</span><span class="p">,</span> <span class="n">spaces</span>
+        <span class="p">)</span></div>
+        <span class="c1"># TODO: Add the clustering features into here</span>
+
+<div class="viewcode-block" id="Floor.to_inp"><a class="viewcode-back" href="../../../dragonfly_doe2.doe.floor_space.html#dragonfly_doe2.doe.floor_space.Floor.to_inp">[docs]</a>    <span class="k">def</span> <span class="nf">to_inp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">flr_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot; = FLOOR</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="sa">f</span><span class="s1">&#39;   Z               = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">floor_z</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="sa">f</span><span class="s1">&#39;   POLYGON         = &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> Plg&quot;</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="sa">f</span><span class="s1">&#39;   SHAPE           = POLYGON</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="sa">f</span><span class="s1">&#39;   FLOOR-HEIGHT    = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">floor_height</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> \
+            <span class="sa">f</span><span class="s1">&#39;   C-DIAGRAM-DATA  = *</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> UI DiagData*</span><span class="se">\n</span><span class="s1">   ..</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">flr_spcs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spc</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span> <span class="k">for</span> <span class="n">spc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spaces</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">flr_str</span><span class="p">,</span> <span class="n">flr_spcs</span><span class="p">])</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_inp</span><span class="p">()</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2022, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

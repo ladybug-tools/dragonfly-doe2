@@ -1,0 +1,7 @@
+dragonfly\_doe2.doe.run\_period module
+======================================
+
+.. automodule:: dragonfly_doe2.doe.run_period
+   :members:
+   :undoc-members:
+   :show-inheritance:

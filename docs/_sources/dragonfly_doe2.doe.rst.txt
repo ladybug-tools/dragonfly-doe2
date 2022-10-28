@@ -1,0 +1,31 @@
+dragonfly\_doe2.doe package
+===========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   dragonfly_doe2.doe.blocks
+   dragonfly_doe2.doe.compliance
+   dragonfly_doe2.doe.construction
+   dragonfly_doe2.doe.floor_space
+   dragonfly_doe2.doe.glass_types
+   dragonfly_doe2.doe.hvac
+   dragonfly_doe2.doe.material
+   dragonfly_doe2.doe.model
+   dragonfly_doe2.doe.polygon
+   dragonfly_doe2.doe.run_period
+   dragonfly_doe2.doe.shades
+   dragonfly_doe2.doe.sitebldg
+   dragonfly_doe2.doe.title
+   dragonfly_doe2.doe.utils
+
+Module contents
+---------------
+
+.. automodule:: dragonfly_doe2.doe
+   :members:
+   :undoc-members:
+   :show-inheritance:
