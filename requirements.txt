@@ -1,1 +1,1 @@
-dragonfly-energy>=1.16.38
+dragonfly-energy>=1.22.9
