@@ -1,4 +1,4 @@
-"""Tests the features that honeybee_doe2 adds to dragonfly_core Room2D."""
+"""Tests the features that dragonfly_doe2 adds to dragonfly_core Room2D."""
 from ladybug_geometry.geometry3d import Point3D, Face3D
 from honeybee.boundarycondition import boundary_conditions as bcs
 from honeybee_energy.lib.programtypes import office_program
@@ -107,9 +107,9 @@ def test_to_dict():
 
     rd = room.to_dict()
     assert 'properties' in rd
-    assert rd['properties']['type'] == 'RoomProperties'
+    assert rd['properties']['type'] == 'Room2DProperties'
     assert 'doe2' in rd['properties']
-    assert rd['properties']['doe2']['type'] == 'RoomDoe2Properties'
+    assert rd['properties']['doe2']['type'] == 'Room2DDoe2Properties'
     assert rd['properties']['doe2']['assigned_flow'] == 100
     assert rd['properties']['doe2']['flow_per_area'] == 1
     assert rd['properties']['doe2']['min_flow_ratio'] == 0.3

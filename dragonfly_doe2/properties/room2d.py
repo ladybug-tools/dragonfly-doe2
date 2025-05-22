@@ -119,6 +119,71 @@ class Room2DDoe2Properties(object):
             value = float_in_range(value, 0.0, 1.0, 'zone heating max flow ratio')
         self._hmax_flow_ratio = value
 
+    def check_floor_plate_vertex_count(self, raise_exception=True, detailed=False):
+        """Check whether the Room2D's floor geometry exceeds the maximum vertex count.
+
+        The DOE-2 engine currently does not support such rooms and limits the
+        total number of vertices to 120.
+
+        Args:
+            raise_exception: If True, a ValueError will be raised if the Room2D
+                floor plate exceeds the maximum number of vertices supported by
+                DOE-2. (Default: True).
+            detailed: Boolean for whether the returned object is a detailed list of
+                dicts with error info or a string with a message. (Default: False).
+
+        Returns:
+            A string with the message or a list with a dictionary if detailed is True.
+        """
+        if len(self.host.floor_geometry.boundary) > 120:
+            msg = 'Room2D "{}" has a floor plate with {} vertices, which is more ' \
+                'than the maximum 120 vertices supported by DOE-2.'.format(
+                    self.host.display_name, len(self.host.floor_geometry.boundary))
+            if raise_exception:
+                raise ValueError(msg)
+            full_msg = self.host._validation_message_child(
+                msg, self.host, detailed, '030101', extension='DOE2',
+                error_type='Room Exceeds Maximum Vertex Count')
+            if detailed:
+                return [full_msg]
+            if raise_exception:
+                raise ValueError(full_msg)
+            return full_msg
+        return [] if detailed else ''
+
+    def check_no_floor_plate_holes(self, raise_exception=True, detailed=False):
+        """Check whether the Room2D's floor geometry has holes.
+
+        EQuest currently has no way to represent such rooms so, if the issue
+        is not addressed, the hole will simply be removed as part of the
+        process of exporting to an INP file.
+
+        Args:
+            raise_exception: If True, a ValueError will be raised if the Room2D
+                floor plate has one or more holes. (Default: True).
+            detailed: Boolean for whether the returned object is a detailed list of
+                dicts with error info or a string with a message. (Default: False).
+
+        Returns:
+            A string with the message or a list with a dictionary if detailed is True.
+        """
+        if self.host.floor_geometry.has_holes:
+            hole_count = len(self.host.floor_geometry.holes)
+            hole_msg = 'a hole' if hole_count == 1 else '{} holes'.format(hole_count)
+            msg = 'Room2D "{}" has a floor plate with {}, which the eQuest ' \
+                'interface cannot represent.'.format(self.host.display_name, hole_msg)
+            if raise_exception:
+                raise ValueError(msg)
+            full_msg = self.host._validation_message_child(
+                msg, self.host, detailed, '030102', extension='DOE2',
+                error_type='Room Contains Holes')
+            if detailed:
+                return [full_msg]
+            if raise_exception:
+                raise ValueError(full_msg)
+            return full_msg
+        return [] if detailed else ''
+
     @classmethod
     def from_dict(cls, data, host):
         """Create Room2DDoe2Properties from a dictionary.
