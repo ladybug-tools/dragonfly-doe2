@@ -1,1 +1,1 @@
-"""dragonfly-doe2 library."""
+import dragonfly_doe2._extend_dragonfly

@@ -1,18 +1,18 @@
-"""dragonfly-doe2 commands which will be added to dragonfly command line interface."""
+"""dragonfly-doe2 commands which will be added to the dragonfly CLI."""
 import click
-from dragonfly.cli import main
 
+from dragonfly.cli import main
 from .translate import translate
 
 
 # command group for all doe2 extension commands.
 @click.group(help='dragonfly doe2 commands.')
-@click.version_option()
 def doe2():
     pass
 
 
+# add sub-commands for doe2
 doe2.add_command(translate)
 
-# add doe2 sub-commands to df CLI
+# add doe2 sub-commands to dragonfly CLI
 main.add_command(doe2)

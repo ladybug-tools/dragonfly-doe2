@@ -2,7 +2,7 @@
 #
 # Configuration file for the Sphinx documentation builder.
 #
-# This file does only contain a selection of the most common options. For a
+# This file only contains a selection of the most common options. For a
 # full list see the documentation:
 # http://www.sphinx-doc.org/en/master/config
 
@@ -12,16 +12,21 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-from datetime import datetime
-import re
 import os
 import sys
+import re
+import datetime
+
+# The theme to use for HTML and HTML Help pages
+import sphinx_bootstrap_theme
+
+now = datetime.datetime.now()
 sys.path.insert(0, os.path.abspath('../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'dragonfly doe2'
-copyright = '{}, Ladybug Tools'.format(datetime.today().year)
+project = 'dragonfly-doe2'
+copyright = '{}, Ladybug Tools'.format(str(now.year))
 author = 'Ladybug Tools'
 
 # The full version, including alpha/beta/rc tags
@@ -70,7 +75,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -80,13 +85,10 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = None
 
+# hide the class names in the nav bar
+toc_object_entries_show_parents = 'hide'
 
 # -- Options for HTML output -------------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-import sphinx_bootstrap_theme
 
 # html_theme = 'alabaster'
 html_theme = 'bootstrap'
@@ -111,9 +113,6 @@ html_theme_options = {
 # Bootstrap theme custom file paths (relative to this file)
 # Layout.html path (already added above, include if different)
 # templates_path = ['_templates']
-# Stylesheet path
-html_static_path = ["_static"]
-
 
 # on_rtd is whether we are on readthedocs.org
 # on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -126,7 +125,8 @@ html_static_path = ["_static"]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+html_static_path = ['_static']
+html_css_files = ['custom.css']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -140,10 +140,11 @@ html_sidebars = {
     '**': ['localtoc.html']
 }
 
+
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ladybuggeodoc'
+htmlhelp_basename = 'lbtoolsdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -170,7 +171,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'dragonfly doe2.tex', 'dragonfly doe2 Documentation',
+    (master_doc, 'dragonfly-doe2.tex', 'dragonfly-doe2 Documentation',
      'Ladybug Tools', 'manual'),
 ]
 
@@ -180,7 +181,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'dragonfly doe2', 'dragonfly doe2 Documentation',
+    (master_doc, 'dragonfly-doe2', 'dragonfly-doe2 Documentation',
      [author], 1)
 ]
 
@@ -191,8 +192,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'dragonfly doe2', 'dragonfly doe2 Documentation',
-     author, 'dragonfly doe2', 'One line description of project.',
+    (master_doc, 'dragonfly-doe2', 'dragonfly-doe2 Documentation',
+     author, 'dragonfly-doe2', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -241,11 +242,11 @@ Note:
 """
 # Activate this CLI documentation process.
 custom_cli_docs = True
-# Override existing reSt files found in docs//cli folder.
+# Override existing reSt files found in docs\cli folder.
 cli_overwrite = False
 
 # Repository/library hash table.
-# If respository not found in table, the module name will be extracted from the
+# If repository not found in table, the module name will be extracted from the
 # modules.rst file in the project folder.
 # Format: {repository_name: library_name}
 ht_repo_lib = {}
@@ -364,10 +365,12 @@ def get_cli_data(project_folder):
         print("[CLI data]: Cannot find library path")
         return None
 
-    cli_path = os.path.join(lib_path, 'cli')
-    if not os.path.isdir(cli_path):
-        print("[CLI data]: No CLI library found")
-        return None
+    cli_path = lib_path
+    if not os.path.isfile(os.path.join(lib_path, "cli.py")):
+        cli_path = os.path.join(lib_path, 'cli')
+        if not os.path.isdir(cli_path):
+            print("[CLI data]: No CLI library found")
+            return None
 
     # Get CLI module names and their corresponding group names as a dictionary.
     ht_mod_group = get_cli_groups(cli_path)
@@ -391,8 +394,11 @@ def get_cli_groups(cli_path):
         A dictionary with module file names and the corresponding
         group names found.
     """
-    module_names = [os.path.splitext(file)[0] for file in os.listdir(cli_path)
-                    if os.path.splitext(file)[1] == ".py"]
+    if os.path.split(cli_path)[1] == 'cli':
+        module_names = [os.path.splitext(file)[0] for file in os.listdir(cli_path)
+                        if os.path.splitext(file)[1] == ".py"]
+    else:
+        module_names = ['cli']
 
     # Look for group function names inside their CLI module. Assume (1) group
     # and (1) function per module. Assumme possible multiple groups and
@@ -407,19 +413,18 @@ def get_cli_groups(cli_path):
         fnd = re.findall(r'^@click\.group\(.*\n(@click.*\n){0,2}def\s(\w*)\s*\(\):\n',
                          text, flags=re.MULTILINE)
         # Add multiple commands found in each group inside '__init__.py'
-        if name == "__init__":
+        if name == "__init__" or name == "cli":
             init_text = text
             for result in fnd:
-                tr, cli_comm = result
+                options, cli_comm = result
                 comm_exp = r'^@' + cli_comm + r'.command\(\'([\w-]+)'
                 im = re.findall(comm_exp, text, flags=re.MULTILINE)
-                if im:
+                if im or 'version_option' in options:
                     # add sub-group key with list of commands to the
                     # 'main' group dict. key
-                    if 'main' not in ht_groups:
-                        ht_groups['main'] = {}
-                    ht_groups['main'][cli_comm] = list(im)
-
+                    if name not in ht_groups:
+                        ht_groups[name] = {}
+                    ht_groups[name][cli_comm] = list(im)
         else:
             # Store module function name and initial command name in hash table.
             if fnd:
@@ -435,7 +440,7 @@ def get_cli_groups(cli_path):
             cli_func, tr, cli_comm = group
             for file in ht_groups:
                 # 'main' groups are excluded, assumes not used in CLI.
-                if file != 'main' and ht_groups[file][0] == cli_func:
+                if file not in ["__init__", "cli"] and ht_groups[file][0] == cli_func:
                     ht_groups[file][1] = cli_comm
 
     return ht_groups
@@ -448,11 +453,11 @@ def write_cli_files(ht_cli_data, lib_name, tool_name, doc_folder):
         ht_cli_data: A dictionary containing the names of the reSt CLI files
             that will be generated and their corresponding CLI group name.
         lib_name: The name of the library the click groups belong to. For
-            example ``honeybee_energy``, ``dragonfly`` or ``honeybee_radiance``
+            example ``dragonfly_energy``, ``dragonfly`` or ``dragonfly_radiance``
             are possible library names.
         tool_name: The command line tool name for the specified library. For
-            instance ``honeybee-energy`` is the CLI tool used for the
-            honeybee_energy library.
+            instance ``dragonfly-energy`` is the CLI tool used for the
+            dragonfly_energy library.
         doc_folder: The path where the CLI documentation files will be saved.
     """
 
@@ -463,32 +468,37 @@ def write_cli_files(ht_cli_data, lib_name, tool_name, doc_folder):
 
     # Write sphinx-click directive with options for each CLI group.
     for file in group_filenames:
-        cli_content = ["{}\n".format(file),
-                       "{}\n".format("=" * len(file))]
-        if file != "main":
+        if file != "__init__" and file != "cli":
             # one command(with all its subcommands) per cli module.
-            cli_content += ["\n",
-                            ".. click:: {}.cli.{}:{}\n".format(
+            cli_content = ["{}\n".format(file),
+                           "{}\n".format("=" * len(file)),
+                           "\n",
+                           ".. click:: {}.cli.{}:{}\n".format(
                                 lib_name, file, ht_cli_data[file][0]),
-                            "   :prog: {} {}\n".format(
-                                    tool_name, ht_cli_data[file][1]),
-                            "   :show-nested:\n"]
+                           "   :prog: {} {}\n".format(
+                                tool_name, ht_cli_data[file][1]),
+                           "   :show-nested:\n"]
+            group_file = file
         else:
-            # multiple commands in the 'main' group (implicitly named to
+            # multiple commands in the 'main' group (explicitly named to
             # avoid commands from other modules to be included). Also specify
-            # commands as a root command.
+            # commands as root commands.
+            main_file = 'cli' if file == "cli" else 'cli.__init__'
+            cli_content = ["main\n",
+                           "====\n"]
             for group in ht_cli_data[file].keys():
                 cli_content += ["\n",
-                                ".. click:: {}.cli.{}:{}\n".
-                                format(lib_name, "__init__", group),
+                                ".. click:: {}.{}:{}\n".
+                                format(lib_name, main_file, group),
                                 "   :prog: {}\n".format(tool_name),
                                 "   :show-nested:\n",
                                 "   :commands: " + " ,".
                                 join(ht_cli_data[file][group]) + "\n"
                                 ]
+            group_file = 'main'
 
         # Create CLI group reST file.
-        with open(os.path.join(doc_folder, file + ".rst"), 'w') as group_file:
+        with open(os.path.join(doc_folder, group_file + ".rst"), 'w') as group_file:
             group_file.writelines(cli_content)
 
     return 1
@@ -503,7 +513,7 @@ def update_cli_index(index_path, group_filenames):
         group_filenames: Name of the click groups to include in the
             index \'Commands\' section.
     """
-    # Include exisitng cli/index.rst data if present.
+    # Include existing cli/index.rst data if present.
     cli_content = []
     if os.path.isfile(index_path):
         with open(index_path, 'r') as index_file:
@@ -540,14 +550,14 @@ def update_cli_index(index_path, group_filenames):
 
 
 def update_doc_index(proj_folder, lib_name):
-    """Update the documenation index.rst file inside the \\docs folder to include
+    """Update the documentation index.rst file inside the \\docs folder to include
     a CLI Docs section if not present already.
 
     Args:
         proj_folder: The documentation file path where the package documentation
             index.rst file is located.
         lib_name: The name of the library the click groups belong to. For
-            example ``honeybee_energy``, ``dragonfly`` or ``honeybee_radiance``
+            example ``dragonfly_energy``, ``dragonfly`` or ``dragonfly_radiance``
             are possible library names.
     Returns:
         1 on success.
@@ -565,7 +575,7 @@ def update_doc_index(proj_folder, lib_name):
         return 1
 
     print("[CLI doc\\index]: Updating index.rst file...")
-    # Add CLi Docs section
+    # Add CLI Docs section
     cli_text = "\n" + \
                "CLI Docs\n" + \
                "========\n" + \
@@ -600,13 +610,3 @@ if custom_cli_docs:
     create_cli_files()
 
 # -----------------------------------------------------------------------------
-
-
-def setup(app):
-    """Run custom code with access to the Sphinx application object
-    Args:
-        app: the Sphinx application object
-    """
-
-    # Add bootstrap theme custom stylesheet
-    app.add_stylesheet("custom.css")

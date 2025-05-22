@@ -1,27 +1,27 @@
 Welcome to dragonfly-doe2's documentation!
 ===================================
 
-.. image:: http://www.ladybug.tools/assets/img/dragonfly.png
-
-`DOE-2 <https://www.doe2.com/>`_ extension for `dragonfly <https://github.com/ladybug-tools/dragonfly-core/>`_
+Dragonfly extension for export to eQuest/DOE-2
 
 
 Installation
 ============
 
-``pip install -U dragonfly-doe2``.
+``pip install dragonfly-doe2``
 
 
-dragonfly_doe2
-=============
+dragonfly-doe2
+=======
 
 .. toctree::
-  :maxdepth: 4
+   :maxdepth: 2
+   :caption: Contents:
 
-  modules
+.. include:: modules.rst
+
 
 Indices and tables
-------------------
+==================
 
 * :ref:`genindex`
 * :ref:`modindex`

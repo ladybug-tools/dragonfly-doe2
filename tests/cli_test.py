@@ -1,20 +1,22 @@
+"""Test the CLI commands"""
 import os
-
 from click.testing import CliRunner
-from ladybug.futil import nukedir
 
-from dragonfly_doe2.cli.translate import df_model_to_inp_file
+from dragonfly_doe2.cli.translate import model_to_inp_cli
 
 
 def test_model_to_folder():
     runner = CliRunner()
-    input_df_model = './assets/reference_dfm/complex_model_with_bcs.dfjson'
-    folder = '.assets/sample_out'
-    name = 'cli_test'
+    input_df_model = './tests/assets/model_complete_simple.dfjson'
+    out_file = './tests/assets/model_complete_simple.inp'
+    hvac_mapping = 'Story'
 
-    result = runner.invoke(
-        df_model_to_inp_file, [input_df_model, '--folder', folder, '--name', name]
-    )
+    in_args = [
+        input_df_model, '--hvac-mapping', hvac_mapping,
+        '--exclude-interior-walls',  '--exclude-interior-ceilings',
+        '--output-file', out_file]
+    result = runner.invoke(model_to_inp_cli, in_args)
+
     assert result.exit_code == 0
-    assert os.path.isfile(os.path.join(folder, f'{name}.inp'))
-    nukedir(folder, True)
+    assert os.path.isfile(out_file)
+    os.remove(out_file)
