@@ -1,0 +1,27 @@
+dragonfly\_doe2 package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   dragonfly_doe2.cli
+   dragonfly_doe2.properties
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   dragonfly_doe2.writer
+
+Module contents
+---------------
+
+.. automodule:: dragonfly_doe2
+   :members:
+   :undoc-members:
+   :show-inheritance:
