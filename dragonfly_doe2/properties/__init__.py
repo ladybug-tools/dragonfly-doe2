@@ -1,1 +1,1 @@
-"""dragonfly-radiance properties."""
+"""dragonfly-doe2 properties."""

@@ -5,9 +5,10 @@ import logging
 import json
 
 from ladybug.commandutil import process_content_to_output
-from honeybee_doe2.simulation import SimulationPar
 from dragonfly.model import Model
+from honeybee_doe2.simulation import SimulationPar
 
+from dragonfly_doe2.writer import model_to_inp as writer_model_to_inp
 
 _logger = logging.getLogger(__name__)
 
@@ -155,7 +156,9 @@ def model_to_inp(
         sim_par = SimulationPar.from_dict(data)
 
     # create the strings for the model
-    inp_str = model.to.inp(
+    multiplier = not full_geometry
+    ceil_adjacency = not no_ceil_adjacency
+    inp_str = writer_model_to_inp(
         model, multiplier, no_plenum, ceil_adjacency, sim_par, hvac_mapping,
         exclude_interior_walls, exclude_interior_ceilings, equest_version)
 

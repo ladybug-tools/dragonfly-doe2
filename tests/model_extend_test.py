@@ -1,4 +1,4 @@
-"""Tests the features that dragonfly_doe2 adds to dragonfly_core Room2D."""
+"""Tests the features that dragonfly_doe2 adds to dragonfly_core Model."""
 from ladybug_geometry.geometry3d import Point3D, Face3D
 from dragonfly.model import Model
 from dragonfly.building import Building

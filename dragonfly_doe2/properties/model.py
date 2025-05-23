@@ -224,12 +224,12 @@ class ModelDoe2Properties(object):
         return {'doe2': {'type': 'ModelDoe2Properties'}}
 
     def apply_properties_from_dict(self, data):
-        """Apply the energy properties of a dictionary to the host Model of this object.
+        """Apply the DOE-2 properties of a dictionary to the host Model of this object.
 
         Args:
             data: A dictionary representation of an entire dragonfly-core Model.
-                Note that this dictionary must have ModelEnergyProperties in order
-                for this method to successfully apply the energy properties.
+                Note that this dictionary must have ModelDoe2Properties in order
+                for this method to successfully apply the DOE-2 properties.
         """
         assert 'doe2' in data['properties'], \
             'Dictionary possesses no ModelDoe2Properties.'
