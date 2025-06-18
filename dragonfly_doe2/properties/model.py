@@ -74,8 +74,11 @@ class ModelDoe2Properties(object):
             raise ValueError(full_msg)
         return full_msg
 
-    def check_all(self, raise_exception=True, detailed=False):
-        """Check all of the aspects of the Model DOE-2 properties.
+    def check_generic(self, raise_exception=True, detailed=False):
+        """Check generic of the aspects of the Model DOE-2 properties.
+
+        This includes checks for everything except holes in floor plates and
+        courtyard stories.
 
         Args:
             raise_exception: Boolean to note whether a ValueError should be raised
@@ -93,6 +96,37 @@ class ModelDoe2Properties(object):
         msgs = []
         # perform checks for specific energy simulation rules
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
+        # output a final report of errors or raise an exception
+        full_msgs = [msg for msg in msgs if msg]
+        if detailed:
+            return [m for msg in full_msgs for m in msg]
+        full_msg = '\n'.join(full_msgs)
+        if raise_exception and len(full_msgs) != 0:
+            raise ValueError(full_msg)
+        return full_msg
+
+    def check_all(self, raise_exception=True, detailed=False):
+        """Check all of the aspects of the Model DOE-2 properties.
+
+        Args:
+            raise_exception: Boolean to note whether a ValueError should be raised
+                if any errors are found. If False, this method will simply
+                return a text string with all errors that were found.
+            detailed: Boolean for whether the returned object is a detailed list of
+                dicts with error info or a string with a message. (Default: False).
+
+        Returns:
+            A text string with all errors that were found or a list if detailed is True.
+            This string (or list) will be empty if no errors were found.
+        """
+        # set up defaults to ensure the method runs correctly
+        detailed = False if raise_exception else detailed
+        msgs = []
+        tol = self.host.tolerance
+        # perform checks for specific energy simulation rules
+        msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
+        msgs.append(self.check_no_room_2d_floor_plate_holes(False, detailed))
+        msgs.append(self.check_no_story_courtyards(tol, False, detailed))
         # output a final report of errors or raise an exception
         full_msgs = [msg for msg in msgs if msg]
         if detailed:
