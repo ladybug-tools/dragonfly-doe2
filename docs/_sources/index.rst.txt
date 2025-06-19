@@ -1,0 +1,39 @@
+Welcome to dragonfly-doe2's documentation!
+===================================
+
+Dragonfly extension for export to eQuest/DOE-2
+
+
+Installation
+============
+
+``pip install dragonfly-doe2``
+
+
+dragonfly-doe2
+=======
+
+CLI Docs
+========
+
+For command line interface documentation and API documentation see the pages below.
+
+.. toctree::
+   :maxdepth: 2
+
+   cli//index
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+.. include:: modules.rst
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
