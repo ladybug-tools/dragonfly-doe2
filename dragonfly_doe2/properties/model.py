@@ -1,5 +1,8 @@
 # coding=utf-8
 """Model DOE-2 Properties."""
+from ladybug_geometry.geometry3d import Face3D
+from honeybee.units import parse_distance_string
+
 from honeybee_doe2.grouping import _grouped_floor_boundary
 
 
@@ -94,7 +97,7 @@ class ModelDoe2Properties(object):
         # set up defaults to ensure the method runs correctly
         detailed = False if raise_exception else detailed
         msgs = []
-        # perform checks for specific energy simulation rules
+        # perform checks for specific doe-2 simulation rules
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         # output a final report of errors or raise an exception
         full_msgs = [msg for msg in msgs if msg]
@@ -123,7 +126,7 @@ class ModelDoe2Properties(object):
         detailed = False if raise_exception else detailed
         msgs = []
         tol = self.host.tolerance
-        # perform checks for specific energy simulation rules
+        # perform checks for specific doe-2 simulation rules
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         msgs.append(self.check_no_room_2d_floor_plate_holes(False, detailed))
         msgs.append(self.check_no_story_courtyards(tol, False, detailed))
@@ -219,14 +222,29 @@ class ModelDoe2Properties(object):
         Returns:
             A string with the message or a list with a dictionary if detailed is True.
         """
+        # establish the tolerance and gap width at which point it is clearly a courtyard
         tolerance = self.host.tolerance if tolerance is None else tolerance
+        court_width = parse_distance_string('2ft', self.host.units)
+        # loop through the stories and identify any courtyards
         story_msgs = []
         for bldg in self.host.buildings:
             for story in bldg.unique_stories:
                 floor_geos = [room.floor_geometry for room in story.room_2ds]
                 joined_geos = _grouped_floor_boundary(floor_geos, tolerance)
-                if any(geo.has_holes for geo in joined_geos):
-                    c_count = max(len(geo.holes) for geo in joined_geos if geo.has_holes)
+                c_count = 0
+                for geo in joined_geos:
+                    if geo.has_holes:
+                        for hole in geo.holes:
+                            try:
+                                h_geo = Face3D(hole)
+                                h_geo = h_geo.remove_colinear_vertices(court_width)
+                                max_len = max(s.length for s in h_geo.boundary_segments)
+                                tol_area = max_len * court_width
+                                if h_geo.area > tol_area:
+                                    c_count += 1
+                            except (AssertionError, ValueError):
+                                pass  # gap is too small to be a true courtyard
+                if c_count != 0:
                     hole_msg = 'a courtyard' if c_count == 1 \
                         else '{} courtyards'.format(c_count)
                     msg = 'The geometry of Story "{}" contains {}, which eQuest ' \
