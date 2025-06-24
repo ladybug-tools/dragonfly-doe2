@@ -224,7 +224,7 @@ class ModelDoe2Properties(object):
         """
         # establish the tolerance and gap width at which point it is clearly a courtyard
         tolerance = self.host.tolerance if tolerance is None else tolerance
-        court_width = parse_distance_string('2ft', self.host.units)
+        court_width = parse_distance_string('1ft', self.host.units)
         # loop through the stories and identify any courtyards
         story_msgs = []
         for bldg in self.host.buildings:
