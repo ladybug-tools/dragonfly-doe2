@@ -60,3 +60,12 @@ def test_model_room_validation():
     assert report[0]['error_type'] == 'Room Exceeds Maximum Vertex Count'
     assert report[1]['error_type'] == 'Room Exceeds Maximum Vertex Count'
     assert report[2]['error_type'] == 'Room Contains Holes'
+
+
+def test_model_check_for_error():
+    """Test the check_for_error method of a model with invalid rooms"""
+    model_json = './tests/assets/model_with_invalid_rooms.dfjson'
+    model = Model.from_dfjson(model_json)
+
+    report = model.check_for_error('030101', False, True)
+    assert len(report) == 2
