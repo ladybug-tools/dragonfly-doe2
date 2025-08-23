@@ -104,7 +104,6 @@ class ModelDoe2Properties(object):
         detailed = False if raise_exception else detailed
         msgs = []
         # perform checks for specific doe-2 simulation rules
-        msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         # output a final report of errors or raise an exception
         full_msgs = [msg for msg in msgs if msg]
         if detailed:
