@@ -7,7 +7,7 @@ from honeybee_doe2.writer import model_to_inp as hb_model_to_inp
 
 def model_to_inp(
     model, use_multiplier=True, exclude_plenums=False, solve_ceiling_adjacencies=True,
-    simulation_par=None, hvac_mapping='Story',
+    merge_method='None', simulation_par=None, hvac_mapping='Story',
     exclude_interior_walls=False, exclude_interior_ceilings=False, equest_version=None
 ):
     """Generate an INP string from a Dragonfly Model.
@@ -30,6 +30,21 @@ def model_to_inp(
             be solved between interior stories when Room2Ds perfectly match one
             another in their floor plate. This ensures that Surface boundary
             conditions are used instead of Adiabatic ones. (Default: True).
+        merge_method: An optional text string to describe how the Room2Ds should
+            be merged into individual Rooms during the translation. Specifying a
+            value here can be an effective way to reduce the number of Room volumes
+            in the resulting Model and, ultimately, yield a faster simulation time
+            with less results to manage. Note that Room2Ds will only be merged if they
+            form a contiguous volume across their solved adjacencies. Otherwise,
+            there will be multiple Rooms per zone or story, each with an integer
+            added at the end of their identifiers. Choose from the following options:
+
+            * None - No merging of Room2Ds will occur
+            * Zones - Room2Ds in the same zone will be merged
+            * PlenumZones - Only plenums in the same zone will be merged
+            * Stories - Rooms in the same story will be merged
+            * PlenumStories - Only plenums in the same story will be merged
+
         simulation_par: A honeybee-doe2 SimulationPar object to specify how the
             DOE-2 simulation should be run. If None, default simulation
             parameters will be generated, which will run the simulation for the
@@ -103,8 +118,9 @@ def model_to_inp(
     # convert the Dragonfly Model to Honeybee
     hb_model = model.to_honeybee(
         'District', use_multiplier=use_multiplier, exclude_plenums=exclude_plenums,
-        solve_ceiling_adjacencies=solve_ceiling_adjacencies,
-        enforce_adj=False, enforce_solid=True)[0]
+        solve_ceiling_adjacencies=solve_ceiling_adjacencies, merge_method=merge_method,
+        enforce_adj=False, enforce_solid=True
+    )[0]
 
     # assign the space polygon geometry to the Honeybee Rooms from Dragonfly
     df_flr_geos = {}  # dictionary to hold the DOE-2 space polygon geometry
