@@ -38,6 +38,13 @@ def translate():
     'Note that this input has no effect when the object-per-model is Story.',
     default=True, show_default=True)
 @click.option(
+    '--merge-method', '-m', help='Text to describe how the Room2Ds should '
+    'be merged into individual Rooms during the translation. Specifying a '
+    'value here can be an effective way to reduce the number of Room '
+    'volumes in the resulting Model and, ultimately, yield a faster simulation '
+    'time with less results to manage. Choose from: None, Zones, PlenumZones, '
+    'Stories, PlenumStories.', type=str, default='None', show_default=True)
+@click.option(
     '--sim-par-json', '-sp', help='Full path to a honeybee-doe2 SimulationPar '
     'JSON that describes all of the settings for the simulation. If unspecified, '
     'default parameters will be generated.', default=None, show_default=True,
@@ -67,8 +74,9 @@ def translate():
     'of the translation. By default this will be printed out to stdout.',
     type=click.File('w'), default='-', show_default=True)
 def model_to_inp_cli(
-    model_file, multiplier, plenum, ceil_adjacency, sim_par_json, hvac_mapping,
-    include_interior_walls, include_interior_ceilings, equest_version, output_file
+    model_file, multiplier, plenum, ceil_adjacency, merge_method,
+    sim_par_json, hvac_mapping, include_interior_walls, include_interior_ceilings,
+    equest_version, output_file
 ):
     """Translate a Dragonfly Model file to a Radiance string.
 
@@ -85,9 +93,8 @@ def model_to_inp_cli(
         exclude_interior_walls = not include_interior_walls
         exclude_interior_ceilings = not include_interior_ceilings
         model_to_inp(
-            model_file, full_geometry, no_plenum, no_ceil_adjacency,
-            sim_par_json, hvac_mapping,
-            exclude_interior_walls, exclude_interior_ceilings,
+            model_file, full_geometry, no_plenum, no_ceil_adjacency, merge_method,
+            sim_par_json, hvac_mapping, exclude_interior_walls, exclude_interior_ceilings,
             equest_version, output_file)
     except Exception as e:
         _logger.exception('Model translation failed.\n{}\n'.format(e))
@@ -98,8 +105,9 @@ def model_to_inp_cli(
 
 def model_to_inp(
     model_file, full_geometry=False, no_plenum=False, no_ceil_adjacency=False,
-    sim_par_json=None, hvac_mapping='Story', exclude_interior_walls=False,
-    exclude_interior_ceilings=False, equest_version=None, output_file=None,
+    merge_method='None', sim_par_json=None, hvac_mapping='Story',
+    exclude_interior_walls=False, exclude_interior_ceilings=False,
+    equest_version=None, output_file=None,
     multiplier=True, plenum=True, ceil_adjacency=True,
     include_interior_walls=True, include_interior_ceilings=True
 ):
@@ -119,6 +127,20 @@ def model_to_inp(
             in their floor plate. This ensures that Surface boundary conditions
             are used instead of Adiabatic ones. Note that this input has no
             effect when the object-per-model is Story. (Default: False).
+        merge_method: An optional text string to describe how the Room2Ds should
+            be merged into individual Rooms during the translation. Specifying a
+            value here can be an effective way to reduce the number of Room
+            volumes in the resulting Model and, ultimately, yield a faster simulation
+            time with less results to manage. Note that Room2Ds will only be merged if
+            they form a contiguous volume. Otherwise, there will be multiple Rooms per
+            zone or story, each with an integer added at the end of their
+            identifiers. Choose from the following options:
+
+            * None - No merging will occur
+            * Zones - Room2Ds in the same zone will be merged
+            * PlenumZones - Only plenums in the same zone will be merged
+            * Stories - Rooms in the same story will be merged
+            * PlenumStories - Only plenums in the same story will be merged
         simulation_par: A honeybee-doe2 SimulationPar object to specify how the
             DOE-2 simulation should be run. If None, default simulation
             parameters will be generated, which will run the simulation for the
@@ -159,8 +181,10 @@ def model_to_inp(
     multiplier = not full_geometry
     ceil_adjacency = not no_ceil_adjacency
     inp_str = writer_model_to_inp(
-        model, multiplier, no_plenum, ceil_adjacency, sim_par, hvac_mapping,
-        exclude_interior_walls, exclude_interior_ceilings, equest_version)
+        model, multiplier, no_plenum, ceil_adjacency, merge_method,
+        sim_par, hvac_mapping, exclude_interior_walls, exclude_interior_ceilings,
+        equest_version
+    )
 
     # write out the INP file
     return process_content_to_output(inp_str, output_file)
