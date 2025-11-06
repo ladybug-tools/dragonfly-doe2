@@ -215,6 +215,9 @@ class ModelDoe2Properties(object):
         is not addressed, the courtyards will simply be removed as part of the
         process of exporting to an INP file.
 
+        This method will also perform checks for whether the story floor plate
+        polygon exceeds the DOE-2 limit of 120 vertices.
+
         Args:
             tolerance: The tolerance to be used when joining the Room2D floor
                 plates together into a Story floor plate. If None, the Model
@@ -236,8 +239,10 @@ class ModelDoe2Properties(object):
             for story in bldg.unique_stories:
                 floor_geos = [room.floor_geometry for room in story.room_2ds]
                 joined_geos = _grouped_floor_boundary(floor_geos, tolerance)
-                c_count = 0
+                c_count, vert_len = 0, None
                 for geo in joined_geos:
+                    if len(geo.boundary) > 120:
+                        vert_len = len(geo.boundary)
                     if geo.has_holes:
                         for hole in geo.holes:
                             try:
@@ -266,10 +271,26 @@ class ModelDoe2Properties(object):
                             'message': msg
                         }
                     story_msgs.append(msg)
+                if vert_len is not None:
+                    msg = 'Story "{}" has a floor plate with {} vertices, which is more ' \
+                        'than the maximum 120 vertices supported by DOE-2.'.format(
+                            story.display_name, vert_len)
+                    if detailed:
+                        msg = {
+                            'type': 'ValidationError',
+                            'code': '030101',
+                            'error_type': 'Room Exceeds Maximum Vertex Count',
+                            'extension_type': 'DOE2',
+                            'element_type': 'Room2D',
+                            'element_id': [r.identifier for r in story.room_2ds],
+                            'element_name': [r.display_name for r in story.room_2ds],
+                            'message': msg
+                        }
+                    story_msgs.append(msg)
         if detailed:
             return story_msgs
         if story_msgs != []:
-            msg = 'The following Stories have courtyards in their floor plates' \
+            msg = 'The following Stories have issues with their floor plates' \
                 ':\n{}'.format('\n'.join(story_msgs))
             if raise_exception:
                 raise ValueError(msg)
