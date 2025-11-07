@@ -19,7 +19,7 @@ class ModelDoe2Properties(object):
     ERROR_MAP = {
         '030101': 'check_room_2d_floor_plate_vertex_count',
         '030102': 'check_no_room_2d_floor_plate_holes',
-        '030103': 'check_no_story_courtyards'
+        '030103': 'check_story_floor_plates'
     }
 
     def __init__(self, host):
@@ -72,7 +72,7 @@ class ModelDoe2Properties(object):
         # perform checks that are specific to DOE-2
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         msgs.append(self.check_no_room_2d_floor_plate_holes(False, detailed))
-        msgs.append(self.check_no_story_courtyards(tol, False, detailed))
+        msgs.append(self.check_story_floor_plates(tol, False, detailed))
 
         # output a final report of errors or raise an exception
         full_msgs = [msg for msg in msgs if msg]
@@ -134,7 +134,7 @@ class ModelDoe2Properties(object):
         # perform checks for specific doe-2 simulation rules
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         msgs.append(self.check_no_room_2d_floor_plate_holes(False, detailed))
-        msgs.append(self.check_no_story_courtyards(tol, False, detailed))
+        msgs.append(self.check_story_floor_plates(tol, False, detailed))
         # output a final report of errors or raise an exception
         full_msgs = [msg for msg in msgs if msg]
         if detailed:
@@ -207,16 +207,13 @@ class ModelDoe2Properties(object):
             raise ValueError(full_msg)
         return full_msg
 
-    def check_no_story_courtyards(
+    def check_story_floor_plates(
             self, tolerance=None, raise_exception=True, detailed=False):
-        """Check that Story floor plates do not contain courtyards.
+        """Check Story floor plates for courtyards and that they are less than 120 vertices.
 
-        EQuest currently has no way to represent such courtyards so, if the issue
+        EQuest currently has no way to represent courtyards so, if the issue
         is not addressed, the courtyards will simply be removed as part of the
         process of exporting to an INP file.
-
-        This method will also perform checks for whether the story floor plate
-        polygon exceeds the DOE-2 limit of 120 vertices.
 
         Args:
             tolerance: The tolerance to be used when joining the Room2D floor
@@ -279,7 +276,7 @@ class ModelDoe2Properties(object):
                         msg = {
                             'type': 'ValidationError',
                             'code': '030101',
-                            'error_type': 'Room Exceeds Maximum Vertex Count',
+                            'error_type': 'Floor Plate Exceeds Maximum Vertex Count',
                             'extension_type': 'DOE2',
                             'element_type': 'Room2D',
                             'element_id': [r.identifier for r in story.room_2ds],
