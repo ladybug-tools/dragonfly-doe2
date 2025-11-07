@@ -143,7 +143,7 @@ class Room2DDoe2Properties(object):
                 raise ValueError(msg)
             full_msg = self.host._validation_message_child(
                 msg, self.host, detailed, '030101', extension='DOE2',
-                error_type='Room Exceeds Maximum Vertex Count')
+                error_type='Floor Plate Exceeds Maximum Vertex Count')
             if detailed:
                 return [full_msg]
             if raise_exception:

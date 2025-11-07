@@ -57,8 +57,8 @@ def test_model_room_validation():
 
     report = model.properties.doe2.check_for_extension(False, True)
     assert len(report) == 3
-    assert report[0]['error_type'] == 'Room Exceeds Maximum Vertex Count'
-    assert report[1]['error_type'] == 'Room Exceeds Maximum Vertex Count'
+    assert report[0]['error_type'] == 'Floor Plate Exceeds Maximum Vertex Count'
+    assert report[1]['error_type'] == 'Floor Plate Exceeds Maximum Vertex Count'
     assert report[2]['error_type'] == 'Room Contains Holes'
 
 
