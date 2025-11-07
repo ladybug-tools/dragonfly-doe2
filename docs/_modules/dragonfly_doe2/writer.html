@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dragonfly_doe2.writer &#8212; dragonfly-doe2  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=0bf093e7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0b9525ea" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<link rel="icon" type="image/x-icon" href="https://github.com/ladybug-tools/artwork/raw/refs/heads/master/icons_bugs/ico/dragonfly.ico">
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          dragonfly-doe2</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI Docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/index.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cli/translate.html">translate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cli/translate.html#dragonfly-doe2-translate">dragonfly-doe2 translate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../cli/translate.html#dragonfly-doe2-translate-model-to-inp">model-to-inp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dragonfly_doe2.html">dragonfly_doe2 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dragonfly_doe2.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dragonfly_doe2.cli.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../dragonfly_doe2.cli.translate.html">dragonfly_doe2.cli.translate module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../dragonfly_doe2.cli.translate.html#dragonfly_doe2.cli.translate.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dragonfly_doe2.properties.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html">dragonfly_doe2.properties.model module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties"><code class="docutils literal notranslate"><span class="pre">ModelDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all"><code class="docutils literal notranslate"><span class="pre">check_all()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension"><code class="docutils literal notranslate"><span class="pre">check_for_extension()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic"><code class="docutils literal notranslate"><span class="pre">check_generic()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_room_2d_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_room_2d_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates"><code class="docutils literal notranslate"><span class="pre">check_story_floor_plates()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP"><code class="docutils literal notranslate"><span class="pre">ERROR_MAP</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html">dragonfly_doe2.properties.room2d module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties"><code class="docutils literal notranslate"><span class="pre">Room2DDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_no_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_honeybee"><code class="docutils literal notranslate"><span class="pre">from_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_honeybee"><code class="docutils literal notranslate"><span class="pre">to_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.assigned_flow"><code class="docutils literal notranslate"><span class="pre">assigned_flow</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.flow_per_area"><code class="docutils literal notranslate"><span class="pre">flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.hmax_flow_ratio"><code class="docutils literal notranslate"><span class="pre">hmax_flow_ratio</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_per_area"><code class="docutils literal notranslate"><span class="pre">min_flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_ratio"><code class="docutils literal notranslate"><span class="pre">min_flow_ratio</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../dragonfly_doe2.properties.html#module-dragonfly_doe2.properties">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../dragonfly_doe2.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dragonfly_doe2.writer.html">dragonfly_doe2.writer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dragonfly_doe2.writer.html#dragonfly_doe2.writer.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI Docs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dragonfly_doe2.html">dragonfly_doe2 package</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI Docs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dragonfly_doe2.html">dragonfly_doe2 package</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-8 content" role="main">
+      
+  <h1>Source code for dragonfly_doe2.writer</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;Write an inp file from a Dragonfly model.&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">honeybee_doe2.writer</span><span class="w"> </span><span class="kn">import</span> <span class="n">model_to_inp</span> <span class="k">as</span> <span class="n">hb_model_to_inp</span>
+
+
+<div class="viewcode-block" id="model_to_inp">
+<a class="viewcode-back" href="../../dragonfly_doe2.writer.html#dragonfly_doe2.writer.model_to_inp">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">model_to_inp</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">use_multiplier</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exclude_plenums</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">solve_ceiling_adjacencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">merge_method</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">simulation_par</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hvac_mapping</span><span class="o">=</span><span class="s1">&#39;Story&#39;</span><span class="p">,</span>
+    <span class="n">exclude_interior_walls</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">exclude_interior_ceilings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">equest_version</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate an INP string from a Dragonfly Model.</span>
+
+<span class="sd">    The resulting string will include all geometry, all fully-detailed constructions</span>
+<span class="sd">    and materials, all fully-detailed schedules, and the room properties. It will</span>
+<span class="sd">    also include the simulation parameters. Essentially, the string includes</span>
+<span class="sd">    everything needed to simulate the model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: A dragonfly Model for which an INP representation will be returned.</span>
+<span class="sd">        use_multiplier: Boolean to note if the multipliers on each Building</span>
+<span class="sd">            story will be passed along to the generated Honeybee Room objects</span>
+<span class="sd">            or if full geometry objects should be written for each story in the</span>
+<span class="sd">            building. (Default: True).</span>
+<span class="sd">        exclude_plenums: Boolean to indicate whether ceiling/floor plenum depths</span>
+<span class="sd">            assigned to Room2Ds should generate distinct 3D Rooms in the</span>
+<span class="sd">            translation. (Default: False).</span>
+<span class="sd">        solve_ceiling_adjacencies: Boolean to indicate whether adjacencies should</span>
+<span class="sd">            be solved between interior stories when Room2Ds perfectly match one</span>
+<span class="sd">            another in their floor plate. This ensures that Surface boundary</span>
+<span class="sd">            conditions are used instead of Adiabatic ones. (Default: True).</span>
+<span class="sd">        merge_method: An optional text string to describe how the Room2Ds should</span>
+<span class="sd">            be merged into individual Rooms during the translation. Specifying a</span>
+<span class="sd">            value here can be an effective way to reduce the number of Room volumes</span>
+<span class="sd">            in the resulting Model and, ultimately, yield a faster simulation time</span>
+<span class="sd">            with less results to manage. Note that Room2Ds will only be merged if they</span>
+<span class="sd">            form a contiguous volume across their solved adjacencies. Otherwise,</span>
+<span class="sd">            there will be multiple Rooms per zone or story, each with an integer</span>
+<span class="sd">            added at the end of their identifiers. Choose from the following options:</span>
+
+<span class="sd">            * None - No merging of Room2Ds will occur</span>
+<span class="sd">            * Zones - Room2Ds in the same zone will be merged</span>
+<span class="sd">            * PlenumZones - Only plenums in the same zone will be merged</span>
+<span class="sd">            * Stories - Rooms in the same story will be merged</span>
+<span class="sd">            * PlenumStories - Only plenums in the same story will be merged</span>
+
+<span class="sd">        simulation_par: A honeybee-doe2 SimulationPar object to specify how the</span>
+<span class="sd">            DOE-2 simulation should be run. If None, default simulation</span>
+<span class="sd">            parameters will be generated, which will run the simulation for the</span>
+<span class="sd">            full year. (Default: None).</span>
+<span class="sd">        hvac_mapping: Text to indicate how HVAC systems should be assigned to the</span>
+<span class="sd">            exported model. Story will assign one HVAC system for each distinct</span>
+<span class="sd">            level polygon, Model will use only one HVAC system for the whole model</span>
+<span class="sd">            and AssignedHVAC will follow how the HVAC systems have been assigned</span>
+<span class="sd">            to the Rooms.properties.energy.hvac. Choose from the options</span>
+<span class="sd">            below. (Default: Story).</span>
+
+<span class="sd">            * Room</span>
+<span class="sd">            * Story</span>
+<span class="sd">            * Model</span>
+<span class="sd">            * AssignedHVAC</span>
+
+<span class="sd">        exclude_interior_walls: Boolean to note whether interior wall Faces</span>
+<span class="sd">            should be excluded from the resulting string. (Default: False).</span>
+<span class="sd">        exclude_interior_ceilings: Boolean to note whether interior ceiling</span>
+<span class="sd">            Faces should be excluded from the resulting string. (Default: False).</span>
+<span class="sd">        equest_version: An optional text string to denote the version of eQuest</span>
+<span class="sd">            for which the INP definition will be generated. If unspecified</span>
+<span class="sd">            or unrecognized, the latest version of eQuest will be used.</span>
+
+<span class="sd">    Usage:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        import os</span>
+<span class="sd">        from ladybug.futil import write_to_file</span>
+<span class="sd">        from ladybug_geometry.geometry3d import Point3D, Face3D</span>
+<span class="sd">        from dragonfly.model import Model</span>
+<span class="sd">        from dragonfly.building import Building</span>
+<span class="sd">        from dragonfly.story import Story</span>
+<span class="sd">        from dragonfly.room2d import Room2D</span>
+<span class="sd">        from dragonfly.roof import RoofSpecification</span>
+<span class="sd">        from dragonfly.windowparameter import SimpleWindowRatio</span>
+<span class="sd">        from honeybee.config import folders</span>
+
+<span class="sd">        # Crate an input Model</span>
+<span class="sd">        pts1 = (Point3D(0, 0, 0), Point3D(10, 0, 0),</span>
+<span class="sd">                Point3D(10, 10, 0), Point3D(0, 10, 0))</span>
+<span class="sd">        pts2 = (Point3D(10, 0, 0), Point3D(20, 0, 0),</span>
+<span class="sd">                Point3D(20, 10, 0), Point3D(10, 10, 0))</span>
+<span class="sd">        pts3 = (Point3D(0, 0, 3.25), Point3D(20, 0, 3.25),</span>
+<span class="sd">                Point3D(20, 5, 5), Point3D(0, 5, 5))</span>
+<span class="sd">        pts4 = (Point3D(0, 5, 5), Point3D(20, 5, 5),</span>
+<span class="sd">                Point3D(20, 10, 3.25), Point3D(0, 10, 3.25))</span>
+<span class="sd">        room2d_full = Room2D(</span>
+<span class="sd">            &#39;R1-full&#39;, floor_geometry=Face3D(pts1), floor_to_ceiling_height=4,</span>
+<span class="sd">            is_ground_contact=True, is_top_exposed=True)</span>
+<span class="sd">        room2d_plenum = Room2D(</span>
+<span class="sd">            &#39;R2-plenum&#39;, floor_geometry=Face3D(pts2), floor_to_ceiling_height=4,</span>
+<span class="sd">            is_ground_contact=True, is_top_exposed=True)</span>
+<span class="sd">        room2d_plenum.ceiling_plenum_depth = 1.0</span>
+<span class="sd">        roof = RoofSpecification([Face3D(pts3), Face3D(pts4)])</span>
+<span class="sd">        story = Story(&#39;S1&#39;, [room2d_full, room2d_plenum])</span>
+<span class="sd">        story.roof = roof</span>
+<span class="sd">        story.solve_room_2d_adjacency(0.01)</span>
+<span class="sd">        story.set_outdoor_window_parameters(SimpleWindowRatio(0.4))</span>
+<span class="sd">        building = Building(&#39;Office_Building_1234&#39;, [story])</span>
+<span class="sd">        model = Model(&#39;NewDevelopment1&#39;, [building])</span>
+
+<span class="sd">        # create the INP string for the model</span>
+<span class="sd">        inp_str = model.to.inp(model)</span>
+
+<span class="sd">        # write the final string into an INP</span>
+<span class="sd">        inp = os.path.join(folders.default_simulation_folder, &#39;test_file&#39;, &#39;in.inp&#39;)</span>
+<span class="sd">        write_to_file(inp, inp_str, True)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># convert the Dragonfly Model to Honeybee</span>
+    <span class="n">hb_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_honeybee</span><span class="p">(</span>
+        <span class="s1">&#39;District&#39;</span><span class="p">,</span> <span class="n">use_multiplier</span><span class="o">=</span><span class="n">use_multiplier</span><span class="p">,</span> <span class="n">exclude_plenums</span><span class="o">=</span><span class="n">exclude_plenums</span><span class="p">,</span>
+        <span class="n">solve_ceiling_adjacencies</span><span class="o">=</span><span class="n">solve_ceiling_adjacencies</span><span class="p">,</span> <span class="n">merge_method</span><span class="o">=</span><span class="n">merge_method</span><span class="p">,</span>
+        <span class="n">enforce_adj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">enforce_solid</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># assign the space polygon geometry to the Honeybee Rooms from Dragonfly</span>
+    <span class="n">df_flr_geos</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># dictionary to hold the DOE-2 space polygon geometry</span>
+    <span class="k">for</span> <span class="n">df_room</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">:</span>
+        <span class="n">df_flr_geos</span><span class="p">[</span><span class="n">df_room</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_room</span><span class="o">.</span><span class="n">floor_geometry</span>
+    <span class="k">for</span> <span class="n">hb_room</span> <span class="ow">in</span> <span class="n">hb_model</span><span class="o">.</span><span class="n">rooms</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">hb_room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">doe2</span><span class="o">.</span><span class="n">space_polygon_geometry</span> <span class="o">=</span> \
+                <span class="n">df_flr_geos</span><span class="p">[</span><span class="n">hb_room</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>  <span class="c1"># possibly a 3D Room that has no Room2D geometry</span>
+            <span class="k">pass</span>
+
+    <span class="c1"># patch missing adjacencies to adiabatic in case the models is a sub-selection</span>
+    <span class="n">hb_model</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">missing_adjacencies_to_adiabatic</span><span class="p">()</span>
+
+    <span class="c1"># translate the Honeybee Model to INP</span>
+    <span class="n">inp_str</span> <span class="o">=</span> <span class="n">hb_model_to_inp</span><span class="p">(</span>
+        <span class="n">hb_model</span><span class="p">,</span> <span class="n">simulation_par</span><span class="o">=</span><span class="n">simulation_par</span><span class="p">,</span> <span class="n">hvac_mapping</span><span class="o">=</span><span class="n">hvac_mapping</span><span class="p">,</span>
+        <span class="n">exclude_interior_walls</span><span class="o">=</span><span class="n">exclude_interior_walls</span><span class="p">,</span>
+        <span class="n">exclude_interior_ceilings</span><span class="o">=</span><span class="n">exclude_interior_ceilings</span><span class="p">,</span>
+        <span class="n">equest_version</span><span class="o">=</span><span class="n">equest_version</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inp_str</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2025, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

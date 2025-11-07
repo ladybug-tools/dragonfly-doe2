@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>dragonfly_doe2.properties.model module &#8212; dragonfly-doe2  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=0bf093e7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=0b9525ea" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dragonfly_doe2.properties.room2d module" href="dragonfly_doe2.properties.room2d.html" />
+    <link rel="prev" title="dragonfly_doe2.properties package" href="dragonfly_doe2.properties.html" />
+<link rel="icon" type="image/x-icon" href="https://github.com/ladybug-tools/artwork/raw/refs/heads/master/icons_bugs/ico/dragonfly.ico">
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          dragonfly-doe2</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli/index.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli/translate.html">translate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate">dragonfly-doe2 translate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate-model-to-inp">model-to-inp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.cli.translate.html">dragonfly_doe2.cli.translate module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.cli.translate.html#dragonfly_doe2.cli.translate.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dragonfly_doe2.properties.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">dragonfly_doe2.properties.model module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties"><code class="docutils literal notranslate"><span class="pre">ModelDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all"><code class="docutils literal notranslate"><span class="pre">check_all()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension"><code class="docutils literal notranslate"><span class="pre">check_for_extension()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic"><code class="docutils literal notranslate"><span class="pre">check_generic()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_room_2d_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_room_2d_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates"><code class="docutils literal notranslate"><span class="pre">check_story_floor_plates()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP"><code class="docutils literal notranslate"><span class="pre">ERROR_MAP</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html">dragonfly_doe2.properties.room2d module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties"><code class="docutils literal notranslate"><span class="pre">Room2DDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_no_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_honeybee"><code class="docutils literal notranslate"><span class="pre">from_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_honeybee"><code class="docutils literal notranslate"><span class="pre">to_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.assigned_flow"><code class="docutils literal notranslate"><span class="pre">assigned_flow</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.flow_per_area"><code class="docutils literal notranslate"><span class="pre">flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.hmax_flow_ratio"><code class="docutils literal notranslate"><span class="pre">hmax_flow_ratio</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_per_area"><code class="docutils literal notranslate"><span class="pre">min_flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_ratio"><code class="docutils literal notranslate"><span class="pre">min_flow_ratio</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.properties.html#module-dragonfly_doe2.properties">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.writer.html">dragonfly_doe2.writer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.writer.html#dragonfly_doe2.writer.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Docs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dragonfly_doe2.properties.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">dragonfly_doe2.properties.model module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties"><code class="docutils literal notranslate"><span class="pre">ModelDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all"><code class="docutils literal notranslate"><span class="pre">check_all()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension"><code class="docutils literal notranslate"><span class="pre">check_for_extension()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic"><code class="docutils literal notranslate"><span class="pre">check_generic()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_room_2d_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_room_2d_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates"><code class="docutils literal notranslate"><span class="pre">check_story_floor_plates()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP"><code class="docutils literal notranslate"><span class="pre">ERROR_MAP</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html">dragonfly_doe2.properties.room2d module</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.properties.html#module-dragonfly_doe2.properties">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="dragonfly_doe2.properties.html" title="Previous Chapter: dragonfly_doe2.properties package"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; dragonfly_doe...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dragonfly_doe2.properties.room2d.html" title="Next Chapter: dragonfly_doe2.properties.room2d module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">dragonfly_doe... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/dragonfly_doe2.properties.model.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Docs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dragonfly_doe2.properties.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">dragonfly_doe2.properties.model module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties"><code class="docutils literal notranslate"><span class="pre">ModelDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all"><code class="docutils literal notranslate"><span class="pre">check_all()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension"><code class="docutils literal notranslate"><span class="pre">check_for_extension()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic"><code class="docutils literal notranslate"><span class="pre">check_generic()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_room_2d_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_room_2d_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates"><code class="docutils literal notranslate"><span class="pre">check_story_floor_plates()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP"><code class="docutils literal notranslate"><span class="pre">ERROR_MAP</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html">dragonfly_doe2.properties.room2d module</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.properties.html#module-dragonfly_doe2.properties">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-8 content" role="main">
+      
+  <section id="module-dragonfly_doe2.properties.model">
+<span id="dragonfly-doe2-properties-model-module"></span><h1>dragonfly_doe2.properties.model module<a class="headerlink" href="#module-dragonfly_doe2.properties.model" title="Link to this heading">¶</a></h1>
+<p>Model DOE-2 Properties.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dragonfly_doe2.properties.model.</span></span><span class="sig-name descname"><span class="pre">ModelDoe2Properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DOE-2 Properties for Dragonfly Model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>host</strong> – A dragonfly_core Model object that hosts these properties.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Properties:</dt><dd><ul class="simple">
+<li><p>host</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.ToString">
+<span class="sig-name descname"><span class="pre">ToString</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.ToString"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict">
+<span class="sig-name descname"><span class="pre">apply_properties_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.apply_properties_from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Apply the DOE-2 properties of a dictionary to the host Model of this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – A dictionary representation of an entire dragonfly-core Model.
+Note that this dictionary must have ModelDoe2Properties in order
+for this method to successfully apply the DOE-2 properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.check_all">
+<span class="sig-name descname"><span class="pre">check_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.check_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all" title="Link to this definition">¶</a></dt>
+<dd><p>Check all of the aspects of the Model DOE-2 properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raise_exception</strong> – Boolean to note whether a ValueError should be raised
+if any errors are found. If False, this method will simply
+return a text string with all errors that were found.</p></li>
+<li><p><strong>detailed</strong> – Boolean for whether the returned object is a detailed list of
+dicts with error info or a string with a message. (Default: False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A text string with all errors that were found or a list if detailed is True.
+This string (or list) will be empty if no errors were found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension">
+<span class="sig-name descname"><span class="pre">check_for_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.check_for_extension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension" title="Link to this definition">¶</a></dt>
+<dd><p>Check that the Model is valid for DOE-2 simulation.</p>
+<p>This process includes all relevant dragonfly-core checks as well as checks
+that apply only for DOE-2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raise_exception</strong> – Boolean to note whether a ValueError should be raised
+if any errors are found. If False, this method will simply
+return a text string with all errors that were found. (Default: True).</p></li>
+<li><p><strong>detailed</strong> – Boolean for whether the returned object is a detailed list of
+dicts with error info or a string with a message. (Default: False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A text string with all errors that were found or a list if detailed is True.
+This string (or list) will be empty if no errors were found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic">
+<span class="sig-name descname"><span class="pre">check_generic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.check_generic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic" title="Link to this definition">¶</a></dt>
+<dd><p>Check generic of the aspects of the Model DOE-2 properties.</p>
+<p>This includes checks for everything except holes in floor plates and
+courtyard stories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raise_exception</strong> – Boolean to note whether a ValueError should be raised
+if any errors are found. If False, this method will simply
+return a text string with all errors that were found.</p></li>
+<li><p><strong>detailed</strong> – Boolean for whether the returned object is a detailed list of
+dicts with error info or a string with a message. (Default: False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A text string with all errors that were found or a list if detailed is True.
+This string (or list) will be empty if no errors were found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes">
+<span class="sig-name descname"><span class="pre">check_no_room_2d_floor_plate_holes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes" title="Link to this definition">¶</a></dt>
+<dd><p>Check whether any Room2D floor geometry has holes.</p>
+<p>EQuest currently has no way to represent such rooms so, if the issue
+is not addressed, the hole will simply be removed as part of the
+process of exporting to an INP file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raise_exception</strong> – If True, a ValueError will be raised if the Room2D
+floor plate has one or more holes. (Default: True).</p></li>
+<li><p><strong>detailed</strong> – Boolean for whether the returned object is a detailed list of
+dicts with error info or a string with a message. (Default: False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string with the message or a list with a dictionary if detailed is True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count">
+<span class="sig-name descname"><span class="pre">check_room_2d_floor_plate_vertex_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count" title="Link to this definition">¶</a></dt>
+<dd><p>Check whether any Room2Ds floor geometry exceeds the maximum vertex count.</p>
+<p>The DOE-2 engine currently does not support such rooms and limits the
+total number of vertices to 120.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raise_exception</strong> – If True, a ValueError will be raised if the Room2D
+floor plate exceeds the maximum number of vertices supported by
+DOE-2. (Default: True).</p></li>
+<li><p><strong>detailed</strong> – Boolean for whether the returned object is a detailed list of
+dicts with error info or a string with a message. (Default: False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string with the message or a list with a dictionary if detailed is True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates">
+<span class="sig-name descname"><span class="pre">check_story_floor_plates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detailed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.check_story_floor_plates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates" title="Link to this definition">¶</a></dt>
+<dd><p>Check Story floor plates for courtyards and that they are less than 120 vertices.</p>
+<p>EQuest currently has no way to represent courtyards so, if the issue
+is not addressed, the courtyards will simply be removed as part of the
+process of exporting to an INP file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tolerance</strong> – The tolerance to be used when joining the Room2D floor
+plates together into a Story floor plate. If None, the Model
+tolerance will be used. (Default: None).</p></li>
+<li><p><strong>raise_exception</strong> – Boolean to note whether a ValueError should be raised
+if the story contains a courtyard. (Default: True).</p></li>
+<li><p><strong>detailed</strong> – Boolean for whether the returned object is a detailed list of
+dicts with error info or a string with a message. (Default: False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string with the message or a list with a dictionary if detailed is True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/properties/model.html#ModelDoe2Properties.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Return Model DOE-2 properties as a dictionary.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP">
+<span class="sig-name descname"><span class="pre">ERROR_MAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'030101':</span> <span class="pre">'check_room_2d_floor_plate_vertex_count',</span> <span class="pre">'030102':</span> <span class="pre">'check_no_room_2d_floor_plate_holes',</span> <span class="pre">'030103':</span> <span class="pre">'check_story_floor_plates'}</span></em><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dragonfly_doe2.properties.model.ModelDoe2Properties.host">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">host</span></span><a class="headerlink" href="#dragonfly_doe2.properties.model.ModelDoe2Properties.host" title="Link to this definition">¶</a></dt>
+<dd><p>Get the Model object hosting these properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2025, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

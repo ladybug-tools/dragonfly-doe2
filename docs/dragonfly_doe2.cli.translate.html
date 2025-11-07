@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>dragonfly_doe2.cli.translate module &#8212; dragonfly-doe2  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=0bf093e7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=0b9525ea" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dragonfly_doe2.properties package" href="dragonfly_doe2.properties.html" />
+    <link rel="prev" title="dragonfly_doe2.cli package" href="dragonfly_doe2.cli.html" />
+<link rel="icon" type="image/x-icon" href="https://github.com/ladybug-tools/artwork/raw/refs/heads/master/icons_bugs/ico/dragonfly.ico">
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          dragonfly-doe2</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli/index.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli/translate.html">translate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate">dragonfly-doe2 translate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="cli/translate.html#dragonfly-doe2-translate-model-to-inp">model-to-inp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dragonfly_doe2.cli.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">dragonfly_doe2.cli.translate module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dragonfly_doe2.cli.translate.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.properties.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.properties.model.html">dragonfly_doe2.properties.model module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties"><code class="docutils literal notranslate"><span class="pre">ModelDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all"><code class="docutils literal notranslate"><span class="pre">check_all()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension"><code class="docutils literal notranslate"><span class="pre">check_for_extension()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic"><code class="docutils literal notranslate"><span class="pre">check_generic()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_room_2d_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_room_2d_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates"><code class="docutils literal notranslate"><span class="pre">check_story_floor_plates()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP"><code class="docutils literal notranslate"><span class="pre">ERROR_MAP</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html">dragonfly_doe2.properties.room2d module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties"><code class="docutils literal notranslate"><span class="pre">Room2DDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_no_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_honeybee"><code class="docutils literal notranslate"><span class="pre">from_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_honeybee"><code class="docutils literal notranslate"><span class="pre">to_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.assigned_flow"><code class="docutils literal notranslate"><span class="pre">assigned_flow</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.flow_per_area"><code class="docutils literal notranslate"><span class="pre">flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.hmax_flow_ratio"><code class="docutils literal notranslate"><span class="pre">hmax_flow_ratio</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_per_area"><code class="docutils literal notranslate"><span class="pre">min_flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_ratio"><code class="docutils literal notranslate"><span class="pre">min_flow_ratio</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.properties.html#module-dragonfly_doe2.properties">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.writer.html">dragonfly_doe2.writer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.writer.html#dragonfly_doe2.writer.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Docs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dragonfly_doe2.cli.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">dragonfly_doe2.cli.translate module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dragonfly_doe2.cli.translate.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="dragonfly_doe2.cli.html" title="Previous Chapter: dragonfly_doe2.cli package"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; dragonfly_doe...</span>
+    </a>
+  </li>
+  <li>
+    <a href="dragonfly_doe2.properties.html" title="Next Chapter: dragonfly_doe2.properties package"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">dragonfly_doe... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/dragonfly_doe2.cli.translate.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Docs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dragonfly_doe2.html">dragonfly_doe2 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dragonfly_doe2.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dragonfly_doe2.cli.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">dragonfly_doe2.cli.translate module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dragonfly_doe2.cli.translate.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-8 content" role="main">
+      
+  <section id="module-dragonfly_doe2.cli.translate">
+<span id="dragonfly-doe2-cli-translate-module"></span><h1>dragonfly_doe2.cli.translate module<a class="headerlink" href="#module-dragonfly_doe2.cli.translate" title="Link to this heading">¶</a></h1>
+<p>dragonfly doe2 translation commands.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dragonfly_doe2.cli.translate.model_to_inp">
+<span class="sig-prename descclassname"><span class="pre">dragonfly_doe2.cli.translate.</span></span><span class="sig-name descname"><span class="pre">model_to_inp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_plenum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_ceil_adjacency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'None'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_par_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hvac_mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Story'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_interior_walls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_interior_ceilings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equest_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plenum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_adjacency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_interior_walls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_interior_ceilings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dragonfly_doe2/cli/translate.html#model_to_inp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dragonfly_doe2.cli.translate.model_to_inp" title="Link to this definition">¶</a></dt>
+<dd><p>Translate a Model file to an INP string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_file</strong> – Full path to a Model JSON file (DFJSON) or a Model pkl (DFpkl) file.</p></li>
+<li><p><strong>full_geometry</strong> – Boolean to note if the multipliers on each Building story
+will be passed along to the generated Honeybee Room objects or if
+full geometry objects should be written for each story in the
+building. (Default: False).</p></li>
+<li><p><strong>no_plenum</strong> – Boolean to indicate whether ceiling/floor plenum depths
+assigned to Room2Ds should generate distinct 3D Rooms in the
+translation. (Default: False).</p></li>
+<li><p><strong>ceil_adjacency</strong> – Boolean to indicate whether adjacencies should be solved
+between interior stories when Room2Ds perfectly match one another
+in their floor plate. This ensures that Surface boundary conditions
+are used instead of Adiabatic ones. Note that this input has no
+effect when the object-per-model is Story. (Default: False).</p></li>
+<li><p><strong>merge_method</strong> – <p>An optional text string to describe how the Room2Ds should
+be merged into individual Rooms during the translation. Specifying a
+value here can be an effective way to reduce the number of Room
+volumes in the resulting Model and, ultimately, yield a faster simulation
+time with less results to manage. Note that Room2Ds will only be merged if
+they form a contiguous volume. Otherwise, there will be multiple Rooms per
+zone or story, each with an integer added at the end of their
+identifiers. Choose from the following options:</p>
+<ul>
+<li><p>None - No merging will occur</p></li>
+<li><p>Zones - Room2Ds in the same zone will be merged</p></li>
+<li><p>PlenumZones - Only plenums in the same zone will be merged</p></li>
+<li><p>Stories - Rooms in the same story will be merged</p></li>
+<li><p>PlenumStories - Only plenums in the same story will be merged</p></li>
+</ul>
+</p></li>
+<li><p><strong>simulation_par</strong> – A honeybee-doe2 SimulationPar object to specify how the
+DOE-2 simulation should be run. If None, default simulation
+parameters will be generated, which will run the simulation for the
+full year. (Default: None).</p></li>
+<li><p><strong>hvac_mapping</strong> – <p>Text to indicate how HVAC systems should be assigned to the
+exported model. Story will assign one HVAC system for each distinct
+level polygon, Model will use only one HVAC system for the whole model
+and AssignedHVAC will follow how the HVAC systems have been assigned
+to the Rooms.properties.energy.hvac. Choose from the options
+below. (Default: Story).</p>
+<ul>
+<li><p>Room</p></li>
+<li><p>Story</p></li>
+<li><p>Model</p></li>
+<li><p>AssignedHVAC</p></li>
+</ul>
+</p></li>
+<li><p><strong>exclude_interior_walls</strong> – Boolean to note whether interior wall Faces
+should be excluded from the resulting string. (Default: False).</p></li>
+<li><p><strong>exclude_interior_ceilings</strong> – Boolean to note whether interior ceiling
+Faces should be excluded from the resulting string. (Default: False).</p></li>
+<li><p><strong>equest_version</strong> – An optional text string to denote the version of eQuest
+for which the INP definition will be generated. If unspecified
+or unrecognized, the latest version of eQuest will be used.</p></li>
+<li><p><strong>output_file</strong> – Optional INP file to output the INP string of the translation.
+If None, the string will be returned from this method. (Default: None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2025, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

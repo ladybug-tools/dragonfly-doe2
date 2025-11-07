@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dragonfly_doe2.properties.model &#8212; dragonfly-doe2  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css?v=0bf093e7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=0b9525ea" />
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<link rel="icon" type="image/x-icon" href="https://github.com/ladybug-tools/artwork/raw/refs/heads/master/icons_bugs/ico/dragonfly.ico">
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          dragonfly-doe2</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI Docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli/index.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli/translate.html">translate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../cli/translate.html#dragonfly-doe2-translate">dragonfly-doe2 translate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../cli/translate.html#dragonfly-doe2-translate-model-to-inp">model-to-inp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dragonfly_doe2.html">dragonfly_doe2 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dragonfly_doe2.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dragonfly_doe2.cli.html">dragonfly_doe2.cli package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.cli.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.cli.translate.html">dragonfly_doe2.cli.translate module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.cli.translate.html#dragonfly_doe2.cli.translate.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.cli.html#module-dragonfly_doe2.cli">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dragonfly_doe2.properties.html">dragonfly_doe2.properties package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.properties.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html">dragonfly_doe2.properties.model module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties"><code class="docutils literal notranslate"><span class="pre">ModelDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all"><code class="docutils literal notranslate"><span class="pre">check_all()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension"><code class="docutils literal notranslate"><span class="pre">check_for_extension()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic"><code class="docutils literal notranslate"><span class="pre">check_generic()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_room_2d_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_room_2d_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates"><code class="docutils literal notranslate"><span class="pre">check_story_floor_plates()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ERROR_MAP"><code class="docutils literal notranslate"><span class="pre">ERROR_MAP</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html">dragonfly_doe2.properties.room2d module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties"><code class="docutils literal notranslate"><span class="pre">Room2DDoe2Properties</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.ToString"><code class="docutils literal notranslate"><span class="pre">ToString()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.apply_properties_from_dict"><code class="docutils literal notranslate"><span class="pre">apply_properties_from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_floor_plate_vertex_count"><code class="docutils literal notranslate"><span class="pre">check_floor_plate_vertex_count()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.check_no_floor_plate_holes"><code class="docutils literal notranslate"><span class="pre">check_no_floor_plate_holes()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_dict"><code class="docutils literal notranslate"><span class="pre">from_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.from_honeybee"><code class="docutils literal notranslate"><span class="pre">from_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_dict"><code class="docutils literal notranslate"><span class="pre">to_dict()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.to_honeybee"><code class="docutils literal notranslate"><span class="pre">to_honeybee()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.assigned_flow"><code class="docutils literal notranslate"><span class="pre">assigned_flow</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.flow_per_area"><code class="docutils literal notranslate"><span class="pre">flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.hmax_flow_ratio"><code class="docutils literal notranslate"><span class="pre">hmax_flow_ratio</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.host"><code class="docutils literal notranslate"><span class="pre">host</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_per_area"><code class="docutils literal notranslate"><span class="pre">min_flow_per_area</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../dragonfly_doe2.properties.room2d.html#dragonfly_doe2.properties.room2d.Room2DDoe2Properties.min_flow_ratio"><code class="docutils literal notranslate"><span class="pre">min_flow_ratio</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.properties.html#module-dragonfly_doe2.properties">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dragonfly_doe2.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dragonfly_doe2.writer.html">dragonfly_doe2.writer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dragonfly_doe2.writer.html#dragonfly_doe2.writer.model_to_inp"><code class="docutils literal notranslate"><span class="pre">model_to_inp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dragonfly_doe2.html#module-dragonfly_doe2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI Docs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dragonfly_doe2.html">dragonfly_doe2 package</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI Docs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dragonfly_doe2.html">dragonfly_doe2 package</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-8 content" role="main">
+      
+  <h1>Source code for dragonfly_doe2.properties.model</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;Model DOE-2 Properties.&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ladybug_geometry.geometry3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Face3D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">honeybee.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_distance_string</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">honeybee_doe2.grouping</span><span class="w"> </span><span class="kn">import</span> <span class="n">_grouped_floor_boundary</span>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelDoe2Properties</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;DOE-2 Properties for Dragonfly Model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        host: A dragonfly_core Model object that hosts these properties.</span>
+
+<span class="sd">    Properties:</span>
+<span class="sd">        * host</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># dictionary mapping validation error codes to a corresponding check function</span>
+    <span class="n">ERROR_MAP</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;030101&#39;</span><span class="p">:</span> <span class="s1">&#39;check_room_2d_floor_plate_vertex_count&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;030102&#39;</span><span class="p">:</span> <span class="s1">&#39;check_no_room_2d_floor_plate_holes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;030103&#39;</span><span class="p">:</span> <span class="s1">&#39;check_story_floor_plates&#39;</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize ModelDoe2Properties.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">host</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">host</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the Model object hosting these properties.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_host</span>
+
+<div class="viewcode-block" id="ModelDoe2Properties.check_for_extension">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_for_extension">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_for_extension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that the Model is valid for DOE-2 simulation.</span>
+
+<span class="sd">        This process includes all relevant dragonfly-core checks as well as checks</span>
+<span class="sd">        that apply only for DOE-2.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raise_exception: Boolean to note whether a ValueError should be raised</span>
+<span class="sd">                if any errors are found. If False, this method will simply</span>
+<span class="sd">                return a text string with all errors that were found. (Default: True).</span>
+<span class="sd">            detailed: Boolean for whether the returned object is a detailed list of</span>
+<span class="sd">                dicts with error info or a string with a message. (Default: False).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A text string with all errors that were found or a list if detailed is True.</span>
+<span class="sd">            This string (or list) will be empty if no errors were found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># set up defaults to ensure the method runs correctly</span>
+        <span class="n">detailed</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">raise_exception</span> <span class="k">else</span> <span class="n">detailed</span>
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">tolerance</span>
+        <span class="n">ang_tol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">angle_tolerance</span>
+
+        <span class="c1"># perform checks for duplicate identifiers, which might mess with other checks</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_all_duplicate_identifiers</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+
+        <span class="c1"># perform checks for key dragonfly model schema rules</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_degenerate_room_2ds</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_self_intersecting_room_2ds</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_plenum_depths</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_window_parameters_valid</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_no_room2d_overlaps</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_collisions_between_stories</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_roofs_above_rooms</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_room2d_floor_heights_valid</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_missing_adjacencies</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">check_all_room3d</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="n">ang_tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+
+        <span class="c1"># perform checks that are specific to DOE-2</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_room_2d_floor_plate_vertex_count</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_no_room_2d_floor_plate_holes</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_story_floor_plates</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+
+        <span class="c1"># output a final report of errors or raise an exception</span>
+        <span class="n">full_msgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">msg</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">msgs</span> <span class="k">if</span> <span class="n">msg</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">full_msgs</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">]</span>
+        <span class="n">full_msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_msgs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_exception</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_msgs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">full_msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_msg</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.check_generic">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_generic">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_generic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check generic of the aspects of the Model DOE-2 properties.</span>
+
+<span class="sd">        This includes checks for everything except holes in floor plates and</span>
+<span class="sd">        courtyard stories.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raise_exception: Boolean to note whether a ValueError should be raised</span>
+<span class="sd">                if any errors are found. If False, this method will simply</span>
+<span class="sd">                return a text string with all errors that were found.</span>
+<span class="sd">            detailed: Boolean for whether the returned object is a detailed list of</span>
+<span class="sd">                dicts with error info or a string with a message. (Default: False).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A text string with all errors that were found or a list if detailed is True.</span>
+<span class="sd">            This string (or list) will be empty if no errors were found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># set up defaults to ensure the method runs correctly</span>
+        <span class="n">detailed</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">raise_exception</span> <span class="k">else</span> <span class="n">detailed</span>
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># perform checks for specific doe-2 simulation rules</span>
+        <span class="c1"># output a final report of errors or raise an exception</span>
+        <span class="n">full_msgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">msg</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">msgs</span> <span class="k">if</span> <span class="n">msg</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">full_msgs</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">]</span>
+        <span class="n">full_msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_msgs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_exception</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_msgs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">full_msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_msg</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.check_all">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_all">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check all of the aspects of the Model DOE-2 properties.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raise_exception: Boolean to note whether a ValueError should be raised</span>
+<span class="sd">                if any errors are found. If False, this method will simply</span>
+<span class="sd">                return a text string with all errors that were found.</span>
+<span class="sd">            detailed: Boolean for whether the returned object is a detailed list of</span>
+<span class="sd">                dicts with error info or a string with a message. (Default: False).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A text string with all errors that were found or a list if detailed is True.</span>
+<span class="sd">            This string (or list) will be empty if no errors were found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># set up defaults to ensure the method runs correctly</span>
+        <span class="n">detailed</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">raise_exception</span> <span class="k">else</span> <span class="n">detailed</span>
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">tolerance</span>
+        <span class="c1"># perform checks for specific doe-2 simulation rules</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_room_2d_floor_plate_vertex_count</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_no_room_2d_floor_plate_holes</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_story_floor_plates</span><span class="p">(</span><span class="n">tol</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">))</span>
+        <span class="c1"># output a final report of errors or raise an exception</span>
+        <span class="n">full_msgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">msg</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">msgs</span> <span class="k">if</span> <span class="n">msg</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">full_msgs</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">]</span>
+        <span class="n">full_msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_msgs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_exception</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_msgs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">full_msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_msg</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.check_room_2d_floor_plate_vertex_count">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_room_2d_floor_plate_vertex_count">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_room_2d_floor_plate_vertex_count</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check whether any Room2Ds floor geometry exceeds the maximum vertex count.</span>
+
+<span class="sd">        The DOE-2 engine currently does not support such rooms and limits the</span>
+<span class="sd">        total number of vertices to 120.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raise_exception: If True, a ValueError will be raised if the Room2D</span>
+<span class="sd">                floor plate exceeds the maximum number of vertices supported by</span>
+<span class="sd">                DOE-2. (Default: True).</span>
+<span class="sd">            detailed: Boolean for whether the returned object is a detailed list of</span>
+<span class="sd">                dicts with error info or a string with a message. (Default: False).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A string with the message or a list with a dictionary if detailed is True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">detailed</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">raise_exception</span> <span class="k">else</span> <span class="n">detailed</span>
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">doe2</span><span class="o">.</span><span class="n">check_floor_plate_vertex_count</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+                <span class="n">msgs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">msgs</span>
+        <span class="n">full_msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_exception</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">full_msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_msg</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.check_no_room_2d_floor_plate_holes">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_no_room_2d_floor_plate_holes">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_no_room_2d_floor_plate_holes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check whether any Room2D floor geometry has holes.</span>
+
+<span class="sd">        EQuest currently has no way to represent such rooms so, if the issue</span>
+<span class="sd">        is not addressed, the hole will simply be removed as part of the</span>
+<span class="sd">        process of exporting to an INP file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raise_exception: If True, a ValueError will be raised if the Room2D</span>
+<span class="sd">                floor plate has one or more holes. (Default: True).</span>
+<span class="sd">            detailed: Boolean for whether the returned object is a detailed list of</span>
+<span class="sd">                dicts with error info or a string with a message. (Default: False).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A string with the message or a list with a dictionary if detailed is True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">detailed</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">raise_exception</span> <span class="k">else</span> <span class="n">detailed</span>
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">doe2</span><span class="o">.</span><span class="n">check_no_floor_plate_holes</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">detailed</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+                <span class="n">msgs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">msgs</span>
+        <span class="n">full_msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raise_exception</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">full_msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_msg</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.check_story_floor_plates">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.check_story_floor_plates">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_story_floor_plates</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check Story floor plates for courtyards and that they are less than 120 vertices.</span>
+
+<span class="sd">        EQuest currently has no way to represent courtyards so, if the issue</span>
+<span class="sd">        is not addressed, the courtyards will simply be removed as part of the</span>
+<span class="sd">        process of exporting to an INP file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tolerance: The tolerance to be used when joining the Room2D floor</span>
+<span class="sd">                plates together into a Story floor plate. If None, the Model</span>
+<span class="sd">                tolerance will be used. (Default: None).</span>
+<span class="sd">            raise_exception: Boolean to note whether a ValueError should be raised</span>
+<span class="sd">                if the story contains a courtyard. (Default: True).</span>
+<span class="sd">            detailed: Boolean for whether the returned object is a detailed list of</span>
+<span class="sd">                dicts with error info or a string with a message. (Default: False).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A string with the message or a list with a dictionary if detailed is True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># establish the tolerance and gap width at which point it is clearly a courtyard</span>
+        <span class="n">tolerance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">tolerance</span> <span class="k">if</span> <span class="n">tolerance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tolerance</span>
+        <span class="n">court_width</span> <span class="o">=</span> <span class="n">parse_distance_string</span><span class="p">(</span><span class="s1">&#39;1ft&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+        <span class="c1"># loop through the stories and identify any courtyards</span>
+        <span class="n">story_msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">bldg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">buildings</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">story</span> <span class="ow">in</span> <span class="n">bldg</span><span class="o">.</span><span class="n">unique_stories</span><span class="p">:</span>
+                <span class="n">floor_geos</span> <span class="o">=</span> <span class="p">[</span><span class="n">room</span><span class="o">.</span><span class="n">floor_geometry</span> <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">]</span>
+                <span class="n">joined_geos</span> <span class="o">=</span> <span class="n">_grouped_floor_boundary</span><span class="p">(</span><span class="n">floor_geos</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span>
+                <span class="n">c_count</span><span class="p">,</span> <span class="n">vert_len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span>
+                <span class="k">for</span> <span class="n">geo</span> <span class="ow">in</span> <span class="n">joined_geos</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">boundary</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">:</span>
+                        <span class="n">vert_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">boundary</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">geo</span><span class="o">.</span><span class="n">has_holes</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">hole</span> <span class="ow">in</span> <span class="n">geo</span><span class="o">.</span><span class="n">holes</span><span class="p">:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">h_geo</span> <span class="o">=</span> <span class="n">Face3D</span><span class="p">(</span><span class="n">hole</span><span class="p">)</span>
+                                <span class="n">h_geo</span> <span class="o">=</span> <span class="n">h_geo</span><span class="o">.</span><span class="n">remove_colinear_vertices</span><span class="p">(</span><span class="n">court_width</span><span class="p">)</span>
+                                <span class="n">max_len</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">length</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">h_geo</span><span class="o">.</span><span class="n">boundary_segments</span><span class="p">)</span>
+                                <span class="n">tol_area</span> <span class="o">=</span> <span class="n">max_len</span> <span class="o">*</span> <span class="n">court_width</span>
+                                <span class="k">if</span> <span class="n">h_geo</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="n">tol_area</span><span class="p">:</span>
+                                    <span class="n">c_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">except</span> <span class="p">(</span><span class="ne">AssertionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                                <span class="k">pass</span>  <span class="c1"># gap is too small to be a true courtyard</span>
+                <span class="k">if</span> <span class="n">c_count</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">hole_msg</span> <span class="o">=</span> <span class="s1">&#39;a courtyard&#39;</span> <span class="k">if</span> <span class="n">c_count</span> <span class="o">==</span> <span class="mi">1</span> \
+                        <span class="k">else</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> courtyards&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c_count</span><span class="p">)</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;The geometry of Story &quot;</span><span class="si">{}</span><span class="s1">&quot; contains </span><span class="si">{}</span><span class="s1">, which eQuest &#39;</span> \
+                        <span class="s1">&#39;cannot represent.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">story</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">hole_msg</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ValidationError&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;030103&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;error_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Story Floor Plate Contains Courtyards&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;extension_type&#39;</span><span class="p">:</span> <span class="s1">&#39;DOE2&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;element_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Room2D&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;element_id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">identifier</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">],</span>
+                            <span class="s1">&#39;element_name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">display_name</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">],</span>
+                            <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">msg</span>
+                        <span class="p">}</span>
+                    <span class="n">story_msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">vert_len</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Story &quot;</span><span class="si">{}</span><span class="s1">&quot; has a floor plate with </span><span class="si">{}</span><span class="s1"> vertices, which is more &#39;</span> \
+                        <span class="s1">&#39;than the maximum 120 vertices supported by DOE-2.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">story</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">vert_len</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ValidationError&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;030101&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;error_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Floor Plate Exceeds Maximum Vertex Count&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;extension_type&#39;</span><span class="p">:</span> <span class="s1">&#39;DOE2&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;element_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Room2D&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;element_id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">identifier</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">],</span>
+                            <span class="s1">&#39;element_name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">display_name</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">story</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">],</span>
+                            <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">msg</span>
+                        <span class="p">}</span>
+                    <span class="n">story_msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">story_msgs</span>
+        <span class="k">if</span> <span class="n">story_msgs</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;The following Stories have issues with their floor plates&#39;</span> \
+                <span class="s1">&#39;:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">story_msgs</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">raise_exception</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">msg</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.to_dict">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.to_dict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return Model DOE-2 properties as a dictionary.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;doe2&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ModelDoe2Properties&#39;</span><span class="p">}}</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.apply_properties_from_dict">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.apply_properties_from_dict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_properties_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply the DOE-2 properties of a dictionary to the host Model of this object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: A dictionary representation of an entire dragonfly-core Model.</span>
+<span class="sd">                Note that this dictionary must have ModelDoe2Properties in order</span>
+<span class="sd">                for this method to successfully apply the DOE-2 properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="s1">&#39;doe2&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">],</span> \
+            <span class="s1">&#39;Dictionary possesses no ModelDoe2Properties.&#39;</span>
+        <span class="n">room_doe2_dicts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="s1">&#39;buildings&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;buildings&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">b_dict</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;buildings&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="s1">&#39;unique_stories&#39;</span> <span class="ow">in</span> <span class="n">b_dict</span> <span class="ow">and</span> <span class="n">b_dict</span><span class="p">[</span><span class="s1">&#39;unique_stories&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">story_dict</span> <span class="ow">in</span> <span class="n">b_dict</span><span class="p">[</span><span class="s1">&#39;unique_stories&#39;</span><span class="p">]:</span>
+                        <span class="k">for</span> <span class="n">room_dict</span> <span class="ow">in</span> <span class="n">story_dict</span><span class="p">[</span><span class="s1">&#39;room_2ds&#39;</span><span class="p">]:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">room_doe2_dicts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">room_dict</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;doe2&#39;</span><span class="p">])</span>
+                            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                                <span class="n">room_doe2_dicts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">room_doe2_dicts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">room</span><span class="p">,</span> <span class="n">r_dict</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">room_2ds</span><span class="p">,</span> <span class="n">room_doe2_dicts</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">r_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">room</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">doe2</span><span class="o">.</span><span class="n">apply_properties_from_dict</span><span class="p">(</span><span class="n">r_dict</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ModelDoe2Properties.ToString">
+<a class="viewcode-back" href="../../../dragonfly_doe2.properties.model.html#dragonfly_doe2.properties.model.ModelDoe2Properties.ToString">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ToString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Model DOE2 Properties: [host: </span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span></div>
+
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2025, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+dragonfly\_doe2.cli.translate module
+====================================
+
+.. automodule:: dragonfly_doe2.cli.translate
+   :members:
+   :undoc-members:
+   :show-inheritance:
