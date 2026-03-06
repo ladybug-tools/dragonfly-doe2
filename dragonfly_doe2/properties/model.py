@@ -70,6 +70,7 @@ class ModelDoe2Properties(object):
         msgs.append(self.host.check_all_room3d(tol, ang_tol, False, detailed))
 
         # perform checks that are specific to DOE-2
+        msgs.append(self.check_context_shade_vertex_count(False, detailed))
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         msgs.append(self.check_no_room_2d_floor_plate_holes(False, detailed))
         msgs.append(self.check_story_floor_plates(tol, False, detailed))
@@ -132,6 +133,7 @@ class ModelDoe2Properties(object):
         msgs = []
         tol = self.host.tolerance
         # perform checks for specific doe-2 simulation rules
+        msgs.append(self.check_context_shade_vertex_count(False, detailed))
         msgs.append(self.check_room_2d_floor_plate_vertex_count(False, detailed))
         msgs.append(self.check_no_room_2d_floor_plate_holes(False, detailed))
         msgs.append(self.check_story_floor_plates(tol, False, detailed))
@@ -141,6 +143,47 @@ class ModelDoe2Properties(object):
             return [m for msg in full_msgs for m in msg]
         full_msg = '\n'.join(full_msgs)
         if raise_exception and len(full_msgs) != 0:
+            raise ValueError(full_msg)
+        return full_msg
+
+    def check_context_shade_vertex_count(
+            self, raise_exception=True, detailed=False):
+        """Check whether any ContextShade geometry exceeds the maximum vertex count.
+
+        The DOE-2 engine currently does not support such rooms and limits the
+        total number of vertices to 120.
+
+        Args:
+            raise_exception: If True, a ValueError will be raised if the ContextShade
+                floor plate exceeds the maximum number of vertices supported by
+                DOE-2. (Default: True).
+            detailed: Boolean for whether the returned object is a detailed list of
+                dicts with error info or a string with a message. (Default: False).
+
+        Returns:
+            A string with the message or a list with a dictionary if detailed is True.
+        """
+        detailed = False if raise_exception else detailed
+        msgs = []
+        for shade in self.host.context_shades:
+            msg = None
+            for geo in shade.geometry:
+                if isinstance(geo, Face3D) and len(geo.boundary) > 120:
+                    msg = 'ContextShade "{}" has geometry with {} vertices, which is ' \
+                        'more than the maximum 120 vertices supported by DOE-2.'.format(
+                            shade.display_name, len(geo.boundary))
+            if msg is not None:
+                msg = shade._validation_message_child(
+                    msg, shade, detailed, '030101', extension='DOE2',
+                    error_type='Geometry Exceeds Maximum Vertex Count')
+                if detailed:
+                    msgs.extend(msg)
+                elif msg != '':
+                    msgs.append(msg)
+        if detailed:
+            return msgs
+        full_msg = '\n'.join(msgs)
+        if raise_exception and len(msgs) != 0:
             raise ValueError(full_msg)
         return full_msg
 
