@@ -1,4 +1,4 @@
-pytest==8.3.2
+pytest==9.0.3
 Sphinx==8.0.2
 sphinx-bootstrap-theme==0.8.1
 sphinxcontrib-fulltoc==1.2.0
