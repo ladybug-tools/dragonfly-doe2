@@ -1,5 +1,8 @@
 # coding=utf-8
 """Room2D DOE-2 Properties."""
+from __future__ import division
+
+from ladybug_geometry.geometry3d import Face3D
 from honeybee.typing import float_in_range, float_positive
 from honeybee.altnumber import autocalculate
 from honeybee_doe2.properties.room import RoomDoe2Properties
@@ -178,6 +181,8 @@ class Room2DDoe2Properties(object):
                 msg, self.host, detailed, '030102', extension='DOE2',
                 error_type='Room Contains Holes')
             if detailed:
+                help_geo = [Face3D(hg) for hg in self.host.floor_geometry.holes]
+                full_msg['helper_geometry'] = [f.to_dict() for f in help_geo]
                 return [full_msg]
             if raise_exception:
                 raise ValueError(full_msg)

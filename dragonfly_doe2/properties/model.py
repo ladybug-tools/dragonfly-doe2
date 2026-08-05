@@ -1,5 +1,7 @@
 # coding=utf-8
 """Model DOE-2 Properties."""
+from __future__ import division
+
 from ladybug_geometry.geometry3d import Face3D
 from honeybee.units import parse_distance_string
 
@@ -279,7 +281,7 @@ class ModelDoe2Properties(object):
             for story in bldg.unique_stories:
                 floor_geos = [room.floor_geometry for room in story.room_2ds]
                 joined_geos = _grouped_floor_boundary(floor_geos, tolerance)
-                c_count, vert_len = 0, None
+                c_count, help_geo, vert_len = 0, [], None
                 for geo in joined_geos:
                     if len(geo.boundary) > 120:
                         vert_len = len(geo.boundary)
@@ -292,6 +294,7 @@ class ModelDoe2Properties(object):
                                 tol_area = max_len * court_width
                                 if h_geo.area > tol_area:
                                     c_count += 1
+                                    help_geo.append(h_geo)
                             except (AssertionError, ValueError):
                                 pass  # gap is too small to be a true courtyard
                 if c_count != 0:
@@ -308,7 +311,8 @@ class ModelDoe2Properties(object):
                             'element_type': 'Room2D',
                             'element_id': [r.identifier for r in story.room_2ds],
                             'element_name': [r.display_name for r in story.room_2ds],
-                            'message': msg
+                            'message': msg,
+                            'helper_geometry': [f.to_dict() for f in help_geo]
                         }
                     story_msgs.append(msg)
                 if vert_len is not None:
