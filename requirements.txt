@@ -1,2 +1,2 @@
-honeybee-doe2==0.25.1
+honeybee-doe2==0.25.2
 dragonfly-energy>=1.34.72
