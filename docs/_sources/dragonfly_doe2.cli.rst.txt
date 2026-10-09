@@ -1,0 +1,18 @@
+dragonfly\_doe2.cli package
+===========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   dragonfly_doe2.cli.translate
+
+Module contents
+---------------
+
+.. automodule:: dragonfly_doe2.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
